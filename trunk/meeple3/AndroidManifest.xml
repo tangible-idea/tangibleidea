@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tangibleidea.meeple"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="7" />
+    
+	
+
+    <application
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        >
+        
+        
+        <activity android:name=".activity.LoginActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    >	    
+		<intent-filter>
+			<action android:name="android.intent.action.MAIN" />
+			<category android:name="android.intent.category.LAUNCHER" />
+		</intent-filter>
+		</activity>
+	
+        <activity android:name=".activity.AuthActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+            
+        <activity android:name=".activity.LobbyActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+                
+        <activity android:name=".activity.MenteeJoinActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+        
+        <activity android:name=".activity.MentorJoinActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+        
+		<activity android:name=".activity.MeepleActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+        
+        <activity android:name=".activity.SettingActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+		
+		<activity android:name=".activity.InProgressChatActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+        
+        <activity android:name=".activity.FavoriteActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+        
+        <activity android:name=".activity.InChatActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+        
+		<activity android:name=".activity.TalkActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+		
+		    
+		<!-- 구글 C2DM 브로드 캐스트 권한 (receiver는 application 태그 안에 들어가 있어야 정상적으로 작동) -->
+        <receiver
+            android:name=".util.C2dm_BroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="com.tangibleidea.meeple" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.tangibleidea.meeple" />
+            </intent-filter>
+        </receiver>
+		    
+	
+            
+    </application>
+    
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+        <!-- 구글 C2DM 권한 -->
+    <permission
+        android:name="com.tangibleidea.meeple.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <!-- 구글 C2DM 메시지 권한 -->
+    <uses-permission android:name="com.tangibleidea.meeple.permission.C2D_MESSAGE" />
+    <!-- 구글 C2DM 리시브 권한 -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+            
+
+</manifest>

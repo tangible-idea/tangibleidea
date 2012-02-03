@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_join">
+
+    	<RelativeLayout
+		android:id="@+id/RelativeLayout01"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		
+		    	<WebView
+		android:id="@+id/web"
+		android:layout_width="0px"
+		android:layout_height="0px"
+		/>
+		
+    	<Spinner
+   	    android:id="@+id/spinner"
+   	    android:layout_width="200dip"
+   	    android:layout_height="wrap_content"
+   	    android:entries="@array/univs"
+   		android:layout_centerHorizontal="true"
+   		android:layout_centerVertical="true" 
+   	    />
+    	
+    	<EditText	
+    	android:id="@+id/edt_id"
+    	android:hint="ID 입력"
+    	android:layout_width="150dip"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="50dip"
+    	android:layout_centerHorizontal="true"
+    	android:enabled="false"
+    	></EditText>
+    	
+    	<EditText	
+    	android:id="@+id/edt_pw"
+    	android:hint="PW 입력"
+    	android:layout_width="150dip"
+    	android:password="true"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="0dip"
+    	android:layout_marginLeft="30dip"
+    	android:layout_below="@+id/edt_id"
+    	android:layout_centerHorizontal="true"
+    	android:enabled="false"
+    	></EditText>
+    	
+
+		
+		<Button
+		android:id="@+id/btn_auth"
+		android:text="인증"
+		android:layout_width="150dip"
+    	android:layout_height="wrap_content"
+    	android:layout_centerHorizontal="true"
+    	android:layout_below="@+id/edt_pw"
+		>
+		</Button>
+
+    	</RelativeLayout>
+    
+
+</LinearLayout>
