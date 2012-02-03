@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_login">
+
+    	<RelativeLayout
+		android:id="@+id/RelativeLayout01"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		
+    	    
+    	<EditText	
+    	android:id="@+id/edt_id"
+    	android:singleLine="true"
+    	android:layout_width="150dip"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="300dip"
+    	android:layout_marginLeft="30dip"
+    	></EditText>
+    	
+    	<EditText	
+    	android:id="@+id/edt_pw"
+    	android:password="true"
+    	android:singleLine="true"
+    	android:layout_width="150dip"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="0dip"
+    	android:layout_marginLeft="30dip"
+    	android:layout_below="@+id/edt_id"
+    	></EditText>
+    	        	
+    	<Button
+    	android:id="@+id/btn_login"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="5dip"
+    	android:layout_marginLeft="10dip"
+    	android:layout_below="@+id/edt_id"
+    	android:layout_toRightOf="@+id/edt_pw"
+    	android:background="@drawable/button_login_03"
+    	></Button>
+    	
+    	<Button
+    	android:id="@+id/btn_join_mentor"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="15dip"
+    	android:layout_marginLeft="45dip"
+    	android:layout_below="@+id/edt_pw"
+    	android:background="@drawable/button_mento_05"
+    	></Button>
+    	
+    	<Button
+    	android:id="@+id/btn_join_mentee"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="15dip"
+    	android:layout_marginLeft="10dip"
+    	android:layout_below="@+id/edt_pw"
+    	android:layout_toRightOf="@+id/btn_join_mentor"
+    	android:background="@drawable/button_mentee_04"
+    	></Button>
+    		    
+    		    
+    	</RelativeLayout>
+    
+
+</LinearLayout>

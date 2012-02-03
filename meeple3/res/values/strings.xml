@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Meeple</string>
+    <string-array name="univs">
+    	<item>대학교 선택</item>
+        <item>서울대학교</item>
+        <item>연세대학교</item>
+        <item>고려대학교</item>
+        <item>성균관대학교</item>
+        <item>서강대학교</item>
+    </string-array>
+    
+    <string-array name="gender">
+    	<item>성별 선택</item>
+        <item>남자</item>
+        <item>여자</item>
+    </string-array>
+
+    <string name="mailbox_favorite">즐겨찾기</string>
+    <string name="mailbox_mailbox">쪽지함</string>
+    <string name="mail_receiver">님이 보낸 쪽지입니다</string>
+    <string name="mail_sender">님에게 보낸 쪽지입니다.</string>
+    <string name="remote_service_started">서비스 시작</string>
+    <string name="remote_service_stopped">서비스 중지</string>
+    <string name="remote_service_label">서비스 라벨</string>
+    <string name="remote_service_connected">서비스 접속</string>
+    <string name="remote_service_disconnected">서비스 접속종료</string>
+    
+    <string name="member_infomation">멤버 정보</string>
+    <string name="sendmailbutton">메일 보내기</string>
+    <string name="login_id_hint">아이디</string>
+    <string name="login_pass_hint">비밀번호</string>
+    <string name="join_id_hint">영문 4~16자</string>
+    <string name="join_pass_hint">4~16자</string>
+    <string name="join_pass_confirm">비밀번호 확인</string>
+    <string name="id_text">아이디</string>
+    <string name="pass_text">비밀번호</string>
+    <string name="pass_text_confirm">비밀번호 확인</string>
+    <string name="join_title">회원가입</string>
+    
+<!--     <string name="test_server">http://localhost:9091/MeepleService/</string> -->
+<!--     <string name="live_server">http://1.234.2.227:9091/MeepleService/</string> -->
+    
+
+	<string name="korea_auth_address">http://library.korea.ac.kr/login</string>
+	<string name="ys_auth_address">https://mail.yonsei.ac.kr/SensMail?act=LOGIN</string>
+    <string name="snu_auth_address">https://sso.snu.ac.kr/safeidentity/modules/auth_idpwd</string>
+    <string name="sogang_auth_address1">http://library.sogang.ac.kr/dlsearch/TGUI/Theme/theme1/main.asp</string>
+    <string name="sogang_auth_address2">http://library.sogang.ac.kr/dlsearch/dlservice/login/ComWLogin.asp?</string>
+    
+</resources>
