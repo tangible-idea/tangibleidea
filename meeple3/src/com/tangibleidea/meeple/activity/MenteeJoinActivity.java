@@ -18,6 +18,7 @@ import com.tangibleidea.meeple.data.EnumError;
 import com.tangibleidea.meeple.server.RequestMethods;
 import com.tangibleidea.meeple.server_response.RegisterResponse;
 import com.tangibleidea.meeple.util.Global;
+import com.tangibleidea.meeple.util.SPUtil;
 
 public class MenteeJoinActivity extends Activity implements OnClickListener, OnItemSelectedListener
 {
@@ -52,7 +53,15 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View v, int position, long id)
 	{
-		C2DM_ID_Register();
+		try
+		{
+			if( SPUtil.getString(this, "reg_id").equals("0") )
+				C2DM_ID_Register();
+		}catch(Exception e)
+		{
+			C2DM_ID_Register();
+		}
+			
 		strGender= Integer.toString(position);		
 	}
 
@@ -69,7 +78,7 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 			if( !CheckNull() )
 				return;
 			
-			if( Global.REG_ID.equals("0") )
+			if( SPUtil.getString(this, "reg_id").equals("0") )
 			{
 				this.ShowAlertDialog("회원가입", "세션 초기화중입니다.\n잠시 후 다시 시도해주세요.", "확인");
 				return;
@@ -78,7 +87,7 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 			RegisterResponse res;
 			
 			RequestMethods RM= new RequestMethods();
-			res= RM.RegisterMentee(EDT_ID.getText().toString(),
+			res= RM.RegisterMentee(this, EDT_ID.getText().toString(),
 							  EDT_PW.getText().toString(),
 							  EDT_email.getText().toString(),
 							  EDT_name.getText().toString(),
@@ -173,11 +182,13 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
      */
     public void C2DM_ID_Register()
     {
+    	SPUtil.putString(this, "reg_id", "0");
+    		
       Intent registrationIntent = new Intent("com.google.android.c2dm.intent.REGISTER");
        
       registrationIntent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0));
       registrationIntent.putExtra("sender", Global.DEV_EMAIL);
-       
+      
       startService(registrationIntent);
     }
 

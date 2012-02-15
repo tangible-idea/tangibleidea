@@ -8,7 +8,7 @@ public class Chat
     protected String dateTime;
     protected String chatId;
     
-    protected Chat(String senderAccount, String receiverAccount, String chat, String dateTime, String chatId)
+    public Chat(String senderAccount, String receiverAccount, String chat, String dateTime, String chatId)
     {
         this.senderAccount = senderAccount;
         this.receiverAccount = receiverAccount;

@@ -11,18 +11,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
-import com.tangibleidea.meeple.util.SPUtil;
 
-public class ProfileListAdapter extends ArrayAdapter<InfoEntry>
+public class FavoriteListAdapter extends ArrayAdapter<InfoEntry>
 {
 	  private ArrayList<InfoEntry> items;
       private int rsrc;
       private Context context;
       
-      boolean b1=true , b2= true, b3=true;
       int nLoop= 0;
       
-      public ProfileListAdapter(Context context, int rsrcId, int txtId, ArrayList<InfoEntry> data)
+      public FavoriteListAdapter(Context context, int rsrcId, int txtId, ArrayList<InfoEntry> data)
       {
           super(context, rsrcId, txtId, data);
           this.context= context;
@@ -55,39 +53,12 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry>
               } else {
             	  ((ImageView)v.findViewById(R.id.ePhoto)).setImageResource(R.drawable.no_profileimage);  
               }
-              
-              
         	  TextView LBL= (TextView) v.findViewById(R.id.eLabel);
-        	  
-        	  if( SPUtil.getBoolean(context, "isMentor") )
-        	  {  
-        		  if( e.eSTAT == EnumMeepleStatus.E_MENTEE_PENDING ) 
-        		  {
-    				  LBL.setText("나를 기다리는 멘티");
-        		  }
-        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTEE_WAITING )
-        		  {
-        			  LBL.setText("내가 기다리는 멘티");
-        		  }
-        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTEE_INPROGRESS )
-        		  {
-        			  LBL.setText("대화중인 멘티");
-        		  }  
-        	  }
-        	  else
-        	  {
-        		  if( e.eSTAT == EnumMeepleStatus.E_MENTOR_PENDING )
-        		  {
-        			  LBL.setText("나를 기다리는 멘토");
-        		  }
-        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTOR_INPROGRESS )
-        		  {
-        			  LBL.setText("대화중인 멘토");
-        		  }
-        	  }
+        	  LBL.setVisibility(View.GONE);
         	  
         	  ++nLoop;
           }
           return v;
       }
+
 }

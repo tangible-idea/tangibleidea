@@ -33,6 +33,7 @@ public final class R {
         public static final int my_message=0x7f02000f;
         public static final int no_profileimage=0x7f020010;
         public static final int oppo_message=0x7f020011;
+        public static final int selector=0x7f020012;
     }
     public static final class id {
         public static final int RelativeLayout01=0x7f070000;
@@ -66,6 +67,11 @@ public final class R {
         public static final int edt_promo=0x7f07001b;
         public static final int edt_pw=0x7f070013;
         public static final int edt_school=0x7f070016;
+        public static final int page_favorite=0x7f070025;
+        public static final int page_meeple=0x7f070023;
+        public static final int page_setting=0x7f070026;
+        public static final int page_talk=0x7f070024;
+        public static final int pager=0x7f070022;
         public static final int spinner=0x7f070020;
         public static final int spn_gender=0x7f070018;
         public static final int web=0x7f07001f;
@@ -74,14 +80,16 @@ public final class R {
         public static final int entry=0x7f030000;
         public static final int entry_chat=0x7f030001;
         public static final int entry_recent_talk=0x7f030002;
-        public static final int inchat=0x7f030003;
-        public static final int join_mentee=0x7f030004;
-        public static final int join_mentor=0x7f030005;
-        public static final int login=0x7f030006;
-        public static final int main=0x7f030007;
-        public static final int pending_meeple=0x7f030008;
-        public static final int recent_talk=0x7f030009;
-        public static final int univ_auth=0x7f03000a;
+        public static final int favorite_list=0x7f030003;
+        public static final int inchat=0x7f030004;
+        public static final int join_mentee=0x7f030005;
+        public static final int join_mentor=0x7f030006;
+        public static final int login=0x7f030007;
+        public static final int main=0x7f030008;
+        public static final int pending_meeple=0x7f030009;
+        public static final int recent_talk=0x7f03000a;
+        public static final int univ_auth=0x7f03000b;
+        public static final int viewpager=0x7f03000c;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

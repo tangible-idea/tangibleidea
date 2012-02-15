@@ -4,8 +4,10 @@ public class RecentTalkEntry
 {
 	private boolean bEndChat;
 	private String strCount;
+	private String strID;
 	private String strOppoName;
 	private String strContent;
+	private String strChatID;
 	private String strTime;
 	
 	/**
@@ -15,13 +17,15 @@ public class RecentTalkEntry
 	 * @param strContent
 	 * @param strTime
 	 */
-	public RecentTalkEntry(boolean bEndChat, String strCount, String strOppoName, String strContent, String strTime)
+	public RecentTalkEntry(boolean bEndChat, String strCount, String strOppoID, String strOppoName, String strContent, String strChatID, String strTime)
 	{
 		super();
 		this.strCount= strCount;
+		this.strID= strOppoID;
 		this.bEndChat = bEndChat;
 		this.strOppoName= strOppoName;
 		this.strContent = strContent;
+		this.strChatID= strChatID;
 		this.strTime = strTime;
 	}
 
@@ -60,5 +64,15 @@ public class RecentTalkEntry
 	public String getTime()
 	{
 		return strTime;
+	}
+	
+	public String getAccountID()
+	{
+		return strID;
+	}
+	
+	public String getChatID()
+	{
+		return strChatID;
 	}
 }

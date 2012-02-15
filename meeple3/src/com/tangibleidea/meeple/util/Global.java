@@ -18,21 +18,24 @@ public class Global
 	public static final int s_nIntent_Fail= -1;		// 
 	public static final int s_nIntent_0	= 0;		// 
 	public static final int s_nIntent_JoinSuccess= 1;	// 가입 성공
-	public static final int s_nIntent_2= 2;		// 
+	public static final int s_nIntent_InChat= 2;		// 대화 상태 
+	
+	public static boolean s_HasNewChat= false;	// C2DM으로 새로운 채팅이 도착했는가?
 	
 	public static String s_MyUniv="";
+
 	
-	public static final int DB_VERSION= 37;						// DB버전 (v1.2~1.3 = 37)
-	public static final String DB_NAME= "biblequiz.db";			// DB 이름
-	public static final String DB_TABLE_MYINFO= "myinfo";			// DB 이름
+	public static final int DB_VERSION= 38;						//
+	public static final String DB_NAME= "meeple_chat.db";			// DB 이름
+	//public static final String DB_TABLE_MYINFO= "myinfo";			// DB 이름
 	
 	public static final String LOG_TAG="MEEPLE";
 	public static final String DEV_EMAIL="junhyeok@tangibleidea.co.kr";
-	public static String REG_ID="0";
+	//public static String REG_ID="0";
 	
 	public static EnumError s_Error= EnumError.E_NONE_ERROR;
 	
 	
-	public static final MyInfo s_Info= MyInfo.GetInstance();
+	//public static final MyInfo s_Info= MyInfo.GetInstance();
 	 
 }

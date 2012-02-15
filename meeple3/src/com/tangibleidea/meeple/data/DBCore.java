@@ -256,10 +256,40 @@ class DBCore
 		if( this.DBhelper != null )
 			DBhelper.close();
 		
-		Log.d(Global.LOG_TAG, ":::BibleQuiz::: --> DB close");
+		Log.d(Global.LOG_TAG, ":::MEEPLE::: --> DB close");
+	}
+	
+	//public void DBopen()
+	
+	
+	public void CreateNewChatTable(String _strTableName)
+	{
+		//_DB.execSQL("CREATE TABLE "+DB_NAME+" ("+
+		DB.execSQL("CREATE TABLE IF NOT EXISTS "+ _strTableName +" ("+	// 채팅 테이블을 만든다.
+				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
+				"chat TEXT, " +								// 채팅내용 (String)
+				"senderid TEXT, " +							// 보낸사람ID (String)
+				"receverid TEXT, " +						// 받는사람ID (String)
+				"date TEXT" +								// 시간(String)
+				")");
+
+		
 	}
 	
 	
+	public void CreateNewMessageTable(String _strTableName)
+	{
+		//_DB.execSQL("CREATE TABLE "+DB_NAME+" ("+
+		DB.execSQL("CREATE TABLE IF NOT EXISTS "+ _strTableName +" ("+	// 메세지 테이블을 만든다.
+				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
+				"chat TEXT, " +								// 메세지내용 (String)
+				"senderid TEXT, " +							// 보낸사람ID (String)
+				"receverid TEXT, " +						// 받는사람ID (String)
+				"date TEXT" +								// 시간(String)
+				")");
+
+		
+	}
 	
 	
 	protected class DataBaseHelper extends SQLiteOpenHelper
@@ -276,7 +306,7 @@ class DBCore
 		@Override
 		public void onCreate(SQLiteDatabase _DB)
 		{
-			CreateMyInfoTable(_DB);
+			//CreateMyInfoTable(_DB);
 			
 			Log.d(Global.LOG_TAG, "Call DB TABLE onCreate Complete");
 		}
@@ -308,54 +338,27 @@ class DBCore
 		
 		
 		
-		private void CreateMyInfoTable(SQLiteDatabase _DB)
-		{
-			//_DB.execSQL("CREATE TABLE IF NOT EXISTS "+DB_NAME+" ("+
-			_DB.execSQL("CREATE TABLE "+Global.DB_TABLE_MYINFO+" ("+	// 나의 정보 테이블을 만든다.
-					"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
-					"account TEXT, " +					// 계정
-					"mentor char(1), " +				// 멘토인가?
-					"name TEXT, " +						// 이름
-					"email TEXT, " +					// 이메일
-					"school TEXT, " +					// 학교 (멘티)
-					"grade TEXT, " +					// 학년(멘티)
-					"univ TEXT," +						// 대학(멘토)
-					"major TEXT,"+						// 전공(멘토)
-					"promo TEXT," +						// 학번(멘토)
-					"gender TEXT" +						// 성별					
-					")");
-			
-		}
+//		private void CreateMyInfoTable(SQLiteDatabase _DB)
+//		{
+//			//_DB.execSQL("CREATE TABLE IF NOT EXISTS "+DB_NAME+" ("+
+//			_DB.execSQL("CREATE TABLE "+Global.DB_TABLE_MYINFO+" ("+	// 나의 정보 테이블을 만든다.
+//					"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
+//					"account TEXT, " +					// 계정
+//					"mentor char(1), " +				// 멘토인가?
+//					"name TEXT, " +						// 이름
+//					"email TEXT, " +					// 이메일
+//					"school TEXT, " +					// 학교 (멘티)
+//					"grade TEXT, " +					// 학년(멘티)
+//					"univ TEXT," +						// 대학(멘토)
+//					"major TEXT,"+						// 전공(멘토)
+//					"promo TEXT," +						// 학번(멘토)
+//					"gender TEXT" +						// 성별					
+//					")");
+//			
+//		}
 		
 		
-		public void CreateNewChatTable(SQLiteDatabase _DB, String _strTableName)
-		{
-			//_DB.execSQL("CREATE TABLE IF NOT EXISTS "+DB_NAME+" ("+
-			_DB.execSQL("CREATE TABLE "+ _strTableName +" ("+	// 채팅 테이블을 만든다.
-					"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
-					"chatid INTEGER, " +						// 채팅ID (int)
-					"senderid TEXT, " +							// 보낸사람ID (String)
-					"receverid TEXT, " +						// 받는사람ID (String)
-					"date TEXT" +								// 시간(String)
-					")");
 
-			
-		}
-		
-		
-		public void CreateNewMessageTable(SQLiteDatabase _DB, String _strTableName)
-		{
-			//_DB.execSQL("CREATE TABLE IF NOT EXISTS "+DB_NAME+" ("+
-			_DB.execSQL("CREATE TABLE "+ _strTableName +" ("+	// 메세지 테이블을 만든다.
-					"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
-					"chatid INTEGER, " +						// 메세지ID (int)
-					"senderid TEXT, " +							// 보낸사람ID (String)
-					"receverid TEXT, " +						// 받는사람ID (String)
-					"date TEXT" +								// 시간(String)
-					")");
-
-			
-		}
 		
 	}
 			

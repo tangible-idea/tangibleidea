@@ -11,8 +11,7 @@
     <application
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-        >
+        android:theme="@android:style/Theme.NoTitleBar">
         
         
         <activity android:name=".activity.LoginActivity"
@@ -50,7 +49,7 @@
         android:configChanges="keyboardHidden|orientation"
 	    ></activity>
         
-		<activity android:name=".activity.MeepleActivity"
+		<activity android:name=".fragment.MeepleListFragment"
 	    android:label="@string/app_name"
 	    android:screenOrientation="portrait"
         android:configChanges="keyboardHidden|orientation"
@@ -68,7 +67,7 @@
         android:configChanges="keyboardHidden|orientation"
 	    ></activity>
         
-        <activity android:name=".activity.FavoriteActivity"
+        <activity android:name=".fragment.FavoriteListFragment"
 	    android:label="@string/app_name"
 	    android:screenOrientation="portrait"
         android:configChanges="keyboardHidden|orientation"
@@ -80,7 +79,7 @@
         android:configChanges="keyboardHidden|orientation"
 	    ></activity>
         
-		<activity android:name=".activity.TalkActivity"
+		<activity android:name=".fragment.RecentTalkListFragment"
 	    android:label="@string/app_name"
 	    android:screenOrientation="portrait"
         android:configChanges="keyboardHidden|orientation"
@@ -106,7 +105,9 @@
     </application>
     
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-        <!-- 구글 C2DM 권한 -->
+    <uses-permission android:name="android.permission.GET_TASKS"></uses-permission>
+
+    <!-- 구글 C2DM 권한 -->
     <permission
         android:name="com.tangibleidea.meeple.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -114,6 +115,7 @@
     <uses-permission android:name="com.tangibleidea.meeple.permission.C2D_MESSAGE" />
     <!-- 구글 C2DM 리시브 권한 -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    
             
 
 </manifest>

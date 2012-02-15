@@ -5,6 +5,7 @@ import org.apache.http.HttpEntity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,17 +16,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
+import com.tangibleidea.meeple.server.MenteeInfo;
+import com.tangibleidea.meeple.server.MentorInfo;
 import com.tangibleidea.meeple.server.RequestMethods;
 import com.tangibleidea.meeple.server_response.LoginResponse;
-import com.tangibleidea.meeple.util.C2DMAuth;
 import com.tangibleidea.meeple.util.Global;
+import com.tangibleidea.meeple.util.SPUtil;
 
 public class LoginActivity extends Activity implements OnClickListener
 {
 	private TextView TXT_ID, TXT_PW;
 	private Button BTN_Login, BTN_join_mentor, BTN_join_mentee;
 	private ProgressDialog LoadingDL;
-	Handler handler;
+	Context mContext;
 	LoginResponse login;
 	
 	@Override
@@ -34,6 +37,8 @@ public class LoginActivity extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.login);
+		
+		mContext= this;
 		
 		LoadingDL = new ProgressDialog(this);
 		
@@ -124,7 +129,7 @@ public class LoginActivity extends Activity implements OnClickListener
     		LoadingHandler.sendEmptyMessage(0);
    		
     		RequestMethods RM= new RequestMethods();
-    		login= RM.Login( TXT_ID.getText().toString() , TXT_PW.getText().toString() );			
+    		login= RM.Login( this, TXT_ID.getText().toString() , TXT_PW.getText().toString() );			
     		
     		LoadingHandler.sendEmptyMessage(1);
     		
@@ -158,7 +163,32 @@ public class LoginActivity extends Activity implements OnClickListener
 	    		
 	    		if (login.isSuccess())
 	    		{
-	    			Global.s_Info.SetMyInfo( login.isMentor() , login.getMentee(), login.getMentor(), login.getSession());
+	    			SPUtil.putBoolean(mContext, "isMentor", login.isMentor());
+	    			SPUtil.putString(mContext, "session", login.getSession());
+	    			
+	    			if(login.isMentor())
+	    			{
+	    				MentorInfo tor= login.getMentor();
+	    				SPUtil.putString(mContext, "AccountID" ,tor.getAccountId());
+	    				SPUtil.putString(mContext, "Comment" ,tor.getComment());
+	    				SPUtil.putString(mContext, "Email" ,tor.getEmail());
+	    				SPUtil.putString(mContext, "Image" ,tor.getImage());
+	    				SPUtil.putString(mContext, "Major" ,tor.getMajor());
+	    				SPUtil.putString(mContext, "Name" ,tor.getName());
+	    				SPUtil.putString(mContext, "Promo" ,tor.getPromo());
+	    				SPUtil.putString(mContext, "Univ" ,tor.getUniv());
+	    				
+	    			}else{
+	    				
+	    				MenteeInfo tee= login.getMentee();
+	    				SPUtil.putString(mContext, "AccountID" ,tee.getAccountId());
+	    				SPUtil.putString(mContext, "Comment" ,tee.getComment());
+	    				SPUtil.putString(mContext, "Email" ,tee.getEmail());
+	    				SPUtil.putString(mContext, "Image" ,tee.getImage());
+	    				SPUtil.putString(mContext, "Grade" ,tee.getGrade());
+	    				SPUtil.putString(mContext, "School" ,tee.getSchool());
+	    			}
+	    			
 	    			Intent intent= new Intent(LoginActivity.this, LobbyActivity.class);
 	    			startActivityForResult(intent, Global.s_nRequest_Login);
 	    			

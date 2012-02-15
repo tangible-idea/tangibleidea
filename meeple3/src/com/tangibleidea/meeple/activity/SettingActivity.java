@@ -1,23 +1,24 @@
 package com.tangibleidea.meeple.activity;
 
-import com.tangibleidea.meeple.util.Global;
-
 import android.os.Bundle;
 import android.preference.EditTextPreference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 
+import com.tangibleidea.meeple.util.SPUtil;
+
 public class SettingActivity extends PreferenceActivity
 {
-	
-	boolean isMentor=  Global.s_Info.isMentor();
+	private boolean isMentor;
 	
     @Override 
     protected void onCreate(Bundle savedInstanceState)
     {
          super.onCreate(savedInstanceState);
-        
+         
+         isMentor=  SPUtil.getBoolean(this, "isMentor");
+         
         setPreferenceScreen(createPreferenceHierarchy());
     }
     
@@ -36,19 +37,19 @@ public class SettingActivity extends PreferenceActivity
 		        EPT_name.setDialogTitle("[이름 입력]");
 		        EPT_name.setKey("mentee_name");
 		        EPT_name.setTitle("이름 변경");
-		        EPT_name.setSummary( Global.s_Info.getMenteeInfo().getName() );
+		        EPT_name.setSummary( SPUtil.getString(this, "AccountID"));
 		        
 		        EditTextPreference EPT_school = new EditTextPreference(this);
 		        EPT_school.setDialogTitle("[학교 입력]");
 		        EPT_school.setKey("mentee_school");
 		        EPT_school.setTitle("학교 변경");
-		        EPT_school.setSummary( Global.s_Info.getMenteeInfo().getSchool() );
+		        EPT_school.setSummary( SPUtil.getString(this, "School") );
 		        
 		        EditTextPreference EPT_grade = new EditTextPreference(this);
 		        EPT_grade.setDialogTitle("[학년 입력]");
 		        EPT_grade.setKey("mentee_grade");
 		        EPT_grade.setTitle("학년 변경");
-		        EPT_grade.setSummary( Global.s_Info.getMenteeInfo().getGrade() );
+		        EPT_grade.setSummary( SPUtil.getString(this, "Grade") );
 		        
 		        CAT_defaultInfo.addPreference(EPT_name);
 		        CAT_defaultInfo.addPreference(EPT_school);
@@ -59,19 +60,19 @@ public class SettingActivity extends PreferenceActivity
 		        EPT_name.setDialogTitle("[이름 입력]");
 		        EPT_name.setKey("mentor_name");
 		        EPT_name.setTitle("이름 변경");
-		        EPT_name.setSummary( Global.s_Info.getMentorInfo().getName() );
+		        EPT_name.setSummary( SPUtil.getString(this, "Name"));
 		        
 		        EditTextPreference EPT_major = new EditTextPreference(this);
 		        EPT_major.setDialogTitle("[전공 입력]");
 		        EPT_major.setKey("mentor_major");
 		        EPT_major.setTitle("전공 변경");
-		        EPT_major.setSummary( Global.s_Info.getMentorInfo().getMajor() );
+		        EPT_major.setSummary( SPUtil.getString(this, "Major") );
 		        
 		        EditTextPreference EPT_promo = new EditTextPreference(this);
 		        EPT_promo.setDialogTitle("[학번 입력]");
 		        EPT_promo.setKey("mentor_promo");
 		        EPT_promo.setTitle("학번 변경");
-		        EPT_promo.setSummary( Global.s_Info.getMentorInfo().getPromo() );
+		        EPT_promo.setSummary( SPUtil.getString(this, "Promo") );
 		        
 		        CAT_defaultInfo.addPreference(EPT_name);
 		        CAT_defaultInfo.addPreference(EPT_major);
@@ -87,20 +88,12 @@ public class SettingActivity extends PreferenceActivity
 	        
 	        EditTextPreference EPT_comment;
 	        
-	        if( !isMentor )
-	        {
-		        EPT_comment = new EditTextPreference(this);
-		        EPT_comment.setDialogTitle("[오늘의 한마디 입력]");
-		        EPT_comment.setKey("mentee_comment");
-		        EPT_comment.setTitle("오늘의 한마디");
-		        EPT_comment.setSummary( Global.s_Info.getMenteeInfo().getComment() );
-	        }else{
-		        EPT_comment = new EditTextPreference(this);
-		        EPT_comment.setDialogTitle("[오늘의 한마디 입력]");
-		        EPT_comment.setKey("mentor_comment");
-		        EPT_comment.setTitle("오늘의 한마디");
-		        EPT_comment.setSummary( Global.s_Info.getMentorInfo().getComment() );
-	        }
+	        EPT_comment = new EditTextPreference(this);
+	        EPT_comment.setDialogTitle("[오늘의 한마디 입력]");
+	        EPT_comment.setKey("mentee_comment");
+	        EPT_comment.setTitle("오늘의 한마디");
+	        EPT_comment.setSummary( SPUtil.getString(this, "Comment") );
+	    
 		        
 		    CAT_AddtionInfo.addPreference(EPT_comment);
         

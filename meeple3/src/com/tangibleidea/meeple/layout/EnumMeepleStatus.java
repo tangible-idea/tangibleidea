@@ -2,6 +2,7 @@ package com.tangibleidea.meeple.layout;
 
 public enum EnumMeepleStatus
 {
+	E_NONE,
 	E_MENTOR_PENDING,
 	E_MENTOR_INPROGRESS,
 	E_MENTEE_PENDING,

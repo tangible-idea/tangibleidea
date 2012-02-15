@@ -29,6 +29,8 @@ public class ChatListAdapter  extends ArrayAdapter<ChatEntry>
       @Override
       public View getView(int position, View convertView, ViewGroup parent)
       {
+    	  
+    	  
           View v = convertView;
           
           if (v == null)
