@@ -21,6 +21,7 @@ import com.tangibleidea.meeple.auth.Authenticator;
 import com.tangibleidea.meeple.auth.OnAuthListener;
 import com.tangibleidea.meeple.auth.UnivAuth;
 import com.tangibleidea.meeple.util.Global;
+import com.tangibleidea.meeple.util.SPUtil;
 
 public class AuthActivity extends Activity implements OnItemSelectedListener, Authenticator, OnClickListener
 {
@@ -91,7 +92,8 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
 			{
 				if(bSuccess)
 				{
-					C2DM_ID_Register();
+					if( SPUtil.getString(context, "reg_id").equals("0") )
+						C2DM_ID_Register();
 					
 					Global.s_MyUniv= SPN_sel_univ.getSelectedItem().toString();
 					Intent intent= new Intent(AuthActivity.this, MentorJoinActivity.class);
@@ -200,8 +202,18 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
      * @param context
      *            id 발급 메서드
      */
-    public void C2DM_ID_Register()
+    private void C2DM_ID_Register(  )
     {
+    	
+		try
+		{
+			if( SPUtil.getString(this, "reg_id").equals("0") )
+				C2DM_ID_Register();
+		}catch(Exception e)
+		{
+			C2DM_ID_Register();
+		}
+    	
       Intent registrationIntent = new Intent("com.google.android.c2dm.intent.REGISTER");
        
       registrationIntent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0));

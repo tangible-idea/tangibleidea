@@ -17,14 +17,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.tangibleidea.meeple.data.DBManager;
 import com.tangibleidea.meeple.data.EnumError;
 import com.tangibleidea.meeple.server_response.LoginResponse;
 import com.tangibleidea.meeple.server_response.RegisterResponse;
-import com.tangibleidea.meeple.util.C2DMAuth;
 import com.tangibleidea.meeple.util.Encoder;
 import com.tangibleidea.meeple.util.Global;
+import com.tangibleidea.meeple.util.SPUtil;
 
 public class RequestMethods
 {
@@ -37,6 +39,8 @@ public class RequestMethods
 	{
 		String res= null;
 		HttpClient httpClient = new DefaultHttpClient();
+		
+		Log.d( Global.LOG_TAG, _strURI );
 		
 		try
 	    {
@@ -74,6 +78,10 @@ public class RequestMethods
 	{
 		JSONObject json = null;
 		HttpClient httpClient = new DefaultHttpClient();
+		
+
+		
+		Log.d( Global.LOG_TAG, _strURI );		
 		
 		try
 	    {
@@ -117,6 +125,11 @@ public class RequestMethods
 		JSONArray jarr= null;
 		HttpClient httpClient = new DefaultHttpClient();
 		
+		_strURI= _strURI.replaceAll("\\p{Space}", "%20");
+		//_strURI= _strURI.replaceAll("\\p{Punct}", "");
+		
+		Log.d( Global.LOG_TAG, _strURI );
+		
 		try
 	    {
 		    HttpGet request = new HttpGet( new URI(_strURI) );
@@ -154,16 +167,22 @@ public class RequestMethods
 	 * @param _strPW
 	 * @return
 	 */
-	public LoginResponse Login(String _strID, String _strPW)
+	public LoginResponse Login(Context _context, String _strID, String _strPW)
 	{
 		LoginResponse ResLogin= null;
+		String IsPush= "true";
+		
+		if( SPUtil.getString(_context, "reg_id").equals("0") )
+			IsPush="false";
 		
 		Encoder encoder= new Encoder(_strPW);
 	    String URI = Global.SERVER + "Login?"
 		      		+"account=" + _strID
 		      		+"&password="+ encoder.Encode()
-		      		+"&IsPush=false" // 안드로이드는 push 필요없다.
-		      		+"&push=0";
+		      		+"&isApple=false"
+		      		+"&isPush=" +IsPush
+		      		+"&push=0"
+	    			+"&androidpush="+ SPUtil.getString(_context, "reg_id") ;
 	    
 		try
 	    {
@@ -210,7 +229,7 @@ public class RequestMethods
 			    	String promo= jMentorInfo.getString("Promo");
 			    	String univ= jMentorInfo.getString("Univ");
 			    	
-			    	mentor= new MentorInfo(ID, name,univ, major, promo, comment, image, time);	// 멘토일 경우 멘토 정보 생성
+			    	mentor= new MentorInfo(ID, name,univ, email, major, promo, comment, image, time);	// 멘토일 경우 멘토 정보 생성
 			    }
 		    }
 		    else
@@ -239,12 +258,12 @@ public class RequestMethods
 	 * @param _strGrade
 	 * @return
 	 */
-	public RegisterResponse RegisterMentee(String _strID, String _strPW, String _strEmail, String _strName, String _strGender, String _strSchool, String _strGrade)
+	public RegisterResponse RegisterMentee(Context _context, String _strID, String _strPW, String _strEmail, String _strName, String _strGender, String _strSchool, String _strGrade)
 	{
 		RegisterResponse res= null;
 		String IsPush= "true";
 		
-		if( Global.REG_ID.equals("0") )
+		if( SPUtil.getString(_context, "reg_id").equals("0") )
 			IsPush="false";
 
 		
@@ -252,8 +271,10 @@ public class RequestMethods
 	    String URI = Global.SERVER + "RegisterMentee?"
 		      		+"account=" + _strID
 		      		+"&password="+ encoder.Encode()
-		      		+"&IsPush="+ IsPush
-		      		+"&push="+ Global.REG_ID
+		      		+"&isApple=false"
+		      		+"&isPush="+ IsPush
+		      		+"&push=0"
+		      		+"&androidpush="+SPUtil.getString(_context, "reg_id")
 		      		+"&email="+ _strEmail
 		      		+"&name="+ _strName
 		      		+"&gender="+ _strGender
@@ -295,20 +316,22 @@ public class RequestMethods
 	 * @param _strPromo
 	 * @return
 	 */
-	public RegisterResponse RegisterMentor(String _strID, String _strPW, String _strEmail, String _strGender, String _strName, String _strUniv, String _strMajor, String _strPromo )
+	public RegisterResponse RegisterMentor(Context _context, String _strID, String _strPW, String _strEmail, String _strGender, String _strName, String _strUniv, String _strMajor, String _strPromo )
 	{
 		RegisterResponse res= null;
 		String IsPush= "true";
 		
-		if( Global.REG_ID.equals("0") )
+		if( SPUtil.getString(_context, "reg_id").equals("0") )
 			IsPush="false";
 		
 		Encoder encoder= new Encoder(_strPW);
 	    String URI = Global.SERVER + "RegisterMentor?"
 		      		+"account=" + _strID
 		      		+"&password="+ encoder.Encode()
-		      		+"&IsPush="+ IsPush
-		      		+"&push="+ Global.REG_ID
+		      		+"&isApple=false"
+		      		+"&isPush="+ IsPush
+		      		+"&push=0"
+		      		+"&androidpush="+SPUtil.getString(_context, "reg_id")
 		      		+"&name="+ _strName
 		      		+"&gender="+ _strGender
 		      		+"&email="+ _strEmail
@@ -337,16 +360,16 @@ public class RequestMethods
 	
 	
 	/**
-	 * 멘토의 정보(자신의 정보)를 가져옵니다.
+	 * 자신과 연결된 멘토의 정보를 가져옵니다.
 	 * @return
 	 */
-	public List<MentorInfo> GetRelationsMentor()
+	public List<MentorInfo> GetRelationsMentor(Context _context)
 	{
 		List<MentorInfo> res= new ArrayList<MentorInfo>();
 		
 	    String URI = Global.SERVER + "GetRelationsMentor?"
-	      		+"account=" + Global.s_Info.m_Mentee.getAccountId()
-	      		+"&session=" + Global.s_Info.m_MySession;
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session");
 	    try
 	    {
 		    JSONArray jarr= this.RequestJSONArrayToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
@@ -356,8 +379,18 @@ public class RequestMethods
 		    
 		    for(int i=0; i<jarr.length(); ++i)
 		    {
-		    	String id= jarr.getJSONObject(i).getString("AccountId");
-		    	res.add( new MentorInfo(id,null,null,null,null,null,null,null) );
+		    	JSONObject jMentorInfo= jarr.getJSONObject(i);
+		    	String ID = jMentorInfo.getString("AccountId");
+		    	String comment= jMentorInfo.getString("Comment");
+		    	String email= jMentorInfo.getString("Email");
+		    	String image= jMentorInfo.getString("Image");
+		    	String time= jMentorInfo.getString("LastModifiedTime");
+		    	String major= jMentorInfo.getString("Major");
+		    	String name= jMentorInfo.getString("Name");
+		    	String promo= jMentorInfo.getString("Promo");
+		    	String univ= jMentorInfo.getString("Univ");
+		    	
+		    	res.add( new MentorInfo(ID, name,univ, email, major, promo, comment, image, time) );
 		    }
    
 	    }
@@ -373,13 +406,13 @@ public class RequestMethods
 	 * 멘티의 정보(자신의 정보)를 가져옵니다.
 	 * @return
 	 */
-	public List<MenteeInfo> GetRelationsMentee()
+	public List<MenteeInfo> GetRelationsMentee(Context _context)
 	{
 		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
 		
 	    String URI = Global.SERVER + "GetRelationsMentor?"
-	      		+"account=" + Global.s_Info.m_Mentor.getAccountId()
-	      		+"&session=" + Global.s_Info.m_MySession;
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" +SPUtil.getString(_context, "session");
 	    try
 	    {
 		    JSONArray jarr= this.RequestJSONArrayToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
@@ -389,8 +422,17 @@ public class RequestMethods
 		    
 		    for(int i=0; i<jarr.length(); ++i)
 		    {
-		    	String id= jarr.getJSONObject(i).getString("AccountId");
-		    	res.add( new MenteeInfo(id,null,null,null,null,null,null,null) );
+		    	JSONObject jMenteeInfo= jarr.getJSONObject(i);
+		    	String ID= jMenteeInfo.getString("AccountId");
+		    	String comment= jMenteeInfo.getString("Comment");
+		    	String email= jMenteeInfo.getString("Email");
+		    	String grade= jMenteeInfo.getString("Grade");
+		    	String image= jMenteeInfo.getString("Image");
+		    	String time= jMenteeInfo.getString("LastModifiedTime");
+		    	String name= jMenteeInfo.getString("Name");
+		    	String school= jMenteeInfo.getString("School");
+		    	
+		    	res.add( new MenteeInfo(ID, name, school, grade, email, comment, image, time) ); // 멘티일 경우 멘티 정보 생성
 		    }
    
 	    }
@@ -406,13 +448,13 @@ public class RequestMethods
 	 * 멘토(나)의 수락을 기다리고 있는 멘티
 	 * @return
 	 */
-	public List<MenteeInfo> PendingMenteeRecommmendations()
+	public List<MenteeInfo> PendingMenteeRecommmendations(Context _context)
 	{
 		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
 		
 	    String URI = Global.SERVER + "MenteeRecommendations?"
-	      		+"localAccount=" + Global.s_Info.m_Mentor.getAccountId()
-	      		+"&session=" + Global.s_Info.m_MySession;
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session");
 	    
 	    try
 	    {
@@ -449,13 +491,13 @@ public class RequestMethods
 	 * 멘토(나)와 대화중인 멘티
 	 * @return
 	 */
-	public List<MenteeInfo> InProgressMenteeRecommmendations()
+	public List<MenteeInfo> InProgressMenteeRecommmendations(Context _context)
 	{
 		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
 		
 	    String URI = Global.SERVER + "MenteeRecommendations?"
-	      		+"localAccount=" + Global.s_Info.m_Mentor.getAccountId()
-	      		+"&session=" + Global.s_Info.m_MySession;
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" +SPUtil.getString(_context, "session");
 	    
 	    try
 	    {
@@ -478,7 +520,13 @@ public class RequestMethods
 		    	String image= jarr.getJSONObject(i).getString("Image");
 		    	String time= jarr.getJSONObject(i).getString("LastModifiedTime");
 		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time) );
+		    	
+		    	DBManager DBMgr= new DBManager(_context);
+		    	DBMgr.CreateNewChatTable( SPUtil.getString(_context, "AccountID") +"_"+ res.get(i).getAccountId() ); // 테이블명 : 내ID_상대방ID
+		    	DBMgr.DBClose();
 		    }
+		    
+
    
 	    }
 	    catch (JSONException e)
@@ -492,13 +540,13 @@ public class RequestMethods
 	 * 멘토가 수락을 하고 응답을 기다리는 중인 멘티
 	 * @return
 	 */
-	public List<MenteeInfo> WaitingMenteeRecommmendations()
+	public List<MenteeInfo> WaitingMenteeRecommmendations(Context _context)
 	{
 		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
 		
 	    String URI = Global.SERVER + "MenteeRecommendations?"
-	      		+"localAccount=" + Global.s_Info.m_Mentor.getAccountId()
-	      		+"&session=" + Global.s_Info.m_MySession;
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" +SPUtil.getString(_context, "session");
 	    
 	    try
 	    {
@@ -545,13 +593,13 @@ public class RequestMethods
 	 * 멘티(나)의 수락을 기다리고 있는 멘토 (멘티가 이미 수락한 상황만 나옴)
 	 * @return
 	 */
-	public List<MentorInfo> PendingMentorRecommmendations()
+	public List<MentorInfo> PendingMentorRecommmendations(Context _context)
 	{
 		List<MentorInfo> res= new ArrayList<MentorInfo>();
 		
 	    String URI = Global.SERVER + "MentorRecommendations?"
-	      		+"localAccount=" + Global.s_Info.m_Mentee.getAccountId()
-	      		+"&session=" + Global.s_Info.m_MySession;
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session");
 	    
 	    try
 	    {
@@ -574,7 +622,7 @@ public class RequestMethods
 		    	String major= jarr.getJSONObject(i).getString("Major");
 		    	String promo= jarr.getJSONObject(i).getString("Promo");
 		    	String univ= jarr.getJSONObject(i).getString("Univ");
-		    	res.add( new MentorInfo(id,name, univ, major, promo, comment, image, time) );
+		    	res.add( new MentorInfo(id,name, univ, email, major, promo, comment, image, time) );
 		    }
    
 	    }
@@ -589,13 +637,13 @@ public class RequestMethods
 	 * 멘티(나)와 대화중인 멘토
 	 * @return
 	 */
-	public List<MentorInfo> InProgressMentorRecommmendations()
+	public List<MentorInfo> InProgressMentorRecommmendations(Context _context)
 	{
 		List<MentorInfo> res= new ArrayList<MentorInfo>();
 		
 	    String URI = Global.SERVER + "MentorRecommendations?"
-	      		+"localAccount=" + Global.s_Info.m_Mentee.getAccountId()
-	      		+"&session=" + Global.s_Info.m_MySession;
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session");
 	    
 	    try
 	    {
@@ -618,7 +666,11 @@ public class RequestMethods
 		    	String major= jarr.getJSONObject(i).getString("Major");
 		    	String promo= jarr.getJSONObject(i).getString("Promo");
 		    	String univ= jarr.getJSONObject(i).getString("Univ");
-		    	res.add( new MentorInfo(id,name, univ, major, promo, comment, image, time) );
+		    	res.add( new MentorInfo(id,name, univ, email, major, promo, comment, image, time) );
+		    	
+		    	DBManager DBMgr= new DBManager(_context);
+		    	DBMgr.CreateNewChatTable( SPUtil.getString(_context, "AccountID") +"_"+ res.get(i).getAccountId() ); // 테이블명 : 내ID_상대방ID
+		    	DBMgr.DBClose();
 		    }
    
 	    }
@@ -636,26 +688,20 @@ public class RequestMethods
 	 * @param bAccept : 수락 여부
 	 * @return : 서버에서 쿼리 성공여부
 	 */
-	public boolean RespondRecommendation(String oppoAccount, boolean bMentor, boolean bAccept)
+	public boolean RespondRecommendation(Context _context, String oppoAccount, boolean bMentor, boolean bAccept)
 	{
 		boolean res;
 		String strAccept;
-		String strID;
-		
-		if(bMentor)
-			strID= Global.s_Info.m_Mentor.getAccountId();
-		else
-			strID= Global.s_Info.m_Mentee.getAccountId();
-		
+
 		if(bAccept)
 			strAccept="true";
 		else
 			strAccept="false";
 			
 	    String URI = Global.SERVER + "RespondRecommendation?"
-	      		+"localAccount=" + strID
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
 	      		+"&oppoAccount=" + oppoAccount
-	      		+"&session=" + Global.s_Info.m_MySession
+	      		+"&session=" +SPUtil.getString(_context, "session")
 	      		+"&accept=" + strAccept;
 		    String strRes= this.RequestStringToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
 		     
@@ -663,7 +709,10 @@ public class RequestMethods
 		    	return false;
 		    
 		    if( strRes.equals("true") )
+		    {
 		    	res= true;
+
+		    }
 		    else
 		    	res= false;
 		    
@@ -675,19 +724,14 @@ public class RequestMethods
 	 * @param bMentor : 자신이 멘토인가?
 	 * @return
 	 */
-	public List<RecentChat> GetRecentChatsNew(boolean bMentor)
+	public List<RecentChat> GetRecentChatsNew(Context _context, String localAccount)
 	{
 		List<RecentChat> res= new ArrayList<RecentChat>();
-		String strID;
 		
-		if(bMentor)
-			strID= Global.s_Info.m_Mentor.getAccountId();
-		else
-			strID= Global.s_Info.m_Mentee.getAccountId();
 		
 	    String URI = Global.SERVER + "GetRecentChatsNew?"
-	      		+"localAccount=" + strID
-	      		+"&session=" + Global.s_Info.m_MySession;
+	      		+"localAccount=" + localAccount
+	      		+"&session=" + SPUtil.getString(_context, "session");
 	    
 	    try
 	    {
@@ -723,20 +767,14 @@ public class RequestMethods
 	 * @param bMentor : 멘토인가?
 	 * @return : 채팅리스트
 	 */
-	public List<Chat> SendChatNew(String oppoAccount, String chat, boolean bMentor)
+	public List<Chat> SendChatNew(Context _context, String oppoAccount, String chat)
 	{
 		List<Chat> res= new ArrayList<Chat>();
-		String strID;
-		
-		if(bMentor)
-			strID= Global.s_Info.m_Mentor.getAccountId();
-		else
-			strID= Global.s_Info.m_Mentee.getAccountId();
-		
+
 	    String URI = Global.SERVER + "SendChatNew?"
-	      		+"localAccount=" + strID
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
 	      		+"&oppoAccount=" + oppoAccount
-	      		+"&session=" + Global.s_Info.m_MySession
+	      		+"&session=" + SPUtil.getString(_context, "session")
 	      		+"&chat=" + chat;
 	    
 	    try
@@ -773,21 +811,15 @@ public class RequestMethods
 	 * @param bMentor
 	 * @return
 	 */
-	public List<Chat> GetChatsNew(String oppoAccount, String chat, boolean bMentor)
+	public List<Chat> GetChatsNew(Context _context, String oppoAccount, String nLastChatID)
 	{
 		List<Chat> res= new ArrayList<Chat>();
-		String strID;
-		
-		if(bMentor)
-			strID= Global.s_Info.m_Mentor.getAccountId();
-		else
-			strID= Global.s_Info.m_Mentee.getAccountId();
 		
 	    String URI = Global.SERVER + "GetChatsNew?"
-	      		+"localAccount=" + strID
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
 	      		+"&oppoAccount=" + oppoAccount
-	      		+"&session=" + Global.s_Info.m_MySession
-	      		+"&chat=" + chat;
+	      		+"&session=" +SPUtil.getString(_context, "session")
+	      		+"&chatId=" + nLastChatID;
 	    
 	    try
 	    {
@@ -813,6 +845,92 @@ public class RequestMethods
 		}
 	    
 	    return res;
+	}
+	
+	/**
+	 * 멘티의 정보를 가져온다.
+	 * @param localAccount
+	 * @param oppoAccount
+	 * @param session
+	 * @return
+	 */
+	public MenteeInfo GetMenteeInfo(Context _context, String localAccount, String oppoAccount, String session)
+	{
+		MenteeInfo res = null;
+
+		
+	    String URI = Global.SERVER + "GetMenteeInfo?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&oppoAccount=" + oppoAccount
+	      		+"&session=" + SPUtil.getString(_context, "session");
+	    
+	    try
+	    {
+		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    
+		    if(json == null)
+		    	return null;
+		    
+	    	String ID= json.getString("AccountId");
+	    	String comment= json.getString("Comment");
+	    	String email= json.getString("Email");
+	    	String grade= json.getString("Grade");
+	    	String image= json.getString("Image");
+	    	String time= json.getString("LastModifiedTime");
+	    	String name= json.getString("Name");
+	    	String school= json.getString("School");
+	    	
+	    	res= new MenteeInfo(ID, name, school, grade, email, comment, image, time); 
+	    }
+	    catch (JSONException e)
+	    {
+	    	Log.e( "JSONException", e.getMessage() );
+		}
+		return res; 
+	}
+	
+	
+	/**
+	 * 멘토의 정보를 가져온다.
+	 * @param localAccount
+	 * @param oppoAccount
+	 * @param session
+	 * @return
+	 */
+	public MentorInfo GetMentorInfo(Context _context, String localAccount, String oppoAccount, String session)
+	{
+		MentorInfo res = null;
+
+		
+	    String URI = Global.SERVER + "GetMentorInfo?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&oppoAccount=" + oppoAccount
+	      		+"&session=" + SPUtil.getString(_context, "session");
+	    
+	    try
+	    {
+		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    
+		    if(json == null)
+		    	return null;
+		    
+	    	String ID = json.getString("AccountId");
+	    	String comment= json.getString("Comment");
+	    	String email= json.getString("Email");
+	    	String image= json.getString("Image");
+	    	String time= json.getString("LastModifiedTime");
+	    	String major= json.getString("Major");
+	    	String name= json.getString("Name");
+	    	String promo= json.getString("Promo");
+	    	String univ= json.getString("Univ");
+	    	
+	    	res= new MentorInfo(ID, name, univ, email, major, promo, comment, image, time);
+	    }
+	    catch (JSONException e)
+	    {
+	    	Log.e( "JSONException", e.getMessage() );
+		}
+		return res; 
 	}
 }
 

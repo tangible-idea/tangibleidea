@@ -5,6 +5,7 @@ public class MentorInfo
 	String strAccountId;
 	String strName;
 	String strUniv;
+	String strEmail;
 	String strMajor;
 	String strPromo;
 	String strComment;
@@ -21,13 +22,14 @@ public class MentorInfo
 	 * @param strImage
 	 * @param strLastModifiedTime
 	 */
-	public MentorInfo(String strAccountId, String strName, String strUniv,
+	public MentorInfo(String strAccountId, String strName, String strUniv, String strEmail,
 			String strMajor, String strPromo, String strComment,
 			String strImage, String strLastModifiedTime)
 	{
 		this.strAccountId = strAccountId;
 		this.strName = strName;
 		this.strUniv = strUniv;
+		this.strEmail= strEmail;
 		this.strMajor = strMajor;
 		this.strPromo = strPromo;
 		this.strComment = strComment;
@@ -90,6 +92,11 @@ public class MentorInfo
 	{
 		return strImage;
 	}
+	
+	public String getEmail()
+	{
+		return strEmail;
+	}
 
 	/**
 	 * @return the strLastModifiedTime
@@ -151,6 +158,11 @@ public class MentorInfo
 	public void setImage(String strImage) 
 	{
 		this.strImage = strImage;
+	}
+	
+	public void setEmail(String strEmail)
+	{
+		this.strEmail= strEmail;
 	}
 
 	/**

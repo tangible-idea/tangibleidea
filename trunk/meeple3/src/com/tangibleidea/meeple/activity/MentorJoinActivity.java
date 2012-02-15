@@ -4,6 +4,7 @@ import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.server.RequestMethods;
 import com.tangibleidea.meeple.server_response.RegisterResponse;
 import com.tangibleidea.meeple.util.Global;
+import com.tangibleidea.meeple.util.SPUtil;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -56,7 +57,7 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 			if( !CheckNull() )
 				return;
 			
-			if( Global.REG_ID.equals("0") )
+			if( SPUtil.getString(this, "reg_id").equals("0") )
 			{
 				this.ShowAlertDialog("회원가입", "세션 초기화중입니다.\n잠시 후 다시 시도해주세요.", "확인");
 				return;
@@ -65,7 +66,7 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 			RegisterResponse res;
 			
 			RequestMethods RM= new RequestMethods();
-			res= RM.RegisterMentor(EDT_ID.getText().toString(),
+			res= RM.RegisterMentor(this, EDT_ID.getText().toString(),
 							  EDT_PW.getText().toString(),
 							  EDT_email.getText().toString(),
 							  strGender,
