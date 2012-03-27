@@ -1,11 +1,16 @@
 package com.tangibleidea.meeple.util;
 
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
 import com.tangibleidea.meeple.data.EnumError;
-import com.tangibleidea.meeple.server.MyInfo;
 
 public class Global
 {
-	public final static String SERVER= "http://1.234.2.227:9090/MeepleService/";
+	public final static String SERVER_IP= 	"http://tangibleidea.co.kr";//"http://64.23.67.167";	//1.234.2.227
+	public final static String SERVER= 		SERVER_IP+ ":9091/MeepleService/";	// C#서버+메서드?+인자1=값1&인자2=값2 (HTTP GET 방식)
+	public final static String SERVER_IMG= 	SERVER_IP+ "/userImage/";	// 이미지를 볼 수 있는 경로+유저이름+".jpg" (테스트는 userImage_test)
 	//public final static String SERVER= "http://192.168.1.5:9091/MeepleService/";
 	//112.168.48.138
 	
@@ -21,6 +26,8 @@ public class Global
 	public static final int s_nIntent_InChat= 2;		// 대화 상태 
 	
 	public static boolean s_HasNewChat= false;	// C2DM으로 새로운 채팅이 도착했는가?
+	public static int s_nLobbyToTap= -1;	// C2DM으로 해당 인덱스로 넘어가는가?
+	
 	
 	public static String s_MyUniv="";
 
@@ -37,5 +44,20 @@ public class Global
 	
 	
 	//public static final MyInfo s_Info= MyInfo.GetInstance();
-	 
+	
+    /**
+     * @param context
+     *            id 발급 메서드
+     */
+    public static void C2DM_ID_Register(Context context)
+    {
+    	SPUtil.putString(context, "reg_id", "0");	// Exception을 막기 위해 처음 0을 넣어주고 받아온다.
+    		
+      Intent registrationIntent = new Intent("com.google.android.c2dm.intent.REGISTER");
+       
+      registrationIntent.putExtra("app", PendingIntent.getBroadcast(context, 0, new Intent(), 0));
+      registrationIntent.putExtra("sender", Global.DEV_EMAIL);
+      
+      context.startService(registrationIntent);
+    }
 }

@@ -16,6 +16,15 @@
         <item>남자</item>
         <item>여자</item>
     </string-array>
+    
+    <string-array name="category">
+    	<item>상담 분류</item>
+        <item>1.입시상담</item>
+        <item>2.학업상담</item>
+        <item>3.진로상담</item>
+        <item>4.개인상담</item>
+        <item>5.그 외</item>
+    </string-array>
 
     <string name="mailbox_favorite">즐겨찾기</string>
     <string name="mailbox_mailbox">쪽지함</string>
@@ -43,10 +52,11 @@
 <!--     <string name="live_server">http://1.234.2.227:9091/MeepleService/</string> -->
     
 
-	<string name="korea_auth_address">http://library.korea.ac.kr/login</string>
-	<string name="ys_auth_address">https://mail.yonsei.ac.kr/SensMail?act=LOGIN</string>
+	<string name="korea_auth_address">https://portal.korea.ac.kr/common/Login.kpd?callback=</string>
+	<string name="ys_auth_address">https://im.yonsei.ac.kr/sso/auth</string>
     <string name="snu_auth_address">https://sso.snu.ac.kr/safeidentity/modules/auth_idpwd</string>
-    <string name="sogang_auth_address1">http://library.sogang.ac.kr/dlsearch/TGUI/Theme/theme1/main.asp</string>
-    <string name="sogang_auth_address2">http://library.sogang.ac.kr/dlsearch/dlservice/login/ComWLogin.asp?</string>
+    <string name="sogang_auth_address">https://library.sogang.ac.kr/login</string>
+<!--     <string name="sogang_auth_address1">http://library.sogang.ac.kr/dlsearch/TGUI/Theme/theme1/main.asp</string> -->
+<!--     <string name="sogang_auth_address2">http://library.sogang.ac.kr/dlsearch/dlservice/login/ComWLogin.asp?</string> -->
     
 </resources>

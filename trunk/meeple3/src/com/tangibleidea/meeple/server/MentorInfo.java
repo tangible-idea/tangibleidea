@@ -1,7 +1,10 @@
 package com.tangibleidea.meeple.server;
 
+import com.tangibleidea.meeple.data.EnumMeepleStatus;
+
 public class MentorInfo
 {
+	public EnumMeepleStatus eSTAT= EnumMeepleStatus.E_NONE;
 	String strAccountId;
 	String strName;
 	String strUniv;
@@ -35,6 +38,22 @@ public class MentorInfo
 		this.strComment = strComment;
 		this.strImage = strImage;
 		this.strLastModifiedTime = strLastModifiedTime;
+	}
+	
+	public MentorInfo(String strAccountId, String strName, String strUniv, String strEmail,
+			String strMajor, String strPromo, String strComment,
+			String strImage, String strLastModifiedTime, EnumMeepleStatus eStat)
+	{
+		this.strAccountId = strAccountId;
+		this.strName = strName;
+		this.strUniv = strUniv;
+		this.strEmail= strEmail;
+		this.strMajor = strMajor;
+		this.strPromo = strPromo;
+		this.strComment = strComment;
+		this.strImage = strImage;
+		this.strLastModifiedTime = strLastModifiedTime;
+		this.eSTAT= eStat;
 	}
 
 	/**

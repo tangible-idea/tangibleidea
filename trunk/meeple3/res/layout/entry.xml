@@ -9,40 +9,130 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content">
     
-    
-	<TextView
-	android:id="@+id/eLabel"
-	android:text="나와 대화중인 멘티"
-	android:textSize="16sp"
-	android:gravity="center"
-	android:background="#223366"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content" />
-  
-  	<ImageView android:id="@+id/ePhoto"
+    <!-- 상대방 멘토 또는 멘티가 나와 어떤 관계인지 나타내는 라벨이다. -->
+  	<ImageView android:id="@+id/e_img_label"
   	android:layout_below="@+id/eLabel"
-    android:layout_width="48dip"
-    android:layout_height="48dip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/title_my_mentee" />
+    
+    <ImageView android:id="@+id/e_img_frame"
+  	android:layout_below="@+id/e_img_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="14dip"
+    android:layout_marginTop="-12dip"
+    android:src="@drawable/profile_frame" />
+ 
+ 	<!-- 안에 들어가는 테이블 -->
+     <ImageView android:id="@+id/e_img_table_in"
+    android:layout_below="@+id/e_img_label"
+  	android:layout_toRightOf="@+id/e_img_frame"
+  	android:layout_width="204dip"
+    android:layout_height="102.6dip"
+    android:layout_marginTop="-12dip"
+    android:background="@drawable/profile_table_in" />
+    
+    <!-- 멘토 또는 멘티에게 상대방을 수락할지 물어보는 캡션이다. -->
+    <ImageView android:id="@+id/e_img_table_in_caption"
+    android:layout_below="@+id/e_img_label"
+  	android:layout_toRightOf="@+id/e_img_frame"
+  	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dip"
+    android:layout_marginLeft="39.3dip"
+    android:background="@drawable/text_img_mentee_accept" />
+    
+    <!-- 상대방을 수락하는 버튼이다. -->
+    <Button android:id="@+id/e_btn_table_in_yes"
+    android:layout_below="@+id/e_img_table_in_caption"
+  	android:layout_toRightOf="@+id/e_img_frame"
+  	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dip"
+    android:layout_marginLeft="61.3dip"
+    android:background="@drawable/btn_new_meeple_ok" />
+    
+    <!-- 상대방을 거절하는 버튼이다. -->
+    <Button android:id="@+id/e_btn_table_in_no"
+    android:layout_below="@+id/e_img_table_in_caption"
+  	android:layout_toRightOf="@+id/e_img_frame"
+  	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dip"
+    android:layout_marginLeft="121.3dip"
+    android:background="@drawable/btn_new_meeple_no" />
+	
+	<!-- 쌍방수락 되었을 경우 상대방과 대화할 수 있는 버튼이다.-->
+    <Button android:id="@+id/e_btn_table_in_talk"
+    android:layout_below="@+id/e_img_label"
+  	android:layout_toRightOf="@+id/e_img_frame"
+  	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="18.6dip"
+    android:layout_marginLeft="78dip"
+    android:background="@drawable/btn_tap_talk" />
+	
+    <!-- 테이블 위에 껍데기 -->
+    <ImageView android:id="@+id/e_img_table"
+    android:layout_below="@+id/e_img_label"
+  	android:layout_toRightOf="@+id/e_img_frame"
+  	android:layout_width="190dip"
+    android:layout_height="102.6dip"
+    android:layout_marginTop="-12dip"
+    android:background="@drawable/profile_table" />
+    
+    <!-- 테이블 껍데기 위에 슬라이드 버튼. -->
+    <Button android:id="@+id/e_btn_slide"
+    android:layout_below="@+id/e_img_label"
+  	android:layout_toRightOf="@+id/e_img_frame"
+  	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="150dip"
+    android:layout_marginTop="3.3dip"
+    android:background="@drawable/button_left_slide" />
+    
+<!--     <Button android:id="@+id/e_btn_slide2" -->
+<!--     android:layout_below="@+id/e_img_label" -->
+<!--   	android:layout_toRightOf="@+id/e_img_frame" -->
+<!--   	android:layout_width="wrap_content" -->
+<!--     android:layout_height="wrap_content" -->
+<!--     android:layout_marginLeft="0dip" -->
+<!--     android:layout_marginTop="3.3dip" -->
+<!--     android:background="@drawable/icon_slide_disabled" /> -->
+    
+
+    
+  	<ImageView android:id="@+id/ePhoto"
+  	android:layout_below="@+id/e_img_label"
+    android:layout_width="74.6dip"
+    android:layout_height="74.6dip"
+    android:layout_marginLeft="23.3dip"
+    android:layout_marginTop="2dip"
     android:src="@drawable/no_profileimage" />
 
     
     <TextView
     android:id="@+id/eName"
-    android:layout_toRightOf="@+id/ePhoto"
-    android:layout_below="@+id/eLabel"
+    android:layout_toRightOf="@+id/e_img_frame"
+    android:layout_marginLeft="12.6dip"
+    android:layout_below="@+id/e_img_label"
+    android:layout_marginTop="18dip"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:textColor="#000000"
-    android:textSize="22sp" />
+    android:textSize="18.6sp" />
     
     <TextView
     android:id="@+id/eSchool"
-    android:layout_toRightOf="@+id/ePhoto"
+    android:layout_toRightOf="@+id/e_img_frame"
+    android:layout_marginLeft="12.6dip"
     android:layout_below="@+id/eName"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="9.3dip"
     android:textColor="#000000"
-    android:textSize="16sp" />
+    android:textSize="13.3sp" />
   
   </RelativeLayout>
   

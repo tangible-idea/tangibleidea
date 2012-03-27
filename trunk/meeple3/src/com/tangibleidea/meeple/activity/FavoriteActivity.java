@@ -1,29 +1,37 @@
 package com.tangibleidea.meeple.activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.tangibleidea.meeple.R;
+import com.tangibleidea.meeple.data.EnumMeepleStatus;
+import com.tangibleidea.meeple.layout.FavoriteListAdapter;
+import com.tangibleidea.meeple.layout.InfoEntry;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
 import com.tangibleidea.meeple.server.RequestMethods;
-import com.tangibleidea.meeple.server_response.LoginResponse;
-import com.tangibleidea.meeple.util.Global;
+import com.tangibleidea.meeple.util.SPUtil;
 
 public class FavoriteActivity extends ListActivity
-{
+{	
 	private ProgressDialog LoadingDL;
+	private Context mContext;
+	
+	private TextView TXT_status;
+	
+	ArrayAdapter<InfoEntry> AA;
+	final ArrayList<InfoEntry> arraylist= new ArrayList<InfoEntry>();
 	List<MentorInfo> LIST_mentors= null;
 	List<MenteeInfo> LIST_mentees= null;
 	
@@ -31,14 +39,17 @@ public class FavoriteActivity extends ListActivity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+     
+        setContentView(R.layout.favorite_list);
+        mContext= this;
+        LoadingDL = new ProgressDialog(mContext);
+        TXT_status= (TextView) findViewById(R.id.txt_favorite_status);
         
-        LoadingDL = new ProgressDialog(this);
-        
-        this.GetFavoriteRelations();
+        GetFavoriteRelations();
     }
     
     
-	private void GetFavoriteRelations()
+	public void GetFavoriteRelations()
 	{
     	Thread thread = new Thread(null, BackgroundThread, "Background");
     	thread.start();
@@ -67,29 +78,12 @@ public class FavoriteActivity extends ListActivity
     		
             RequestMethods RM= new RequestMethods();
             
-            if( Global.s_Info.isMentor() )
-            	LIST_mentees= RM.GetRelationsMentee();
+            if( SPUtil.getBoolean(mContext, "isMentor") )
+            	LIST_mentees= RM.GetRelationsMentee(mContext);
             else
-            	LIST_mentors= RM.GetRelationsMentor();        		
+            	LIST_mentors= RM.GetRelationsMentor(mContext);        		
             
-            if(LIST_mentors==null && LIST_mentees==null)
-            { 
-            	setListAdapter(new FavoriteNULLAdapter(this));
-            	return;
-            }
-            
-            if( Global.s_Info.isMentor() )
-            {
-            	if( LIST_mentees.size()==0 )
-            		setListAdapter(new FavoriteNULLAdapter(this));
-            	else
-            		setListAdapter(new FavoriteAdapter(this));
-            }else{
-            	if(LIST_mentors.size()==0)
-            		setListAdapter(new FavoriteNULLAdapter(this));
-            	else
-            		setListAdapter(new FavoriteAdapter(this));
-            }
+            LoadingHandler.sendEmptyMessage(1);
     	}
     	catch (Exception ex)
     	{
@@ -110,6 +104,35 @@ public class FavoriteActivity extends ListActivity
 			else if(msg.what==1)
 			{
 				LoadingDL.hide();
+				
+				if(LIST_mentors==null && LIST_mentees==null)
+	            {
+					TXT_status.setText("추가된 미플이 없음");
+					TXT_status.setVisibility(View.VISIBLE);
+	            	return;
+	            }
+				
+				if( SPUtil.getBoolean(mContext, "isMentor") )
+				{
+					for(MenteeInfo tee : LIST_mentees)
+						arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(), -1, EnumMeepleStatus.E_NONE) );
+									
+				}else{
+					for(MentorInfo tor : LIST_mentors)
+						arraylist.add( new InfoEntry( tor.getAccountId(), tor.getName(), tor.getUniv(), tor.getMajor(), -1, EnumMeepleStatus.E_NONE) );
+							
+				}
+				
+				if(arraylist.size()==0)
+				{
+					TXT_status.setText("추가된 미플이 없음");
+					TXT_status.setVisibility(View.VISIBLE);
+				}else{
+					TXT_status.setVisibility(View.GONE);
+				}
+				
+				AA= new FavoriteListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
+				setListAdapter(AA);
 			}
 		}
 	};
@@ -126,120 +149,14 @@ public class FavoriteActivity extends ListActivity
     
     
     
-
-    private class FavoriteAdapter extends BaseAdapter
-    {
-        public FavoriteAdapter(Context context)
-        {
-            mContext = context;
-        }
-
-        public int getCount()
-        {
-        	if( Global.s_Info.isMentor() )
-        		return LIST_mentees.size();
-        	else
-        		return LIST_mentors.size();
-        }
-
-        @Override
-        public boolean areAllItemsEnabled()
-        {
-            return false;
-        }
-
-        @Override
-        public boolean isEnabled(int position)
-        {
-        	if( Global.s_Info.isMentor() )
-        		return !LIST_mentees.get(position).getAccountId().startsWith("-");
-        	else
-        		return !LIST_mentors.get(position).getAccountId().startsWith("-");
-        }
-
-        public Object getItem(int position)
-        {
-            return position;
-        }
-
-        public long getItemId(int position)
-        {
-            return position;
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
-            TextView tv;
-            if (convertView == null)
-            {
-                tv = (TextView) LayoutInflater.from(mContext).inflate(
-                        android.R.layout.simple_expandable_list_item_1, parent, false);
-            }
-            else
-            {
-                tv = (TextView) convertView;
-            }
-            if( Global.s_Info.isMentor() )
-            	tv.setText( LIST_mentees.get(position).getAccountId() );
-            else
-            	tv.setText( LIST_mentors.get(position).getAccountId() );
-            
-            return tv;
-        }
-
-        private Context mContext;
-    }
     
     
     
-    private class FavoriteNULLAdapter extends BaseAdapter
-    {
-        public FavoriteNULLAdapter(Context context)
-        {
-            mContext = context;
-        }
-        public int getCount()
-        {
-            return 1;
-        }
-        @Override
-        public boolean areAllItemsEnabled()
-        {
-            return false;
-        }
-        @Override
-        public boolean isEnabled(int position)
-        {
-            return false;
-        }
-        public Object getItem(int position)
-        {
-            return position;
-        }
-
-        public long getItemId(int position)
-        {
-            return position;
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent)
-        {
-            TextView tv;
-            if (convertView == null)
-            {
-                tv = (TextView) LayoutInflater.from(mContext).inflate(
-                        android.R.layout.simple_expandable_list_item_1, parent, false);
-            }
-            else
-            {
-                tv = (TextView) convertView;
-            }
-            tv.setText( "즐겨찾기된 상대가 없음" );
-            return tv;
-        }
-
-        private Context mContext;
-    }
+    
+	public void onListItemClick(ListView l, View v, int pos, long id)
+	{
+		
+	}
     
 }
 

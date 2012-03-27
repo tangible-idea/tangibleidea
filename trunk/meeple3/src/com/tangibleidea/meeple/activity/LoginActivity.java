@@ -63,7 +63,7 @@ public class LoginActivity extends Activity implements OnClickListener
 		}
 		else if (v.getId() == R.id.btn_join_mentor)
 		{
-			Intent intent= new Intent(LoginActivity.this, AuthActivity.class);
+			Intent intent= new Intent(LoginActivity.this, SelectUnivActivity.class);
 			startActivityForResult(intent, Global.s_nRequest_MentorJoin);
 		}
 		else if (v.getId() == R.id.btn_join_mentee)
@@ -137,6 +137,11 @@ public class LoginActivity extends Activity implements OnClickListener
     	}
     	catch (Exception ex)
     	{
+    		Global.C2DM_ID_Register(this);	// c2dm 다시 할당
+    		
+    		
+    		LoadingHandler.sendEmptyMessage(-1);
+    		
     		ex.toString();
     	}
     }
@@ -145,10 +150,16 @@ public class LoginActivity extends Activity implements OnClickListener
 	{
 		public void handleMessage(Message msg)
 		{
+			if(msg.what==-1)
+			{
+				LoadingDL.hide();
+    			ShowAlertDialog("로그인", "정보 초기화 중입니다.\n잠시 후 다시 실행해주세요~", "확인");
+    			return;
+			}
+			
 			if(msg.what==0)
 			{
 		        LoadingDL.setMessage("로그인 중");
-		        LoadingDL.setIndeterminate(true);
 		        LoadingDL.show();
 			}
 			else if(msg.what==1)
@@ -191,6 +202,7 @@ public class LoginActivity extends Activity implements OnClickListener
 	    			
 	    			Intent intent= new Intent(LoginActivity.this, LobbyActivity.class);
 	    			startActivityForResult(intent, Global.s_nRequest_Login);
+	    			finish();
 	    			
 	    		}else{
 	    			ShowAlertDialog("로그인", "실패", "확인");

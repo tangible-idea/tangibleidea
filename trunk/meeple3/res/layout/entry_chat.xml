@@ -5,9 +5,10 @@
     android:layout_height="wrap_content" >
    
 	<RelativeLayout
-	android:id="@+id/RelativeLayout01"
+	android:id="@+id/RL"
 	android:layout_width="wrap_content"
-	android:layout_height="wrap_content">
+	android:layout_height="wrap_content"
+	android:layout_weight="1">
     
     
  
@@ -27,7 +28,7 @@
     android:background="@drawable/oppo_message"
     android:textColor="#000000"
     android:textSize="16sp" />
-    
+  
    	<TextView
 	android:id="@+id/eOppoTime"
 	android:layout_below="@+id/eOppoChat"
@@ -39,6 +40,8 @@
 	android:layout_alignParentLeft="true"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content" />
+    
+	    
     
     <TextView
     android:id="@+id/eMyChat"
@@ -59,7 +62,9 @@
 	android:layout_alignParentRight="true"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content" />
+    
+    </RelativeLayout>
   
-  </RelativeLayout>
+  
   
 </LinearLayout>

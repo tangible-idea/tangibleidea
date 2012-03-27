@@ -1,5 +1,7 @@
 package com.tangibleidea.meeple.layout;
 
+import com.tangibleidea.meeple.data.EnumMeepleStatus;
+
 public class InfoEntry
 {
 	public EnumMeepleStatus eSTAT;

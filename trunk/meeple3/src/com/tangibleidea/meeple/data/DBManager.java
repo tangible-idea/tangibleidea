@@ -26,7 +26,7 @@ public class DBManager extends DBCore
 	}
 	
 	
-	public void PutChatDB(String strTableName, List<Chat> _chat)
+	public void InsertChatDB(String strTableName, List<Chat> _chat)
 	{
 		if(_chat==null)
 			return;
@@ -72,6 +72,16 @@ public class DBManager extends DBCore
 		return res;
 	}
 	
+	/**
+	 * 현재 채팅의 커서값을 가져온다.
+	 * @param strTableName
+	 * @return
+	 */
+	public Cursor MakeCursorChat(Context _context, String strTableName)
+	{
+		return DB.rawQuery("SELECT * FROM "+strTableName, null);
+	}
+	
 	public ArrayList<ChatEntry> GetChatToArrayList(Context _context, String strTableName)
 	{
 		ArrayList<ChatEntry> res= new ArrayList<ChatEntry>();
@@ -99,29 +109,27 @@ public class DBManager extends DBCore
 		
 		return res;
 	}
-	
-	
-	
-	
-	public ArrayList<String> GetChatToArrayListTEST(Context _context, String strTableName)
-	{
-		ArrayList<String> res= new ArrayList<String>();
-		
-		String[] strCol= {"chat", "senderid", "receverid", "date"};
-		
-		Cursor CS= this.GetCursorFromDB(strTableName, strCol);
-		
-		if(CS.moveToFirst())
-		{    //if 가 참이면 얻어온 데이타가 1개 이상 
-			do
-			{				
-				res.add( CS.getString(1)+" : "+ CS.getString(0) ); 
-			}while(CS.moveToNext());
-		}
-		
-		CS.close();
-
-		
-		return res;
-	}
+//	
+//	
+//	public ArrayList<String> GetChatToArrayListTEST(Context _context, String strTableName)
+//	{
+//		ArrayList<String> res= new ArrayList<String>();
+//		
+//		String[] strCol= {"chat", "senderid", "receverid", "date"};
+//		
+//		Cursor CS= this.GetCursorFromDB(strTableName, strCol);
+//		
+//		if(CS.moveToFirst())
+//		{    //if 가 참이면 얻어온 데이타가 1개 이상 
+//			do
+//			{				
+//				res.add( CS.getString(1)+" : "+ CS.getString(0) ); 
+//			}while(CS.moveToNext());
+//		}
+//		
+//		CS.close();
+//
+//		
+//		return res;
+//	}
 }

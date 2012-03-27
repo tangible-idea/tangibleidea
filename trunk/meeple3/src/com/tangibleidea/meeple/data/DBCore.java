@@ -12,17 +12,17 @@ import com.tangibleidea.meeple.util.Global;
 class DBCore
 {
 
-	protected DataBaseHelper DBhelper;
+	//protected DataBaseHelper DBhelper;
 	
 	protected SQLiteDatabase DB;
 	
 	protected DBCore(Context _context)
-	{
-		DBhelper= new DataBaseHelper(_context);
-		
+	{	
 //		try
 //{
-		DB = DBhelper.getWritableDatabase();
+		DB = _context.openOrCreateDatabase(Global.DB_NAME,
+			 Context.MODE_PRIVATE,
+			 null);
 //}
 //		catch(Exception e) // 권한이나 디스크 공간문제로 오류가 날 수 있으므로 방어코드로 Readable을 넣는다.
 //		{
@@ -253,8 +253,8 @@ class DBCore
 	 */
 	public void DBClose()
 	{
-		if( this.DBhelper != null )
-			DBhelper.close();
+		if( this.DB != null )
+			DB.close();
 		
 		Log.d(Global.LOG_TAG, ":::MEEPLE::: --> DB close");
 	}
@@ -271,9 +271,7 @@ class DBCore
 				"senderid TEXT, " +							// 보낸사람ID (String)
 				"receverid TEXT, " +						// 받는사람ID (String)
 				"date TEXT" +								// 시간(String)
-				")");
-
-		
+				")");		
 	}
 	
 	
