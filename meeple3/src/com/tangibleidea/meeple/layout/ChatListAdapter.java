@@ -9,10 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ChatListAdapter  extends ArrayAdapter<ChatEntry>
 {
+	TextView TXT_MYCHAT, TXT_MYTIME, TXT_OPPOCHAT, TXT_OPPOTIME;
+	ImageView IMG_OPPO;
+
 	  private ArrayList<ChatEntry> items;
       private int viewResource;
       private Context context;
@@ -28,10 +32,12 @@ public class ChatListAdapter  extends ArrayAdapter<ChatEntry>
       
       @Override
       public View getView(int position, View convertView, ViewGroup parent)
-      {
+      {  
     	  
     	  
           View v = convertView;
+          
+
           
           if (v == null)
           {
@@ -39,23 +45,33 @@ public class ChatListAdapter  extends ArrayAdapter<ChatEntry>
               v = li.inflate(viewResource, null);
           } 
           
+          TXT_MYCHAT= (TextView)v.findViewById(R.id.eMyChat);
+          TXT_MYTIME= (TextView)v.findViewById(R.id.eMyTime);
+          TXT_OPPOCHAT= (TextView)v.findViewById(R.id.eOppoChat);
+          TXT_OPPOTIME= (TextView)v.findViewById(R.id.eOppoTime);
+          IMG_OPPO= (ImageView)v.findViewById(R.id.eOppoPhoto);
+          
           ChatEntry e = items.get(position); 
           
           if (e != null)
           {
         	  if(e.isMyChat())
         	  {
-        		  ((TextView)v.findViewById(R.id.eMyChat)).setText(e.getContent());
-                  ((TextView)v.findViewById(R.id.eMyTime)).setText(e.getTime());
-                  ((TextView)v.findViewById(R.id.eOppoChat)).setVisibility(View.GONE);
-                  ((TextView)v.findViewById(R.id.eOppoTime)).setVisibility(View.GONE);
-                  (v.findViewById(R.id.eOppoPhoto)).setVisibility(View.GONE);
+      			TXT_MYCHAT.setText( e.getContent() );
+    			TXT_MYCHAT.setBackgroundResource(R.drawable.my_message);
+    			TXT_MYTIME.setText( e.getTime() );
+    			TXT_OPPOCHAT.setText("");
+    			TXT_OPPOCHAT.setBackgroundResource(R.drawable.transpercy_image);
+    			TXT_OPPOTIME.setText("");
+    			IMG_OPPO.setImageResource(R.drawable.transpercy_image);
         	  }else{
-        		  ((TextView)v.findViewById(R.id.eMyChat)).setVisibility(View.GONE);
-                  ((TextView)v.findViewById(R.id.eMyTime)).setVisibility(View.GONE);
-                  ((TextView)v.findViewById(R.id.eOppoChat)).setText(e.getContent());
-                  ((TextView)v.findViewById(R.id.eOppoTime)).setText(e.getTime());
-                  //(v.findViewById(R.id.eOppoPhoto)).set
+      			TXT_MYCHAT.setText( "" );
+    			TXT_MYCHAT.setBackgroundResource(R.drawable.transpercy_image);
+    			TXT_MYTIME.setText( "" );
+    			TXT_OPPOCHAT.setText( e.getContent() );
+    			TXT_OPPOCHAT.setBackgroundResource(R.drawable.oppo_message);
+    			TXT_OPPOTIME.setText( e.getTime() );
+    			IMG_OPPO.setImageResource(R.drawable.no_profileimage);
         	  }
               
           }

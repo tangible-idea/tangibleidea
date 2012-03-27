@@ -104,13 +104,23 @@
    	    android:layout_below="@+id/edt_grade"
    		android:layout_centerHorizontal="true"
    	    />
+		
+		<Button
+		android:id="@+id/btn_category"
+		android:text="원하는 멘토링"
+		android:layout_width="150dip"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/spn_gender"
+    	android:layout_centerHorizontal="true"
+		>
+		</Button>
     	                    
 		<Button
 		android:id="@+id/btn_join"
 		android:text="가입하기"
 		android:layout_width="150dip"
     	android:layout_height="wrap_content"
-    	android:layout_below="@+id/spn_gender"
+    	android:layout_below="@+id/btn_category"
     	android:layout_centerHorizontal="true"
 		>
 		    

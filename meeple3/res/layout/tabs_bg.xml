@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+   Copyright (c) 2010 Josh Clemm
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/tabsLayout"
+	android:layout_width="fill_parent"
+	android:layout_height="122dip"
+	android:padding="10dip"
+	android:gravity="center"
+	android:orientation="vertical"
+	>
+	
+</LinearLayout>

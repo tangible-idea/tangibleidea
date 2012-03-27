@@ -2,38 +2,37 @@ package com.tangibleidea.meeple.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.auth.Authenticator;
 import com.tangibleidea.meeple.auth.OnAuthListener;
 import com.tangibleidea.meeple.auth.UnivAuth;
 import com.tangibleidea.meeple.util.Global;
-import com.tangibleidea.meeple.util.SPUtil;
 
-public class AuthActivity extends Activity implements OnItemSelectedListener, Authenticator, OnClickListener
+public class AuthActivity extends Activity implements Authenticator, OnClickListener
 {
-	final Context context= this;
+	final Context mContext= this;
 	private ProgressDialog LoadingDL;
 	
 	private WebView WV;
-	private TextView TXT_ID, TXT_PW;
-	private Spinner SPN_sel_univ;
+	private EditText EDT_ID, EDT_PW;
 	private Button BTN_auth;
 	
 	private int nSelUnivID;
+	private String strUnivMsg= "";
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
@@ -48,10 +47,7 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
 	}
 
 
-
-
-
-	private UnivAuth auth= new UnivAuth(context);
+	private UnivAuth auth= new UnivAuth(mContext);
 	private boolean bAuthRes= false;
 	
 	@Override
@@ -62,16 +58,70 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
 		
 		setContentView(R.layout.univ_auth);
 		
-		TXT_ID= (TextView) findViewById(R.id.edt_id);
-		TXT_PW= (TextView) findViewById(R.id.edt_pw);
+		if(Global.s_MyUniv.equals("서울대학교"))
+		{
+			nSelUnivID= 1;
+		}
+		else if(Global.s_MyUniv.equals("연세대학교"))
+		{
+			nSelUnivID= 2;
+		}
+		else if(Global.s_MyUniv.equals("고려대학교"))
+		{
+			nSelUnivID= 3;
+		}
+		else if(Global.s_MyUniv.equals("서강대학교"))
+		{
+			nSelUnivID= 4;
+		}
+		else{
+			nSelUnivID= 0;
+		}
+		
+		this.setTitle(Global.s_MyUniv + " 학생인증 (학사포털 계정로그인)");
+		
+		EDT_ID= (EditText) findViewById(R.id.edt_id);
+		EDT_PW= (EditText) findViewById(R.id.edt_pw);
 		
 		BTN_auth= (Button) findViewById(R.id.btn_auth);
 		WV= (WebView) findViewById(R.id.web);
-		SPN_sel_univ= (Spinner) findViewById(R.id.spinner);
 
 		BTN_auth.setOnClickListener(this);
-		SPN_sel_univ.setOnItemSelectedListener(this);
 		LoadingDL = new ProgressDialog(this);
+		
+		EDT_ID.addTextChangedListener(new TextWatcher()
+		{
+			public void afterTextChanged(Editable arg0)
+			{ }
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+			{ }
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+			{
+				if(!arg0.equals("") && !EDT_PW.getText().toString().equals("") )
+				{
+					BTN_auth.setEnabled(true);
+				}else{
+					BTN_auth.setEnabled(false);
+				}				
+			}			
+		});
+		
+		EDT_PW.addTextChangedListener(new TextWatcher()
+		{
+			public void afterTextChanged(Editable arg0)
+			{ }
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+			{ }
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3)
+			{
+				if(!arg0.equals("") && !EDT_ID.getText().toString().equals(""))
+				{
+					BTN_auth.setEnabled(true);
+				}else{
+					BTN_auth.setEnabled(false);					
+				}				
+			}			
+		});
 		
 		
 		OnAuthListener callback= new OnAuthListener()
@@ -82,80 +132,118 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
 			{
 				if(bCompleted)
 				{
-					LoadingDL.hide();
-					BTN_auth.setEnabled(true);			
+					LoadingHandler.sendEmptyMessage(10);
 				}
 			}
 
 			@Override
-			public void OnAuthResult(boolean bSuccess)
+			public void OnAuthResult(boolean bSuccess, String msg)	// 인증결과 콜백함수
 			{
+				strUnivMsg= msg;
+				
 				if(bSuccess)
-				{
-					if( SPUtil.getString(context, "reg_id").equals("0") )
-						C2DM_ID_Register();
-					
-					Global.s_MyUniv= SPN_sel_univ.getSelectedItem().toString();
-					Intent intent= new Intent(AuthActivity.this, MentorJoinActivity.class);
-					startActivityForResult(intent, Global.s_nRequest_MentorJoin);
-				}
+					LoadingHandler.sendEmptyMessage(1);
 				else
-					ShowAlertDialog("인증결과", "인증실패", "확인");
+					LoadingHandler.sendEmptyMessage(2);
+					
 			}
 		};
 		
 		auth.SetOnAuthListener(callback);
 	}
 	
-	
-	
-
-
-	@Override
-	public void onItemSelected(AdapterView<?> arg0, View v, int position, long id)
+	// 대학 인증으로 가는 스레드
+	public void UnivAuthThread()
 	{
-		nSelUnivID= position;
-		
-		switch(position)
+		Thread thread = new Thread(null, BackgroundThread, "Background");
+    	thread.start();
+	}
+	
+    
+    private Runnable BackgroundThread = new Runnable()
+    {
+    	public void run()
+    	{	
+    		LoadingHandler.sendEmptyMessage(0);
+    		UnivAuth(nSelUnivID, EDT_ID.getText().toString(), EDT_PW.getText().toString());
+    	}
+    };
+	
+	public Handler LoadingHandler = new Handler()
+	{
+		public void handleMessage(Message msg)
 		{
-		case 0:
-			TXT_ID.setEnabled(false);
-			TXT_PW.setEnabled(false);
-			break;
-		case 1:
-			TXT_ID.setEnabled(true);
-			TXT_PW.setEnabled(true);
-			break;
-		case 2:
-			TXT_ID.setEnabled(true);
-			TXT_PW.setEnabled(true);
-			break;
-		case 3:
-			TXT_ID.setEnabled(true);
-			TXT_PW.setEnabled(true);
-			break;
-		case 4:
-			TXT_ID.setEnabled(false);
-			TXT_PW.setEnabled(false);
-			break;
-		case 5:
-			TXT_ID.setEnabled(true);
-			TXT_PW.setEnabled(true);
-			break;
+			if(msg.what==0)
+			{
+		        LoadingDL.setMessage("대학교 포털 인증 처리 중");
+		        LoadingDL.setIndeterminate(true);
+				LoadingDL.show();
+			}
+			if(msg.what==1)
+			{
+				Global.C2DM_ID_Register(mContext);
+				
+				Intent intent= new Intent(AuthActivity.this, MentorJoinActivity.class);
+				startActivityForResult(intent, Global.s_nRequest_MentorJoin);
+			}
+			if(msg.what==2)
+			{
+				ShowAlertDialog("인증결과", strUnivMsg, "확인");
+			}
+			if(msg.what==10)
+			{
+				LoadingDL.hide();
+				BTN_auth.setEnabled(true);
+			}
+			
 		}
-	}
+	};
 
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0)
-	{
-		// TODO Auto-generated method stub
-		
-	}
+//
+//	@Override
+//	public void onItemSelected(AdapterView<?> arg0, View v, int position, long id)
+//	{
+//		nSelUnivID= position;
+//		
+//		switch(position)
+//		{
+//		case 0:
+//			TXT_ID.setEnabled(false);
+//			TXT_PW.setEnabled(false);
+//			BTN_auth.setEnabled(false);
+//			break;
+//		case 1:
+//			TXT_ID.setEnabled(true);
+//			TXT_PW.setEnabled(true);
+//			BTN_auth.setEnabled(true);
+//			break;
+//		case 2:
+//			TXT_ID.setEnabled(true);
+//			TXT_PW.setEnabled(true);
+//			BTN_auth.setEnabled(true);
+//			break;
+//		case 3:
+//			TXT_ID.setEnabled(true);
+//			TXT_PW.setEnabled(true);
+//			BTN_auth.setEnabled(true);
+//			break;
+//		case 4:
+//			TXT_ID.setEnabled(false);
+//			TXT_PW.setEnabled(false);
+//			BTN_auth.setEnabled(false);
+//			break;
+//		case 5:
+//			TXT_ID.setEnabled(true);
+//			TXT_PW.setEnabled(true);
+//			BTN_auth.setEnabled(true);
+//			break;
+//		}
+//	}
+
 
 	@Override
 	public void UnivAuth(int nUnivID, String strID, String strPW)
 	{
-		
 		
 		switch(nSelUnivID)
 		{
@@ -168,19 +256,13 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
 			
 			break;
 		case 2:
-			auth.YonseiUnivAuth( getString(R.string.ys_auth_address), strID, strPW);
+			auth.YonseiUnivAuth(WV, getString(R.string.ys_auth_address), strID, strPW);
 			break;
 		case 3:
 			auth.KoreaUnivAuth( getString(R.string.korea_auth_address), strID, strPW);
 			break;
 		case 4:
-			if(auth.SonguneAuth())
-			{
-				
-			}
-			break;
-		case 5:
-			auth.SogangAuth(WV, getString(R.string.sogang_auth_address1), getString(R.string.sogang_auth_address2) , strID, strPW);
+			auth.SogangAuth(WV, getString(R.string.sogang_auth_address), strID, strPW);
 			
 			break;
 		}
@@ -188,7 +270,7 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
 	
 	private void ShowAlertDialog(String strTitle, String strContent, String strButton)
 	{
-		new AlertDialog.Builder(context)
+		new AlertDialog.Builder(mContext)
 		.setTitle( strTitle )
 		.setMessage( strContent )
 		.setPositiveButton( strButton , null)
@@ -198,30 +280,6 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
 	}
 	
 
-    /**
-     * @param context
-     *            id 발급 메서드
-     */
-    private void C2DM_ID_Register(  )
-    {
-    	
-		try
-		{
-			if( SPUtil.getString(this, "reg_id").equals("0") )
-				C2DM_ID_Register();
-		}catch(Exception e)
-		{
-			C2DM_ID_Register();
-		}
-    	
-      Intent registrationIntent = new Intent("com.google.android.c2dm.intent.REGISTER");
-       
-      registrationIntent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0));
-      registrationIntent.putExtra("sender", Global.DEV_EMAIL);
-       
-      startService(registrationIntent);
-    }
-
 
 	@Override
 	public void onClick(View v)
@@ -229,15 +287,10 @@ public class AuthActivity extends Activity implements OnItemSelectedListener, Au
 		if(v.getId()==R.id.btn_auth)
 		{
 			
-            //dialog.setTitle("인증중...");
-            LoadingDL.setMessage("대학교 인증 중입니다.");
-            LoadingDL.setIndeterminate(true);
-            LoadingDL.setCancelable(true);
-            LoadingDL.show();
-            
+
 			BTN_auth.setEnabled(false);
             
-            this.UnivAuth(nSelUnivID, TXT_ID.getText().toString(), TXT_PW.getText().toString());
+            this.UnivAuthThread();
 		}
 		
 	}

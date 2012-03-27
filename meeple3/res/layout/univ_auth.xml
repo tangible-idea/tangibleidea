@@ -16,14 +16,14 @@
 		android:layout_height="0px"
 		/>
 		
-    	<Spinner
-   	    android:id="@+id/spinner"
-   	    android:layout_width="200dip"
-   	    android:layout_height="wrap_content"
-   	    android:entries="@array/univs"
-   		android:layout_centerHorizontal="true"
-   		android:layout_centerVertical="true" 
-   	    />
+<!--     	<Spinner -->
+<!--    	    android:id="@+id/spinner" -->
+<!--    	    android:layout_width="200dip" -->
+<!--    	    android:layout_height="wrap_content" -->
+<!--    	    android:entries="@array/univs" -->
+<!--    		android:layout_centerHorizontal="true" -->
+<!--    		android:layout_centerVertical="true"  -->
+<!--    	    /> -->
     	
     	<EditText	
     	android:id="@+id/edt_id"
@@ -33,7 +33,6 @@
     	android:layout_marginTop="50dip"
     	android:singleLine="true"
     	android:layout_centerHorizontal="true"
-    	android:enabled="false"
     	></EditText>
     	
     	<EditText	
@@ -47,7 +46,6 @@
     	android:layout_marginLeft="30dip"
     	android:layout_below="@+id/edt_id"
     	android:layout_centerHorizontal="true"
-    	android:enabled="false"
     	></EditText>
     	
 
@@ -59,6 +57,7 @@
     	android:layout_height="wrap_content"
     	android:layout_centerHorizontal="true"
     	android:layout_below="@+id/edt_pw"
+    	android:enabled="false"
 		>
 		</Button>
 

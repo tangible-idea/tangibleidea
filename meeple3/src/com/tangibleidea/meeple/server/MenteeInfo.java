@@ -1,7 +1,10 @@
 package com.tangibleidea.meeple.server;
 
+import com.tangibleidea.meeple.data.EnumMeepleStatus;
+
 public class MenteeInfo
 {
+	public EnumMeepleStatus eSTAT= EnumMeepleStatus.E_NONE;
 	String strAccountId;
 	String strName;
 	String strSchool;
@@ -21,6 +24,22 @@ public class MenteeInfo
 	 * @param strImage
 	 * @param strLastModifiedTime
 	 */
+	public MenteeInfo(String strAccountId, String strName, String strSchool,
+			String strGrade, String strEmail, String strComment,
+			String strImage, String strLastModifiedTime, EnumMeepleStatus eStat)
+	{
+		super();
+		this.strAccountId = strAccountId;
+		this.strName = strName;
+		this.strSchool = strSchool;
+		this.strGrade = strGrade;
+		this.strEmail = strEmail;
+		this.strComment = strComment;
+		this.strImage = strImage;
+		this.strLastModifiedTime = strLastModifiedTime;
+		this.eSTAT= eStat;
+	}
+	
 	public MenteeInfo(String strAccountId, String strName, String strSchool,
 			String strGrade, String strEmail, String strComment,
 			String strImage, String strLastModifiedTime)

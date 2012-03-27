@@ -22,6 +22,7 @@ import android.util.Log;
 
 import com.tangibleidea.meeple.data.DBManager;
 import com.tangibleidea.meeple.data.EnumError;
+import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.server_response.LoginResponse;
 import com.tangibleidea.meeple.server_response.RegisterResponse;
 import com.tangibleidea.meeple.util.Encoder;
@@ -30,6 +31,8 @@ import com.tangibleidea.meeple.util.SPUtil;
 
 public class RequestMethods
 {
+	String filter_word[] = {"\\?","\\(","\\)","\\;"}; 
+	
 	/**
 	 * 서버에서 리턴값 가져오기
 	 * @param _strURI : 서버에 보낼 URI
@@ -93,8 +96,23 @@ public class RequestMethods
 	        char[] buffer = new char[(int)responseEntity.getContentLength()];
 	        InputStream stream = responseEntity.getContent();
 	        InputStreamReader reader = new InputStreamReader(stream);
+	        
 	        reader.read(buffer);
 	        stream.close();
+	        
+	        if(buffer[0]=='?')
+	        {
+	        	String str= new String(buffer);
+	        	//str= str.substring(1);
+	        	
+	        	for(int i=0;i<filter_word.length;i++)
+	        	{
+        		      str = str.replaceAll(filter_word[i],"");
+	        	}
+	        	
+	        	buffer= str.toCharArray();
+	        }
+	        
 	        
 	        json = new JSONObject(new String(buffer));
 	    }
@@ -176,12 +194,10 @@ public class RequestMethods
 			IsPush="false";
 		
 		Encoder encoder= new Encoder(_strPW);
-	    String URI = Global.SERVER + "Login?"
+	    String URI = Global.SERVER + "LoginAndroid?"
 		      		+"account=" + _strID
 		      		+"&password="+ encoder.Encode()
-		      		+"&isApple=false"
 		      		+"&isPush=" +IsPush
-		      		+"&push=0"
 	    			+"&androidpush="+ SPUtil.getString(_context, "reg_id") ;
 	    
 		try
@@ -268,12 +284,10 @@ public class RequestMethods
 
 		
 		Encoder encoder= new Encoder(_strPW);
-	    String URI = Global.SERVER + "RegisterMentee?"
+	    String URI = Global.SERVER + "RegisterMenteeAndroid?"
 		      		+"account=" + _strID
 		      		+"&password="+ encoder.Encode()
-		      		+"&isApple=false"
 		      		+"&isPush="+ IsPush
-		      		+"&push=0"
 		      		+"&androidpush="+SPUtil.getString(_context, "reg_id")
 		      		+"&email="+ _strEmail
 		      		+"&name="+ _strName
@@ -325,12 +339,10 @@ public class RequestMethods
 			IsPush="false";
 		
 		Encoder encoder= new Encoder(_strPW);
-	    String URI = Global.SERVER + "RegisterMentor?"
+	    String URI = Global.SERVER + "RegisterMentorAndroid?"
 		      		+"account=" + _strID
 		      		+"&password="+ encoder.Encode()
-		      		+"&isApple=false"
 		      		+"&isPush="+ IsPush
-		      		+"&push=0"
 		      		+"&androidpush="+SPUtil.getString(_context, "reg_id")
 		      		+"&name="+ _strName
 		      		+"&gender="+ _strGender
@@ -402,6 +414,9 @@ public class RequestMethods
 	}
 	
 	
+	
+	
+	
 	/**
 	 * 멘티의 정보(자신의 정보)를 가져옵니다.
 	 * @return
@@ -442,13 +457,9 @@ public class RequestMethods
 		}
 	    return res;
 	}
-	
 
-	/**
-	 * 멘토(나)의 수락을 기다리고 있는 멘티
-	 * @return
-	 */
-	public List<MenteeInfo> PendingMenteeRecommmendations(Context _context)
+	
+	public List<MenteeInfo> GetMenteeRecommmendations(Context _context)
 	{
 		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
 		
@@ -463,21 +474,53 @@ public class RequestMethods
 		    if(json == null)
 		    	return null;
 		    
-		    JSONArray jarr= json.getJSONArray("pendingRecommmendations");
+		    JSONArray jarr_1= json.getJSONArray("pendingRecommmendations");		    
 		    
-		    
-		    for(int i=0; i<jarr.length(); ++i)
+		    for(int i=0; i<jarr_1.length(); ++i)
 		    {
-		    	String id= jarr.getJSONObject(i).getString("AccountId");
-		    	String name= jarr.getJSONObject(i).getString("Name");
-		    	String school= jarr.getJSONObject(i).getString("School");
-		    	String grade= jarr.getJSONObject(i).getString("Grade");
-		    	String email= jarr.getJSONObject(i).getString("Email");
-		    	String comment= jarr.getJSONObject(i).getString("Comment");
-		    	String image= jarr.getJSONObject(i).getString("Image");
-		    	String time= jarr.getJSONObject(i).getString("LastModifiedTime");
-		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time) );
+		    	String id= jarr_1.getJSONObject(i).getString("AccountId");
+		    	String name= jarr_1.getJSONObject(i).getString("Name");
+		    	String school= jarr_1.getJSONObject(i).getString("School");
+		    	String grade= jarr_1.getJSONObject(i).getString("Grade");
+		    	String email= jarr_1.getJSONObject(i).getString("Email");
+		    	String comment= jarr_1.getJSONObject(i).getString("Comment");
+		    	String image= jarr_1.getJSONObject(i).getString("Image");
+		    	String time= jarr_1.getJSONObject(i).getString("LastModifiedTime");
+		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time, EnumMeepleStatus.E_MENTEE_PENDING) );
 		    }
+		    jarr_1= null;
+
+		    JSONArray jarr_2= json.getJSONArray("inProgressRecommendations");		    
+		    
+		    for(int i=0; i<jarr_2.length(); ++i)
+		    {
+		    	String id= jarr_2.getJSONObject(i).getString("AccountId");
+		    	String name= jarr_2.getJSONObject(i).getString("Name");
+		    	String school= jarr_2.getJSONObject(i).getString("School");
+		    	String grade= jarr_2.getJSONObject(i).getString("Grade");
+		    	String email= jarr_2.getJSONObject(i).getString("Email");
+		    	String comment= jarr_2.getJSONObject(i).getString("Comment");
+		    	String image= jarr_2.getJSONObject(i).getString("Image");
+		    	String time= jarr_2.getJSONObject(i).getString("LastModifiedTime");
+		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time, EnumMeepleStatus.E_MENTEE_INPROGRESS) );
+		    }
+		    jarr_2= null;
+		    
+		    JSONArray jarr_3= json.getJSONArray("waitingRecommendations");		    
+		    
+		    for(int i=0; i<jarr_3.length(); ++i)
+		    {
+		    	String id= jarr_3.getJSONObject(i).getString("AccountId");
+		    	String name= jarr_3.getJSONObject(i).getString("Name");
+		    	String school= jarr_3.getJSONObject(i).getString("School");
+		    	String grade= jarr_3.getJSONObject(i).getString("Grade");
+		    	String email= jarr_3.getJSONObject(i).getString("Email");
+		    	String comment= jarr_3.getJSONObject(i).getString("Comment");
+		    	String image= jarr_3.getJSONObject(i).getString("Image");
+		    	String time= jarr_3.getJSONObject(i).getString("LastModifiedTime");
+		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time, EnumMeepleStatus.E_MENTEE_WAITING) );
+		    }
+		    jarr_3= null;
    
 	    }
 	    catch (JSONException e)
@@ -486,7 +529,50 @@ public class RequestMethods
 		}
 	    return res;
 	}
-	
+
+//	/**
+//	 * 멘토(나)의 수락을 기다리고 있는 멘티
+//	 * @return
+//	 */
+//	public List<MenteeInfo> PendingMenteeRecommmendations(Context _context)
+//	{
+//		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
+//		
+//	    String URI = Global.SERVER + "MenteeRecommendations?"
+//	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+//	      		+"&session=" + SPUtil.getString(_context, "session");
+//	    
+//	    try
+//	    {
+//		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+//		    
+//		    if(json == null)
+//		    	return null;
+//		    
+//		    JSONArray jarr= json.getJSONArray("pendingRecommmendations");
+//		    
+//		    
+//		    for(int i=0; i<jarr.length(); ++i)
+//		    {
+//		    	String id= jarr.getJSONObject(i).getString("AccountId");
+//		    	String name= jarr.getJSONObject(i).getString("Name");
+//		    	String school= jarr.getJSONObject(i).getString("School");
+//		    	String grade= jarr.getJSONObject(i).getString("Grade");
+//		    	String email= jarr.getJSONObject(i).getString("Email");
+//		    	String comment= jarr.getJSONObject(i).getString("Comment");
+//		    	String image= jarr.getJSONObject(i).getString("Image");
+//		    	String time= jarr.getJSONObject(i).getString("LastModifiedTime");
+//		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time) );
+//		    }
+//   
+//	    }
+//	    catch (JSONException e)
+//	    {
+//	    	Log.e( "JSONException", e.getMessage() );
+//		}
+//	    return res;
+//	}
+//	
 	/**
 	 * 멘토(나)와 대화중인 멘티
 	 * @return
@@ -535,51 +621,49 @@ public class RequestMethods
 		}
 	    return res;
 	}
-	
-	/**
-	 * 멘토가 수락을 하고 응답을 기다리는 중인 멘티
-	 * @return
-	 */
-	public List<MenteeInfo> WaitingMenteeRecommmendations(Context _context)
-	{
-		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
-		
-	    String URI = Global.SERVER + "MenteeRecommendations?"
-	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
-	      		+"&session=" +SPUtil.getString(_context, "session");
-	    
-	    try
-	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
-		    
-		    if(json == null)
-		    	return null;
-		    
-		    JSONArray jarr= json.getJSONArray("waitingRecommendations");
-		    
-		    
-		    for(int i=0; i<jarr.length(); ++i)
-		    {
-		    	String id= jarr.getJSONObject(i).getString("AccountId");
-		    	String name= jarr.getJSONObject(i).getString("Name");
-		    	String school= jarr.getJSONObject(i).getString("School");
-		    	String grade= jarr.getJSONObject(i).getString("Grade");
-		    	String email= jarr.getJSONObject(i).getString("Email");
-		    	String comment= jarr.getJSONObject(i).getString("Comment");
-		    	String image= jarr.getJSONObject(i).getString("Image");
-		    	String time= jarr.getJSONObject(i).getString("LastModifiedTime");
-		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time) );
-		    }
-   
-	    }
-	    catch (JSONException e)
-	    {
-	    	Log.e( "JSONException", e.getMessage() );
-		}
-	    return res;
-	}
-	
-	
+//	
+//	/**
+//	 * 멘토가 수락을 하고 응답을 기다리는 중인 멘티
+//	 * @return
+//	 */
+//	public List<MenteeInfo> WaitingMenteeRecommmendations(Context _context)
+//	{
+//		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
+//		
+//	    String URI = Global.SERVER + "MenteeRecommendations?"
+//	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+//	      		+"&session=" +SPUtil.getString(_context, "session");
+//	    
+//	    try
+//	    {
+//		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+//		    
+//		    if(json == null)
+//		    	return null;
+//		    
+//		    JSONArray jarr= json.getJSONArray("waitingRecommendations");
+//		    
+//		    
+//		    for(int i=0; i<jarr.length(); ++i)
+//		    {
+//		    	String id= jarr.getJSONObject(i).getString("AccountId");
+//		    	String name= jarr.getJSONObject(i).getString("Name");
+//		    	String school= jarr.getJSONObject(i).getString("School");
+//		    	String grade= jarr.getJSONObject(i).getString("Grade");
+//		    	String email= jarr.getJSONObject(i).getString("Email");
+//		    	String comment= jarr.getJSONObject(i).getString("Comment");
+//		    	String image= jarr.getJSONObject(i).getString("Image");
+//		    	String time= jarr.getJSONObject(i).getString("LastModifiedTime");
+//		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time) );
+//		    }
+//   
+//	    }
+//	    catch (JSONException e)
+//	    {
+//	    	Log.e( "JSONException", e.getMessage() );
+//		}
+//	    return res;
+//	}
 	
 	
 	
@@ -587,13 +671,7 @@ public class RequestMethods
 	
 	
 	
-	
-	
-	/**
-	 * 멘티(나)의 수락을 기다리고 있는 멘토 (멘티가 이미 수락한 상황만 나옴)
-	 * @return
-	 */
-	public List<MentorInfo> PendingMentorRecommmendations(Context _context)
+	public List<MentorInfo> GetMentorRecommmendations(Context _context)
 	{
 		List<MentorInfo> res= new ArrayList<MentorInfo>();
 		
@@ -608,22 +686,39 @@ public class RequestMethods
 		    if(json == null)
 		    	return null;
 		    
-		    JSONArray jarr= json.getJSONArray("pendingRecommmendations");
+		    JSONArray jarr_1= json.getJSONArray("pendingRecommmendations");
 		    
-		    
-		    for(int i=0; i<jarr.length(); ++i)
+		    for(int i=0; i<jarr_1.length(); ++i)
 		    {
-		    	String id= jarr.getJSONObject(i).getString("AccountId");
-		    	String name= jarr.getJSONObject(i).getString("Name");
-		    	String comment= jarr.getJSONObject(i).getString("Comment");
-		    	String email= jarr.getJSONObject(i).getString("Email");
-		    	String image= jarr.getJSONObject(i).getString("Image");
-		    	String time= jarr.getJSONObject(i).getString("LastModifiedTime");
-		    	String major= jarr.getJSONObject(i).getString("Major");
-		    	String promo= jarr.getJSONObject(i).getString("Promo");
-		    	String univ= jarr.getJSONObject(i).getString("Univ");
-		    	res.add( new MentorInfo(id,name, univ, email, major, promo, comment, image, time) );
+		    	String id= jarr_1.getJSONObject(i).getString("AccountId");
+		    	String name= jarr_1.getJSONObject(i).getString("Name");
+		    	String comment= jarr_1.getJSONObject(i).getString("Comment");
+		    	String email= jarr_1.getJSONObject(i).getString("Email");
+		    	String image= jarr_1.getJSONObject(i).getString("Image");
+		    	String time= jarr_1.getJSONObject(i).getString("LastModifiedTime");
+		    	String major= jarr_1.getJSONObject(i).getString("Major");
+		    	String promo= jarr_1.getJSONObject(i).getString("Promo");
+		    	String univ= jarr_1.getJSONObject(i).getString("Univ");
+		    	res.add( new MentorInfo(id,name, univ, email, major, promo, comment, image, time, EnumMeepleStatus.E_MENTOR_PENDING) );
 		    }
+		    jarr_1= null;
+		    
+		    JSONArray jarr_2= json.getJSONArray("inProgressRecommendations");
+		    
+		    for(int i=0; i<jarr_2.length(); ++i)
+		    {
+		    	String id= jarr_2.getJSONObject(i).getString("AccountId");
+		    	String name= jarr_2.getJSONObject(i).getString("Name");
+		    	String comment= jarr_2.getJSONObject(i).getString("Comment");
+		    	String email= jarr_2.getJSONObject(i).getString("Email");
+		    	String image= jarr_2.getJSONObject(i).getString("Image");
+		    	String time= jarr_2.getJSONObject(i).getString("LastModifiedTime");
+		    	String major= jarr_2.getJSONObject(i).getString("Major");
+		    	String promo= jarr_2.getJSONObject(i).getString("Promo");
+		    	String univ= jarr_2.getJSONObject(i).getString("Univ");
+		    	res.add( new MentorInfo(id,name, univ, email, major, promo, comment, image, time, EnumMeepleStatus.E_MENTOR_INPROGRESS) );
+		    }
+		    jarr_2= null;
    
 	    }
 	    catch (JSONException e)
@@ -633,6 +728,52 @@ public class RequestMethods
 	    return res;
 	}
 	
+	
+	
+//	/**
+//	 * 멘티(나)의 수락을 기다리고 있는 멘토 (멘티가 이미 수락한 상황만 나옴)
+//	 * @return
+//	 */
+//	public List<MentorInfo> PendingMentorRecommmendations(Context _context)
+//	{
+//		List<MentorInfo> res= new ArrayList<MentorInfo>();
+//		
+//	    String URI = Global.SERVER + "MentorRecommendations?"
+//	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+//	      		+"&session=" + SPUtil.getString(_context, "session");
+//	    
+//	    try
+//	    {
+//		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+//		    
+//		    if(json == null)
+//		    	return null;
+//		    
+//		    JSONArray jarr= json.getJSONArray("pendingRecommmendations");
+//		    
+//		    
+//		    for(int i=0; i<jarr.length(); ++i)
+//		    {
+//		    	String id= jarr.getJSONObject(i).getString("AccountId");
+//		    	String name= jarr.getJSONObject(i).getString("Name");
+//		    	String comment= jarr.getJSONObject(i).getString("Comment");
+//		    	String email= jarr.getJSONObject(i).getString("Email");
+//		    	String image= jarr.getJSONObject(i).getString("Image");
+//		    	String time= jarr.getJSONObject(i).getString("LastModifiedTime");
+//		    	String major= jarr.getJSONObject(i).getString("Major");
+//		    	String promo= jarr.getJSONObject(i).getString("Promo");
+//		    	String univ= jarr.getJSONObject(i).getString("Univ");
+//		    	res.add( new MentorInfo(id,name, univ, email, major, promo, comment, image, time) );
+//		    }
+//   
+//	    }
+//	    catch (JSONException e)
+//	    {
+//	    	Log.e( "JSONException", e.getMessage() );
+//		}
+//	    return res;
+//	}
+//	
 	/**
 	 * 멘티(나)와 대화중인 멘토
 	 * @return
@@ -932,5 +1073,56 @@ public class RequestMethods
 		}
 		return res; 
 	}
+	
+	/**
+	 * 멘티의 대기 목록을 가져온다.
+	 * @param _context
+	 * @return
+	 */
+	public int GetWatingLines(Context _context)
+	{
+		int res= 0;
+		
+		String URI = Global.SERVER + "GetWaitingLines?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session");
+		
+		res= Integer.parseInt( this.RequestStringToServer(URI) );
+		
+		return res;
+	}
+	
+	/**
+	 * 고려대 인증
+	 * @param ID : 아이디
+	 * @param PW : 패스워드
+	 * @return : json('msg')
+	 */
+	public String GetKoreaUnivAuth(String URL, String ID, String PW)
+	{
+		String res= null;
+		
+		String URI= URL+"?&lang=KOR&"
+				+"id="+ID+"&pw="+PW+"&secureLogin=N";
+		
+		try
+	    {
+		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    
+		    if(json == null)
+		    	return null;
+		    
+	    	res = json.getString("msg");
+
+	    }
+	    catch (JSONException e)
+	    {
+	    	Log.e( "JSONException", e.getMessage() );
+		}
+		
+		return res; 
+	}
+	
+
 }
 

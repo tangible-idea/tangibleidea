@@ -56,10 +56,10 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 		try
 		{
 			if( SPUtil.getString(this, "reg_id").equals("0") )
-				C2DM_ID_Register();
+				Global.C2DM_ID_Register(this);
 		}catch(Exception e)
 		{
-			C2DM_ID_Register();
+			Global.C2DM_ID_Register(this);
 		}
 			
 		strGender= Integer.toString(position);		
@@ -176,21 +176,7 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 		.show();
 	}
 	
-    /**
-     * @param context
-     *            id 발급 메서드
-     */
-    public void C2DM_ID_Register()
-    {
-    	SPUtil.putString(this, "reg_id", "0");
-    		
-      Intent registrationIntent = new Intent("com.google.android.c2dm.intent.REGISTER");
-       
-      registrationIntent.putExtra("app", PendingIntent.getBroadcast(this, 0, new Intent(), 0));
-      registrationIntent.putExtra("sender", Global.DEV_EMAIL);
-      
-      startService(registrationIntent);
-    }
+
 
 
 

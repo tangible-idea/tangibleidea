@@ -23,6 +23,8 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.DBManager;
+import com.tangibleidea.meeple.layout.ChatEntry;
+import com.tangibleidea.meeple.layout.ChatListAdapter;
 import com.tangibleidea.meeple.server.Chat;
 import com.tangibleidea.meeple.server.RequestMethods;
 import com.tangibleidea.meeple.util.ChatManager;
@@ -44,12 +46,18 @@ public class InChatActivity extends ListActivity implements OnClickListener
 	
 
 
+	//ListView listview;
 	List<Chat> chats;
-//	ArrayAdapter<ChatEntry> AA;
-//	ArrayList<ChatEntry> arraylist= new ArrayList<ChatEntry>();
+//	Cursor mCursor;
+//	ChatCursorAdapter mAdapter;
 	
-    private ArrayAdapter<String> mAdapter;    
-    private ArrayList<String> mStrings = new ArrayList<String>();
+	
+	
+	ArrayAdapter<ChatEntry> AA;
+	ArrayList<ChatEntry> arraylist= new ArrayList<ChatEntry>();
+	
+//    private ArrayAdapter<String> mAdapter;    
+//    private ArrayList<String> mStrings = new ArrayList<String>();
 	
 	
 	
@@ -58,10 +66,12 @@ public class InChatActivity extends ListActivity implements OnClickListener
 	 */
 	@Override
 	protected void onResume()
-	{
-		DBMgr= new DBManager(this);
-		ChatMgr.AcceptC2DMuser();
+	{	
 		super.onResume();
+		
+		ChatMgr.AcceptC2DMuser();
+		//listview= (ListView) findViewById(R.id.list_inchat);
+		
 	}
 
 
@@ -70,17 +80,21 @@ public class InChatActivity extends ListActivity implements OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		
+		mContext= this;
 		
+		DBMgr= new DBManager(mContext);
+		DBMgr.CreateNewChatTable(SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount());
+		// 없으면 새로 만든다.
 		
 		setContentView(R.layout.inchat);
 		
-//		AA = new ChatListAdapter(this, R.layout.entry_chat, R.id.eMyChat, arraylist);
-//        setListAdapter(AA);
+		AA = new ChatListAdapter(this, R.layout.entry_chat, R.id.eMyChat, arraylist);
+        setListAdapter(AA);
         
-        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mStrings);    
-        setListAdapter(mAdapter);
+//        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mStrings);    
+//        setListAdapter(mAdapter);
 
-		mContext= this;
+		
 		
 		BTN_send= (Button) findViewById(R.id.btn_send);
 		BTN_send.setOnClickListener(this);
@@ -154,7 +168,7 @@ public class InChatActivity extends ListActivity implements OnClickListener
         	
         	ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(TableName, "_id") ) );	// 채팅목록을 어디까지 가져왔나?
         	chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), ChatMgr.getCurrChatID());	// 서버에서 채팅내용 가져옴
-        	DBMgr.PutChatDB(TableName, chats);	// 가져온 것을 DB에 채팅내용 삽입
+        	DBMgr.InsertChatDB(TableName, chats);	// 가져온 것을 DB에 채팅내용 삽입
         	ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(TableName, "_id") ) );	// 채팅목록을 어디까지 가져왔나?
         	
         	UIHandler.sendEmptyMessage(0); // UI 새로고침
@@ -215,14 +229,15 @@ public class InChatActivity extends ListActivity implements OnClickListener
 			{
 				EDT_chat.setText("");
 				EDT_chat.setHint("전송중...");
-				EDT_chat.setEnabled(false);				
+				EDT_chat.setEnabled(false);
+				BTN_send.setEnabled(false);
 			}
 			else if(msg.what==2)
 			{
 				EDT_chat.setHint("");
 				EDT_chat.setEnabled(true);
 				BTN_send.setEnabled(false);
-			}
+			} 
 		}
 	};
 	
@@ -235,40 +250,50 @@ public class InChatActivity extends ListActivity implements OnClickListener
 	
 	private void RefreshChatEntry()
 	{		
-//		arraylist.clear();
-//		//AA.clear();
+		Global.s_HasNewChat= false;
+		
+//		mCursor= DBMgr.MakeCursorChat(this, SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount());
+//		mAdapter= new ChatCursorAdapter(this, mCursor);
+//		listview.setAdapter(mAdapter);
+//		listview.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+		//mAdapter.getCursor().requery();
+		
+		
+		arraylist.clear();
+		AA.clear();
 //
-//		String TableName= SPUtil.getString(mContext, "AccountID")+"_"+Global.s_CurrOppoAccount;
+		String TableName= SPUtil.getString(mContext, "AccountID")+"_"+ ChatMgr.getCurrOppoAccount();
+		
+		arraylist= DBMgr.GetChatToArrayList(this, TableName);	// DB채팅목록을 가져와서 리스트에 세팅함
+		
+		if(arraylist==null)
+			return;
+				
+		for( ChatEntry CE : arraylist )
+		{
+			AA.add(CE);
+		}
+		
+		
+//		Global.s_HasNewChat= false;
+//		AA.notifyDataSetChanged();
 //		
-//		arraylist= DBMgr.GetChatToArrayList(this, TableName);	// DB채팅목록을 가져와서 리스트에 세팅함
+//		mStrings.clear();
 //		
-//		if(arraylist==null)
+//		String TableName= SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount();
+//		
+//		mStrings= DBMgr.GetChatToArrayListTEST(this, TableName);	// DB채팅목록을 가져와서 리스트에 세팅함
+//		
+//		if(mStrings==null)
 //			return;
-//				
-//		for( ChatEntry CE : arraylist )
+//			
+//		for( String str : mStrings )
 //		{
-//			AA.add(CE);
+//			mAdapter.add(str);
 //		}
 //		
 //		Global.s_HasNewChat= false;
-//		AA.notifyDataSetChanged();
-		
-		mStrings.clear();
-		
-		String TableName= SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount();
-		
-		mStrings= DBMgr.GetChatToArrayListTEST(this, TableName);	// DB채팅목록을 가져와서 리스트에 세팅함
-		
-		if(mStrings==null)
-			return;
-			
-		for( String str : mStrings )
-		{
-			mAdapter.add(str);
-		}
-		
-		Global.s_HasNewChat= false;
-		mAdapter.notifyDataSetChanged();
+//		mAdapter.notifyDataSetChanged();
 	}
 
 	@Override

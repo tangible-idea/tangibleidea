@@ -1,30 +1,36 @@
 package com.tangibleidea.meeple.activity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.server.RequestMethods;
 import com.tangibleidea.meeple.server_response.RegisterResponse;
 import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.SPUtil;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.PendingIntent;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
-
 public class MentorJoinActivity extends Activity implements OnClickListener, OnItemSelectedListener
 {
+	Context mContext;
 	Button BTN_join;
 	EditText EDT_ID, EDT_PW, EDT_email, EDT_name, EDT_major, EDT_promo;
 	Spinner SPN_gender; String strGender="0";
 	
+	private ProgressDialog LoadingDL;	
+	private String strJoinFailReason="";
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -34,7 +40,11 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 	{
 		super.onCreate(savedInstanceState);
 		
+		mContext= this;
+		
 		setContentView(R.layout.join_mentor);
+		
+		LoadingDL = new ProgressDialog(mContext);
 		
 		EDT_ID= (EditText) findViewById(R.id.edt_id);
 		EDT_PW= (EditText) findViewById(R.id.edt_pw);
@@ -63,10 +73,27 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 				return;
 			}
 			
-			RegisterResponse res;
+			this.MentorJoin();
+		}
+		
+	}
+	public void MentorJoin()
+	{
+		Thread thread = new Thread(null, BackgroundThread, "Background");
+    	thread.start();
+	}
+	
+    
+    private Runnable BackgroundThread = new Runnable()
+    {
+    	public void run()
+    	{	
+    		LoadingHandler.sendEmptyMessage(0);
+    		
+    		RegisterResponse res;
 			
 			RequestMethods RM= new RequestMethods();
-			res= RM.RegisterMentor(this, EDT_ID.getText().toString(),
+			res= RM.RegisterMentor(mContext, EDT_ID.getText().toString(),
 							  EDT_PW.getText().toString(),
 							  EDT_email.getText().toString(),
 							  strGender,
@@ -78,25 +105,55 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 			
 			if(res==null)
 			{
-				this.ShowAlertDialog("가입실패", "서버 접속 실패\n인터넷 연결을 확인해주세요~", "확인");
+				LoadingHandler.sendEmptyMessage(1);
+				return;
+			}
+    		
+			if( res.isSuccess() )
+			{
+				LoadingHandler.sendEmptyMessage(2);
+			}else{
+				strJoinFailReason= res.getReason();
+				LoadingHandler.sendEmptyMessage(3);
+			}
+    	}
+    };
+	
+	public Handler LoadingHandler = new Handler()
+	{
+		public void handleMessage(Message msg)
+		{
+			if(msg.what==0)
+			{
+		        LoadingDL.setMessage("멘토가입정보를 전송하는 중");
+		        LoadingDL.setIndeterminate(true);
+				LoadingDL.show();
+			}
+			if(msg.what==1)
+			{
+				LoadingDL.hide();
+				ShowAlertDialog("가입실패", "서버 접속 실패\n인터넷 연결을 확인해주세요~", "확인");
 				return;
 			}
 			
-			if( res.isSuccess() )
+			if(msg.what==2)
 			{
+				LoadingDL.hide();
 				Intent intent= new Intent();
 				Bundle result= new Bundle();
 				
 				result.putInt("result", 1); // 성공값 첨부 
 				intent.putExtras(result);
-				this.setResult(RESULT_OK, intent); // 결과값 보냄
-				this.finish();
-			}else{
-				this.ShowAlertDialog("가입 오류 실패", res.getReason(), "확인");
+				setResult(RESULT_OK, intent); // 결과값 보냄
+				finish();
+			}
+			if(msg.what==3)
+			{
+				LoadingDL.hide();
+				ShowAlertDialog("가입 실패", strJoinFailReason, "확인");
 			}
 		}
-		
-	}
+	};
 	
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View v, int position, long id)

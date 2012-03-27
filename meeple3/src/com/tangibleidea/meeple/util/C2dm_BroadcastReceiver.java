@@ -2,6 +2,7 @@ package com.tangibleidea.meeple.util;
 
 import java.util.List;
 
+import com.tangibleidea.meeple.R;
 import android.app.ActivityManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -13,10 +14,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.tangibleidea.meeple.R;
-import com.tangibleidea.meeple.activity.InChatActivity;
-import com.tangibleidea.meeple.activity.LoginActivity;
-import com.tangibleidea.meeple.fragment.RecentTalkListFragment;
+import com.tangibleidea.meeple.activity.LobbyActivity;
 
 	// 브로드캐스트 리시버 부분 (메시지 받는 부분)
 	public class C2dm_BroadcastReceiver extends BroadcastReceiver
@@ -49,14 +47,20 @@ import com.tangibleidea.meeple.fragment.RecentTalkListFragment;
 
 	         	NotiMgr= (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 	        	
-	         	Intent LoginIntent= new Intent(context, LoginActivity.class);
-	         	LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK 
+//	         	Intent LoginIntent= new Intent(context, LoginActivity.class);
+//	         	LoginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK 
+//	                    | Intent.FLAG_ACTIVITY_CLEAR_TOP 
+//	                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//	        	PendingIntent LoginIntent_p = PendingIntent.getActivity(context, 0, LoginIntent , 0);
+	         	
+	         	Intent LobbyIntent= new Intent(context, LobbyActivity.class);
+	         	LobbyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK 
 	                    | Intent.FLAG_ACTIVITY_CLEAR_TOP 
 	                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-	        	PendingIntent LoginIntent_p = PendingIntent.getActivity(context, 0, LoginIntent , 0);
+	         	PendingIntent LobbyIntent_p = PendingIntent.getActivity(context, 0, LobbyIntent, 0);
 
 	        	
-	        	NT= new Notification(R.drawable.app_icon,
+	        	NT= new Notification(R.drawable.ic_launcher,
 	        			"[MEEPLE 알림]",
 	        			System.currentTimeMillis());
 	        	
@@ -65,12 +69,12 @@ import com.tangibleidea.meeple.fragment.RecentTalkListFragment;
 	        	
 	        	if( c2dm_type.equals("notice") )
 	        	{
-	        		NT.setLatestEventInfo(context, "미플 공지사항", c2dm_msg, LoginIntent_p);	        	
+	        		NT.setLatestEventInfo(context, "미플 공지사항", c2dm_msg, LobbyIntent_p);	        	
 		        	NotiMgr.notify(9093, NT);
 	        	}
 	        	else if( c2dm_type.equals("recommand") )
 	        	{
-	        		NT.setLatestEventInfo(context, "미플 알림", c2dm_msg, LoginIntent_p);	        	
+	        		NT.setLatestEventInfo(context, "미플 알림", c2dm_msg, LobbyIntent_p);	        	
 		        	NotiMgr.notify(9090, NT);
 	        	}
 	        	else if( c2dm_type.equals("chat") )
@@ -93,19 +97,18 @@ import com.tangibleidea.meeple.fragment.RecentTalkListFragment;
 		            	}
 		            	else if(topActivity.equals("com.tangibleidea.meeple.activity.InChatActivity")) // 다른 상대와 대화중이면...
 		            	{
-		    	         	Intent TalkIntent= new Intent(context, RecentTalkListFragment.class);
-		    	         	TalkIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK 
-		    	                    | Intent.FLAG_ACTIVITY_CLEAR_TOP 
-		    	                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		            		Global.s_nLobbyToTap= 1;
+
 		    	        	
-		            		PendingIntent TalkIntent_p = PendingIntent.getActivity(context, 0, TalkIntent, 0);
-		            		NT.setLatestEventInfo(context, "새 대화가 도착했습니다.", c2dm_msg, TalkIntent_p);	        	
+		            		
+		            		NT.setLatestEventInfo(context, "새 대화가 도착했습니다.", c2dm_msg, LobbyIntent_p);	        	
 				        	NotiMgr.notify(9090, NT);
 		            	}		            	
 		            	else	 // 미플과 관련이 없거나 아무것도 안하고 있으면
 		            	{
+		            		Global.s_nLobbyToTap= 1;
 		            		ChatMgr.setC2DMoppoAccount(c2dm_oppo);
-		    	         	Intent InChatIntent= new Intent(context, RecentTalkListFragment.class);
+		    	         	Intent InChatIntent= new Intent(context, LobbyActivity.class);
 		    	         	InChatIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK 
 		    	                    | Intent.FLAG_ACTIVITY_CLEAR_TOP 
 		    	                    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -121,12 +124,13 @@ import com.tangibleidea.meeple.fragment.RecentTalkListFragment;
 	        	}
 	        	else if( c2dm_type.equals("message") )
 	        	{
-	        		NT.setLatestEventInfo(context, "새 쪽지가 도착했습니다.", c2dm_msg, LoginIntent_p);	        	
+	        		Global.s_nLobbyToTap= 1;
+	        		NT.setLatestEventInfo(context, "새 쪽지가 도착했습니다.", c2dm_msg, LobbyIntent_p);	        	
 		        	NotiMgr.notify(9090, NT);
 	        	}
 	        	else if( c2dm_type.equals("end") )
 	        	{
-	        		NT.setLatestEventInfo(context, "미플 알림", c2dm_msg, LoginIntent_p);	        	
+	        		NT.setLatestEventInfo(context, "미플 알림", c2dm_msg, LobbyIntent_p);	        	
 		        	NotiMgr.notify(9090, NT);
 	        	}
 	        	
