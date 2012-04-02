@@ -1,0 +1,209 @@
+CreateTables
+
+ALTER PROCEDURE dbo.CreateTables
+	
+AS
+	SET NOCOUNT ON;
+	DECLARE @query NVARCHAR(4000);
+	SET @query = '
+	CREATE TABLE ACCOUNT
+	(
+		user_no		INTEGER			NOT NULL	PRIMARY KEY IDENTITY(1,1),
+		id			NVARCHAR(30)	NOT NULL	UNIQUE,
+		password	char(16)		NOT NULL	CHECK ( LEN(password) = 16 ),
+		appleDevice	BIT				default(0),
+		pushid		char(32)					CHECK ( LEN(pushid) = 32 )
+		--device_id	필요한가..?
+		--session_id 로 로그인 관리하는게 필요할 수도 있겠다.. 이건 서버 코드에서.
+	); ';
+	EXECUTE (@query);
+	
+	SET @query = '
+	CREATE TABLE MENTEEINFO
+	(
+		user_no		INTEGER			NOT NULL	REFERENCES ACCOUNT(user_no),
+		name		NVARCHAR(10),
+		school		NVARCHAR(30),
+		grade		TINYINT
+	); ';
+	EXECUTE(@query);
+
+	SET @query = '
+	CREATE TABLE MENTORINFO
+	(
+		user_no		INTEGER			NOT NULL	REFERENCES ACCOUNT(user_no),
+		name		NVARCHAR(10),
+		school		TINYINT,								--Enumeration 값을 사용하자.
+		major		SMALLINT								--Enumeration 값을 사용하자.
+	); ';
+	EXECUTE(@query);
+
+	SET @query = '
+	CREATE TABLE NOTE_BOX
+	(
+		sender		INTEGER		NOT NULL	REFERENCES ACCOUNT(user_no),
+		receiver	INTEGER		NOT NULL	REFERENCES ACCOUNT(user_no),
+		message		NVARCHAR(1000)
+	);
+	';
+	EXECUTE(@query);
+
+	/* SET NOCOUNT ON */
+	RETURN
+
+
+-----------------------
+DropTables
+
+ALTER PROCEDURE dbo.DropTables
+AS
+	SET NOCOUNT ON;
+	delete from NOTE_BOX;
+	delete from MENTORINFO;
+	delete from MENTEEINFO;
+	delete from ACCOUNT;
+
+	Drop Table NOTE_BOX;
+	Drop Table MENTORINFO;
+	Drop table MENTEEINFO;
+	Drop table ACCOUNT;
+
+	RETURN
+
+------------------------------
+RegisterMentee
+
+ALTER PROCEDURE dbo.RegisterMentee
+	@id nvarchar(30),
+	@password char(16),
+	@appleDevice bit,
+	@pushid char(32)
+	/*
+	(
+	@parameter1 int = 5,
+	@parameter2 datatype OUTPUT
+	)
+	*/
+AS
+	DECLARE @user_no int;
+	SET @user_no = -1;
+
+	if LEN(@password) <> 16 OR LEN(@pushid) <> 32
+	BEGIN
+		return -1;
+	END
+	
+	if EXISTS(SELECT * from ACCOUNT WHERE id = @id)
+	BEGIN
+		return -2;
+	END
+
+	BEGIN TRY --Start the Try Block..
+		BEGIN TRANSACTION -- Start the transaction..
+			INSERT INTO ACCOUNT(id, password, appleDevice, pushid) VALUES (@id,@password,@appleDevice,@pushid);
+			SELECT @user_no = user_no from ACCOUNT where id = @id;
+			INSERT INTO MENTEEINFO(user_no) VALUES (@user_no);
+		COMMIT TRAN -- Transaction Success!
+	END TRY
+	BEGIN CATCH
+		IF @@TRANCOUNT > 0
+			ROLLBACK TRAN --RollBack in case of Error
+
+		SELECT 'There was an error! ' + ERROR_MESSAGE();
+		SET @user_no = ERROR_NUMBER() * -1;
+	END CATCH
+
+	RETURN @user_no
+
+
+----------------------
+RegisterMentor
+
+ALTER PROCEDURE dbo.RegisterMentor
+	@id nvarchar(30),
+	@password char(16),
+	@appleDevice bit,
+	@pushid char(32)
+	/*
+	(
+	@parameter1 int = 5,
+	@parameter2 datatype OUTPUT
+	)
+	*/
+AS
+	DECLARE @user_no int;
+	SET @user_no = -1;
+
+	if LEN(@password) <> 16 OR LEN(@pushid) <> 32
+	BEGIN
+		return -1;
+	END
+	
+	if EXISTS(SELECT * from ACCOUNT WHERE id = @id)
+	BEGIN
+		return -2;
+	END
+
+	BEGIN TRY --Start the Try Block..
+		BEGIN TRANSACTION -- Start the transaction..
+			INSERT INTO ACCOUNT(id, password, appleDevice, pushid) VALUES (@id,@password,@appleDevice,@pushid);
+			SELECT @user_no = user_no from ACCOUNT where id = @id;
+			INSERT INTO MENTORINFO(user_no) VALUES (@user_no);
+		COMMIT TRAN -- Transaction Success!
+	END TRY
+	BEGIN CATCH
+		IF @@TRANCOUNT > 0
+			ROLLBACK TRAN --RollBack in case of Error
+
+		SELECT 'There was an error! ' + ERROR_MESSAGE();
+		SET @user_no = ERROR_NUMBER() * -1;
+	END CATCH
+
+	RETURN @user_no
+
+
+
+
+
+------------------------------
+AlterMenteeInfo
+
+
+ALTER PROCEDURE dbo.AlterMenteeInfo
+	@user_no int,
+	@name nvarchar(10),
+	@school nvarchar(30),
+	@grade tinyint
+	/*
+	(
+	@parameter1 int = 5,
+	@parameter2 datatype OUTPUT
+	)
+	*/
+AS
+	UPDATE MENTEEINFO SET name = @name, school = @school, grade = @grade WHERE user_no = @user_no
+	/* SET NOCOUNT ON */
+	RETURN @@ROWCOUNT;
+
+
+
+------------------------------------
+AltermentorInfo
+
+
+ALTER PROCEDURE dbo.AlterMentorInfo
+	@user_no int,
+	@name nvarchar(10),
+	@school tinyint,
+	@major smallint
+	/*
+	(
+	@parameter1 int = 5,
+	@parameter2 datatype OUTPUT
+	)
+	*/
+AS
+	UPDATE MENTORINFO SET name = @name, school = @school, major = @major WHERE user_no = @user_no
+	/* SET NOCOUNT ON */
+	RETURN @@ROWCOUNT;
+
