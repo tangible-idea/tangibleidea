@@ -1,0 +1,75 @@
+http://localhost:1528/MeepleService.svc/Login?id=%22%22&passwd=%22%22&devideId=%22%22
+	{"IsLoginSuccessful":false,"LoginFailureReason":null,"LoginType":null}
+http://localhost:1528/MeepleService.svc/IsThereARecommendationToMentor?mentorId=mentor1
+	true
+http://localhost:1528/MeepleService.svc/SetMentorRecommendationResponse?mentorId=mentor1&didMentorAccept=true
+	true
+http://localhost:1528/MeepleService.svc/IsThereARecommendationToMentee?menteeId=mentee1
+	true
+http://localhost:1528/MeepleService.svc/SetMenteeRecommendationResponse?menteeId=mentee1&didMenteeAccept=true
+	true
+http://localhost:1528/MeepleService.svc/SendMessage?mentorId=mentor1&menteeId=mentee1&senderId=mentor1&receiverId=mentee1&message=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94
+	true
+http://localhost:1528/MeepleService.svc/SendMessage?mentorId=mentor1&menteeId=mentee1&senderId=mentor1&receiverId=mentee1&message=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94
+	true
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=0&size=0
+	[]
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=0&size=1
+	[{"Count":1,"DateTime":"2011-08-14 오후 3:55:15","Message":"안녕하세요","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=0&size=2
+	[{"Count":1,"DateTime":"2011-08-14 오후 3:55:15","Message":"안녕하세요","ReceiverId":"mentee1","SenderId":"mentor1"},{"Count":2,"DateTime":"2011-08-14 오후 3:55:23","Message":"안녕하세요","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=0&size=3
+	[{"Count":1,"DateTime":"2011-08-14 오후 3:55:15","Message":"안녕하세요","ReceiverId":"mentee1","SenderId":"mentor1"},{"Count":2,"DateTime":"2011-08-14 오후 3:55:23","Message":"안녕하세요","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=1&size=3
+	[{"Count":2,"DateTime":"2011-08-14 오후 3:55:23","Message":"안녕하세요","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=2&size=3
+	[]
+http://localhost:1528/MeepleService.svc/SendMessage?mentorId=mentor1&menteeId=mentee1&senderId=mentor1&receiverId=mentee1&message=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%943
+	true
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=2&size=3
+	[{"Count":3,"DateTime":"2011-08-14 오후 3:56:18","Message":"안녕하세요3","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=2&size=0
+	[]
+http://localhost:1528/MeepleService.svc/GetMesssages?mentorId=mentor1&menteeId=mentee1&localMessagesCount=2&size=1
+	[{"Count":3,"DateTime":"2011-08-14 오후 3:56:18","Message":"안녕하세요3","ReceiverId":"mentee1","SenderId":"mentor1"}]
+
+http://localhost:1528/MeepleService.svc/IsThereANote?receiverId=mentee1
+	false
+http://localhost:1528/MeepleService.svc/IsThereANote?receiverId=mentor1
+	false
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentee1&size=0
+	[]
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentee1&size=1
+	[]
+http://localhost:1528/MeepleService.svc/SyncNotes?receiverId=mentee1&size=1
+	false
+http://localhost:1528/MeepleService.svc/SendNote?senderId=mentor1&receiverId=mentee1&note=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94%20%EB%93%A4
+	true
+http://localhost:1528/MeepleService.svc/IsThereANote?receiverId=mentor1
+	true
+http://localhost:1528/MeepleService.svc/IsThereANote?receiverId=mentee1
+	true
+http://localhost:1528/MeepleService.svc/SendNote?senderId=mentor1&receiverId=mentee1&note=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94%20%EB%93%A4
+	true
+http://localhost:1528/MeepleService.svc/SendNote?senderId=mentor1&receiverId=mentee1&note=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94%20%EB%93%A4
+	true
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentee1&size=0
+	[]
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentee1&size=1
+	[{"DateTime":"2011-08-15 오전 4:16:12","Note":"안녕하세요 들","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentor1&size=1
+	[{"DateTime":"2011-08-15 오전 4:34:30","Note":"안녕하세요 들","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentee1&size=3
+	[{"DateTime":"2011-08-15 오전 4:28:10","Note":"안녕하세요 들","ReceiverId":"mentee1","SenderId":"mentor1"},{"DateTime":"2011-08-15 오전 4:28:17","Note":"안녕하세요 들","ReceiverId":"mentee1","SenderId":"mentor1"},{"DateTime":"2011-08-15 오전 4:28:18","Note":"안녕하세요 들","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentee1&size=5
+	[{"DateTime":"2011-08-15 오전 4:28:10","Note":"안녕하세요 들","ReceiverId":"mentee1","SenderId":"mentor1"},{"DateTime":"2011-08-15 오전 4:28:17","Note":"안녕하세요 들","ReceiverId":"mentee1","SenderId":"mentor1"},{"DateTime":"2011-08-15 오전 4:28:18","Note":"안녕하세요 들","ReceiverId":"mentee1","SenderId":"mentor1"}]
+http://localhost:1528/MeepleService.svc/SyncNotes?receiverId=mentee1&size=1
+	true
+http://localhost:1528/MeepleService.svc/SyncNotes?receiverId=mentee1&size=4
+	true
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentee1&size=1
+	[]
+http://localhost:1528/MeepleService.svc/SyncNotes?receiverId=mentor1&size=1
+	true
+http://localhost:1528/MeepleService.svc/GetNotes?receiverId=mentor1&size=1
+	[]
