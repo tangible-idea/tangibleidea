@@ -3,6 +3,35 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
+    
+        
+    <RelativeLayout
+	android:id="@+id/RelativeLayout01"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+	
+	  	 <ImageView
+		  android:id="@+id/img_navigation_bg"
+		  android:src="@drawable/navigation_bg"
+		  android:layout_width="fill_parent" 
+		  android:layout_height="wrap_content"
+		  ></ImageView>
+		  	 
+		  <ImageView
+		  android:id="@+id/img_navigation_title"
+		  android:src="@drawable/navigation_title_04"
+		  android:layout_width="fill_parent" 
+		  android:layout_height="wrap_content"
+		  ></ImageView>
+  	 
+  	 </RelativeLayout>
+    
+  <TextView android:id="@+id/txt_favorite_status"
+      android:layout_width="fill_parent" 
+      android:layout_height="wrap_content"
+      android:textColor="#aa000000"
+      android:textSize="30sp"
+      ></TextView>
 
 	<RelativeLayout
 	android:id="@+id/RelativeLayout01"
