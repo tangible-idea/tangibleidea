@@ -1,0 +1,877 @@
+2012-03-15 13:44:47,071 [1] DEBUG Server.LogCoordinator - Push Provider Setup Complete.
+
+2012-03-15 13:45:17,078 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 MEEPLE 페이스북 페이지 >>  facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2
+2012-03-15 13:45:17,078 [1] DEBUG Server.LogCoordinator - Id :[mentor] Push :[f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2] 푸쉬 전달 완료
+2012-03-15 13:45:17,079 [1] DEBUG Server.LogCoordinator - 아이폰 0 명
+2012-03-15 13:45:17,080 [1] DEBUG Server.LogCoordinator - 안드로이드 0 명
+2012-03-15 13:45:17,080 [1] DEBUG Server.LogCoordinator - 총 0 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 13:45:17,080 [1] DEBUG Server.LogCoordinator - 내용:[멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 MEEPLE 페이스북 페이지 >>  facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.]
+2012-03-15 13:45:22,828 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= testdeviceID= f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2
+2012-03-15 13:45:22,828 [1] DEBUG Server.LogCoordinator - Id :[mentor] Push :[f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2] 푸쉬 전달 완료
+2012-03-15 13:45:22,830 [1] DEBUG Server.LogCoordinator - 아이폰 0 명
+2012-03-15 13:45:22,831 [1] DEBUG Server.LogCoordinator - 안드로이드 0 명
+2012-03-15 13:45:22,832 [1] DEBUG Server.LogCoordinator - 총 0 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 13:45:22,832 [1] DEBUG Server.LogCoordinator - 내용:[test]
+2012-03-15 13:45:52,288 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 facebook.com/tangibleidea 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2
+2012-03-15 13:45:52,288 [1] DEBUG Server.LogCoordinator - Id :[mentor] Push :[f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2] 푸쉬 전달 완료
+2012-03-15 13:45:52,290 [1] DEBUG Server.LogCoordinator - 아이폰 0 명
+2012-03-15 13:45:52,291 [1] DEBUG Server.LogCoordinator - 안드로이드 0 명
+2012-03-15 13:45:52,292 [1] DEBUG Server.LogCoordinator - 총 0 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 13:45:52,293 [1] DEBUG Server.LogCoordinator - 내용:[멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 facebook.com/tangibleidea 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.]
+2012-03-15 13:46:42,989 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 [facebook.com/tangibleidea] 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2
+2012-03-15 13:46:42,989 [1] DEBUG Server.LogCoordinator - Id :[mentor] Push :[f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2] 푸쉬 전달 완료
+2012-03-15 13:46:42,996 [1] DEBUG Server.LogCoordinator - 아이폰 0 명
+2012-03-15 13:46:42,997 [1] DEBUG Server.LogCoordinator - 안드로이드 0 명
+2012-03-15 13:46:42,998 [1] DEBUG Server.LogCoordinator - 총 0 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 13:46:43,000 [1] DEBUG Server.LogCoordinator - 내용:[멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 [facebook.com/tangibleidea] 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.]
+2012-03-15 13:47:44,613 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2
+2012-03-15 13:47:44,613 [1] DEBUG Server.LogCoordinator - Id :[mentor] Push :[f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2] 푸쉬 전달 완료
+2012-03-15 13:47:44,616 [1] DEBUG Server.LogCoordinator - 아이폰 0 명
+2012-03-15 13:47:44,617 [1] DEBUG Server.LogCoordinator - 안드로이드 0 명
+2012-03-15 13:47:44,619 [1] DEBUG Server.LogCoordinator - 총 0 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 13:47:44,621 [1] DEBUG Server.LogCoordinator - 내용:[멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.]
+2012-03-15 13:48:11,990 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2
+2012-03-15 13:48:11,990 [1] DEBUG Server.LogCoordinator - Id :[mentor] Push :[f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2] 푸쉬 전달 완료
+2012-03-15 13:48:11,993 [1] DEBUG Server.LogCoordinator - 아이폰 0 명
+2012-03-15 13:48:11,995 [1] DEBUG Server.LogCoordinator - 안드로이드 0 명
+2012-03-15 13:48:11,997 [1] DEBUG Server.LogCoordinator - 총 0 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 13:48:11,999 [1] DEBUG Server.LogCoordinator - 내용:[멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.]
+2012-03-15 13:48:24,345 [1] DEBUG Server.LogCoordinator - Id :[mentee] Push :[0                                                               ...] 푸쉬 전달 완료
+2012-03-15 13:48:25,047 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2
+2012-03-15 13:48:25,048 [1] DEBUG Server.LogCoordinator - Id :[mentor] Push :[f6438ca70ac1c61991bd74de96e2192c052c3cd2e14f7536efa4e9b900ebded2] 푸쉬 전달 완료
+2012-03-15 13:48:25,255 [1] DEBUG Server.LogCoordinator - Id :[hgbyun] Push :[0                                                               ...] 푸쉬 전달 완료
+2012-03-15 13:48:25,804 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2f295a55e982f0cab6dbea1bf2c6697550fe688c82aaf3b7e4be81231a26dbfb
+2012-03-15 13:48:25,804 [1] DEBUG Server.LogCoordinator - Id :[vinninniv] Push :[2f295a55e982f0cab6dbea1bf2c6697550fe688c82aaf3b7e4be81231a26dbfb] 푸쉬 전달 완료
+2012-03-15 13:48:26,625 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a6b4989b29147fe41aa70de91a27547fd246f1a8fb703eb709e53d8ff0f8e52c
+2012-03-15 13:48:26,625 [1] DEBUG Server.LogCoordinator - Id :[kakajoka] Push :[a6b4989b29147fe41aa70de91a27547fd246f1a8fb703eb709e53d8ff0f8e52c] 푸쉬 전달 완료
+2012-03-15 13:48:27,202 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0430896f8225056f383551372f7d72af2e88c0be835df4ecf16b7aa8ff78316e
+2012-03-15 13:48:27,202 [1] DEBUG Server.LogCoordinator - Id :[lako] Push :[0430896f8225056f383551372f7d72af2e88c0be835df4ecf16b7aa8ff78316e] 푸쉬 전달 완료
+2012-03-15 13:48:27,751 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b7588c58f08d060d211ed1e2563a19bf2b74926f4b6a816643fd0289a3a27d8d
+2012-03-15 13:48:27,751 [1] DEBUG Server.LogCoordinator - Id :[ujung9093] Push :[b7588c58f08d060d211ed1e2563a19bf2b74926f4b6a816643fd0289a3a27d8d] 푸쉬 전달 완료
+2012-03-15 13:48:28,323 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 460ecab06a5550b0c6f6717df4361cb1dc6c665b77f0f5421d7ddd30219e783c
+2012-03-15 13:48:28,323 [1] DEBUG Server.LogCoordinator - Id :[since1988.jp] Push :[460ecab06a5550b0c6f6717df4361cb1dc6c665b77f0f5421d7ddd30219e783c] 푸쉬 전달 완료
+2012-03-15 13:48:28,861 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 27193d4bf031d7451a00e3b9ae77ebcec2edbee8d69ec2f746d3d4b6549e11a3
+2012-03-15 13:48:28,861 [1] DEBUG Server.LogCoordinator - Id :[rin324] Push :[27193d4bf031d7451a00e3b9ae77ebcec2edbee8d69ec2f746d3d4b6549e11a3] 푸쉬 전달 완료
+2012-03-15 13:48:29,651 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c692d5988704f6cdc0ba64a469081683e29a788b06094e8aeb0714840226a90d
+2012-03-15 13:48:29,651 [1] DEBUG Server.LogCoordinator - Id :[s3757] Push :[c692d5988704f6cdc0ba64a469081683e29a788b06094e8aeb0714840226a90d] 푸쉬 전달 완료
+2012-03-15 13:48:30,296 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b145abe4e92b88eb859e272cf7b709de93659d8c3704dc6126b6285c6b725b4a
+2012-03-15 13:48:30,296 [1] DEBUG Server.LogCoordinator - Id :[impkid] Push :[b145abe4e92b88eb859e272cf7b709de93659d8c3704dc6126b6285c6b725b4a] 푸쉬 전달 완료
+2012-03-15 13:48:30,955 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7e82b651529ed3afcf698d86842de0ba6894714a54bfef36e6cdd04614fa4284
+2012-03-15 13:48:30,955 [1] DEBUG Server.LogCoordinator - Id :[gracekim] Push :[7e82b651529ed3afcf698d86842de0ba6894714a54bfef36e6cdd04614fa4284] 푸쉬 전달 완료
+2012-03-15 13:48:31,546 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b0fdd09b58efb242829a36fbd4a0eb86bb9348ca425f2d17bc3d5f428112aef0
+2012-03-15 13:48:31,546 [1] DEBUG Server.LogCoordinator - Id :[bestjoseph] Push :[b0fdd09b58efb242829a36fbd4a0eb86bb9348ca425f2d17bc3d5f428112aef0] 푸쉬 전달 완료
+2012-03-15 13:48:32,095 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 54a3e615599a8e85c4086c86cd824d32e09fcf7d5df12d4f7e9e010983bb4fc2
+2012-03-15 13:48:32,095 [1] DEBUG Server.LogCoordinator - Id :[ekfri87] Push :[54a3e615599a8e85c4086c86cd824d32e09fcf7d5df12d4f7e9e010983bb4fc2] 푸쉬 전달 완료
+2012-03-15 13:48:32,692 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9707b665d6e24998aefc240ba03a76ee354558595817b98a2f623200c39a9b33
+2012-03-15 13:48:32,692 [1] DEBUG Server.LogCoordinator - Id :[pc9873] Push :[9707b665d6e24998aefc240ba03a76ee354558595817b98a2f623200c39a9b33] 푸쉬 전달 완료
+2012-03-15 13:48:33,249 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4781cfe4b697086efbdb074d4a62b276671301d78f78f8331501caaa80d94945
+2012-03-15 13:48:33,249 [1] DEBUG Server.LogCoordinator - Id :[shineast] Push :[4781cfe4b697086efbdb074d4a62b276671301d78f78f8331501caaa80d94945] 푸쉬 전달 완료
+2012-03-15 13:48:33,793 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d6f18ee8fe9db90e7be338e5f65a60897d3cf402c4cd237e2f7b70fbe9eb9c50
+2012-03-15 13:48:33,793 [1] DEBUG Server.LogCoordinator - Id :[ojk0424] Push :[d6f18ee8fe9db90e7be338e5f65a60897d3cf402c4cd237e2f7b70fbe9eb9c50] 푸쉬 전달 완료
+2012-03-15 13:48:34,646 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 72284824476c5aec25324221efd6a73d11d2867c9163bde54df22e8766a5a7d2
+2012-03-15 13:48:34,646 [1] DEBUG Server.LogCoordinator - Id :[abraxas108] Push :[72284824476c5aec25324221efd6a73d11d2867c9163bde54df22e8766a5a7d2] 푸쉬 전달 완료
+2012-03-15 13:48:35,358 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 79b6caa0c51685849d87b52af636c1005fed80a85ee983a52028a5af2126df5d
+2012-03-15 13:48:35,358 [1] DEBUG Server.LogCoordinator - Id :[tryjh] Push :[79b6caa0c51685849d87b52af636c1005fed80a85ee983a52028a5af2126df5d] 푸쉬 전달 완료
+2012-03-15 13:48:35,942 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 794b14f098dc20676ba156885629f40cac5bab63dfde8334804697812a5a71b3
+2012-03-15 13:48:35,942 [1] DEBUG Server.LogCoordinator - Id :[supernail] Push :[794b14f098dc20676ba156885629f40cac5bab63dfde8334804697812a5a71b3] 푸쉬 전달 완료
+2012-03-15 13:48:36,488 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1b10b2169e7b7c521e928e6097aa52121bd87a2b71428b844b7e5fd3eaf9c1ab
+2012-03-15 13:48:36,488 [1] DEBUG Server.LogCoordinator - Id :[jae10] Push :[1b10b2169e7b7c521e928e6097aa52121bd87a2b71428b844b7e5fd3eaf9c1ab] 푸쉬 전달 완료
+2012-03-15 13:48:37,142 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 14e6eb819d3b5f427be76e65294a15798308a3c6b5f08ae4e4cd67d7690a0cbe
+2012-03-15 13:48:37,142 [1] DEBUG Server.LogCoordinator - Id :[colourgraph] Push :[14e6eb819d3b5f427be76e65294a15798308a3c6b5f08ae4e4cd67d7690a0cbe] 푸쉬 전달 완료
+2012-03-15 13:48:37,737 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 52b6182f31121f1f4ddd670848e9dde8bfc8c9efe3e175969baa1ed89a666f49
+2012-03-15 13:48:37,737 [1] DEBUG Server.LogCoordinator - Id :[kimchuna] Push :[52b6182f31121f1f4ddd670848e9dde8bfc8c9efe3e175969baa1ed89a666f49] 푸쉬 전달 완료
+2012-03-15 13:48:38,335 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6dac8cec0f5b612d7af0f09134536dfe3c25dab6b5ca185e38db3134c233c494
+2012-03-15 13:48:38,335 [1] DEBUG Server.LogCoordinator - Id :[abc] Push :[6dac8cec0f5b612d7af0f09134536dfe3c25dab6b5ca185e38db3134c233c494] 푸쉬 전달 완료
+2012-03-15 13:48:38,898 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c2bc4449b48f3b926ae3e65f45439f85467bfeee81675364abaeedb97cc800bf
+2012-03-15 13:48:38,898 [1] DEBUG Server.LogCoordinator - Id :[fengzi012] Push :[c2bc4449b48f3b926ae3e65f45439f85467bfeee81675364abaeedb97cc800bf] 푸쉬 전달 완료
+2012-03-15 13:48:39,457 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e99cb8f41bc79934efbb259854cf1d196096a225cc2c5cd67926d417eddf78bc
+2012-03-15 13:48:39,457 [1] DEBUG Server.LogCoordinator - Id :[iwantyoutoo1] Push :[e99cb8f41bc79934efbb259854cf1d196096a225cc2c5cd67926d417eddf78bc] 푸쉬 전달 완료
+2012-03-15 13:48:40,002 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d2fc498238c08734c15b9cf9e2ac0dd3672203ea3a8a5da459a72cc0243365ab
+2012-03-15 13:48:40,002 [1] DEBUG Server.LogCoordinator - Id :[tjdls2020] Push :[d2fc498238c08734c15b9cf9e2ac0dd3672203ea3a8a5da459a72cc0243365ab] 푸쉬 전달 완료
+2012-03-15 13:48:40,544 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= dd191c90f024bab97204936360f5998bddd2a6ccb6c63a3f28b3bb773d8d194f
+2012-03-15 13:48:40,544 [1] DEBUG Server.LogCoordinator - Id :[kashu] Push :[dd191c90f024bab97204936360f5998bddd2a6ccb6c63a3f28b3bb773d8d194f] 푸쉬 전달 완료
+2012-03-15 13:48:41,126 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9e71292594e05e869596f1a43f5876dd3cfb6cbd0fc988dc8df35edca43be150
+2012-03-15 13:48:41,126 [1] DEBUG Server.LogCoordinator - Id :[1ipromiseu] Push :[9e71292594e05e869596f1a43f5876dd3cfb6cbd0fc988dc8df35edca43be150] 푸쉬 전달 완료
+2012-03-15 13:48:41,768 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d50c044122662f486f83ad7a1c0d8080d2d36ba120e536aee7451a7db60e606d
+2012-03-15 13:48:41,769 [1] DEBUG Server.LogCoordinator - Id :[ntrant] Push :[d50c044122662f486f83ad7a1c0d8080d2d36ba120e536aee7451a7db60e606d] 푸쉬 전달 완료
+2012-03-15 13:48:42,326 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 267a862a7c230a5c767811b7566dc46fc42ded77938faaa68797905328163c65
+2012-03-15 13:48:42,326 [1] DEBUG Server.LogCoordinator - Id :[mehakiya] Push :[267a862a7c230a5c767811b7566dc46fc42ded77938faaa68797905328163c65] 푸쉬 전달 완료
+2012-03-15 13:48:42,995 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7193a81600cbc47cbf0278f705246d17522274bb5dba005da611da4e401e5c1a
+2012-03-15 13:48:42,995 [1] DEBUG Server.LogCoordinator - Id :[sybae] Push :[7193a81600cbc47cbf0278f705246d17522274bb5dba005da611da4e401e5c1a] 푸쉬 전달 완료
+2012-03-15 13:48:43,547 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0a8beec1118a3c13e1dfbc017176de09c66e3114a43603dd430b2bdc60992dd5
+2012-03-15 13:48:43,547 [1] DEBUG Server.LogCoordinator - Id :[intox] Push :[0a8beec1118a3c13e1dfbc017176de09c66e3114a43603dd430b2bdc60992dd5] 푸쉬 전달 완료
+2012-03-15 13:48:44,141 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 69013b1ed8ae28d8a607a570836c5cd269d80606e77e543976d5319f6b0e9db1
+2012-03-15 13:48:44,141 [1] DEBUG Server.LogCoordinator - Id :[raymond] Push :[69013b1ed8ae28d8a607a570836c5cd269d80606e77e543976d5319f6b0e9db1] 푸쉬 전달 완료
+2012-03-15 13:48:44,803 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a621544ce24a49e067db40abfc9e009cb78e548c23adc1182d2f821d4589a8ca
+2012-03-15 13:48:44,803 [1] DEBUG Server.LogCoordinator - Id :[yoonsun124] Push :[a621544ce24a49e067db40abfc9e009cb78e548c23adc1182d2f821d4589a8ca] 푸쉬 전달 완료
+2012-03-15 13:48:45,380 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4c8ffaa9c18e8338ad9415098221443701bd118a0ebd0bd6df9e9348a4742cc5
+2012-03-15 13:48:45,380 [1] DEBUG Server.LogCoordinator - Id :[u7767] Push :[4c8ffaa9c18e8338ad9415098221443701bd118a0ebd0bd6df9e9348a4742cc5] 푸쉬 전달 완료
+2012-03-15 13:48:46,010 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8f906b36df2c5686133d645b8b633fdefb8f0fc6f5c14053bac3c1b38bb51c12
+2012-03-15 13:48:46,010 [1] DEBUG Server.LogCoordinator - Id :[ddisop] Push :[8f906b36df2c5686133d645b8b633fdefb8f0fc6f5c14053bac3c1b38bb51c12] 푸쉬 전달 완료
+2012-03-15 13:48:46,586 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0b2d3da5ace70b5f9f0f3ece4ce1f69b28fff11ac1e46b821fca4a29454e3557
+2012-03-15 13:48:46,586 [1] DEBUG Server.LogCoordinator - Id :[vosweet] Push :[0b2d3da5ace70b5f9f0f3ece4ce1f69b28fff11ac1e46b821fca4a29454e3557] 푸쉬 전달 완료
+2012-03-15 13:48:47,321 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1f4955dfc6757ebadd3242d450c6e62399d822903d2bbadaeb3dadd0acca6528
+2012-03-15 13:48:47,321 [1] DEBUG Server.LogCoordinator - Id :[happyyj] Push :[1f4955dfc6757ebadd3242d450c6e62399d822903d2bbadaeb3dadd0acca6528] 푸쉬 전달 완료
+2012-03-15 13:48:47,905 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d3da1a8bec488db378136a4b126a4babc13cd9728a4e76d5d607f60e25773432
+2012-03-15 13:48:47,905 [1] DEBUG Server.LogCoordinator - Id :[hdh891025] Push :[d3da1a8bec488db378136a4b126a4babc13cd9728a4e76d5d607f60e25773432] 푸쉬 전달 완료
+2012-03-15 13:48:48,505 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5c0064d1c1f469be33aae38a7f61c25c2cc44171ce663fadb13541808ea032d9
+2012-03-15 13:48:48,506 [1] DEBUG Server.LogCoordinator - Id :[sjg803] Push :[5c0064d1c1f469be33aae38a7f61c25c2cc44171ce663fadb13541808ea032d9] 푸쉬 전달 완료
+2012-03-15 13:48:49,089 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ca57566786f4f0117cde3e033666c842af9a387253d98fcf6578fbe26fb9b086
+2012-03-15 13:48:49,089 [1] DEBUG Server.LogCoordinator - Id :[leekyungu] Push :[ca57566786f4f0117cde3e033666c842af9a387253d98fcf6578fbe26fb9b086] 푸쉬 전달 완료
+2012-03-15 13:48:49,763 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a4f431db19abfc531f36957f609e7d7915802abae227bc2a0f3a830ab17cd366
+2012-03-15 13:48:49,764 [1] DEBUG Server.LogCoordinator - Id :[actor] Push :[a4f431db19abfc531f36957f609e7d7915802abae227bc2a0f3a830ab17cd366] 푸쉬 전달 완료
+2012-03-15 13:48:50,521 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 90720a9156b6051ddc40db00952d2728a5ffb7a71f7afbe3433319938db7de92
+2012-03-15 13:48:50,521 [1] DEBUG Server.LogCoordinator - Id :[kjy9505] Push :[90720a9156b6051ddc40db00952d2728a5ffb7a71f7afbe3433319938db7de92] 푸쉬 전달 완료
+2012-03-15 13:48:51,211 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 87fd1fc44df365192cc65810e8f21c44e039769a3627739a6a9a01e0b74b97a6
+2012-03-15 13:48:51,211 [1] DEBUG Server.LogCoordinator - Id :[lswdh] Push :[87fd1fc44df365192cc65810e8f21c44e039769a3627739a6a9a01e0b74b97a6] 푸쉬 전달 완료
+2012-03-15 13:48:51,869 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 43137eca5c1ed9d1d5d3d5d84a19ad28cbe1e2670bba42107a639e6895d818d5
+2012-03-15 13:48:51,869 [1] DEBUG Server.LogCoordinator - Id :[root] Push :[43137eca5c1ed9d1d5d3d5d84a19ad28cbe1e2670bba42107a639e6895d818d5] 푸쉬 전달 완료
+2012-03-15 13:48:52,609 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8881e031e38fd3bd5c8e5413206fa44301d7521f41206130ec4fa25f2d4f0ccc
+2012-03-15 13:48:52,609 [1] DEBUG Server.LogCoordinator - Id :[ksh18170] Push :[8881e031e38fd3bd5c8e5413206fa44301d7521f41206130ec4fa25f2d4f0ccc] 푸쉬 전달 완료
+2012-03-15 13:48:53,197 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ff0c9182463786609136adb86067e9009d55580b92c223cb5a343f657b658c19
+2012-03-15 13:48:53,197 [1] DEBUG Server.LogCoordinator - Id :[syalalra] Push :[ff0c9182463786609136adb86067e9009d55580b92c223cb5a343f657b658c19] 푸쉬 전달 완료
+2012-03-15 13:48:53,914 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= edd76da8673cd81db767f11403249e7dcc7174b88551af37ba4f03220086b2bd
+2012-03-15 13:48:53,914 [1] DEBUG Server.LogCoordinator - Id :[yiruhong] Push :[edd76da8673cd81db767f11403249e7dcc7174b88551af37ba4f03220086b2bd] 푸쉬 전달 완료
+2012-03-15 13:48:54,498 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 634c6dd2b2eadfe1d861b2974e047207b2aa85760c21189c6eec8e34fe6ec3b5
+2012-03-15 13:48:54,498 [1] DEBUG Server.LogCoordinator - Id :[prof_seo] Push :[634c6dd2b2eadfe1d861b2974e047207b2aa85760c21189c6eec8e34fe6ec3b5] 푸쉬 전달 완료
+2012-03-15 13:48:55,150 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bdcf34d90256142409a40914e0bd01a7c4504af28e7631af00ab163d3d9fb8b5
+2012-03-15 13:48:55,150 [1] DEBUG Server.LogCoordinator - Id :[iallyr] Push :[bdcf34d90256142409a40914e0bd01a7c4504af28e7631af00ab163d3d9fb8b5] 푸쉬 전달 완료
+2012-03-15 13:48:55,733 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 97253d13edae2a4962b5cc77d2f08f1ae0d19a0d64126eea99a01778e42f221d
+2012-03-15 13:48:55,733 [1] DEBUG Server.LogCoordinator - Id :[sigmalover] Push :[97253d13edae2a4962b5cc77d2f08f1ae0d19a0d64126eea99a01778e42f221d] 푸쉬 전달 완료
+2012-03-15 13:48:56,336 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5cac297512afdb873f251d3b48d166bde1b1bc5d3ba3a60e7d86dca0a810b97b
+2012-03-15 13:48:56,337 [1] DEBUG Server.LogCoordinator - Id :[skyward7] Push :[5cac297512afdb873f251d3b48d166bde1b1bc5d3ba3a60e7d86dca0a810b97b] 푸쉬 전달 완료
+2012-03-15 13:48:56,873 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8ea84b50061c1026cfd52417eb390c90068932ccb3704c7f8ebbfd9ede41c69b
+2012-03-15 13:48:56,873 [1] DEBUG Server.LogCoordinator - Id :[kyakya1040] Push :[8ea84b50061c1026cfd52417eb390c90068932ccb3704c7f8ebbfd9ede41c69b] 푸쉬 전달 완료
+2012-03-15 13:48:57,479 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b55b067e6a6a170200bb37a850b79e4ca8050d1cc69f4e74ec179d7eb07aef3b
+2012-03-15 13:48:57,479 [1] DEBUG Server.LogCoordinator - Id :[wlgh00] Push :[b55b067e6a6a170200bb37a850b79e4ca8050d1cc69f4e74ec179d7eb07aef3b] 푸쉬 전달 완료
+2012-03-15 13:48:58,118 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9ba55744b49579cb041cefe2d87df195428d348a3f1f33101920a2d3d3f02202
+2012-03-15 13:48:58,118 [1] DEBUG Server.LogCoordinator - Id :[5151dhs] Push :[9ba55744b49579cb041cefe2d87df195428d348a3f1f33101920a2d3d3f02202] 푸쉬 전달 완료
+2012-03-15 13:48:58,671 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c89bd71632e28e3f772d1ae535677174757881ce79b32539ae1498132cdc597f
+2012-03-15 13:48:58,671 [1] DEBUG Server.LogCoordinator - Id :[iamon322] Push :[c89bd71632e28e3f772d1ae535677174757881ce79b32539ae1498132cdc597f] 푸쉬 전달 완료
+2012-03-15 13:48:59,216 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bf382fbe01332a3dab4921e68bf852436ee27d0ca7136dd1dd74ab1db0474b35
+2012-03-15 13:48:59,216 [1] DEBUG Server.LogCoordinator - Id :[ss3073] Push :[bf382fbe01332a3dab4921e68bf852436ee27d0ca7136dd1dd74ab1db0474b35] 푸쉬 전달 완료
+2012-03-15 13:48:59,816 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 297246022763387568e57011473bdb14f018b5e81b2c62fa5835ac1b02bd264d
+2012-03-15 13:48:59,816 [1] DEBUG Server.LogCoordinator - Id :[live0722] Push :[297246022763387568e57011473bdb14f018b5e81b2c62fa5835ac1b02bd264d] 푸쉬 전달 완료
+2012-03-15 13:49:00,396 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bd5d346d977b0152d22233584cfcdec8eeba04ed61fcb980bfe785ddd59fdaa6
+2012-03-15 13:49:00,396 [1] DEBUG Server.LogCoordinator - Id :[kwson708] Push :[bd5d346d977b0152d22233584cfcdec8eeba04ed61fcb980bfe785ddd59fdaa6] 푸쉬 전달 완료
+2012-03-15 13:49:00,986 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0bdd43ae98be228a287d17597741368eb4f2e2b85b0e6ed080bcb455ad0c5d1d
+2012-03-15 13:49:00,986 [1] DEBUG Server.LogCoordinator - Id :[jaeho96] Push :[0bdd43ae98be228a287d17597741368eb4f2e2b85b0e6ed080bcb455ad0c5d1d] 푸쉬 전달 완료
+2012-03-15 13:49:01,599 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= abb58477661ca822afffc5f6c62d6d747ba09757008845e0ad4ce304b27b0c1d
+2012-03-15 13:49:01,599 [1] DEBUG Server.LogCoordinator - Id :[minhahapy] Push :[abb58477661ca822afffc5f6c62d6d747ba09757008845e0ad4ce304b27b0c1d] 푸쉬 전달 완료
+2012-03-15 13:49:02,145 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9f861a2b6cf5638357376693653cafd60c08181cc765b03a6e182fb1f1582460
+2012-03-15 13:49:02,145 [1] DEBUG Server.LogCoordinator - Id :[kchh823] Push :[9f861a2b6cf5638357376693653cafd60c08181cc765b03a6e182fb1f1582460] 푸쉬 전달 완료
+2012-03-15 13:49:02,908 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7bc5e41ae72f959e8d3b64932adf1b1d2c39cb0cd86bcb6c42a2c5bccf8f1475
+2012-03-15 13:49:02,909 [1] DEBUG Server.LogCoordinator - Id :[ansohome] Push :[7bc5e41ae72f959e8d3b64932adf1b1d2c39cb0cd86bcb6c42a2c5bccf8f1475] 푸쉬 전달 완료
+2012-03-15 13:49:03,467 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= fd32da1d5a86e509b036e5533ea2cff145b826c6125b2d221a22539977a75d8d
+2012-03-15 13:49:03,467 [1] DEBUG Server.LogCoordinator - Id :[pts1012] Push :[fd32da1d5a86e509b036e5533ea2cff145b826c6125b2d221a22539977a75d8d] 푸쉬 전달 완료
+2012-03-15 13:49:04,166 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 82cffb90eac6c2d40ed6bd548406e708105d6abdab9575262e48cedbf20ead1d
+2012-03-15 13:49:04,166 [1] DEBUG Server.LogCoordinator - Id :[dohyun0810] Push :[82cffb90eac6c2d40ed6bd548406e708105d6abdab9575262e48cedbf20ead1d] 푸쉬 전달 완료
+2012-03-15 13:49:04,713 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ef88163d83ce9f8bf6fe97ffe1afbe87572ff0e9694689b64aa845d531a048cd
+2012-03-15 13:49:04,713 [1] DEBUG Server.LogCoordinator - Id :[jinah236] Push :[ef88163d83ce9f8bf6fe97ffe1afbe87572ff0e9694689b64aa845d531a048cd] 푸쉬 전달 완료
+2012-03-15 13:49:05,284 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 89af186ae6f96fec935a9673bb765a5dd9fafefa7635514ce6533abcf07957d8
+2012-03-15 13:49:05,285 [1] DEBUG Server.LogCoordinator - Id :[stevejnvai] Push :[89af186ae6f96fec935a9673bb765a5dd9fafefa7635514ce6533abcf07957d8] 푸쉬 전달 완료
+2012-03-15 13:49:05,890 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a55c5c15b857abcbfcc1e565cc8db70078c5ab9faee3617c340321c831b8ae61
+2012-03-15 13:49:05,890 [1] DEBUG Server.LogCoordinator - Id :[czihee] Push :[a55c5c15b857abcbfcc1e565cc8db70078c5ab9faee3617c340321c831b8ae61] 푸쉬 전달 완료
+2012-03-15 13:49:06,433 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4c1a6d0776b084fc4091b9b8541c1037ecbe56cb11e4d4de402faba155ec0eba
+2012-03-15 13:49:06,433 [1] DEBUG Server.LogCoordinator - Id :[pjwook] Push :[4c1a6d0776b084fc4091b9b8541c1037ecbe56cb11e4d4de402faba155ec0eba] 푸쉬 전달 완료
+2012-03-15 13:49:06,970 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 878a95c04e219d089bc6a6acd3c1cf6f77f1632a67dfd2154a3fbfd60bd7d235
+2012-03-15 13:49:06,970 [1] DEBUG Server.LogCoordinator - Id :[pulana14] Push :[878a95c04e219d089bc6a6acd3c1cf6f77f1632a67dfd2154a3fbfd60bd7d235] 푸쉬 전달 완료
+2012-03-15 13:49:07,554 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= cfdcc2121bb5dc45d79474d00bf0a43f8136f169a5021e3c90c9428b44510fbd
+2012-03-15 13:49:07,554 [1] DEBUG Server.LogCoordinator - Id :[cuiey] Push :[cfdcc2121bb5dc45d79474d00bf0a43f8136f169a5021e3c90c9428b44510fbd] 푸쉬 전달 완료
+2012-03-15 13:49:08,194 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 49666cc7c75a9d4c523708b8a6a71cb89c8c06ae30b263b13211dbf9f4f50504
+2012-03-15 13:49:08,194 [1] DEBUG Server.LogCoordinator - Id :[blueholic] Push :[49666cc7c75a9d4c523708b8a6a71cb89c8c06ae30b263b13211dbf9f4f50504] 푸쉬 전달 완료
+2012-03-15 13:49:08,822 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e35ed7a9eb0836c9ae24125f4686c23628857f09dec3dbe6577ade046e0a232a
+2012-03-15 13:49:08,822 [1] DEBUG Server.LogCoordinator - Id :[lgg1402] Push :[e35ed7a9eb0836c9ae24125f4686c23628857f09dec3dbe6577ade046e0a232a] 푸쉬 전달 완료
+2012-03-15 13:49:09,406 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b7dbbab3534ca6ffc57f3bd171711bb80687610bc91e4393b6d90b503ca297f2
+2012-03-15 13:49:09,406 [1] DEBUG Server.LogCoordinator - Id :[shin080314] Push :[b7dbbab3534ca6ffc57f3bd171711bb80687610bc91e4393b6d90b503ca297f2] 푸쉬 전달 완료
+2012-03-15 13:49:09,991 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b241c136952c64fb4e54ade7a014deae61fd56205d23dc0f18262dda1f569361
+2012-03-15 13:49:09,991 [1] DEBUG Server.LogCoordinator - Id :[dreamcast77] Push :[b241c136952c64fb4e54ade7a014deae61fd56205d23dc0f18262dda1f569361] 푸쉬 전달 완료
+2012-03-15 13:49:10,688 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bd30e1e158631a00b64669cb3e4703677ccd32150f3b81fff7f6cdd4b4e36028
+2012-03-15 13:49:10,688 [1] DEBUG Server.LogCoordinator - Id :[gang2105] Push :[bd30e1e158631a00b64669cb3e4703677ccd32150f3b81fff7f6cdd4b4e36028] 푸쉬 전달 완료
+2012-03-15 13:49:11,265 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e8eccc06feacfb778b0622afff4cd0f2c34df175a681a18c4c69cf9d3f5addcf
+2012-03-15 13:49:11,265 [1] DEBUG Server.LogCoordinator - Id :[ljh1203] Push :[e8eccc06feacfb778b0622afff4cd0f2c34df175a681a18c4c69cf9d3f5addcf] 푸쉬 전달 완료
+2012-03-15 13:49:11,850 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 047cabef84f7f6c7b92606b2e026c2b59f24304b1afe037b2d2c1ac8dbd2a670
+2012-03-15 13:49:11,850 [1] DEBUG Server.LogCoordinator - Id :[ijunyk] Push :[047cabef84f7f6c7b92606b2e026c2b59f24304b1afe037b2d2c1ac8dbd2a670] 푸쉬 전달 완료
+2012-03-15 13:49:12,419 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a752865cfc807edf4f4bffde1bbbb8fb2721cbc17bda90d811f6dd36ff127731
+2012-03-15 13:49:12,419 [1] DEBUG Server.LogCoordinator - Id :[paran8519] Push :[a752865cfc807edf4f4bffde1bbbb8fb2721cbc17bda90d811f6dd36ff127731] 푸쉬 전달 완료
+2012-03-15 13:49:12,955 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= df36698c9e1876f060d0f55d314a0b0f1523f1b06d8a5cadd02e4b33dd96b3e4
+2012-03-15 13:49:12,955 [1] DEBUG Server.LogCoordinator - Id :[sjyook0619] Push :[df36698c9e1876f060d0f55d314a0b0f1523f1b06d8a5cadd02e4b33dd96b3e4] 푸쉬 전달 완료
+2012-03-15 13:49:13,491 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d212396597dcb83d46ff240e145c204fcc0017a3f9dcdba975456c9591b8a124
+2012-03-15 13:49:13,491 [1] DEBUG Server.LogCoordinator - Id :[hgh0717] Push :[d212396597dcb83d46ff240e145c204fcc0017a3f9dcdba975456c9591b8a124] 푸쉬 전달 완료
+2012-03-15 13:49:14,122 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 34a0b2c7b40a16ff94c9e5d0ab65cd5f25020769be6d16a47e97b141de131002
+2012-03-15 13:49:14,122 [1] DEBUG Server.LogCoordinator - Id :[kwsxmk] Push :[34a0b2c7b40a16ff94c9e5d0ab65cd5f25020769be6d16a47e97b141de131002] 푸쉬 전달 완료
+2012-03-15 13:49:14,674 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d6871120acda54e3275a590ae4fbcfc86e30ef0dd0961abba478a4b9adeab593
+2012-03-15 13:49:14,674 [1] DEBUG Server.LogCoordinator - Id :[sohaeeun] Push :[d6871120acda54e3275a590ae4fbcfc86e30ef0dd0961abba478a4b9adeab593] 푸쉬 전달 완료
+2012-03-15 13:49:15,255 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5f9071939d3d827540f121f42853b59db1b0173ce923c06b9055357fe48108e2
+2012-03-15 13:49:15,255 [1] DEBUG Server.LogCoordinator - Id :[dlgofla313] Push :[5f9071939d3d827540f121f42853b59db1b0173ce923c06b9055357fe48108e2] 푸쉬 전달 완료
+2012-03-15 13:49:15,866 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 589dbb11cac35ced5ff3f1241dd27e651a2024f8e91eac6796a7d85e7aeb1379
+2012-03-15 13:49:15,866 [1] DEBUG Server.LogCoordinator - Id :[vacia74] Push :[589dbb11cac35ced5ff3f1241dd27e651a2024f8e91eac6796a7d85e7aeb1379] 푸쉬 전달 완료
+2012-03-15 13:49:16,457 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2505754f15e6895f664e355468c27fa6dbc0c0332dc465b163cce86f1d681e94
+2012-03-15 13:49:16,457 [1] DEBUG Server.LogCoordinator - Id :[insecticide] Push :[2505754f15e6895f664e355468c27fa6dbc0c0332dc465b163cce86f1d681e94] 푸쉬 전달 완료
+2012-03-15 13:49:17,027 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 88a386007b6c7caa35de5485599f619c03387a3feecb1b2d0907e16b4a3112ab
+2012-03-15 13:49:17,027 [1] DEBUG Server.LogCoordinator - Id :[_-love] Push :[88a386007b6c7caa35de5485599f619c03387a3feecb1b2d0907e16b4a3112ab] 푸쉬 전달 완료
+2012-03-15 13:49:17,585 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8a69656ea35d98f9ee2466adb947be1f181517dcf1b314b48ff588f2fea74f5d
+2012-03-15 13:49:17,585 [1] DEBUG Server.LogCoordinator - Id :[재꾸] Push :[8a69656ea35d98f9ee2466adb947be1f181517dcf1b314b48ff588f2fea74f5d] 푸쉬 전달 완료
+2012-03-15 13:49:18,283 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= df3e8a920647af0c5d9c164d90360a4204ccc87c67ad40de2ba57690fdf4b918
+2012-03-15 13:49:18,283 [1] DEBUG Server.LogCoordinator - Id :[boram] Push :[df3e8a920647af0c5d9c164d90360a4204ccc87c67ad40de2ba57690fdf4b918] 푸쉬 전달 완료
+2012-03-15 13:49:18,867 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c29a731e5018c1b95ab57e5a463eb1867aec57e8cddf6c41478e5fdba81f4cfe
+2012-03-15 13:49:18,867 [1] DEBUG Server.LogCoordinator - Id :[cindy21199] Push :[c29a731e5018c1b95ab57e5a463eb1867aec57e8cddf6c41478e5fdba81f4cfe] 푸쉬 전달 완료
+2012-03-15 13:49:19,440 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= cbeb6ddff3dcb066072e56cdfaefc471449a2ca5f81cbf403ddced933d47b760
+2012-03-15 13:49:19,440 [1] DEBUG Server.LogCoordinator - Id :[ujinc] Push :[cbeb6ddff3dcb066072e56cdfaefc471449a2ca5f81cbf403ddced933d47b760] 푸쉬 전달 완료
+2012-03-15 13:49:20,016 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 69635d0ec01deaaace675f0376cc8601a8a8ef6bb779b7cacf7f84d318d59402
+2012-03-15 13:49:20,016 [1] DEBUG Server.LogCoordinator - Id :[bjy1995] Push :[69635d0ec01deaaace675f0376cc8601a8a8ef6bb779b7cacf7f84d318d59402] 푸쉬 전달 완료
+2012-03-15 13:49:20,586 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= fdc55e47bd064032503f3dae6a5964b70880d6d20e488978ede25434e2108ddb
+2012-03-15 13:49:20,586 [1] DEBUG Server.LogCoordinator - Id :[pjh69302] Push :[fdc55e47bd064032503f3dae6a5964b70880d6d20e488978ede25434e2108ddb] 푸쉬 전달 완료
+2012-03-15 13:49:21,323 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= add2c6d7a12b2d41f7c29b161bb4857982e104f0ebcf09a0fb1272beddc43456
+2012-03-15 13:49:21,323 [1] DEBUG Server.LogCoordinator - Id :[jelim0204] Push :[add2c6d7a12b2d41f7c29b161bb4857982e104f0ebcf09a0fb1272beddc43456] 푸쉬 전달 완료
+2012-03-15 13:49:21,970 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2172f586c7c4032fd99c0eaef34eaf050b0beef1aee08cec72a4934b51cf4410
+2012-03-15 13:49:21,970 [1] DEBUG Server.LogCoordinator - Id :[ohsj5791] Push :[2172f586c7c4032fd99c0eaef34eaf050b0beef1aee08cec72a4934b51cf4410] 푸쉬 전달 완료
+2012-03-15 13:49:22,518 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6ff2f3af1d9bdb90d50c0c3c5b248baf35f55242a6c5cc532f79a87015eb4860
+2012-03-15 13:49:22,518 [1] DEBUG Server.LogCoordinator - Id :[chaos0224] Push :[6ff2f3af1d9bdb90d50c0c3c5b248baf35f55242a6c5cc532f79a87015eb4860] 푸쉬 전달 완료
+2012-03-15 13:49:23,105 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a12dc975ea0a407ab24f10fccfa4890bb37d06384d1d983b259724c14fbde811
+2012-03-15 13:49:23,105 [1] DEBUG Server.LogCoordinator - Id :[del9405] Push :[a12dc975ea0a407ab24f10fccfa4890bb37d06384d1d983b259724c14fbde811] 푸쉬 전달 완료
+2012-03-15 13:49:23,769 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f29e212fa212db04a0bac292cb8578c04f23a8126d76782c56003155c8d43f4d
+2012-03-15 13:49:23,769 [1] DEBUG Server.LogCoordinator - Id :[dbtu1995] Push :[f29e212fa212db04a0bac292cb8578c04f23a8126d76782c56003155c8d43f4d] 푸쉬 전달 완료
+2012-03-15 13:49:24,352 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0e629a75ce53c441390de7dfa9c5d3d5ebdbac84216048484cf6699cb10258ee
+2012-03-15 13:49:24,352 [1] DEBUG Server.LogCoordinator - Id :[yeseul07] Push :[0e629a75ce53c441390de7dfa9c5d3d5ebdbac84216048484cf6699cb10258ee] 푸쉬 전달 완료
+2012-03-15 13:49:24,941 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d422604979b87839184b7be796bf6b27fcd168301f1e6a5f5507bfe35e07d587
+2012-03-15 13:49:24,941 [1] DEBUG Server.LogCoordinator - Id :[ksy3399] Push :[d422604979b87839184b7be796bf6b27fcd168301f1e6a5f5507bfe35e07d587] 푸쉬 전달 완료
+2012-03-15 13:49:25,588 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e2af807c7afe0cbc8a6bffab0c5f5347be9b7afbc566297596409b60140c0f30
+2012-03-15 13:49:25,588 [1] DEBUG Server.LogCoordinator - Id :[dudrnjs06] Push :[e2af807c7afe0cbc8a6bffab0c5f5347be9b7afbc566297596409b60140c0f30] 푸쉬 전달 완료
+2012-03-15 13:49:26,176 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a52bf152510c154dde4fe8898e9ef2a5604d3c636435dc590a4788403fef8b54
+2012-03-15 13:49:26,176 [1] DEBUG Server.LogCoordinator - Id :[stm1207] Push :[a52bf152510c154dde4fe8898e9ef2a5604d3c636435dc590a4788403fef8b54] 푸쉬 전달 완료
+2012-03-15 13:49:26,721 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5b2eec753da436305c68ef3c2258dcec3f6d127ad6a20f3d0acfc4c97701f4a1
+2012-03-15 13:49:26,721 [1] DEBUG Server.LogCoordinator - Id :[yss4379] Push :[5b2eec753da436305c68ef3c2258dcec3f6d127ad6a20f3d0acfc4c97701f4a1] 푸쉬 전달 완료
+2012-03-15 13:49:27,322 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 41ca906783cdf0a80b69dde2e051e32a099344866f2ff22958301089bf4d57bf
+2012-03-15 13:49:27,322 [1] DEBUG Server.LogCoordinator - Id :[iceba00] Push :[41ca906783cdf0a80b69dde2e051e32a099344866f2ff22958301089bf4d57bf] 푸쉬 전달 완료
+2012-03-15 13:49:27,860 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5c1884237679a4d1969393cb36dfeef2df3c4f3529d3942440b62198d7b225ff
+2012-03-15 13:49:27,860 [1] DEBUG Server.LogCoordinator - Id :[wkdtjrdn1223] Push :[5c1884237679a4d1969393cb36dfeef2df3c4f3529d3942440b62198d7b225ff] 푸쉬 전달 완료
+2012-03-15 13:49:28,445 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4d1ab4cf925b1bd02e408ee10388872f382371eed9ed7bbf05bbe1e83b83ad09
+2012-03-15 13:49:28,445 [1] DEBUG Server.LogCoordinator - Id :[kimth805] Push :[4d1ab4cf925b1bd02e408ee10388872f382371eed9ed7bbf05bbe1e83b83ad09] 푸쉬 전달 완료
+2012-03-15 13:49:29,032 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 52b1aa25530ad3d553c6c6721817ac1026d63332316eb53e56b930bffc39bda4
+2012-03-15 13:49:29,032 [1] DEBUG Server.LogCoordinator - Id :[oroforof0105] Push :[52b1aa25530ad3d553c6c6721817ac1026d63332316eb53e56b930bffc39bda4] 푸쉬 전달 완료
+2012-03-15 13:49:29,614 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b5156c04fb766eaa7117ad30dc85db5ae473bd0485b923a82f19ca24d11ba635
+2012-03-15 13:49:29,614 [1] DEBUG Server.LogCoordinator - Id :[Hjin0824] Push :[b5156c04fb766eaa7117ad30dc85db5ae473bd0485b923a82f19ca24d11ba635] 푸쉬 전달 완료
+2012-03-15 13:49:30,209 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= df932e880bc2589b85195f85c5c4493af6cbe1d5ec111051ea98b13957a7445e
+2012-03-15 13:49:30,209 [1] DEBUG Server.LogCoordinator - Id :[gorush531] Push :[df932e880bc2589b85195f85c5c4493af6cbe1d5ec111051ea98b13957a7445e] 푸쉬 전달 완료
+2012-03-15 13:49:30,795 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f753b8282ace0f3aae4540bea945f3471185b44cec8617c56b12beb0bde8517a
+2012-03-15 13:49:30,795 [1] DEBUG Server.LogCoordinator - Id :[skdud1096] Push :[f753b8282ace0f3aae4540bea945f3471185b44cec8617c56b12beb0bde8517a] 푸쉬 전달 완료
+2012-03-15 13:49:31,381 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4df5bb848f6ede64fb84753323fb2a7be961ac448d97fc48115cf32490bc36fc
+2012-03-15 13:49:31,382 [1] DEBUG Server.LogCoordinator - Id :[ipkn] Push :[4df5bb848f6ede64fb84753323fb2a7be961ac448d97fc48115cf32490bc36fc] 푸쉬 전달 완료
+2012-03-15 13:49:31,955 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 966ca18826bb53634d8cd65c1452eeae317395efb615f51f637231d7abe2b8e5
+2012-03-15 13:49:31,955 [1] DEBUG Server.LogCoordinator - Id :[gustjd312] Push :[966ca18826bb53634d8cd65c1452eeae317395efb615f51f637231d7abe2b8e5] 푸쉬 전달 완료
+2012-03-15 13:49:32,530 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 044d739184018c77e672f4a2af0f26b4aa49667f25e17cf63109ab5bff44242f
+2012-03-15 13:49:32,530 [1] DEBUG Server.LogCoordinator - Id :[sohyundla] Push :[044d739184018c77e672f4a2af0f26b4aa49667f25e17cf63109ab5bff44242f] 푸쉬 전달 완료
+2012-03-15 13:49:33,103 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ceab390f153a0c5c299f88e7c2af0b16ed401207402a6543fed65d4dcc45cb89
+2012-03-15 13:49:33,103 [1] DEBUG Server.LogCoordinator - Id :[hwan1878] Push :[ceab390f153a0c5c299f88e7c2af0b16ed401207402a6543fed65d4dcc45cb89] 푸쉬 전달 완료
+2012-03-15 13:49:33,689 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d1e7d5c7f3ff9161a151f218e94f2fe9cfc97362e59626b985086fcb5683bf43
+2012-03-15 13:49:33,689 [1] DEBUG Server.LogCoordinator - Id :[jroytt] Push :[d1e7d5c7f3ff9161a151f218e94f2fe9cfc97362e59626b985086fcb5683bf43] 푸쉬 전달 완료
+2012-03-15 13:49:34,224 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 88070ac5d296ef684ebd5a1dec0e457fa7ad044badc4ab7ab023487b3bd82dd4
+2012-03-15 13:49:34,224 [1] DEBUG Server.LogCoordinator - Id :[ssemule] Push :[88070ac5d296ef684ebd5a1dec0e457fa7ad044badc4ab7ab023487b3bd82dd4] 푸쉬 전달 완료
+2012-03-15 13:49:34,807 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bf7ff9ce925198f4fffb313cbd2c40baf4ba5205cb1f6b3d9c16850ce8f10c56
+2012-03-15 13:49:34,807 [1] DEBUG Server.LogCoordinator - Id :[asdf] Push :[bf7ff9ce925198f4fffb313cbd2c40baf4ba5205cb1f6b3d9c16850ce8f10c56] 푸쉬 전달 완료
+2012-03-15 13:49:35,367 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4f7707af3d33ae9876ce1277ca47b553aeed1a41ec9b07eccd33fec1f1927d1e
+2012-03-15 13:49:35,367 [1] DEBUG Server.LogCoordinator - Id :[trinity03240] Push :[4f7707af3d33ae9876ce1277ca47b553aeed1a41ec9b07eccd33fec1f1927d1e] 푸쉬 전달 완료
+2012-03-15 13:49:35,915 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7a2080c858064b55bd9d2160e23ceadc4a5aa1d2b5b2afb9d1b1aacba72e5397
+2012-03-15 13:49:35,916 [1] DEBUG Server.LogCoordinator - Id :[whalswn37] Push :[7a2080c858064b55bd9d2160e23ceadc4a5aa1d2b5b2afb9d1b1aacba72e5397] 푸쉬 전달 완료
+2012-03-15 13:49:36,556 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 56ecb31f5bedac191f520744c138039fc3e030a79d977af4ddf3106dddd37129
+2012-03-15 13:49:36,556 [1] DEBUG Server.LogCoordinator - Id :[cheon95] Push :[56ecb31f5bedac191f520744c138039fc3e030a79d977af4ddf3106dddd37129] 푸쉬 전달 완료
+2012-03-15 13:49:37,138 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8b8f2f4c747b37b8912d96f17fcb75aa1352672a19ce418105383004c0340a75
+2012-03-15 13:49:37,138 [1] DEBUG Server.LogCoordinator - Id :[gnusoom] Push :[8b8f2f4c747b37b8912d96f17fcb75aa1352672a19ce418105383004c0340a75] 푸쉬 전달 완료
+2012-03-15 13:49:37,724 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= af5a3d6fbdd1ffc80c69aa5fe7c588c4b8c2bd99851e661ed5bb00241c742751
+2012-03-15 13:49:37,724 [1] DEBUG Server.LogCoordinator - Id :[nara] Push :[af5a3d6fbdd1ffc80c69aa5fe7c588c4b8c2bd99851e661ed5bb00241c742751] 푸쉬 전달 완료
+2012-03-15 13:49:38,334 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 252672aaf8c0a5f8c44d67e6b8ed8d8cc4b82f819b2a967cd659196987381732
+2012-03-15 13:49:38,334 [1] DEBUG Server.LogCoordinator - Id :[hinahee] Push :[252672aaf8c0a5f8c44d67e6b8ed8d8cc4b82f819b2a967cd659196987381732] 푸쉬 전달 완료
+2012-03-15 13:49:38,918 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6b9ff7be0b21cc87cd584e1630798aec29d9f98daf5a0352d5a8e0bae5d79567
+2012-03-15 13:49:38,918 [1] DEBUG Server.LogCoordinator - Id :[lchan96] Push :[6b9ff7be0b21cc87cd584e1630798aec29d9f98daf5a0352d5a8e0bae5d79567] 푸쉬 전달 완료
+2012-03-15 13:49:39,508 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 86eb4592bc677a88954fcd7a965538a8bfe760834b78fa4df40e20aeb4615d1d
+2012-03-15 13:49:39,508 [1] DEBUG Server.LogCoordinator - Id :[xbox805] Push :[86eb4592bc677a88954fcd7a965538a8bfe760834b78fa4df40e20aeb4615d1d] 푸쉬 전달 완료
+2012-03-15 13:49:40,085 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 00f9501c69227f50e5d8a9fd4c26260d28d38c8ab1acad675001d14a6f4e7b97
+2012-03-15 13:49:40,085 [1] DEBUG Server.LogCoordinator - Id :[kevin030] Push :[00f9501c69227f50e5d8a9fd4c26260d28d38c8ab1acad675001d14a6f4e7b97] 푸쉬 전달 완료
+2012-03-15 13:49:40,669 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5dd1a5856f004d291bbd99c2cf0e0dca5338d47a47ff3706ea4474cd2912d4b5
+2012-03-15 13:49:40,669 [1] DEBUG Server.LogCoordinator - Id :[yusung5389] Push :[5dd1a5856f004d291bbd99c2cf0e0dca5338d47a47ff3706ea4474cd2912d4b5] 푸쉬 전달 완료
+2012-03-15 13:49:41,215 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b6e7e922e36fcaacfaef75f8e0f45638a84ac874e9868bcce2ad14d5028d221d
+2012-03-15 13:49:41,216 [1] DEBUG Server.LogCoordinator - Id :[ldh16164] Push :[b6e7e922e36fcaacfaef75f8e0f45638a84ac874e9868bcce2ad14d5028d221d] 푸쉬 전달 완료
+2012-03-15 13:49:41,965 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 76821e92b81253b5dc7af5f76249e6fe68c63d82f17b0bcb33a69429c3522800
+2012-03-15 13:49:41,965 [1] DEBUG Server.LogCoordinator - Id :[hmjudy] Push :[76821e92b81253b5dc7af5f76249e6fe68c63d82f17b0bcb33a69429c3522800] 푸쉬 전달 완료
+2012-03-15 13:49:42,551 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f2f0d85803cd6c88cda6c4bf85304de864e30a827882aa9d14c8a9945802987e
+2012-03-15 13:49:42,551 [1] DEBUG Server.LogCoordinator - Id :[sunnyclee] Push :[f2f0d85803cd6c88cda6c4bf85304de864e30a827882aa9d14c8a9945802987e] 푸쉬 전달 완료
+2012-03-15 13:49:43,138 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f5080c7cd8296641d64eccad46e02c1ac06a213035ed7879646f82385c9bf11d
+2012-03-15 13:49:43,138 [1] DEBUG Server.LogCoordinator - Id :[pminji03] Push :[f5080c7cd8296641d64eccad46e02c1ac06a213035ed7879646f82385c9bf11d] 푸쉬 전달 완료
+2012-03-15 13:49:43,771 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b9b8e85d7e6d5f603052366bb63308071c39cd79e4d521c20d73878c45ee3dcd
+2012-03-15 13:49:43,771 [1] DEBUG Server.LogCoordinator - Id :[zmong] Push :[b9b8e85d7e6d5f603052366bb63308071c39cd79e4d521c20d73878c45ee3dcd] 푸쉬 전달 완료
+2012-03-15 13:49:44,432 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b40c51eaee82f2ae3707c7500c0d0114c319d89edd181819774fe5cc51ccf6b1
+2012-03-15 13:49:44,432 [1] DEBUG Server.LogCoordinator - Id :[wkdgns234] Push :[b40c51eaee82f2ae3707c7500c0d0114c319d89edd181819774fe5cc51ccf6b1] 푸쉬 전달 완료
+2012-03-15 13:49:45,002 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 442650cfd27ca564829177cdaba174bd2fd3fecb3932a74b67b574695846ae8a
+2012-03-15 13:49:45,002 [1] DEBUG Server.LogCoordinator - Id :[황규원] Push :[442650cfd27ca564829177cdaba174bd2fd3fecb3932a74b67b574695846ae8a] 푸쉬 전달 완료
+2012-03-15 13:49:45,597 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8ab70d575c2addaee16869d9593b907b85d5acc7a2052428c299f0fd31956723
+2012-03-15 13:49:45,597 [1] DEBUG Server.LogCoordinator - Id :[shmoon0114] Push :[8ab70d575c2addaee16869d9593b907b85d5acc7a2052428c299f0fd31956723] 푸쉬 전달 완료
+2012-03-15 13:49:46,182 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a960db0bd12026bd8eba1defb04346b96485984fb5f17aaf37c45ca3ebc81235
+2012-03-15 13:49:46,182 [1] DEBUG Server.LogCoordinator - Id :[sang9c] Push :[a960db0bd12026bd8eba1defb04346b96485984fb5f17aaf37c45ca3ebc81235] 푸쉬 전달 완료
+2012-03-15 13:49:46,764 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a7e15e5b7f358d2df6a61525b760b37cc882423b6dbef1333f816d5ff6fc4ffe
+2012-03-15 13:49:46,764 [1] DEBUG Server.LogCoordinator - Id :[minh8978] Push :[a7e15e5b7f358d2df6a61525b760b37cc882423b6dbef1333f816d5ff6fc4ffe] 푸쉬 전달 완료
+2012-03-15 13:49:47,416 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4ea9e8fa3dd4a17f25611c0e067b66f6297ee57a3780d603ce9e28225c4d28f5
+2012-03-15 13:49:47,416 [1] DEBUG Server.LogCoordinator - Id :[whddn5623] Push :[4ea9e8fa3dd4a17f25611c0e067b66f6297ee57a3780d603ce9e28225c4d28f5] 푸쉬 전달 완료
+2012-03-15 13:49:47,999 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 438a16b4e22dedfa82ae605b44d6afe61692162525bc3116cf4c4ea5f9cc7255
+2012-03-15 13:49:47,999 [1] DEBUG Server.LogCoordinator - Id :[Monica ] Push :[438a16b4e22dedfa82ae605b44d6afe61692162525bc3116cf4c4ea5f9cc7255] 푸쉬 전달 완료
+2012-03-15 13:49:48,581 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 32031c138d7c546e524bfbf0be631b51a44e9d7d380a592939df86ac7ee4cdce
+2012-03-15 13:49:48,581 [1] DEBUG Server.LogCoordinator - Id :[hyoniee] Push :[32031c138d7c546e524bfbf0be631b51a44e9d7d380a592939df86ac7ee4cdce] 푸쉬 전달 완료
+2012-03-15 13:49:49,167 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 333ee783c6bde2cc76c2125bc19f92970285621df79b1e4ebd0f68675e40f35f
+2012-03-15 13:49:49,167 [1] DEBUG Server.LogCoordinator - Id :[heart1227] Push :[333ee783c6bde2cc76c2125bc19f92970285621df79b1e4ebd0f68675e40f35f] 푸쉬 전달 완료
+2012-03-15 13:49:49,819 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b9aa1b7560f4b1aa421915664b90c01d91328a5adad045fc3e42acd8cfc25351
+2012-03-15 13:49:49,819 [1] DEBUG Server.LogCoordinator - Id :[minsu2000] Push :[b9aa1b7560f4b1aa421915664b90c01d91328a5adad045fc3e42acd8cfc25351] 푸쉬 전달 완료
+2012-03-15 13:49:50,502 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0cc882cff47dc3ae1925bd6894ab6871e877dcb815ed96c6e781010489e6db3d
+2012-03-15 13:49:50,502 [1] DEBUG Server.LogCoordinator - Id :[eSsseon] Push :[0cc882cff47dc3ae1925bd6894ab6871e877dcb815ed96c6e781010489e6db3d] 푸쉬 전달 완료
+2012-03-15 13:49:51,097 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2918e6f1bce08c4bd0943eaa23691a6c8ac9b48b820836c9aeb38c73e590d21a
+2012-03-15 13:49:51,097 [1] DEBUG Server.LogCoordinator - Id :[rheekh2007] Push :[2918e6f1bce08c4bd0943eaa23691a6c8ac9b48b820836c9aeb38c73e590d21a] 푸쉬 전달 완료
+2012-03-15 13:49:51,680 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 97cce901c853ec54d9450b75508e06fad59ee8a0c4dfc698c3f2ed3305f70324
+2012-03-15 13:49:51,680 [1] DEBUG Server.LogCoordinator - Id :[kwonhyeji95] Push :[97cce901c853ec54d9450b75508e06fad59ee8a0c4dfc698c3f2ed3305f70324] 푸쉬 전달 완료
+2012-03-15 13:49:52,369 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 749a461328e475cc274a6253bb541f21a1dd647106d72b5437d9a373fb2cb9ad
+2012-03-15 13:49:52,369 [1] DEBUG Server.LogCoordinator - Id :[rudals758] Push :[749a461328e475cc274a6253bb541f21a1dd647106d72b5437d9a373fb2cb9ad] 푸쉬 전달 완료
+2012-03-15 13:49:53,002 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 333d3f8ea4b3ddb490191511392345bb9d1d3cfe56ded95db76d7bbe2ff0edd6
+2012-03-15 13:49:53,002 [1] DEBUG Server.LogCoordinator - Id :[IFLover] Push :[333d3f8ea4b3ddb490191511392345bb9d1d3cfe56ded95db76d7bbe2ff0edd6] 푸쉬 전달 완료
+2012-03-15 13:49:53,546 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1df4384d91ab76dde4c8a6d9a9bce662de23b34a4335656a4fa56a53efeb305c
+2012-03-15 13:49:53,546 [1] DEBUG Server.LogCoordinator - Id :[qufdl78] Push :[1df4384d91ab76dde4c8a6d9a9bce662de23b34a4335656a4fa56a53efeb305c] 푸쉬 전달 완료
+2012-03-15 13:49:54,150 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 668814c23bcb47f3c4488c4a23b73263c452be7a3dbbd66b5640831dd69d8d3f
+2012-03-15 13:49:54,150 [1] DEBUG Server.LogCoordinator - Id :[alstj5784] Push :[668814c23bcb47f3c4488c4a23b73263c452be7a3dbbd66b5640831dd69d8d3f] 푸쉬 전달 완료
+2012-03-15 13:49:54,732 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f85a1472caa8395d97150fc98b2b231d6e4162cdd82d2afbd236516f422787bd
+2012-03-15 13:49:54,732 [1] DEBUG Server.LogCoordinator - Id :[topjay7] Push :[f85a1472caa8395d97150fc98b2b231d6e4162cdd82d2afbd236516f422787bd] 푸쉬 전달 완료
+2012-03-15 13:49:55,316 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= cc55d0fc40454d3385e8c55a2d1ea882fbb8ec6e5ad0b47346b25231ebf703d3
+2012-03-15 13:49:55,316 [1] DEBUG Server.LogCoordinator - Id :[dkajdp123] Push :[cc55d0fc40454d3385e8c55a2d1ea882fbb8ec6e5ad0b47346b25231ebf703d3] 푸쉬 전달 완료
+2012-03-15 13:49:55,900 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8720762b4532314e29a7635630cb4a2f16da220e2256b411da1cfde70cd79033
+2012-03-15 13:49:55,900 [1] DEBUG Server.LogCoordinator - Id :[mikewldms12] Push :[8720762b4532314e29a7635630cb4a2f16da220e2256b411da1cfde70cd79033] 푸쉬 전달 완료
+2012-03-15 13:49:56,517 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8b45a47c17d2a279319fb81e025b2d9eca86c6bc6e2b708704735797648fa197
+2012-03-15 13:49:56,517 [1] DEBUG Server.LogCoordinator - Id :[ksd7332] Push :[8b45a47c17d2a279319fb81e025b2d9eca86c6bc6e2b708704735797648fa197] 푸쉬 전달 완료
+2012-03-15 13:49:57,100 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a83363a021def2ed5be5d93ae7704a2914e12ab0c58ace188523278919b975cc
+2012-03-15 13:49:57,100 [1] DEBUG Server.LogCoordinator - Id :[kkdong94] Push :[a83363a021def2ed5be5d93ae7704a2914e12ab0c58ace188523278919b975cc] 푸쉬 전달 완료
+2012-03-15 13:49:57,684 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0b7cecaf73af02c1b3542fb2e3269a134cedd8969c1123d7afbdbe4658ac274a
+2012-03-15 13:49:57,684 [1] DEBUG Server.LogCoordinator - Id :[roshokr] Push :[0b7cecaf73af02c1b3542fb2e3269a134cedd8969c1123d7afbdbe4658ac274a] 푸쉬 전달 완료
+2012-03-15 13:49:58,301 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6245abf44f5cc38a69a1c04d5f10c96c662ef3774043c4ab1aecaefcfb758526
+2012-03-15 13:49:58,301 [1] DEBUG Server.LogCoordinator - Id :[mamsell] Push :[6245abf44f5cc38a69a1c04d5f10c96c662ef3774043c4ab1aecaefcfb758526] 푸쉬 전달 완료
+2012-03-15 13:49:58,886 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= eec602295525401ca47d251a022ecab874a7b749b177016776fb96cbf3ede1f6
+2012-03-15 13:49:58,887 [1] DEBUG Server.LogCoordinator - Id :[soscucu] Push :[eec602295525401ca47d251a022ecab874a7b749b177016776fb96cbf3ede1f6] 푸쉬 전달 완료
+2012-03-15 13:49:59,535 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 169a4c22485722ffd94629288f3f39ffee87042d3dbd7e5e9ca210f0be908536
+2012-03-15 13:49:59,535 [1] DEBUG Server.LogCoordinator - Id :[nookery] Push :[169a4c22485722ffd94629288f3f39ffee87042d3dbd7e5e9ca210f0be908536] 푸쉬 전달 완료
+2012-03-15 13:50:00,163 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d51664d1d30bf61c788a447a946b18391c83aa56ef1252c357a84056c65cbc17
+2012-03-15 13:50:00,163 [1] DEBUG Server.LogCoordinator - Id :[hhj19954] Push :[d51664d1d30bf61c788a447a946b18391c83aa56ef1252c357a84056c65cbc17] 푸쉬 전달 완료
+2012-03-15 13:50:00,781 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4800ad253a40dc620f7a6151598336d5a24169e5a3218a178b153c56aef7490c
+2012-03-15 13:50:00,781 [1] DEBUG Server.LogCoordinator - Id :[kangjungwha] Push :[4800ad253a40dc620f7a6151598336d5a24169e5a3218a178b153c56aef7490c] 푸쉬 전달 완료
+2012-03-15 13:50:01,323 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 54fb7e6f1003919f74d7d7805ab0fb401308ccee7e18c3981879b10c6d06c697
+2012-03-15 13:50:01,323 [1] DEBUG Server.LogCoordinator - Id :[greentree814] Push :[54fb7e6f1003919f74d7d7805ab0fb401308ccee7e18c3981879b10c6d06c697] 푸쉬 전달 완료
+2012-03-15 13:50:01,958 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d35a2a255319fdbb340a6aa3599333516bd9561ad4fcd84f65dde5ee4ca59864
+2012-03-15 13:50:01,958 [1] DEBUG Server.LogCoordinator - Id :[tjdwns1025] Push :[d35a2a255319fdbb340a6aa3599333516bd9561ad4fcd84f65dde5ee4ca59864] 푸쉬 전달 완료
+2012-03-15 13:50:02,642 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ac8e28fe0a802f79a37bfd7f72b04b17639dde8806ad3fdb21f14e2657726090
+2012-03-15 13:50:02,642 [1] DEBUG Server.LogCoordinator - Id :[wlsrud5020] Push :[ac8e28fe0a802f79a37bfd7f72b04b17639dde8806ad3fdb21f14e2657726090] 푸쉬 전달 완료
+2012-03-15 13:50:03,224 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e5228a6f6a2fbb61c27b00d5c092ca92aea0da8a1a45a686677a2b6fef286ca5
+2012-03-15 13:50:03,224 [1] DEBUG Server.LogCoordinator - Id :[shb1208] Push :[e5228a6f6a2fbb61c27b00d5c092ca92aea0da8a1a45a686677a2b6fef286ca5] 푸쉬 전달 완료
+2012-03-15 13:50:03,765 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6ab1f532229f1ca4f254a95ba2db05c423311614bebd4727059592d66d4e0b42
+2012-03-15 13:50:03,765 [1] DEBUG Server.LogCoordinator - Id :[6reean] Push :[6ab1f532229f1ca4f254a95ba2db05c423311614bebd4727059592d66d4e0b42] 푸쉬 전달 완료
+2012-03-15 13:50:04,353 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= deed23431e96790a1ade2867a4fe202dbd1b2d57c0b0b34b39276d82bcd002f5
+2012-03-15 13:50:04,354 [1] DEBUG Server.LogCoordinator - Id :[gaegboy] Push :[deed23431e96790a1ade2867a4fe202dbd1b2d57c0b0b34b39276d82bcd002f5] 푸쉬 전달 완료
+2012-03-15 13:50:04,998 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= dc20dd34c88c927ac6880f0d10118e2a739122ae6dc114b65dba3267805e83f8
+2012-03-15 13:50:04,998 [1] DEBUG Server.LogCoordinator - Id :[soobin0923] Push :[dc20dd34c88c927ac6880f0d10118e2a739122ae6dc114b65dba3267805e83f8] 푸쉬 전달 완료
+2012-03-15 13:50:05,672 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a6f243a9f3d2cb9a56a81402ee7f64f7dcb3da5032b35e667499846ec353fc80
+2012-03-15 13:50:05,672 [1] DEBUG Server.LogCoordinator - Id :[korea5834] Push :[a6f243a9f3d2cb9a56a81402ee7f64f7dcb3da5032b35e667499846ec353fc80] 푸쉬 전달 완료
+2012-03-15 13:50:06,271 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= afc81acf4f596802c09145c200e3de25625b177b0704e276935df798ed3c054d
+2012-03-15 13:50:06,271 [1] DEBUG Server.LogCoordinator - Id :[tpals5834] Push :[afc81acf4f596802c09145c200e3de25625b177b0704e276935df798ed3c054d] 푸쉬 전달 완료
+2012-03-15 13:50:06,882 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a97f6ed89e844141b99856f2ec648b8183ee7e56ccb25b9d5c7d13eba2e25867
+2012-03-15 13:50:06,882 [1] DEBUG Server.LogCoordinator - Id :[kim11600] Push :[a97f6ed89e844141b99856f2ec648b8183ee7e56ccb25b9d5c7d13eba2e25867] 푸쉬 전달 완료
+2012-03-15 13:50:07,507 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 81169df4792008c5c1a43ed5f75fc84eb3a2b50b0aa567a38944872226858dab
+2012-03-15 13:50:07,507 [1] DEBUG Server.LogCoordinator - Id :[klsk040] Push :[81169df4792008c5c1a43ed5f75fc84eb3a2b50b0aa567a38944872226858dab] 푸쉬 전달 완료
+2012-03-15 13:50:08,093 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7c5cffd2a45a890362b7fa74972c4df8a34e18de527ec959329611dda867a522
+2012-03-15 13:50:08,093 [1] DEBUG Server.LogCoordinator - Id :[gju200] Push :[7c5cffd2a45a890362b7fa74972c4df8a34e18de527ec959329611dda867a522] 푸쉬 전달 완료
+2012-03-15 13:50:08,759 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2b044537d94f75ba0fb517dd62ed93c4a3ec2de03e4cf40a4c61481506a4645c
+2012-03-15 13:50:08,759 [1] DEBUG Server.LogCoordinator - Id :[kate1233] Push :[2b044537d94f75ba0fb517dd62ed93c4a3ec2de03e4cf40a4c61481506a4645c] 푸쉬 전달 완료
+2012-03-15 13:50:09,305 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f0b595455bf6bbf5df35a17df3f81c4f6d073328ed043cc34dc16d51d30c69f5
+2012-03-15 13:50:09,305 [1] DEBUG Server.LogCoordinator - Id :[jww0903] Push :[f0b595455bf6bbf5df35a17df3f81c4f6d073328ed043cc34dc16d51d30c69f5] 푸쉬 전달 완료
+2012-03-15 13:50:09,853 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d18caded0f85c99b31f7a2dde129481e5f206e5cbe039169a04a7299c7f097d6
+2012-03-15 13:50:09,853 [1] DEBUG Server.LogCoordinator - Id :[1692254] Push :[d18caded0f85c99b31f7a2dde129481e5f206e5cbe039169a04a7299c7f097d6] 푸쉬 전달 완료
+2012-03-15 13:50:10,405 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5ec96c71ee8f1998e37690d2fb62a2111f9cc67b17237c2181f2fd0e47575fc6
+2012-03-15 13:50:10,405 [1] DEBUG Server.LogCoordinator - Id :[seungjun611] Push :[5ec96c71ee8f1998e37690d2fb62a2111f9cc67b17237c2181f2fd0e47575fc6] 푸쉬 전달 완료
+2012-03-15 13:50:10,944 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a1be143a1447dba93fed998e242d74c5a740a5af0a9be5c95ff7d712e68e3f5f
+2012-03-15 13:50:10,944 [1] DEBUG Server.LogCoordinator - Id :[sungwoo9935] Push :[a1be143a1447dba93fed998e242d74c5a740a5af0a9be5c95ff7d712e68e3f5f] 푸쉬 전달 완료
+2012-03-15 13:50:11,536 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bed3cc610434568c36c3365a9ae7438e3b2a5d7b63e5ab8884cb4bd417288d80
+2012-03-15 13:50:11,536 [1] DEBUG Server.LogCoordinator - Id :[ytm11414] Push :[bed3cc610434568c36c3365a9ae7438e3b2a5d7b63e5ab8884cb4bd417288d80] 푸쉬 전달 완료
+2012-03-15 13:50:12,122 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 442009137759432f02ed02e0009fc525ee00b623826881d5efe1f67175a0dcab
+2012-03-15 13:50:12,122 [1] DEBUG Server.LogCoordinator - Id :[kepttrying2] Push :[442009137759432f02ed02e0009fc525ee00b623826881d5efe1f67175a0dcab] 푸쉬 전달 완료
+2012-03-15 13:50:12,689 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= be497d1f7345ee9330c4bf0e2d5f78cb0d97fd35ea2c852dcfb5629351212212
+2012-03-15 13:50:12,689 [1] DEBUG Server.LogCoordinator - Id :[gus4276] Push :[be497d1f7345ee9330c4bf0e2d5f78cb0d97fd35ea2c852dcfb5629351212212] 푸쉬 전달 완료
+2012-03-15 13:50:13,276 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 764e59ffb795457991208be3d5c34f51174c7556b6e1682c8ca7c2617772c97a
+2012-03-15 13:50:13,276 [1] DEBUG Server.LogCoordinator - Id :[kfhtsgk] Push :[764e59ffb795457991208be3d5c34f51174c7556b6e1682c8ca7c2617772c97a] 푸쉬 전달 완료
+2012-03-15 13:50:13,858 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 919f1cc21d95d85d89fe89fc86d8e2a27c625fb26baedaf75a900fdd7a5268c6
+2012-03-15 13:50:13,858 [1] DEBUG Server.LogCoordinator - Id :[dwbk00] Push :[919f1cc21d95d85d89fe89fc86d8e2a27c625fb26baedaf75a900fdd7a5268c6] 푸쉬 전달 완료
+2012-03-15 13:50:14,503 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 85257a7818ce69fff6f84b7f1283a439b00891e8a22a10d41fb475335a68a083
+2012-03-15 13:50:14,503 [1] DEBUG Server.LogCoordinator - Id :[wooya1319] Push :[85257a7818ce69fff6f84b7f1283a439b00891e8a22a10d41fb475335a68a083] 푸쉬 전달 완료
+2012-03-15 13:50:15,053 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 49345fcf2eeadd5d6fbd51194b1e94546ecdb5911b20ef5fc480585c9c7e5a08
+2012-03-15 13:50:15,053 [1] DEBUG Server.LogCoordinator - Id :[tlsrud123] Push :[49345fcf2eeadd5d6fbd51194b1e94546ecdb5911b20ef5fc480585c9c7e5a08] 푸쉬 전달 완료
+2012-03-15 13:50:15,639 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 75bab1ef83bc756b50a2aa98ac597bc973f722b042923433cf41a2b13f4e16df
+2012-03-15 13:50:15,639 [1] DEBUG Server.LogCoordinator - Id :[ckddn0117] Push :[75bab1ef83bc756b50a2aa98ac597bc973f722b042923433cf41a2b13f4e16df] 푸쉬 전달 완료
+2012-03-15 13:50:16,216 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 855a002265cc02f775a8b0155210d6b72090e63a41b7fc386cca225c14a51ee1
+2012-03-15 13:50:16,216 [1] DEBUG Server.LogCoordinator - Id :[scjs0225] Push :[855a002265cc02f775a8b0155210d6b72090e63a41b7fc386cca225c14a51ee1] 푸쉬 전달 완료
+2012-03-15 13:50:16,797 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 72158f7160afaf6b334622e1a763597dc3a7b2b8c186872790d7aff5bdb328b2
+2012-03-15 13:50:16,797 [1] DEBUG Server.LogCoordinator - Id :[tskind77] Push :[72158f7160afaf6b334622e1a763597dc3a7b2b8c186872790d7aff5bdb328b2] 푸쉬 전달 완료
+2012-03-15 13:50:17,373 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 06123f628ea29226586780a5485fde72ac8b99fdca157e54b2af41c2d33bcc79
+2012-03-15 13:50:17,373 [1] DEBUG Server.LogCoordinator - Id :[1014yy] Push :[06123f628ea29226586780a5485fde72ac8b99fdca157e54b2af41c2d33bcc79] 푸쉬 전달 완료
+2012-03-15 13:50:18,001 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0106821c31d046d26a2aa644d283845af3abf6d86f6c6f8963f264956fabf7c5
+2012-03-15 13:50:18,001 [1] DEBUG Server.LogCoordinator - Id :[legulas] Push :[0106821c31d046d26a2aa644d283845af3abf6d86f6c6f8963f264956fabf7c5] 푸쉬 전달 완료
+2012-03-15 13:50:18,578 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 47f50718a1e7123afd882d3660a7beb14e608599477db00a08a2a95d942f98df
+2012-03-15 13:50:18,578 [1] DEBUG Server.LogCoordinator - Id :[dynamicSHR] Push :[47f50718a1e7123afd882d3660a7beb14e608599477db00a08a2a95d942f98df] 푸쉬 전달 완료
+2012-03-15 13:50:19,154 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e0ce6459d14ffd5c13748f0a451e6e19c572d08c9a157c2cef32fdae96c97706
+2012-03-15 13:50:19,154 [1] DEBUG Server.LogCoordinator - Id :[idog97] Push :[e0ce6459d14ffd5c13748f0a451e6e19c572d08c9a157c2cef32fdae96c97706] 푸쉬 전달 완료
+2012-03-15 13:50:19,813 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c4965a37ca9ebd092d89ec41621e3c40b7303238fd45ecf58ed5da62d299f319
+2012-03-15 13:50:19,813 [1] DEBUG Server.LogCoordinator - Id :[curiousj] Push :[c4965a37ca9ebd092d89ec41621e3c40b7303238fd45ecf58ed5da62d299f319] 푸쉬 전달 완료
+2012-03-15 13:50:20,387 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3f8f318880eb449e5eea4fcec448e4318f535cb3ee80bda0b2f7700014c6d0dd
+2012-03-15 13:50:20,387 [1] DEBUG Server.LogCoordinator - Id :[nuddawe] Push :[3f8f318880eb449e5eea4fcec448e4318f535cb3ee80bda0b2f7700014c6d0dd] 푸쉬 전달 완료
+2012-03-15 13:50:20,961 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1f4295b5231450def7edfa6e273e2a49b3fc20e45724e5f5337cc9542887b1f5
+2012-03-15 13:50:20,961 [1] DEBUG Server.LogCoordinator - Id :[ㅗㅗ] Push :[1f4295b5231450def7edfa6e273e2a49b3fc20e45724e5f5337cc9542887b1f5] 푸쉬 전달 완료
+2012-03-15 13:50:21,488 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 21cb33762e0734be6ec61bc33c7489a9fabe6a99ae5392ec25c6e862151a7823
+2012-03-15 13:50:21,488 [1] DEBUG Server.LogCoordinator - Id :[rocku] Push :[21cb33762e0734be6ec61bc33c7489a9fabe6a99ae5392ec25c6e862151a7823] 푸쉬 전달 완료
+2012-03-15 13:50:22,051 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 29faaa0a1c3752bef145084b74f03031927438b4f3aab8933358b2c902ecec1d
+2012-03-15 13:50:22,051 [1] DEBUG Server.LogCoordinator - Id :[wjw519] Push :[29faaa0a1c3752bef145084b74f03031927438b4f3aab8933358b2c902ecec1d] 푸쉬 전달 완료
+2012-03-15 13:50:22,616 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 845003fe6b3ef75f3bc79e20a9bb7b28ebef9e5907fb5e792f530d16539ac4e8
+2012-03-15 13:50:22,616 [1] DEBUG Server.LogCoordinator - Id :[jsb1058613] Push :[845003fe6b3ef75f3bc79e20a9bb7b28ebef9e5907fb5e792f530d16539ac4e8] 푸쉬 전달 완료
+2012-03-15 13:50:23,188 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4a45b600bb899b6782022bf0c4262a00c6ed42f39fdac08d8ca1100c642ec8b0
+2012-03-15 13:50:23,188 [1] DEBUG Server.LogCoordinator - Id :[dreamermin] Push :[4a45b600bb899b6782022bf0c4262a00c6ed42f39fdac08d8ca1100c642ec8b0] 푸쉬 전달 완료
+2012-03-15 13:50:23,845 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 64e2c281b0c46d9b984e075713e740ed4425b8ba699926b69a74cd5a79b320a8
+2012-03-15 13:50:23,845 [1] DEBUG Server.LogCoordinator - Id :[parrot0707] Push :[64e2c281b0c46d9b984e075713e740ed4425b8ba699926b69a74cd5a79b320a8] 푸쉬 전달 완료
+2012-03-15 13:50:24,438 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 330946f87a4f96acba99331bcd8299abb850ca95992f62b9235be7d0a1f33133
+2012-03-15 13:50:24,438 [1] DEBUG Server.LogCoordinator - Id :[gggg] Push :[330946f87a4f96acba99331bcd8299abb850ca95992f62b9235be7d0a1f33133] 푸쉬 전달 완료
+2012-03-15 13:50:25,063 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ee60b1a27e254d2b5734b3e96e1def30face680b9ae548391fecf79a5f12e19f
+2012-03-15 13:50:25,063 [1] DEBUG Server.LogCoordinator - Id :[regina9557] Push :[ee60b1a27e254d2b5734b3e96e1def30face680b9ae548391fecf79a5f12e19f] 푸쉬 전달 완료
+2012-03-15 13:50:25,637 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 48f264a661c8adbb9d3b617f6aad4a06c179f167639b4c2f90ae319a98c61084
+2012-03-15 13:50:25,637 [1] DEBUG Server.LogCoordinator - Id :[minkyongk] Push :[48f264a661c8adbb9d3b617f6aad4a06c179f167639b4c2f90ae319a98c61084] 푸쉬 전달 완료
+2012-03-15 13:50:26,209 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= caf905bccfff6b1bc0f8de4a5119817d571271534d29e8bece045d2cac90721a
+2012-03-15 13:50:26,209 [1] DEBUG Server.LogCoordinator - Id :[ksr8870] Push :[caf905bccfff6b1bc0f8de4a5119817d571271534d29e8bece045d2cac90721a] 푸쉬 전달 완료
+2012-03-15 13:50:26,794 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3346241b4aff8928ab92b3dacecabe06a6a8757578a9765f8fb7918a1ce8b406
+2012-03-15 13:50:26,794 [1] DEBUG Server.LogCoordinator - Id :[epicmkk] Push :[3346241b4aff8928ab92b3dacecabe06a6a8757578a9765f8fb7918a1ce8b406] 푸쉬 전달 완료
+2012-03-15 13:50:27,366 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9b29faa198243cf6cca779ad2f933145882bc10037450af5f7b5740a4dd1a9e7
+2012-03-15 13:50:27,367 [1] DEBUG Server.LogCoordinator - Id :[mach3speed] Push :[9b29faa198243cf6cca779ad2f933145882bc10037450af5f7b5740a4dd1a9e7] 푸쉬 전달 완료
+2012-03-15 13:50:27,948 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5e6c01dcb9342a5f230a61f5f4fa3324678b8c9a17a30d61a94b1d8af04b852c
+2012-03-15 13:50:27,948 [1] DEBUG Server.LogCoordinator - Id :[jenkim<3] Push :[5e6c01dcb9342a5f230a61f5f4fa3324678b8c9a17a30d61a94b1d8af04b852c] 푸쉬 전달 완료
+2012-03-15 13:50:28,520 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1fa8ffdd55a4b9145656919311e166d23bfcbf1154bf774294e61f9dde1f9f5f
+2012-03-15 13:50:28,520 [1] DEBUG Server.LogCoordinator - Id :[dlak99] Push :[1fa8ffdd55a4b9145656919311e166d23bfcbf1154bf774294e61f9dde1f9f5f] 푸쉬 전달 완료
+2012-03-15 13:50:29,096 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ceb7e9f143e255349d78a556a5f0801ff76c7215613d87d960e9f791abfc49c7
+2012-03-15 13:50:29,096 [1] DEBUG Server.LogCoordinator - Id :[Tonghyon] Push :[ceb7e9f143e255349d78a556a5f0801ff76c7215613d87d960e9f791abfc49c7] 푸쉬 전달 완료
+2012-03-15 13:50:29,669 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e73d09e8bddf956686cdc1fdee9171f53f4db37f45bfe245fde12e9cfd74584d
+2012-03-15 13:50:29,669 [1] DEBUG Server.LogCoordinator - Id :[newngd] Push :[e73d09e8bddf956686cdc1fdee9171f53f4db37f45bfe245fde12e9cfd74584d] 푸쉬 전달 완료
+2012-03-15 13:50:30,244 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d9331316d7891c26724836d9b4346feca0b3ef0e1a0329eb9061c9d902456fa0
+2012-03-15 13:50:30,244 [1] DEBUG Server.LogCoordinator - Id :[lovecnsu] Push :[d9331316d7891c26724836d9b4346feca0b3ef0e1a0329eb9061c9d902456fa0] 푸쉬 전달 완료
+2012-03-15 13:50:30,839 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 28bbccd39f8ae619d89d4ca8e903e8fb178cb59791be2d49576be542ec98cf06
+2012-03-15 13:50:30,839 [1] DEBUG Server.LogCoordinator - Id :[swlee0531] Push :[28bbccd39f8ae619d89d4ca8e903e8fb178cb59791be2d49576be542ec98cf06] 푸쉬 전달 완료
+2012-03-15 13:50:31,413 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 850140f953115ff92125b8ef7bb783094590399e7282bddd5113f828b6b8f415
+2012-03-15 13:50:31,413 [1] DEBUG Server.LogCoordinator - Id :[badboy114] Push :[850140f953115ff92125b8ef7bb783094590399e7282bddd5113f828b6b8f415] 푸쉬 전달 완료
+2012-03-15 13:50:32,038 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= abec712dbcda8b479277d72adfb7c5bee97e65cf2925451dcb8a925e6a577cb0
+2012-03-15 13:50:32,038 [1] DEBUG Server.LogCoordinator - Id :[mujigae0823] Push :[abec712dbcda8b479277d72adfb7c5bee97e65cf2925451dcb8a925e6a577cb0] 푸쉬 전달 완료
+2012-03-15 13:50:32,613 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1172ce688783e54824811d778cfd08b34dab5d04f5a5c7585fef8cb1f53377ad
+2012-03-15 13:50:32,613 [1] DEBUG Server.LogCoordinator - Id :[doomrookie] Push :[1172ce688783e54824811d778cfd08b34dab5d04f5a5c7585fef8cb1f53377ad] 푸쉬 전달 완료
+2012-03-15 13:50:33,161 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d1c1e0427fe5178387bfafc1af0672f0416c9f64589a89fbef2d41643e59298e
+2012-03-15 13:50:33,161 [1] DEBUG Server.LogCoordinator - Id :[lyeomyoung48] Push :[d1c1e0427fe5178387bfafc1af0672f0416c9f64589a89fbef2d41643e59298e] 푸쉬 전달 완료
+2012-03-15 13:50:33,740 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 701e0d556edd281f8732c3a88a396569c009efc457599de31e9e019f8e35ed27
+2012-03-15 13:50:33,740 [1] DEBUG Server.LogCoordinator - Id :[jn4948] Push :[701e0d556edd281f8732c3a88a396569c009efc457599de31e9e019f8e35ed27] 푸쉬 전달 완료
+2012-03-15 13:50:34,314 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= feceba1145d4dee1451455fca4d5336b2643c40489cb57463307f551aea49f33
+2012-03-15 13:50:34,314 [1] DEBUG Server.LogCoordinator - Id :[minnyc] Push :[feceba1145d4dee1451455fca4d5336b2643c40489cb57463307f551aea49f33] 푸쉬 전달 완료
+2012-03-15 13:50:34,886 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bb886cfe39dc85604d5160ed7bdc27a154b32600d28bffbece19b5f06218a410
+2012-03-15 13:50:34,886 [1] DEBUG Server.LogCoordinator - Id :[Anndin0204] Push :[bb886cfe39dc85604d5160ed7bdc27a154b32600d28bffbece19b5f06218a410] 푸쉬 전달 완료
+2012-03-15 13:50:35,618 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6ef3ef564c21d2ac0985c2fd1197bda41126798cdc56bacf7f13870d36af707f
+2012-03-15 13:50:35,618 [1] DEBUG Server.LogCoordinator - Id :[100hong] Push :[6ef3ef564c21d2ac0985c2fd1197bda41126798cdc56bacf7f13870d36af707f] 푸쉬 전달 완료
+2012-03-15 13:50:36,190 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d4599df2ee2d3ae171743077e799d0f67503f645855c60c7fbd000da49d0e1dc
+2012-03-15 13:50:36,190 [1] DEBUG Server.LogCoordinator - Id :[jieun1967] Push :[d4599df2ee2d3ae171743077e799d0f67503f645855c60c7fbd000da49d0e1dc] 푸쉬 전달 완료
+2012-03-15 13:50:36,761 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1026d0b90835d5beb5000b42b1bbfe7578fe7c82b7162de5fe29adb96408a943
+2012-03-15 13:50:36,761 [1] DEBUG Server.LogCoordinator - Id :[hypo] Push :[1026d0b90835d5beb5000b42b1bbfe7578fe7c82b7162de5fe29adb96408a943] 푸쉬 전달 완료
+2012-03-15 13:50:37,337 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 17c02ef516c4e8ce7959870fb2ce5a710220a18d40ac8e79c854e9fe06e6d6c1
+2012-03-15 13:50:37,337 [1] DEBUG Server.LogCoordinator - Id :[misani] Push :[17c02ef516c4e8ce7959870fb2ce5a710220a18d40ac8e79c854e9fe06e6d6c1] 푸쉬 전달 완료
+2012-03-15 13:50:37,909 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ca2474299ef62aaf8f5011fb27d828c51cac320f176c2750be898a9d4fb06027
+2012-03-15 13:50:37,909 [1] DEBUG Server.LogCoordinator - Id :[naturechoi] Push :[ca2474299ef62aaf8f5011fb27d828c51cac320f176c2750be898a9d4fb06027] 푸쉬 전달 완료
+2012-03-15 13:50:38,483 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a7238a0adcb0bce55fbd20356255006cf4bd9842bb3c569bb808b1cf8cf06945
+2012-03-15 13:50:38,483 [1] DEBUG Server.LogCoordinator - Id :[sj3217] Push :[a7238a0adcb0bce55fbd20356255006cf4bd9842bb3c569bb808b1cf8cf06945] 푸쉬 전달 완료
+2012-03-15 13:50:39,011 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bffb9dae4969db5138f93f4f57f7f75c030873ec58949386b37138c07db4a107
+2012-03-15 13:50:39,012 [1] DEBUG Server.LogCoordinator - Id :[jjy921230] Push :[bffb9dae4969db5138f93f4f57f7f75c030873ec58949386b37138c07db4a107] 푸쉬 전달 완료
+2012-03-15 13:50:39,584 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5a07553c1c08f624b60f7f4685ae473ea6d26795c3d2859734729abfd52beb04
+2012-03-15 13:50:39,584 [1] DEBUG Server.LogCoordinator - Id :[socutelucy] Push :[5a07553c1c08f624b60f7f4685ae473ea6d26795c3d2859734729abfd52beb04] 푸쉬 전달 완료
+2012-03-15 13:50:40,161 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 295a3940e20b18c16f6a2599b6e336c0865601fac78d374583d7759f1630b65d
+2012-03-15 13:50:40,161 [1] DEBUG Server.LogCoordinator - Id :[likeheewon] Push :[295a3940e20b18c16f6a2599b6e336c0865601fac78d374583d7759f1630b65d] 푸쉬 전달 완료
+2012-03-15 13:50:40,802 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f76878f62c72f21e3e579adba2b8f254bb31e9e6a64bc4aac1aa61a1d38f5c7d
+2012-03-15 13:50:40,802 [1] DEBUG Server.LogCoordinator - Id :[rerun4609] Push :[f76878f62c72f21e3e579adba2b8f254bb31e9e6a64bc4aac1aa61a1d38f5c7d] 푸쉬 전달 완료
+2012-03-15 13:50:41,374 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d4d0b7dedfc0978a223b16372211f7e4def0a22ab2065286f3521f0ed621a22b
+2012-03-15 13:50:41,374 [1] DEBUG Server.LogCoordinator - Id :[ht8090] Push :[d4d0b7dedfc0978a223b16372211f7e4def0a22ab2065286f3521f0ed621a22b] 푸쉬 전달 완료
+2012-03-15 13:50:42,059 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e71999aa1aabea229aa1c57896911477bf6f08e79334aaf94b6f055d1da64df5
+2012-03-15 13:50:42,059 [1] DEBUG Server.LogCoordinator - Id :[hydude777] Push :[e71999aa1aabea229aa1c57896911477bf6f08e79334aaf94b6f055d1da64df5] 푸쉬 전달 완료
+2012-03-15 13:50:42,632 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e64c39fe53e275daa208859cf45137cb69cdd80360245e13b21036d2fd85670f
+2012-03-15 13:50:42,632 [1] DEBUG Server.LogCoordinator - Id :[chi312] Push :[e64c39fe53e275daa208859cf45137cb69cdd80360245e13b21036d2fd85670f] 푸쉬 전달 완료
+2012-03-15 13:50:43,219 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2ec77297d266fa4b838ff4f237968d7a00d9baf6029f09a3ed900525a2c0cc3a
+2012-03-15 13:50:43,219 [1] DEBUG Server.LogCoordinator - Id :[lyrche1117] Push :[2ec77297d266fa4b838ff4f237968d7a00d9baf6029f09a3ed900525a2c0cc3a] 푸쉬 전달 완료
+2012-03-15 13:50:43,755 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 41cb549cba8a1615c011b175934bffe6e1167e242813b48695dfe42f5b1c3ac3
+2012-03-15 13:50:43,756 [1] DEBUG Server.LogCoordinator - Id :[hahahoo0201] Push :[41cb549cba8a1615c011b175934bffe6e1167e242813b48695dfe42f5b1c3ac3] 푸쉬 전달 완료
+2012-03-15 13:50:44,331 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8c0db38b140ed6d4e947d9aa23254b13c321bd83c34eae729a40836e6f64055e
+2012-03-15 13:50:44,331 [1] DEBUG Server.LogCoordinator - Id :[blaugh] Push :[8c0db38b140ed6d4e947d9aa23254b13c321bd83c34eae729a40836e6f64055e] 푸쉬 전달 완료
+2012-03-15 13:50:44,904 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ab343c22e18a7e77ed12b3641cc2caa111798ffe10dd31e79f962015d9d940c0
+2012-03-15 13:50:44,904 [1] DEBUG Server.LogCoordinator - Id :[jumanva] Push :[ab343c22e18a7e77ed12b3641cc2caa111798ffe10dd31e79f962015d9d940c0] 푸쉬 전달 완료
+2012-03-15 13:50:45,508 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b9b3717dd1d439f44ab3d2e86b9b1862c19d9dda26402a0ec30b0085176c0512
+2012-03-15 13:50:45,508 [1] DEBUG Server.LogCoordinator - Id :[upuoui88] Push :[b9b3717dd1d439f44ab3d2e86b9b1862c19d9dda26402a0ec30b0085176c0512] 푸쉬 전달 완료
+2012-03-15 13:50:46,211 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b959d2fd77c05d2452d8337b1091f00da69e52b6100f54666660f7413fd46c86
+2012-03-15 13:50:46,211 [1] DEBUG Server.LogCoordinator - Id :[yds03298] Push :[b959d2fd77c05d2452d8337b1091f00da69e52b6100f54666660f7413fd46c86] 푸쉬 전달 완료
+2012-03-15 13:50:46,789 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4fbe3c6282384c5d073a7834652bd9fa820131d71bc00270da25736a8df6927d
+2012-03-15 13:50:46,789 [1] DEBUG Server.LogCoordinator - Id :[juzzong] Push :[4fbe3c6282384c5d073a7834652bd9fa820131d71bc00270da25736a8df6927d] 푸쉬 전달 완료
+2012-03-15 13:50:47,365 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bc847224d37b593473d6684e279b8a83f52704d60ee6927762094d124341cd14
+2012-03-15 13:50:47,365 [1] DEBUG Server.LogCoordinator - Id :[byeol05] Push :[bc847224d37b593473d6684e279b8a83f52704d60ee6927762094d124341cd14] 푸쉬 전달 완료
+2012-03-15 13:50:47,942 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 26692ab0647ad7c1892cc189fa475c2a4c75cc0ffe14ea8e688a87a226d2a09d
+2012-03-15 13:50:47,942 [1] DEBUG Server.LogCoordinator - Id :[ae1234] Push :[26692ab0647ad7c1892cc189fa475c2a4c75cc0ffe14ea8e688a87a226d2a09d] 푸쉬 전달 완료
+2012-03-15 13:50:48,519 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= af1d1f2c5eff41063804bc379b8c8b598be7bc25e0a329314a154d5f7230e6e7
+2012-03-15 13:50:48,520 [1] DEBUG Server.LogCoordinator - Id :[jisooh1997] Push :[af1d1f2c5eff41063804bc379b8c8b598be7bc25e0a329314a154d5f7230e6e7] 푸쉬 전달 완료
+2012-03-15 13:50:49,046 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8df87e0bd0ec320d6a21f9f80643a7af8dbe9c39e0f65c3ac48ede5aa66961e7
+2012-03-15 13:50:49,046 [1] DEBUG Server.LogCoordinator - Id :[happymomoko] Push :[8df87e0bd0ec320d6a21f9f80643a7af8dbe9c39e0f65c3ac48ede5aa66961e7] 푸쉬 전달 완료
+2012-03-15 13:50:49,612 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b4da7e95f205bab736350e312deec15153a1adbd5797a982bc0791838441588e
+2012-03-15 13:50:49,612 [1] DEBUG Server.LogCoordinator - Id :[jyh6392] Push :[b4da7e95f205bab736350e312deec15153a1adbd5797a982bc0791838441588e] 푸쉬 전달 완료
+2012-03-15 13:50:50,193 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ea56f38a52590d3a061f6c0d33d45ef31b6e9ed390751862f699e0f607fa45c0
+2012-03-15 13:50:50,193 [1] DEBUG Server.LogCoordinator - Id :[irenaeus] Push :[ea56f38a52590d3a061f6c0d33d45ef31b6e9ed390751862f699e0f607fa45c0] 푸쉬 전달 완료
+2012-03-15 13:50:50,751 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4ad4c3a2053e140ad52d807eb853978110b0113dc4e9333d8566a3d588a03f75
+2012-03-15 13:50:50,751 [1] DEBUG Server.LogCoordinator - Id :[peaceljh] Push :[4ad4c3a2053e140ad52d807eb853978110b0113dc4e9333d8566a3d588a03f75] 푸쉬 전달 완료
+2012-03-15 13:50:51,326 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 15e026ed0ff374857b2002aa703e2f94d4d7334bf2b4c76b2360995e75e7043b
+2012-03-15 13:50:51,326 [1] DEBUG Server.LogCoordinator - Id :[chaeun14] Push :[15e026ed0ff374857b2002aa703e2f94d4d7334bf2b4c76b2360995e75e7043b] 푸쉬 전달 완료
+2012-03-15 13:50:51,899 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4a75abec3afd780d60c8f94fb0846fb3ff7ab9d53585dd5d55e434083cd3d319
+2012-03-15 13:50:51,899 [1] DEBUG Server.LogCoordinator - Id :[88min2] Push :[4a75abec3afd780d60c8f94fb0846fb3ff7ab9d53585dd5d55e434083cd3d319] 푸쉬 전달 완료
+2012-03-15 13:50:52,478 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 944039d762b83299ec6691791d1d09d76026fcf9f1306d617694ca3080185e10
+2012-03-15 13:50:52,478 [1] DEBUG Server.LogCoordinator - Id :[gbbm223] Push :[944039d762b83299ec6691791d1d09d76026fcf9f1306d617694ca3080185e10] 푸쉬 전달 완료
+2012-03-15 13:50:53,053 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9c0cdfec69343359c1d39bbed92158939da8d65eaa94e8becddc495dbb430201
+2012-03-15 13:50:53,053 [1] DEBUG Server.LogCoordinator - Id :[square] Push :[9c0cdfec69343359c1d39bbed92158939da8d65eaa94e8becddc495dbb430201] 푸쉬 전달 완료
+2012-03-15 13:50:53,690 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e355f06748258ed83d5aa0e67e56abbff1fdd0b8e6ee41a7b931d696cb7c3224
+2012-03-15 13:50:53,690 [1] DEBUG Server.LogCoordinator - Id :[sy5433] Push :[e355f06748258ed83d5aa0e67e56abbff1fdd0b8e6ee41a7b931d696cb7c3224] 푸쉬 전달 완료
+2012-03-15 13:50:54,246 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= cec3f0889d2958baafe34a8dfc2912be45bf4fb342690fe0658052e636b6b48c
+2012-03-15 13:50:54,246 [1] DEBUG Server.LogCoordinator - Id :[majorbeing] Push :[cec3f0889d2958baafe34a8dfc2912be45bf4fb342690fe0658052e636b6b48c] 푸쉬 전달 완료
+2012-03-15 13:50:54,819 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e8e9c3c1084f2bb9cd1cab9cc73e2bd9c056ebb53bf95c8bcfa55c9eb15b8632
+2012-03-15 13:50:54,819 [1] DEBUG Server.LogCoordinator - Id :[Sungzoo] Push :[e8e9c3c1084f2bb9cd1cab9cc73e2bd9c056ebb53bf95c8bcfa55c9eb15b8632] 푸쉬 전달 완료
+2012-03-15 13:50:55,428 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 39c6eb531bebf5f87e6652c5bda2d4d21f1fe8d15febf45894ccbcf14cde7e79
+2012-03-15 13:50:55,428 [1] DEBUG Server.LogCoordinator - Id :[herofan] Push :[39c6eb531bebf5f87e6652c5bda2d4d21f1fe8d15febf45894ccbcf14cde7e79] 푸쉬 전달 완료
+2012-03-15 13:50:56,098 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 317a3f487a54459469e8740d3c88bfad20c707fa647ad34b084e0a3e43899ecf
+2012-03-15 13:50:56,098 [1] DEBUG Server.LogCoordinator - Id :[Spongefanatic ] Push :[317a3f487a54459469e8740d3c88bfad20c707fa647ad34b084e0a3e43899ecf] 푸쉬 전달 완료
+2012-03-15 13:50:56,674 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a970f8aca73503d11dba1c71fcf4b169907a0a1872315d71d32dcd0c53889de0
+2012-03-15 13:50:56,674 [1] DEBUG Server.LogCoordinator - Id :[osh2663] Push :[a970f8aca73503d11dba1c71fcf4b169907a0a1872315d71d32dcd0c53889de0] 푸쉬 전달 완료
+2012-03-15 13:50:57,250 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a53da76857a7dc3da82264c24992266cbbcc193b3095c5a3dfae843b903d8312
+2012-03-15 13:50:57,250 [1] DEBUG Server.LogCoordinator - Id :[sangwony] Push :[a53da76857a7dc3da82264c24992266cbbcc193b3095c5a3dfae843b903d8312] 푸쉬 전달 완료
+2012-03-15 13:50:57,745 [1] DEBUG Server.LogCoordinator - Id :[mentee2] Push :[0                                                               ...] 푸쉬 전달 완료
+2012-03-15 13:50:58,359 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2244e939446e6faddb8952a49105511d31628f9095d2ee6f8d2f21de86bfc1dd
+2012-03-15 13:50:58,359 [1] DEBUG Server.LogCoordinator - Id :[jdo0417] Push :[2244e939446e6faddb8952a49105511d31628f9095d2ee6f8d2f21de86bfc1dd] 푸쉬 전달 완료
+2012-03-15 13:50:58,931 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 45c24da3a46fdd562e8c38e72991b578edc30e24f2d422038323cc8b55befaed
+2012-03-15 13:50:58,931 [1] DEBUG Server.LogCoordinator - Id :[gonka09] Push :[45c24da3a46fdd562e8c38e72991b578edc30e24f2d422038323cc8b55befaed] 푸쉬 전달 완료
+2012-03-15 13:50:59,539 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= afc26151497fcaca42316ef94382600db582f56a145d4f2e972009a33bbd4b8e
+2012-03-15 13:50:59,539 [1] DEBUG Server.LogCoordinator - Id :[koreasoul] Push :[afc26151497fcaca42316ef94382600db582f56a145d4f2e972009a33bbd4b8e] 푸쉬 전달 완료
+2012-03-15 13:51:00,078 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f09798d85e3dc2012cc36cb8ac71674e524f5d2a10e6c172f5d97959a5ab5739
+2012-03-15 13:51:00,078 [1] DEBUG Server.LogCoordinator - Id :[kiki] Push :[f09798d85e3dc2012cc36cb8ac71674e524f5d2a10e6c172f5d97959a5ab5739] 푸쉬 전달 완료
+2012-03-15 13:51:00,658 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9227c562e375fffce260a6217dfa3829606b2c7bc9bc6f62b48234bda987f546
+2012-03-15 13:51:00,658 [1] DEBUG Server.LogCoordinator - Id :[chthchth] Push :[9227c562e375fffce260a6217dfa3829606b2c7bc9bc6f62b48234bda987f546] 푸쉬 전달 완료
+2012-03-15 13:51:01,231 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 54cd5cfd5d43e679ccda4e843238cd75bc01cc4a887e73bddf3b2c9f0f6d6fc6
+2012-03-15 13:51:01,232 [1] DEBUG Server.LogCoordinator - Id :[zmka5778] Push :[54cd5cfd5d43e679ccda4e843238cd75bc01cc4a887e73bddf3b2c9f0f6d6fc6] 푸쉬 전달 완료
+2012-03-15 13:51:01,766 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4117171cafc9bbcb4dc7ab488dd74e2876cff96599249d847e20010ef175a544
+2012-03-15 13:51:01,766 [1] DEBUG Server.LogCoordinator - Id :[jhb0417] Push :[4117171cafc9bbcb4dc7ab488dd74e2876cff96599249d847e20010ef175a544] 푸쉬 전달 완료
+2012-03-15 13:51:02,344 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 505d4a2162333936cc70cca982f38c8cd2382c9703858ab7ce3462f9186100d3
+2012-03-15 13:51:02,344 [1] DEBUG Server.LogCoordinator - Id :[kim312312] Push :[505d4a2162333936cc70cca982f38c8cd2382c9703858ab7ce3462f9186100d3] 푸쉬 전달 완료
+2012-03-15 13:51:02,933 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 885d3da2c5ff2dc5bd6b5fac94fa0d3be800c79d16c05710212bbabe5c6b883c
+2012-03-15 13:51:02,933 [1] DEBUG Server.LogCoordinator - Id :[shin4029] Push :[885d3da2c5ff2dc5bd6b5fac94fa0d3be800c79d16c05710212bbabe5c6b883c] 푸쉬 전달 완료
+2012-03-15 13:51:03,578 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4767d5812d8f5f1c8fbbf4637bef388efef70f9abc89fcf0d4505ab6a7ee0eba
+2012-03-15 13:51:03,578 [1] DEBUG Server.LogCoordinator - Id :[lju592000] Push :[4767d5812d8f5f1c8fbbf4637bef388efef70f9abc89fcf0d4505ab6a7ee0eba] 푸쉬 전달 완료
+2012-03-15 13:51:04,120 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 01e4f1c5fdccbd984334d5688c260bf4726882dc61a00023b41d9135bc06a005
+2012-03-15 13:51:04,120 [1] DEBUG Server.LogCoordinator - Id :[jsl6655] Push :[01e4f1c5fdccbd984334d5688c260bf4726882dc61a00023b41d9135bc06a005] 푸쉬 전달 완료
+2012-03-15 13:51:04,650 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c743e98e1ed9eb3bbfa955bd9fcf01d3f8df3d5bedab0ae47cf44dd367aec0cb
+2012-03-15 13:51:04,651 [1] DEBUG Server.LogCoordinator - Id :[david1875] Push :[c743e98e1ed9eb3bbfa955bd9fcf01d3f8df3d5bedab0ae47cf44dd367aec0cb] 푸쉬 전달 완료
+2012-03-15 13:51:05,320 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 70644134cfb2f86ef1dd3d12309b68f17bb02c0fc41e234b4143fc1fdc6b0493
+2012-03-15 13:51:05,320 [1] DEBUG Server.LogCoordinator - Id :[davidlee] Push :[70644134cfb2f86ef1dd3d12309b68f17bb02c0fc41e234b4143fc1fdc6b0493] 푸쉬 전달 완료
+2012-03-15 13:51:05,892 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6ccef27450f2c5942b8c72030e175bc295378caa85a4422fa96840797c96693d
+2012-03-15 13:51:05,892 [1] DEBUG Server.LogCoordinator - Id :[puppy2502] Push :[6ccef27450f2c5942b8c72030e175bc295378caa85a4422fa96840797c96693d] 푸쉬 전달 완료
+2012-03-15 13:51:06,465 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ba0d05a4b6312387307c939e0e45f4dc3f1144f98661f45d07deadb0dfe362fc
+2012-03-15 13:51:06,465 [1] DEBUG Server.LogCoordinator - Id :[soojyoo] Push :[ba0d05a4b6312387307c939e0e45f4dc3f1144f98661f45d07deadb0dfe362fc] 푸쉬 전달 완료
+2012-03-15 13:51:07,183 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8d718af52e63397bbcb08ab603c8fbc3c3b8ee9920415a647c769e0a323408f6
+2012-03-15 13:51:07,183 [1] DEBUG Server.LogCoordinator - Id :[경원] Push :[8d718af52e63397bbcb08ab603c8fbc3c3b8ee9920415a647c769e0a323408f6] 푸쉬 전달 완료
+2012-03-15 13:51:07,757 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e65b4850ad16406fbadafc9376b7601fea59a0eebf6e481d1ace73a616505775
+2012-03-15 13:51:07,757 [1] DEBUG Server.LogCoordinator - Id :[Esther] Push :[e65b4850ad16406fbadafc9376b7601fea59a0eebf6e481d1ace73a616505775] 푸쉬 전달 완료
+2012-03-15 13:51:08,330 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e8b9ec64378223b1867996023cee0608e50cd85e564a7757ecd6411ac418a92d
+2012-03-15 13:51:08,330 [1] DEBUG Server.LogCoordinator - Id :[choilhyeon] Push :[e8b9ec64378223b1867996023cee0608e50cd85e564a7757ecd6411ac418a92d] 푸쉬 전달 완료
+2012-03-15 13:51:08,889 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 59b12d89987550b930cf88fb81acda78eda0d440ba7d51516a14d8c1d8858444
+2012-03-15 13:51:08,889 [1] DEBUG Server.LogCoordinator - Id :[cremors78] Push :[59b12d89987550b930cf88fb81acda78eda0d440ba7d51516a14d8c1d8858444] 푸쉬 전달 완료
+2012-03-15 13:51:09,461 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= fa429b5a15864e72bf10c7f22c2ccdb41495058b001556fd6c2543b744b079ce
+2012-03-15 13:51:09,461 [1] DEBUG Server.LogCoordinator - Id :[onegon03] Push :[fa429b5a15864e72bf10c7f22c2ccdb41495058b001556fd6c2543b744b079ce] 푸쉬 전달 완료
+2012-03-15 13:51:10,017 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 480b5e7acbe55485d1c7cdcd70dc5dc02353b28b4262ba1fec0795c5a0c4a498
+2012-03-15 13:51:10,017 [1] DEBUG Server.LogCoordinator - Id :[west5836] Push :[480b5e7acbe55485d1c7cdcd70dc5dc02353b28b4262ba1fec0795c5a0c4a498] 푸쉬 전달 완료
+2012-03-15 13:51:10,591 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 544e5664a4b08bbe20ad10ff659061373e717821a81b98fff8cff419d8d8677b
+2012-03-15 13:51:10,591 [1] DEBUG Server.LogCoordinator - Id :[samulnori1] Push :[544e5664a4b08bbe20ad10ff659061373e717821a81b98fff8cff419d8d8677b] 푸쉬 전달 완료
+2012-03-15 13:51:11,168 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5621aa4e736f3ca91368f028c46d94f73d97b367d618c63a7236b6b79d459076
+2012-03-15 13:51:11,168 [1] DEBUG Server.LogCoordinator - Id :[cynthiatara] Push :[5621aa4e736f3ca91368f028c46d94f73d97b367d618c63a7236b6b79d459076] 푸쉬 전달 완료
+2012-03-15 13:51:11,741 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3b6d8251be1c106547417d48bfdaffe90bdca66edb488c91d77144b5cf06caae
+2012-03-15 13:51:11,741 [1] DEBUG Server.LogCoordinator - Id :[kait] Push :[3b6d8251be1c106547417d48bfdaffe90bdca66edb488c91d77144b5cf06caae] 푸쉬 전달 완료
+2012-03-15 13:51:12,318 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 17ceacd54332902973fdb3b575487804dd84a25f78ac1400dde6e032381f759f
+2012-03-15 13:51:12,318 [1] DEBUG Server.LogCoordinator - Id :[dnjspdus] Push :[17ceacd54332902973fdb3b575487804dd84a25f78ac1400dde6e032381f759f] 푸쉬 전달 완료
+2012-03-15 13:51:12,893 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f91fd9e63abdb0b3d5f628fe4b8cee8e8569935eeea2caa782b7adb1cc04e4db
+2012-03-15 13:51:12,893 [1] DEBUG Server.LogCoordinator - Id :[isw96] Push :[f91fd9e63abdb0b3d5f628fe4b8cee8e8569935eeea2caa782b7adb1cc04e4db] 푸쉬 전달 완료
+2012-03-15 13:51:13,466 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d55226a2b6d05c59ebcb9b564f2e94291ead1c2b8d971f6db286544309c10a24
+2012-03-15 13:51:13,466 [1] DEBUG Server.LogCoordinator - Id :[sanwugi] Push :[d55226a2b6d05c59ebcb9b564f2e94291ead1c2b8d971f6db286544309c10a24] 푸쉬 전달 완료
+2012-03-15 13:51:14,011 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5469070615cb7d69ed544ef05fbf9a2409dac5adac2b86609b5d0932fd36fc43
+2012-03-15 13:51:14,011 [1] DEBUG Server.LogCoordinator - Id :[라라라] Push :[5469070615cb7d69ed544ef05fbf9a2409dac5adac2b86609b5d0932fd36fc43] 푸쉬 전달 완료
+2012-03-15 13:51:14,584 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b46a36fb7033f9d771e6616fd83f8bfbb3f0ca69c22ab6af93965270141c26fa
+2012-03-15 13:51:14,584 [1] DEBUG Server.LogCoordinator - Id :[minsoo1026] Push :[b46a36fb7033f9d771e6616fd83f8bfbb3f0ca69c22ab6af93965270141c26fa] 푸쉬 전달 완료
+2012-03-15 13:51:15,161 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2335e7e655b27994765e82f3d98077f9a12f849475ad6fcc72ec4d932ea3c4e8
+2012-03-15 13:51:15,161 [1] DEBUG Server.LogCoordinator - Id :[smile633] Push :[2335e7e655b27994765e82f3d98077f9a12f849475ad6fcc72ec4d932ea3c4e8] 푸쉬 전달 완료
+2012-03-15 13:51:15,792 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0523606a705300009c49ffb556cbbd54547e79f49a108d7c4f87547d778af809
+2012-03-15 13:51:15,792 [1] DEBUG Server.LogCoordinator - Id :[yookdo] Push :[0523606a705300009c49ffb556cbbd54547e79f49a108d7c4f87547d778af809] 푸쉬 전달 완료
+2012-03-15 13:51:16,330 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ca7024243335878229dd28acbe5994bc157b929b80ff8ee44342a41cc04ea417
+2012-03-15 13:51:16,330 [1] DEBUG Server.LogCoordinator - Id :[athene811] Push :[ca7024243335878229dd28acbe5994bc157b929b80ff8ee44342a41cc04ea417] 푸쉬 전달 완료
+2012-03-15 13:51:16,547 [1] DEBUG Server.LogCoordinator - Id :[june] Push :[APA91bFO7GMN-VMS2a2EltUSn2mWmfzd4yxoH7miJPMsWTYyDHWFzPfKlccm5sBq...] 푸쉬 전달 완료
+2012-03-15 13:51:17,124 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6f7aaf7c45067df22c7f4bbcc6481c1bfdc037ab25c43c8e24b2e16a18b79805
+2012-03-15 13:51:17,124 [1] DEBUG Server.LogCoordinator - Id :[kateleerox] Push :[6f7aaf7c45067df22c7f4bbcc6481c1bfdc037ab25c43c8e24b2e16a18b79805] 푸쉬 전달 완료
+2012-03-15 13:51:17,660 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 776533004cbe82300ca399bb7e9d70a6b600df472480b31034dcf169aeed05ef
+2012-03-15 13:51:17,660 [1] DEBUG Server.LogCoordinator - Id :[pheonix26] Push :[776533004cbe82300ca399bb7e9d70a6b600df472480b31034dcf169aeed05ef] 푸쉬 전달 완료
+2012-03-15 13:51:18,223 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 463be548eec278834b08585564d53bba8027cbe509592733a72dc0d087deb910
+2012-03-15 13:51:18,224 [1] DEBUG Server.LogCoordinator - Id :[sjy3534] Push :[463be548eec278834b08585564d53bba8027cbe509592733a72dc0d087deb910] 푸쉬 전달 완료
+2012-03-15 13:51:18,801 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d5570c3df8d247b63a4855dcc0941c85858ad75dc5e81dd744d769f52ba0992a
+2012-03-15 13:51:18,801 [1] DEBUG Server.LogCoordinator - Id :[gd2406] Push :[d5570c3df8d247b63a4855dcc0941c85858ad75dc5e81dd744d769f52ba0992a] 푸쉬 전달 완료
+2012-03-15 13:51:19,379 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 59bc34523862c819c32e3a747d94c90e73ca97160f763c9de6233d27d8333896
+2012-03-15 13:51:19,379 [1] DEBUG Server.LogCoordinator - Id :[yshpc123] Push :[59bc34523862c819c32e3a747d94c90e73ca97160f763c9de6233d27d8333896] 푸쉬 전달 완료
+2012-03-15 13:51:19,935 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 29f9fb21ad4ae68d1b239bd470e38ee6a2ea4c91e8b0f92e4e15add1945f6cb0
+2012-03-15 13:51:19,935 [1] DEBUG Server.LogCoordinator - Id :[qkrthdud0725] Push :[29f9fb21ad4ae68d1b239bd470e38ee6a2ea4c91e8b0f92e4e15add1945f6cb0] 푸쉬 전달 완료
+2012-03-15 13:51:20,509 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 14fd2ad4da91cb76180bf269d3ccf52e081d581ad1a6427748cc64874eff8016
+2012-03-15 13:51:20,509 [1] DEBUG Server.LogCoordinator - Id :[niza123] Push :[14fd2ad4da91cb76180bf269d3ccf52e081d581ad1a6427748cc64874eff8016] 푸쉬 전달 완료
+2012-03-15 13:51:21,084 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d3511a357a32e2f8fc578e4ecd7a2e6f2450c95244ef5b9857a3fbe2a5d30c08
+2012-03-15 13:51:21,084 [1] DEBUG Server.LogCoordinator - Id :[kaj4631] Push :[d3511a357a32e2f8fc578e4ecd7a2e6f2450c95244ef5b9857a3fbe2a5d30c08] 푸쉬 전달 완료
+2012-03-15 13:51:21,615 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 89dce48690c6177595818ee4c0e8ecca52db8be652d330ae9935e998fd00723a
+2012-03-15 13:51:21,615 [1] DEBUG Server.LogCoordinator - Id :[qpzja98] Push :[89dce48690c6177595818ee4c0e8ecca52db8be652d330ae9935e998fd00723a] 푸쉬 전달 완료
+2012-03-15 13:51:22,253 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 75d6d468f9841423b610c0a191a5db8dcf8ef510646d2c4a9253137f7a32023b
+2012-03-15 13:51:22,253 [1] DEBUG Server.LogCoordinator - Id :[kjgch] Push :[75d6d468f9841423b610c0a191a5db8dcf8ef510646d2c4a9253137f7a32023b] 푸쉬 전달 완료
+2012-03-15 13:51:22,827 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 26816d85cefcf79441a8bd43e830e16f7e5e1bb2ebedf3c81077da06320887f3
+2012-03-15 13:51:22,827 [1] DEBUG Server.LogCoordinator - Id :[wlwn919] Push :[26816d85cefcf79441a8bd43e830e16f7e5e1bb2ebedf3c81077da06320887f3] 푸쉬 전달 완료
+2012-03-15 13:51:23,402 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5b395c0883800844636c106dd1fced9e77b710dde991b787e3ddc79ac0d7abd0
+2012-03-15 13:51:23,402 [1] DEBUG Server.LogCoordinator - Id :[orange7] Push :[5b395c0883800844636c106dd1fced9e77b710dde991b787e3ddc79ac0d7abd0] 푸쉬 전달 완료
+2012-03-15 13:51:23,979 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3b11fb0a5ebcc1813ad73094d591c341def26ca39a24839cc354b5774972379c
+2012-03-15 13:51:23,979 [1] DEBUG Server.LogCoordinator - Id :[barram6] Push :[3b11fb0a5ebcc1813ad73094d591c341def26ca39a24839cc354b5774972379c] 푸쉬 전달 완료
+2012-03-15 13:51:24,550 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3a8ddcb35bda1582542081d76be0f2bda74655b05b72a906c971ca295f5b3694
+2012-03-15 13:51:24,550 [1] DEBUG Server.LogCoordinator - Id :[seulkiki] Push :[3a8ddcb35bda1582542081d76be0f2bda74655b05b72a906c971ca295f5b3694] 푸쉬 전달 완료
+2012-03-15 13:51:25,090 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3ee3975ff818a5d2e8b3e32631c010a894441bc48bf80e5b9549aa13b8b4876c
+2012-03-15 13:51:25,090 [1] DEBUG Server.LogCoordinator - Id :[rkdud5784] Push :[3ee3975ff818a5d2e8b3e32631c010a894441bc48bf80e5b9549aa13b8b4876c] 푸쉬 전달 완료
+2012-03-15 13:51:25,745 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8d06beb0385ad642e8d6c45e1a786595cb6d297f911eba8164afbe5727e94fb8
+2012-03-15 13:51:25,745 [1] DEBUG Server.LogCoordinator - Id :[qwerty] Push :[8d06beb0385ad642e8d6c45e1a786595cb6d297f911eba8164afbe5727e94fb8] 푸쉬 전달 완료
+2012-03-15 13:51:26,323 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 44eac164237f4b3ad31045305a706c2a0e32909ca48987d99e2dd3f486477bf9
+2012-03-15 13:51:26,323 [1] DEBUG Server.LogCoordinator - Id :[woqja3743] Push :[44eac164237f4b3ad31045305a706c2a0e32909ca48987d99e2dd3f486477bf9] 푸쉬 전달 완료
+2012-03-15 13:51:26,932 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f18b78a679859514f73ff22552e4034242c7b30894f4c425307db2652bc4c13b
+2012-03-15 13:51:26,932 [1] DEBUG Server.LogCoordinator - Id :[o_o6549] Push :[f18b78a679859514f73ff22552e4034242c7b30894f4c425307db2652bc4c13b] 푸쉬 전달 완료
+2012-03-15 13:51:27,497 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= de929c67444a22624902d2389b3402e23667a96821089d48e9cd7d81a07dac40
+2012-03-15 13:51:27,497 [1] DEBUG Server.LogCoordinator - Id :[ccse3928] Push :[de929c67444a22624902d2389b3402e23667a96821089d48e9cd7d81a07dac40] 푸쉬 전달 완료
+2012-03-15 13:51:28,036 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a684e4dc8055ef97ebf3e7fd6bdf366279babe7d54eae4d2b14849da75af5e5a
+2012-03-15 13:51:28,036 [1] DEBUG Server.LogCoordinator - Id :[lynnlee5303] Push :[a684e4dc8055ef97ebf3e7fd6bdf366279babe7d54eae4d2b14849da75af5e5a] 푸쉬 전달 완료
+2012-03-15 13:51:28,627 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e7c94e1cdaddbeed3ac37f4ca60d596d67fd293a1f9b828ab78011d1cbcc0c78
+2012-03-15 13:51:28,627 [1] DEBUG Server.LogCoordinator - Id :[Amymini0119] Push :[e7c94e1cdaddbeed3ac37f4ca60d596d67fd293a1f9b828ab78011d1cbcc0c78] 푸쉬 전달 완료
+2012-03-15 13:51:29,201 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 58412d2459474cb1f1beb8cc7849970d4dcb206f1452b29a1fae4087234448af
+2012-03-15 13:51:29,201 [1] DEBUG Server.LogCoordinator - Id :[iota92] Push :[58412d2459474cb1f1beb8cc7849970d4dcb206f1452b29a1fae4087234448af] 푸쉬 전달 완료
+2012-03-15 13:51:29,773 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 44df04bad9c7f8de765eeb042131ded649d84f4598401e89c03ce70fd4731f72
+2012-03-15 13:51:29,773 [1] DEBUG Server.LogCoordinator - Id :[wonyoppa] Push :[44df04bad9c7f8de765eeb042131ded649d84f4598401e89c03ce70fd4731f72] 푸쉬 전달 완료
+2012-03-15 13:51:30,412 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ebf5815c7c5d7e2c1c02fd4797f77591ed76704a92d78c83095327e1308fc696
+2012-03-15 13:51:30,412 [1] DEBUG Server.LogCoordinator - Id :[cheongjin] Push :[ebf5815c7c5d7e2c1c02fd4797f77591ed76704a92d78c83095327e1308fc696] 푸쉬 전달 완료
+2012-03-15 13:51:30,986 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 41a0f79993c77163cf7c1e0d0f9e0d4d2af57e67805778ff927f5873c0bdbc3a
+2012-03-15 13:51:30,986 [1] DEBUG Server.LogCoordinator - Id :[hjin0325] Push :[41a0f79993c77163cf7c1e0d0f9e0d4d2af57e67805778ff927f5873c0bdbc3a] 푸쉬 전달 완료
+2012-03-15 13:51:31,559 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4df75fa0e022e7828f90e53640614ca3e7241431b770b813dd2dd0597b14dcac
+2012-03-15 13:51:31,559 [1] DEBUG Server.LogCoordinator - Id :[rlagksal96] Push :[4df75fa0e022e7828f90e53640614ca3e7241431b770b813dd2dd0597b14dcac] 푸쉬 전달 완료
+2012-03-15 13:51:32,141 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2cab6c665417f4fcec1a3258b7d2f86408ec360343247c2b2fb6845734cf99da
+2012-03-15 13:51:32,141 [1] DEBUG Server.LogCoordinator - Id :[knight_piano] Push :[2cab6c665417f4fcec1a3258b7d2f86408ec360343247c2b2fb6845734cf99da] 푸쉬 전달 완료
+2012-03-15 13:51:32,716 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= cdd5b199a300fe7e43d4aa9c37ae5fde1fd9262f7ccaea5c4e3dc95ea4ead18e
+2012-03-15 13:51:32,716 [1] DEBUG Server.LogCoordinator - Id :[bs2zzang] Push :[cdd5b199a300fe7e43d4aa9c37ae5fde1fd9262f7ccaea5c4e3dc95ea4ead18e] 푸쉬 전달 완료
+2012-03-15 13:51:33,263 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3e4b1123283154c8d820f0f9acc9e946673b78ae6ab8f70afe0b25be0a2c0141
+2012-03-15 13:51:33,263 [1] DEBUG Server.LogCoordinator - Id :[ziam1018] Push :[3e4b1123283154c8d820f0f9acc9e946673b78ae6ab8f70afe0b25be0a2c0141] 푸쉬 전달 완료
+2012-03-15 13:51:33,842 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 97f2ea24abbc78db95b16d6e8c531e09a78596f7e57d3b5405001accea4d13d0
+2012-03-15 13:51:33,842 [1] DEBUG Server.LogCoordinator - Id :[rachel918] Push :[97f2ea24abbc78db95b16d6e8c531e09a78596f7e57d3b5405001accea4d13d0] 푸쉬 전달 완료
+2012-03-15 13:51:34,416 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ea1ec73ef9d6094614a300b1ed3be1e354ba5d5d7d444495b6742eff85ded073
+2012-03-15 13:51:34,416 [1] DEBUG Server.LogCoordinator - Id :[daesol] Push :[ea1ec73ef9d6094614a300b1ed3be1e354ba5d5d7d444495b6742eff85ded073] 푸쉬 전달 완료
+2012-03-15 13:51:34,991 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ea1013ff2c1ee32c79fe042028dd2220aea109d5928de699d90cb52c835013de
+2012-03-15 13:51:34,991 [1] DEBUG Server.LogCoordinator - Id :[jmouse12] Push :[ea1013ff2c1ee32c79fe042028dd2220aea109d5928de699d90cb52c835013de] 푸쉬 전달 완료
+2012-03-15 13:51:35,563 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 283d55d7201bf4bcbe6f466e27cd6e243ba55eaeb4b05036593f153492e3d44e
+2012-03-15 13:51:35,563 [1] DEBUG Server.LogCoordinator - Id :[winr68] Push :[283d55d7201bf4bcbe6f466e27cd6e243ba55eaeb4b05036593f153492e3d44e] 푸쉬 전달 완료
+2012-03-15 13:51:36,127 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4ae5e1508ae071aabf4ac47b2948cf172ada21f2cc92023d1a7dd481ac2821a2
+2012-03-15 13:51:36,128 [1] DEBUG Server.LogCoordinator - Id :[효정] Push :[4ae5e1508ae071aabf4ac47b2948cf172ada21f2cc92023d1a7dd481ac2821a2] 푸쉬 전달 완료
+2012-03-15 13:51:36,763 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3dc741d03aa9dbf44efbedc07d522c6b1588fc9cccf7ccf6070f708d88fbb8a5
+2012-03-15 13:51:36,763 [1] DEBUG Server.LogCoordinator - Id :[abuorex] Push :[3dc741d03aa9dbf44efbedc07d522c6b1588fc9cccf7ccf6070f708d88fbb8a5] 푸쉬 전달 완료
+2012-03-15 13:51:37,317 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 86a7b4d3e79b072db32139f6025695201529d7714ea2485c36b3be1935739ff0
+2012-03-15 13:51:37,317 [1] DEBUG Server.LogCoordinator - Id :[ego123411] Push :[86a7b4d3e79b072db32139f6025695201529d7714ea2485c36b3be1935739ff0] 푸쉬 전달 완료
+2012-03-15 13:51:37,926 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f67e64cb624db1440bf019bc9bfb3a71b4ca31cd9e6e207023a03646c3da0b2e
+2012-03-15 13:51:37,926 [1] DEBUG Server.LogCoordinator - Id :[ㅋㅋㅋ] Push :[f67e64cb624db1440bf019bc9bfb3a71b4ca31cd9e6e207023a03646c3da0b2e] 푸쉬 전달 완료
+2012-03-15 13:51:38,534 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ef46bcb8486ab4db3c8e9dd259196e8808da92afe37c980adbda1d9a04d1e636
+2012-03-15 13:51:38,534 [1] DEBUG Server.LogCoordinator - Id :[ransom] Push :[ef46bcb8486ab4db3c8e9dd259196e8808da92afe37c980adbda1d9a04d1e636] 푸쉬 전달 완료
+2012-03-15 13:51:39,087 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 57c4891b5225ed6359ddeba17ac4a26364056f53f97dda9b127d0d52a689b7bf
+2012-03-15 13:51:39,087 [1] DEBUG Server.LogCoordinator - Id :[sieun043] Push :[57c4891b5225ed6359ddeba17ac4a26364056f53f97dda9b127d0d52a689b7bf] 푸쉬 전달 완료
+2012-03-15 13:51:39,715 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0825abb6d2a02b97d9d57bc6c4691f17e7fb657334c30a8e99b141592f0155e3
+2012-03-15 13:51:39,715 [1] DEBUG Server.LogCoordinator - Id :[0708pes] Push :[0825abb6d2a02b97d9d57bc6c4691f17e7fb657334c30a8e99b141592f0155e3] 푸쉬 전달 완료
+2012-03-15 13:51:40,239 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 074ed64c8281fde7c588b77eb41ef562dddc0049fe49631a89026d4501336e2c
+2012-03-15 13:51:40,239 [1] DEBUG Server.LogCoordinator - Id :[JohnDoe] Push :[074ed64c8281fde7c588b77eb41ef562dddc0049fe49631a89026d4501336e2c] 푸쉬 전달 완료
+2012-03-15 13:51:40,829 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 23b60da7a31299e24d8b024986b82e12dfa1ddb5c73f8b6e00cdd79e97f53c85
+2012-03-15 13:51:40,829 [1] DEBUG Server.LogCoordinator - Id :[ka0411] Push :[23b60da7a31299e24d8b024986b82e12dfa1ddb5c73f8b6e00cdd79e97f53c85] 푸쉬 전달 완료
+2012-03-15 13:51:41,398 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a32bf391816607f05ea8e67a8163e5ca4577ee68d2a9e8facd0cc3eb50d4aa5d
+2012-03-15 13:51:41,398 [1] DEBUG Server.LogCoordinator - Id :[hang2265] Push :[a32bf391816607f05ea8e67a8163e5ca4577ee68d2a9e8facd0cc3eb50d4aa5d] 푸쉬 전달 완료
+2012-03-15 13:51:41,952 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= fabb7820c496bc10e049fbed1908c855df9c0b1528181c0ddbe7131265115ebf
+2012-03-15 13:51:41,952 [1] DEBUG Server.LogCoordinator - Id :[lwacp7] Push :[fabb7820c496bc10e049fbed1908c855df9c0b1528181c0ddbe7131265115ebf] 푸쉬 전달 완료
+2012-03-15 13:51:42,536 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 75a3aa32931f84ff0ec86c549817c1d950fe20278b5037fb4a1078c669455232
+2012-03-15 13:51:42,536 [1] DEBUG Server.LogCoordinator - Id :[buiion] Push :[75a3aa32931f84ff0ec86c549817c1d950fe20278b5037fb4a1078c669455232] 푸쉬 전달 완료
+2012-03-15 13:51:43,052 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4fafd06da970a72659db206f042a2b9fd36107dfee8fa438356015b090f859ce
+2012-03-15 13:51:43,052 [1] DEBUG Server.LogCoordinator - Id :[hpamela] Push :[4fafd06da970a72659db206f042a2b9fd36107dfee8fa438356015b090f859ce] 푸쉬 전달 완료
+2012-03-15 13:51:43,607 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 302f1f0fda136dbf9f2b77b851ff987ce2ed8bb8732b7a21741e2a28e8b7150f
+2012-03-15 13:51:43,607 [1] DEBUG Server.LogCoordinator - Id :[min94] Push :[302f1f0fda136dbf9f2b77b851ff987ce2ed8bb8732b7a21741e2a28e8b7150f] 푸쉬 전달 완료
+2012-03-15 13:51:44,165 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c42138b8163c03628a23dac2bf0fb920b1d2983ca0d0506f20d7dbafe0c88597
+2012-03-15 13:51:44,165 [1] DEBUG Server.LogCoordinator - Id :[onlymicky23] Push :[c42138b8163c03628a23dac2bf0fb920b1d2983ca0d0506f20d7dbafe0c88597] 푸쉬 전달 완료
+2012-03-15 13:51:44,720 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 12ef2d2e4bf7c49e676c5680d5a8d5c474ef2946621a097003151b415b628017
+2012-03-15 13:51:44,720 [1] DEBUG Server.LogCoordinator - Id :[jane3525] Push :[12ef2d2e4bf7c49e676c5680d5a8d5c474ef2946621a097003151b415b628017] 푸쉬 전달 완료
+2012-03-15 13:51:45,273 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 387169baba2773b2b2ad67e3345e6609e0f6a658bc7d426f3af6c143d1fa45a2
+2012-03-15 13:51:45,273 [1] DEBUG Server.LogCoordinator - Id :[jellyjina] Push :[387169baba2773b2b2ad67e3345e6609e0f6a658bc7d426f3af6c143d1fa45a2] 푸쉬 전달 완료
+2012-03-15 13:51:45,825 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 748cc8c2e0e0fc7df4bd4c58f0ba4bf79ad45e28048d1e097598488d2f4e16a1
+2012-03-15 13:51:45,825 [1] DEBUG Server.LogCoordinator - Id :[msnd] Push :[748cc8c2e0e0fc7df4bd4c58f0ba4bf79ad45e28048d1e097598488d2f4e16a1] 푸쉬 전달 완료
+2012-03-15 13:51:46,373 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 99535c96953aa8dafdd9bac97aef4b894b3c012f54af03f02af46589e53b7ab1
+2012-03-15 13:51:46,373 [1] DEBUG Server.LogCoordinator - Id :[iamghdcjf] Push :[99535c96953aa8dafdd9bac97aef4b894b3c012f54af03f02af46589e53b7ab1] 푸쉬 전달 완료
+2012-03-15 13:51:46,947 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 180e8629c43dc360067a69ff8136127749a66240ba12cbd56e5e64fc7cb8e3c7
+2012-03-15 13:51:46,947 [1] DEBUG Server.LogCoordinator - Id :[ming] Push :[180e8629c43dc360067a69ff8136127749a66240ba12cbd56e5e64fc7cb8e3c7] 푸쉬 전달 완료
+2012-03-15 13:51:47,499 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6f3ffa57a80b6adc597e37cbae1a3f580ad1fa12912c7e6338b1790e7865a891
+2012-03-15 13:51:47,499 [1] DEBUG Server.LogCoordinator - Id :[changeym] Push :[6f3ffa57a80b6adc597e37cbae1a3f580ad1fa12912c7e6338b1790e7865a891] 푸쉬 전달 완료
+2012-03-15 13:51:48,078 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4ae4af4122a22c2b4ff7559c2eb3d820d8ff04f2b66acca0d7b71c6d7148a73d
+2012-03-15 13:51:48,078 [1] DEBUG Server.LogCoordinator - Id :[seatwo10] Push :[4ae4af4122a22c2b4ff7559c2eb3d820d8ff04f2b66acca0d7b71c6d7148a73d] 푸쉬 전달 완료
+2012-03-15 13:51:48,629 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3a05ceff80da6a9d13fb34011cf992ff19f681dda1e9f0066bcc8808b1a3decd
+2012-03-15 13:51:48,629 [1] DEBUG Server.LogCoordinator - Id :[lsw9549] Push :[3a05ceff80da6a9d13fb34011cf992ff19f681dda1e9f0066bcc8808b1a3decd] 푸쉬 전달 완료
+2012-03-15 13:51:49,157 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= fc9130ca876b307dcba6b74e48c94e9bde9b4945df6cfa9cf9efcad13d52f584
+2012-03-15 13:51:49,157 [1] DEBUG Server.LogCoordinator - Id :[Minamm] Push :[fc9130ca876b307dcba6b74e48c94e9bde9b4945df6cfa9cf9efcad13d52f584] 푸쉬 전달 완료
+2012-03-15 13:51:49,706 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9bf80411356f927cbb92836e1e468ca3ac257b9a45a87f93502d86d1a75a7b86
+2012-03-15 13:51:49,706 [1] DEBUG Server.LogCoordinator - Id :[s1886] Push :[9bf80411356f927cbb92836e1e468ca3ac257b9a45a87f93502d86d1a75a7b86] 푸쉬 전달 완료
+2012-03-15 13:51:50,258 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2aef54de7ee8239e14ea7441e4d2d6f0104d1d18a32b6a8c7389646956f11087
+2012-03-15 13:51:50,259 [1] DEBUG Server.LogCoordinator - Id :[khjjib0419] Push :[2aef54de7ee8239e14ea7441e4d2d6f0104d1d18a32b6a8c7389646956f11087] 푸쉬 전달 완료
+2012-03-15 13:51:50,828 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f4b9db6a98ed70793a21ed046d39e59bbbe8f074da515c941bc8dfb32139de6b
+2012-03-15 13:51:50,828 [1] DEBUG Server.LogCoordinator - Id :[sanghyun95] Push :[f4b9db6a98ed70793a21ed046d39e59bbbe8f074da515c941bc8dfb32139de6b] 푸쉬 전달 완료
+2012-03-15 13:51:51,377 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e48886a0ff2a2fc1e09ca0df788a1c495abca189b4e35df0591c87e6a95dbd1f
+2012-03-15 13:51:51,377 [1] DEBUG Server.LogCoordinator - Id :[gmldud3693] Push :[e48886a0ff2a2fc1e09ca0df788a1c495abca189b4e35df0591c87e6a95dbd1f] 푸쉬 전달 완료
+2012-03-15 13:51:51,931 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 9ce9ab4cd708a68bbfd7e02f270c0a37ad0968ea753c8f5e9ade3b54b52e0c81
+2012-03-15 13:51:51,931 [1] DEBUG Server.LogCoordinator - Id :[codud3693] Push :[9ce9ab4cd708a68bbfd7e02f270c0a37ad0968ea753c8f5e9ade3b54b52e0c81] 푸쉬 전달 완료
+2012-03-15 13:51:52,483 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= bbe0929924a834fc504fa08c25369e447ab77c2cbf8262a0c950795965841c31
+2012-03-15 13:51:52,483 [1] DEBUG Server.LogCoordinator - Id :[oroiol7] Push :[bbe0929924a834fc504fa08c25369e447ab77c2cbf8262a0c950795965841c31] 푸쉬 전달 완료
+2012-03-15 13:51:53,123 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 12ccbdc3f3c33bb6d98b0c129ca944672af59776b4ad7e22a29dd4fa0d2ef135
+2012-03-15 13:51:53,124 [1] DEBUG Server.LogCoordinator - Id :[jihye9503] Push :[12ccbdc3f3c33bb6d98b0c129ca944672af59776b4ad7e22a29dd4fa0d2ef135] 푸쉬 전달 완료
+2012-03-15 13:51:53,756 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c2fceec546e9ebb9e95a047374c606b6a6be629a7f7c066cf49da976edb7a932
+2012-03-15 13:51:53,756 [1] DEBUG Server.LogCoordinator - Id :[1000jus] Push :[c2fceec546e9ebb9e95a047374c606b6a6be629a7f7c066cf49da976edb7a932] 푸쉬 전달 완료
+2012-03-15 13:51:54,405 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e889eb12eb4a8fb38f95a825ccd647f33109fd09c452368aaed3bbc90bede1af
+2012-03-15 13:51:54,405 [1] DEBUG Server.LogCoordinator - Id :[yong912] Push :[e889eb12eb4a8fb38f95a825ccd647f33109fd09c452368aaed3bbc90bede1af] 푸쉬 전달 완료
+2012-03-15 13:51:54,946 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b2ce5fec453bbfba0abab0ae9a4a693d62330cd0ffec7b117c360c7e7004833b
+2012-03-15 13:51:54,946 [1] DEBUG Server.LogCoordinator - Id :[hyunwoog] Push :[b2ce5fec453bbfba0abab0ae9a4a693d62330cd0ffec7b117c360c7e7004833b] 푸쉬 전달 완료
+2012-03-15 13:51:55,501 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e182695f528dd81076f703e7a9b2a6c4797ba3830d0a9837928b879d4ab565fe
+2012-03-15 13:51:55,501 [1] DEBUG Server.LogCoordinator - Id :[songpa] Push :[e182695f528dd81076f703e7a9b2a6c4797ba3830d0a9837928b879d4ab565fe] 푸쉬 전달 완료
+2012-03-15 13:51:56,053 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 711a215cc50a235395bd7fe753eda2f7be8bcfcd8910c82b85d95c4c491db434
+2012-03-15 13:51:56,053 [1] DEBUG Server.LogCoordinator - Id :[o3ohe] Push :[711a215cc50a235395bd7fe753eda2f7be8bcfcd8910c82b85d95c4c491db434] 푸쉬 전달 완료
+2012-03-15 13:51:56,731 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 2821eab61bb160662cb780ed9faf29afac572b03b2fb7fdf77b48548dc33ec0e
+2012-03-15 13:51:56,731 [1] DEBUG Server.LogCoordinator - Id :[space960626] Push :[2821eab61bb160662cb780ed9faf29afac572b03b2fb7fdf77b48548dc33ec0e] 푸쉬 전달 완료
+2012-03-15 13:51:57,282 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b72a54cae82d2cc0722f73fb70a3dc811c4b8079588bfc1096cd2051ab851041
+2012-03-15 13:51:57,282 [1] DEBUG Server.LogCoordinator - Id :[hy802] Push :[b72a54cae82d2cc0722f73fb70a3dc811c4b8079588bfc1096cd2051ab851041] 푸쉬 전달 완료
+2012-03-15 13:51:57,854 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= cb47cddcb0f929dd237033bb4fab44e23d48578b912de846e2e0f9537dbd4405
+2012-03-15 13:51:57,854 [1] DEBUG Server.LogCoordinator - Id :[ybouk1026] Push :[cb47cddcb0f929dd237033bb4fab44e23d48578b912de846e2e0f9537dbd4405] 푸쉬 전달 완료
+2012-03-15 13:51:58,486 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3c3baa20ecf875ef6da1ce9abfd7fb26cc52dc73bb7ecd9083ff78405b096a2e
+2012-03-15 13:51:58,486 [1] DEBUG Server.LogCoordinator - Id :[plzaddme] Push :[3c3baa20ecf875ef6da1ce9abfd7fb26cc52dc73bb7ecd9083ff78405b096a2e] 푸쉬 전달 완료
+2012-03-15 13:51:59,039 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= be91c4435916c7ea9ed3412acb86de7caf90787e45e40d01bc40bbb9795f0976
+2012-03-15 13:51:59,039 [1] DEBUG Server.LogCoordinator - Id :[intodiary] Push :[be91c4435916c7ea9ed3412acb86de7caf90787e45e40d01bc40bbb9795f0976] 푸쉬 전달 완료
+2012-03-15 13:51:59,550 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6666eab3db49a62624b6262e7e326b7df2f7955f0efc72b72dfbee24a15743db
+2012-03-15 13:51:59,550 [1] DEBUG Server.LogCoordinator - Id :[shp416] Push :[6666eab3db49a62624b6262e7e326b7df2f7955f0efc72b72dfbee24a15743db] 푸쉬 전달 완료
+2012-03-15 13:52:00,080 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 38f05bd97ebe5019150bfc0f2946aa5e525cbd6caa1f80d0b97c307b353811c0
+2012-03-15 13:52:00,080 [1] DEBUG Server.LogCoordinator - Id :[tyer002] Push :[38f05bd97ebe5019150bfc0f2946aa5e525cbd6caa1f80d0b97c307b353811c0] 푸쉬 전달 완료
+2012-03-15 13:52:00,631 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b155c3cf7ebee91a80c556ec6ccd96d5f23e314eb6292243c47bab8177f5c908
+2012-03-15 13:52:00,631 [1] DEBUG Server.LogCoordinator - Id :[gmldms2] Push :[b155c3cf7ebee91a80c556ec6ccd96d5f23e314eb6292243c47bab8177f5c908] 푸쉬 전달 완료
+2012-03-15 13:52:01,183 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7e919488b97552348c6698fa5ab5037ccdec4a9e2da72417f10457f6727f0be3
+2012-03-15 13:52:01,183 [1] DEBUG Server.LogCoordinator - Id :[qhfka9] Push :[7e919488b97552348c6698fa5ab5037ccdec4a9e2da72417f10457f6727f0be3] 푸쉬 전달 완료
+2012-03-15 13:52:01,737 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= fe9c77e614ea6a41695be37a507674cad695233d9901da17a9b99207e76d1759
+2012-03-15 13:52:01,737 [1] DEBUG Server.LogCoordinator - Id :[gollywolly23] Push :[fe9c77e614ea6a41695be37a507674cad695233d9901da17a9b99207e76d1759] 푸쉬 전달 완료
+2012-03-15 13:52:02,495 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1c8e83e05974185b7751953f4da6494da30d52c0968be78b2f2fdfd5e9014b31
+2012-03-15 13:52:02,495 [1] DEBUG Server.LogCoordinator - Id :[janjan] Push :[1c8e83e05974185b7751953f4da6494da30d52c0968be78b2f2fdfd5e9014b31] 푸쉬 전달 완료
+2012-03-15 13:52:03,065 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7f166e6fd7667be2938c6f9dbaba9e6c14e1e14b4522c4ee8923d7e1f4c27aa8
+2012-03-15 13:52:03,065 [1] DEBUG Server.LogCoordinator - Id :[srlee0304] Push :[7f166e6fd7667be2938c6f9dbaba9e6c14e1e14b4522c4ee8923d7e1f4c27aa8] 푸쉬 전달 완료
+2012-03-15 13:52:03,625 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b72048d4809f9acddfb633e20de7bbdf80a7768dd756b2992d97e6c12f0c893c
+2012-03-15 13:52:03,625 [1] DEBUG Server.LogCoordinator - Id :[su7543] Push :[b72048d4809f9acddfb633e20de7bbdf80a7768dd756b2992d97e6c12f0c893c] 푸쉬 전달 완료
+2012-03-15 13:52:04,171 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3daf129b823c29ea5b8ba0b99192bdccb2862d7a3a9068e8a160d6085c2fa8a8
+2012-03-15 13:52:04,171 [1] DEBUG Server.LogCoordinator - Id :[gkshs1234] Push :[3daf129b823c29ea5b8ba0b99192bdccb2862d7a3a9068e8a160d6085c2fa8a8] 푸쉬 전달 완료
+2012-03-15 13:52:04,735 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f8dd45cf45d718a0f58dba167dd6e787e21141e3fa9ccb95c4d66b5229244c87
+2012-03-15 13:52:04,735 [1] DEBUG Server.LogCoordinator - Id :[sens530] Push :[f8dd45cf45d718a0f58dba167dd6e787e21141e3fa9ccb95c4d66b5229244c87] 푸쉬 전달 완료
+2012-03-15 13:52:05,271 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b418440561c82d9e7e1ae640d28c15a75411f9c86513de381b33a429c6ae9ae4
+2012-03-15 13:52:05,271 [1] DEBUG Server.LogCoordinator - Id :[prada] Push :[b418440561c82d9e7e1ae640d28c15a75411f9c86513de381b33a429c6ae9ae4] 푸쉬 전달 완료
+2012-03-15 13:52:05,791 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1d50a18eb924fa46919d16a7dc84eaca49c7955521edc76a61d06c743f741a22
+2012-03-15 13:52:05,791 [1] DEBUG Server.LogCoordinator - Id :[lusipur] Push :[1d50a18eb924fa46919d16a7dc84eaca49c7955521edc76a61d06c743f741a22] 푸쉬 전달 완료
+2012-03-15 13:52:06,334 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 98440c3a58f4a9312b9a6bdc45f4dea377a5f45e12426711ed5f974f2334a4b5
+2012-03-15 13:52:06,334 [1] DEBUG Server.LogCoordinator - Id :[ehdgo] Push :[98440c3a58f4a9312b9a6bdc45f4dea377a5f45e12426711ed5f974f2334a4b5] 푸쉬 전달 완료
+2012-03-15 13:52:06,941 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f53175e08fd7b8b3fd2711a07a7684eb052db7a5ef33ed5c5751530788d3621b
+2012-03-15 13:52:06,941 [1] DEBUG Server.LogCoordinator - Id :[csw614] Push :[f53175e08fd7b8b3fd2711a07a7684eb052db7a5ef33ed5c5751530788d3621b] 푸쉬 전달 완료
+2012-03-15 13:52:07,478 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a02326df7a4216a401fe9fa6389d7691b678ba12a5b92c54487afffa34374578
+2012-03-15 13:52:07,478 [1] DEBUG Server.LogCoordinator - Id :[qlqlaqkq2] Push :[a02326df7a4216a401fe9fa6389d7691b678ba12a5b92c54487afffa34374578] 푸쉬 전달 완료
+2012-03-15 13:52:07,999 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6344ac98fa1a07138c9b21ab07cf6041af74b36074f9c12b288700b3bf0701d8
+2012-03-15 13:52:07,999 [1] DEBUG Server.LogCoordinator - Id :[sniperwk] Push :[6344ac98fa1a07138c9b21ab07cf6041af74b36074f9c12b288700b3bf0701d8] 푸쉬 전달 완료
+2012-03-15 13:52:08,560 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= a89e1d6fb5f28af77cc83643f12681934fc9aab070d7becf6c1f4a91b50d4ff7
+2012-03-15 13:52:08,560 [1] DEBUG Server.LogCoordinator - Id :[myorange66] Push :[a89e1d6fb5f28af77cc83643f12681934fc9aab070d7becf6c1f4a91b50d4ff7] 푸쉬 전달 완료
+2012-03-15 13:52:09,126 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f850d3dac3c9ffc70944954f565858e1205b403d597c8862639459b2dcc721bf
+2012-03-15 13:52:09,126 [1] DEBUG Server.LogCoordinator - Id :[dohyun107] Push :[f850d3dac3c9ffc70944954f565858e1205b403d597c8862639459b2dcc721bf] 푸쉬 전달 완료
+2012-03-15 13:52:09,801 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 4a2982a2b32998d71dd2759f4dbfd387bdc96d33bf8f0799f9c6b1f3a1a40bf2
+2012-03-15 13:52:09,801 [1] DEBUG Server.LogCoordinator - Id :[djcho44] Push :[4a2982a2b32998d71dd2759f4dbfd387bdc96d33bf8f0799f9c6b1f3a1a40bf2] 푸쉬 전달 완료
+2012-03-15 13:52:10,367 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 44dd54a12db21068e5720a59128c7a7c06ad52e714cade60ff4718fc99606d2b
+2012-03-15 13:52:10,367 [1] DEBUG Server.LogCoordinator - Id :[hugh95] Push :[44dd54a12db21068e5720a59128c7a7c06ad52e714cade60ff4718fc99606d2b] 푸쉬 전달 완료
+2012-03-15 13:52:10,933 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 0955253132859082ae13746a708657867c18373b4aa11016be796d56b98cab4b
+2012-03-15 13:52:10,933 [1] DEBUG Server.LogCoordinator - Id :[pooh2247] Push :[0955253132859082ae13746a708657867c18373b4aa11016be796d56b98cab4b] 푸쉬 전달 완료
+2012-03-15 13:52:11,467 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 551266783f2c71b9f8cfb1fdb7a18f23c665e52102ad1a7a95ec624229092cf7
+2012-03-15 13:52:11,467 [1] DEBUG Server.LogCoordinator - Id :[eunseo6] Push :[551266783f2c71b9f8cfb1fdb7a18f23c665e52102ad1a7a95ec624229092cf7] 푸쉬 전달 완료
+2012-03-15 13:52:12,207 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 323f3344980f0f9514dd134b4c58e4304dc924ba14643c90fcba19ea55fa72e3
+2012-03-15 13:52:12,207 [1] DEBUG Server.LogCoordinator - Id :[yt0505] Push :[323f3344980f0f9514dd134b4c58e4304dc924ba14643c90fcba19ea55fa72e3] 푸쉬 전달 완료
+2012-03-15 13:52:12,795 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 621f240f0a09a74c0ace479dce4aef7c5797c3a644b94d47c88a3978b8796ab1
+2012-03-15 13:52:12,795 [1] DEBUG Server.LogCoordinator - Id :[leehyang14] Push :[621f240f0a09a74c0ace479dce4aef7c5797c3a644b94d47c88a3978b8796ab1] 푸쉬 전달 완료
+2012-03-15 13:52:13,403 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 5101037fa638f62816b57e6ef63d20d3e62dce7420c3655ee3159ecac58ad218
+2012-03-15 13:52:13,403 [1] DEBUG Server.LogCoordinator - Id :[rlaxo3254] Push :[5101037fa638f62816b57e6ef63d20d3e62dce7420c3655ee3159ecac58ad218] 푸쉬 전달 완료
+2012-03-15 13:52:13,922 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7178c1434c0218dd550838f01d8c3227365ff263eb20ae60d52d38af096f0d2a
+2012-03-15 13:52:13,922 [1] DEBUG Server.LogCoordinator - Id :[jhp5909] Push :[7178c1434c0218dd550838f01d8c3227365ff263eb20ae60d52d38af096f0d2a] 푸쉬 전달 완료
+2012-03-15 13:52:14,490 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= e2d7254d6f0505f6530415ee4c20d3fa78156ea903f910f1218fc6d8366170d7
+2012-03-15 13:52:14,490 [1] DEBUG Server.LogCoordinator - Id :[jamie456] Push :[e2d7254d6f0505f6530415ee4c20d3fa78156ea903f910f1218fc6d8366170d7] 푸쉬 전달 완료
+2012-03-15 13:52:15,059 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 8e133224effa67c201fc736555a979a05911669bb037cef920737f77661bbda3
+2012-03-15 13:52:15,059 [1] DEBUG Server.LogCoordinator - Id :[사람덩구리] Push :[8e133224effa67c201fc736555a979a05911669bb037cef920737f77661bbda3] 푸쉬 전달 완료
+2012-03-15 13:52:15,633 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 329fdce92df0e460045e4ee41f2a37c1805eca91110bed55d7d14d745ae9ffff
+2012-03-15 13:52:15,633 [1] DEBUG Server.LogCoordinator - Id :[cmona] Push :[329fdce92df0e460045e4ee41f2a37c1805eca91110bed55d7d14d745ae9ffff] 푸쉬 전달 완료
+2012-03-15 13:52:16,153 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 431eec3e2e8d06486e86c078e74ae10c7fa3460301129a81c90958f7e8e3da56
+2012-03-15 13:52:16,153 [1] DEBUG Server.LogCoordinator - Id :[제주도여행남] Push :[431eec3e2e8d06486e86c078e74ae10c7fa3460301129a81c90958f7e8e3da56] 푸쉬 전달 완료
+2012-03-15 13:52:16,701 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 00c7927aaca98dc8d0c2b6fe4f5a12ceee2ce3317d57de70c00f091368731861
+2012-03-15 13:52:16,701 [1] DEBUG Server.LogCoordinator - Id :[qwertyou] Push :[00c7927aaca98dc8d0c2b6fe4f5a12ceee2ce3317d57de70c00f091368731861] 푸쉬 전달 완료
+2012-03-15 13:52:17,228 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3709913abe0aa32c5321a740fe273c29805a667eee916f257c8d2b06e7e8d3ce
+2012-03-15 13:52:17,228 [1] DEBUG Server.LogCoordinator - Id :[didckstlr11] Push :[3709913abe0aa32c5321a740fe273c29805a667eee916f257c8d2b06e7e8d3ce] 푸쉬 전달 완료
+2012-03-15 13:52:17,756 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3d58b7786f4e781c7c3bbaf21e41c992ef2f07a64a2e67169793f9b7d3439a62
+2012-03-15 13:52:17,756 [1] DEBUG Server.LogCoordinator - Id :[yjy026] Push :[3d58b7786f4e781c7c3bbaf21e41c992ef2f07a64a2e67169793f9b7d3439a62] 푸쉬 전달 완료
+2012-03-15 13:52:18,284 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= d036c1329f8c1b326d987472593e33c4d41f900f19b758bf5d0082477d4e82cd
+2012-03-15 13:52:18,284 [1] DEBUG Server.LogCoordinator - Id :[marmaid1120] Push :[d036c1329f8c1b326d987472593e33c4d41f900f19b758bf5d0082477d4e82cd] 푸쉬 전달 완료
+2012-03-15 13:52:18,833 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 7659c63cd556940cc3715f6f3d954b8d031b587b12cdc3ff287c1f1881ea9ff7
+2012-03-15 13:52:18,833 [1] DEBUG Server.LogCoordinator - Id :[flora1110] Push :[7659c63cd556940cc3715f6f3d954b8d031b587b12cdc3ff287c1f1881ea9ff7] 푸쉬 전달 완료
+2012-03-15 13:52:19,370 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1314a414b33c5822f3ff84cbe71b858c63fdc92236a34ae8ec301a5b7fa08476
+2012-03-15 13:52:19,370 [1] DEBUG Server.LogCoordinator - Id :[인연의시작] Push :[1314a414b33c5822f3ff84cbe71b858c63fdc92236a34ae8ec301a5b7fa08476] 푸쉬 전달 완료
+2012-03-15 13:52:19,961 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= c5f6b223d9296113a5ea0227ff3169307906727a542e4359b5f2ac78989675c1
+2012-03-15 13:52:19,961 [1] DEBUG Server.LogCoordinator - Id :[imooc1304] Push :[c5f6b223d9296113a5ea0227ff3169307906727a542e4359b5f2ac78989675c1] 푸쉬 전달 완료
+2012-03-15 13:52:20,788 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= af676a1067871c7823a17eb67d0c429401afe6aa4ce4097339979eb66a97e623
+2012-03-15 13:52:20,788 [1] DEBUG Server.LogCoordinator - Id :[zerorumble] Push :[af676a1067871c7823a17eb67d0c429401afe6aa4ce4097339979eb66a97e623] 푸쉬 전달 완료
+2012-03-15 13:52:21,001 [1] DEBUG Server.LogCoordinator - Id :[test] Push :[0                                                               ...] 푸쉬 전달 완료
+2012-03-15 13:52:21,545 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ebdca1862fc395dfdf36ceca5b02c4d3015d19d9813864aed4806cdd4c5e29c9
+2012-03-15 13:52:21,545 [1] DEBUG Server.LogCoordinator - Id :[yuii] Push :[ebdca1862fc395dfdf36ceca5b02c4d3015d19d9813864aed4806cdd4c5e29c9] 푸쉬 전달 완료
+2012-03-15 13:52:22,073 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 1dae912413dc364d0a51bb93a340810f0e64968a2d085038ecfc3862ea937462
+2012-03-15 13:52:22,073 [1] DEBUG Server.LogCoordinator - Id :[thief] Push :[1dae912413dc364d0a51bb93a340810f0e64968a2d085038ecfc3862ea937462] 푸쉬 전달 완료
+2012-03-15 13:52:22,624 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= b44d37193f212356c8f453538797560c2f3635d080854f3f521234099677eb01
+2012-03-15 13:52:22,624 [1] DEBUG Server.LogCoordinator - Id :[sdcsdc1] Push :[b44d37193f212356c8f453538797560c2f3635d080854f3f521234099677eb01] 푸쉬 전달 완료
+2012-03-15 13:52:23,232 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f913866706b7e85063b4e77ee99dc1463208cc3711ec0122754af1816a484d65
+2012-03-15 13:52:23,232 [1] DEBUG Server.LogCoordinator - Id :[lng924] Push :[f913866706b7e85063b4e77ee99dc1463208cc3711ec0122754af1816a484d65] 푸쉬 전달 완료
+2012-03-15 13:52:23,752 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= f97a01b7a07521f33c4ea5b5c204dd0c3431da521cab2d515c3880c0e3fb983f
+2012-03-15 13:52:23,752 [1] DEBUG Server.LogCoordinator - Id :[ekgml0692] Push :[f97a01b7a07521f33c4ea5b5c204dd0c3431da521cab2d515c3880c0e3fb983f] 푸쉬 전달 완료
+2012-03-15 13:52:24,315 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 3380e04640a3ffdb6cc7db2c2f2d7d26740d7065193d4279e4e7c30db8648691
+2012-03-15 13:52:24,315 [1] DEBUG Server.LogCoordinator - Id :[yjno] Push :[3380e04640a3ffdb6cc7db2c2f2d7d26740d7065193d4279e4e7c30db8648691] 푸쉬 전달 완료
+2012-03-15 13:52:24,859 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= ac2d1c81c295feb9269a24e901fcab72d75617384da33e38e18af95916943050
+2012-03-15 13:52:24,859 [1] DEBUG Server.LogCoordinator - Id :[n2802] Push :[ac2d1c81c295feb9269a24e901fcab72d75617384da33e38e18af95916943050] 푸쉬 전달 완료
+2012-03-15 13:52:25,378 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 407e5341927f5f4bb9101742422b4016498591adb09ca939b8a751368bc5adb8
+2012-03-15 13:52:25,379 [1] DEBUG Server.LogCoordinator - Id :[bbl0102] Push :[407e5341927f5f4bb9101742422b4016498591adb09ca939b8a751368bc5adb8] 푸쉬 전달 완료
+2012-03-15 13:52:25,945 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.deviceID= 6b959b81c9dbb2295bcf934343d0f84cb0f6a0cf97e35dbc50c646b814798ea2
+2012-03-15 13:52:25,945 [1] DEBUG Server.LogCoordinator - Id :[cjwu] Push :[6b959b81c9dbb2295bcf934343d0f84cb0f6a0cf97e35dbc50c646b814798ea2] 푸쉬 전달 완료
+2012-03-15 13:52:25,947 [1] DEBUG Server.LogCoordinator - 아이폰 408 명
+2012-03-15 13:52:25,948 [1] DEBUG Server.LogCoordinator - 안드로이드 5 명
+2012-03-15 13:52:25,950 [1] DEBUG Server.LogCoordinator - 총 413 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 13:52:25,952 [1] DEBUG Server.LogCoordinator - 내용:[멘토,멘티 매칭 방식이 업그레이드 되었습니다. 건의사항은 >> facebook.com/tangibleidea << 이곳에 남겨주시면 빠른 답변을 받으실 수 있습니다.]
+2012-03-15 14:03:13,508 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= 붙여드렸어요~ 수락하시면되요 영어쪽으로 질문 많은가봐요deviceID= 7382c3ca4c973654af4ed1f57d55216247f0abbbd3d45c713071aa45d7223f82
+2012-03-15 14:03:13,508 [1] DEBUG Server.LogCoordinator - Id :[hgbyun] Push :[7382c3ca4c973654af4ed1f57d55216247f0abbbd3d45c713071aa45d7223f82] 푸쉬 전달 완료
+2012-03-15 14:03:13,513 [1] DEBUG Server.LogCoordinator - 아이폰 0 명
+2012-03-15 14:03:13,517 [1] DEBUG Server.LogCoordinator - 안드로이드 0 명
+2012-03-15 14:03:13,521 [1] DEBUG Server.LogCoordinator - 총 0 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 14:03:13,524 [1] DEBUG Server.LogCoordinator - 내용:[붙여드렸어요~ 수락하시면되요 영어쪽으로 질문 많은가봐요]
+2012-03-15 16:34:27,048 [1] DEBUG Server.LogCoordinator - Push Provider Setup Complete.
+
+2012-03-15 16:36:08,190 [1] DEBUG Server.LogCoordinator - 푸시 전송 성공! -> msg= dohyun0810님의 멘토가 추천되었습니다. 확인해주셔요~deviceID= 82cffb90eac6c2d40ed6bd548406e708105d6abdab9575262e48cedbf20ead1d
+2012-03-15 16:36:08,190 [1] DEBUG Server.LogCoordinator - Id :[dohyun0810] Push :[82cffb90eac6c2d40ed6bd548406e708105d6abdab9575262e48cedbf20ead1d] 푸쉬 전달 완료
+2012-03-15 16:36:08,192 [1] DEBUG Server.LogCoordinator - 아이폰 0 명
+2012-03-15 16:36:08,192 [1] DEBUG Server.LogCoordinator - 안드로이드 0 명
+2012-03-15 16:36:08,192 [1] DEBUG Server.LogCoordinator - 총 0 명에게 푸쉬메세지를 전송했습니다
+2012-03-15 16:36:08,193 [1] DEBUG Server.LogCoordinator - 내용:[dohyun0810님의 멘토가 추천되었습니다. 확인해주셔요~]
