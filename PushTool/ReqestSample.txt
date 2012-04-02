@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+using System.Net;
+using System.Text.RegularExpressions;
+
+namespace aaaaaaaa
+{
+    class Program
+    {
+
+        static void Main( string[] args )
+        {
+            // 타겟이 되는 웹페이지 URL
+            string Url = "http://localhost:9091/MeepleService/LastMessageId";
+
+            HttpWebRequest request = ( HttpWebRequest )WebRequest.Create( Url );
+
+            // HttpWebRequest 오브젝트 설정
+            request.Method = "POST";
+            request.ContentType = "application/json; charset=utf-8";
+
+            string data = "{\"localAccount\":\"someTestData\",\"session\":\"ses\"}";
+            byte[] byteData = UTF8Encoding.UTF8.GetBytes( data );
+            request.ContentLength = byteData.Length;
+            using( Stream postStream = request.GetRequestStream() )
+            {
+                postStream.Write( byteData, 0, byteData.Length );
+            }
+
+            // Get response  
+            using( HttpWebResponse response = request.GetResponse() as HttpWebResponse )
+            {
+                // Get the response stream  
+                StreamReader reader = new StreamReader( response.GetResponseStream() );
+
+                // Console application output  
+                Console.WriteLine( reader.ReadToEnd() );
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+    }
+}

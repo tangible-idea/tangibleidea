@@ -1,0 +1,14 @@
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Debug\Server.exe
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Debug\Server.pdb
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Debug\System.Data.SQLite.dll
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Debug\System.Data.SQLite.pdb
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Debug\System.Data.SQLite.Linq.pdb
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Debug\Server.MainForm.resources
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Debug\Server.Properties.Resources.resources
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Debug\Server.exe
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Debug\Server.pdb
