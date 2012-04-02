@@ -94,7 +94,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
       }
       
       @Override
-      public View getView(int position, View convertView, ViewGroup parent)
+      public View getView(final int position, View convertView, ViewGroup parent)
       {
           View v = convertView;
           
@@ -144,9 +144,9 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
               
               // 테이블 내에 들어갈 작업들
               ImageView IMG_in_caption= (ImageView) v.findViewById(R.id.e_img_table_in_caption);
-              Button BTN_in_yes= (Button) v.findViewById(R.id.e_btn_table_in_yes);
-              Button BTN_in_no= (Button) v.findViewById(R.id.e_btn_table_in_no);
-              Button BTN_in_talk= (Button) v.findViewById(R.id.e_btn_table_in_talk);
+              final Button BTN_in_yes= (Button) v.findViewById(R.id.e_btn_table_in_yes);
+              final Button BTN_in_no= (Button) v.findViewById(R.id.e_btn_table_in_no);
+              final Button BTN_in_talk= (Button) v.findViewById(R.id.e_btn_table_in_talk);
         	  ImageView IMG_LBL= (ImageView) v.findViewById(R.id.e_img_label);
         	  
         	  BTN_in_yes.setOnClickListener(new OnClickListener()
@@ -155,7 +155,8 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				@Override
 				public void onClick(View v)
 				{
-					Log.d("ProfileListAdapter", "Click::OK");
+					if( bSlide[position] )
+						Log.d("ProfileListAdapter", "Click::OK "+position);
 				}
         	  });
         	  
@@ -165,7 +166,8 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				@Override
 				public void onClick(View v)
 				{
-					Log.d("ProfileListAdapter", "Click::NO");
+					if( bSlide[position] )
+						Log.d("ProfileListAdapter", "Click::NO "+position);
 				}
         	  });
         	  
@@ -175,8 +177,11 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				@Override
 				public void onClick(View v)
 				{
-					Log.d("ProfileListAdapter", "Click::Talk");
-					LobbyActivity.s_TabHost.setCurrentTab(1);
+					if( bSlide[position] )
+					{
+						Log.d("ProfileListAdapter", "Click::Talk "+position);
+						LobbyActivity.s_TabHost.setCurrentTab(1);
+					}
 				}
         	  });
         	  
@@ -188,6 +193,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_ok);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_no);
 					  BTN_in_talk.setBackgroundResource(R.drawable.btn_tap_talk_blank);	// 대화하기는 없앰
+					  BTN_in_talk.setOnClickListener(null);
 					  
     				  if( (position!=0) )
     				  {					  
@@ -205,6 +211,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_talk.setBackgroundResource(R.drawable.btn_tap_talk_blank);	// 대화하기는 없앰
+					  BTN_in_talk.setOnClickListener(null);
 					  
         			  if( (position!=0) )
     				  {
@@ -223,6 +230,8 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_talk.setBackgroundResource(R.drawable.btn_tap_talk);	// 대화하기만 보여줌
+					  BTN_in_yes.setOnClickListener(null);
+					  BTN_in_no.setOnClickListener(null);
 					  
         			  if( (position!=0) )
     				  {

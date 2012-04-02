@@ -110,8 +110,24 @@ public class MeepleListActivity extends ListActivity
     {
     	try 
     	{
-    		if( !arraylist.isEmpty() )
+    		if( !arraylist.isEmpty() )	// 리스트가 비어있지 않으면 클리어해준다.
+    		{
+    			if( SPUtil.getBoolean(mContext, "isMentor") )
+    			{
+        			tees.clear();
+        			Pending_tees.clear();
+        			Waiting_tees.clear();
+        			InProgress_tees.clear();
+    			}
+    			else
+    			{
+        			tors.clear();
+        			Pending_tors.clear();
+        			InProgress_tors.clear();
+    			}
+
     			arraylist.clear();
+    		}
     		
     		if( SPUtil.getBoolean(mContext, "isMentor") ) 
     		{
@@ -163,6 +179,10 @@ public class MeepleListActivity extends ListActivity
 		{
 			if(msg.what==0)
 			{
+				if(AA!=null)
+					AA.clear();
+				
+				BTN_waitlinenumber.setVisibility(View.INVISIBLE);
 				LoadingDL.setMessage("멘티 목록을 불러오는 중...");
 		        //LoadingDL.setMessage("나를 기다리는 멘티들을 불러오는 중");
 		        LoadingDL.show();
