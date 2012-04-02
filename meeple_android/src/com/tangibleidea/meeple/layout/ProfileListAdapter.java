@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.activity.LobbyActivity;
+import com.tangibleidea.meeple.activity.PopupActivity;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.server.RequestImageMethods;
 import com.tangibleidea.meeple.util.SPUtil;
@@ -148,6 +151,20 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
               final Button BTN_in_no= (Button) v.findViewById(R.id.e_btn_table_in_no);
               final Button BTN_in_talk= (Button) v.findViewById(R.id.e_btn_table_in_talk);
         	  ImageView IMG_LBL= (ImageView) v.findViewById(R.id.e_img_label);
+        	  
+        	  CurrImageView.setOnClickListener(new OnClickListener()
+        	  {
+				
+				@Override
+				public void onClick(View v)
+				{
+					Log.d("ProfileListAdapter", "Click::ProfilePopup "+position);
+					
+					Intent intent= new Intent(mContext, PopupActivity.class);
+					mContext.startActivity(intent);
+					
+				}
+        	  });
         	  
         	  BTN_in_yes.setOnClickListener(new OnClickListener()
         	  {

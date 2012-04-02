@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+android:id="@+id/POPUP_RelativeLayout_Root"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+android:background="#aa000000"
+>
+
+    <RelativeLayout
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+	android:layout_centerVertical="true">
+
+        <RelativeLayout
+        android:id="@+id/view_popupwindow_bar"
+        android:background="#49AFD1"
+        android:layout_width="261.3dip"
+        android:layout_height="38dip">   
+        
+            <ImageView
+            android:id="@+id/img_popup_label"
+            android:background="@drawable/popup_title_my_mentee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
+            
+            <Button
+			android:id="@+id/btn_popup_exit"
+            android:background="@drawable/btn_popup_close"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+            
+		</RelativeLayout>
+		
+        <RelativeLayout
+        android:id="@+id/view_popupwindow_content"
+        android:layout_below="@+id/view_popupwindow_bar"
+        android:background="#FFFFFF"
+        android:layout_width="261.3dip"
+        android:layout_height="208.7dip">
+            
+            <ImageView
+            android:id="@+id/img_popup_photo"
+            android:background="@drawable/no_profileimage"
+            android:layout_marginLeft="13.3dip"
+            android:layout_marginTop="14.7dip"
+            android:layout_width="106.7dip"
+            android:layout_height="106.7dip"/>
+            
+            <TextView
+            android:id="@+id/txt_popup_name"
+            android:text="김나라"
+            android:textSize="18.7sp"
+            android:textColor="#030404"
+			android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/img_popup_photo"
+            android:layout_marginLeft="6.7dip"
+            android:layout_marginTop="18dip"/>
+            
+            <TextView
+            android:id="@+id/txt_popup_profile"
+            android:text="서울대학교 08학번\n컴퓨터공학과"
+            android:textSize="13.3sp"
+            android:textColor="#030404"
+			android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/img_popup_photo"
+            android:layout_below="@+id/txt_popup_name"
+            android:layout_marginLeft="6.7dip"
+            android:layout_marginTop="7.3dip"/>
+            
+            <Button
+			android:id="@+id/btn_popup_interaction"
+            android:background="@drawable/btn_popup_send_note"
+            android:layout_marginLeft="6.7dip"
+            android:layout_marginTop="14dip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/img_popup_photo"
+            android:layout_below="@+id/txt_popup_profile"/>
+            
+            <TextView
+            android:id="@+id/txt_popup_info"
+            android:text="팝업창입니다~ 우왕 미플합시당~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+            android:textSize="11.3sp"
+            android:textColor="#030404"
+			android:layout_width="227.3dip"
+            android:layout_height="60.7dip"
+            android:layout_below="@+id/img_popup_photo"
+            android:layout_marginLeft="13.3dip"
+            android:layout_marginTop="14dip"
+            android:background="@drawable/popup_text_box"/>
+            
+		</RelativeLayout>
+        
+    </RelativeLayout>
+
+	
+</RelativeLayout>
