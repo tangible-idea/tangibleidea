@@ -1,0 +1,60 @@
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\Server.exe
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\Server.pdb
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\System.Data.SQLite.dll
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\System.Data.SQLite.Linq.dll
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\System.Data.SQLite.pdb
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\System.Data.SQLite.Linq.pdb
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Release\Server.MainForm.resources
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\Server2.exe.config
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\Server2.exe
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\bin\Release\Server2.pdb
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Release\Server2.exe
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Release\Server2.pdb
+C:\Users\Administrator\Desktop\drink\trunk\Server\Server\obj\x86\Release\Server2.Properties.Resources.resources
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\bin\Release\Push.exe.config
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\obj\x86\Release\Server.MainForm.resources
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\obj\x86\Release\Push.Properties.Resources.resources
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\bin\Release\Push.exe
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\bin\Release\Push.pdb
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\bin\Release\System.Data.SQLite.dll
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\bin\Release\System.Data.SQLite.Linq.dll
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\bin\Release\System.Data.SQLite.pdb
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\bin\Release\System.Data.SQLite.Linq.pdb
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\obj\x86\Release\Push.exe
+C:\Users\Administrator\Desktop\push\trunk\Server\Server\obj\x86\Release\Push.pdb
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\bin\Release\Push.exe.config
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\obj\x86\Release\Push.exe
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\obj\x86\Release\Push.pdb
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\bin\Release\Push.exe
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\bin\Release\Push.pdb
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\bin\Release\System.Data.SQLite.dll
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\bin\Release\System.Data.SQLite.Linq.dll
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\bin\Release\System.Data.SQLite.pdb
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\bin\Release\System.Data.SQLite.Linq.pdb
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\obj\x86\Release\Server.MainForm.resources
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\obj\x86\Release\Push.Properties.Resources.resources
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\Administrator\Desktop\push - test\trunk\Server\Server\bin\Release\log4net.xml
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\bin\Release\Push.exe.config
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\obj\x86\Release\Push.exe
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\obj\x86\Release\Push.pdb
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\bin\Release\log4net.xml
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\bin\Release\Push.exe
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\bin\Release\Push.pdb
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\bin\Release\System.Data.SQLite.dll
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\bin\Release\System.Data.SQLite.Linq.dll
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\bin\Release\System.Data.SQLite.pdb
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\bin\Release\System.Data.SQLite.Linq.pdb
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\obj\x86\Release\Server.MainForm.resources
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\obj\x86\Release\Push.Properties.Resources.resources
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\Administrator\Desktop\server_svn\tangibleidea\PushTool\Server\obj\x86\Release\GenerateResource.write.1.tlog
