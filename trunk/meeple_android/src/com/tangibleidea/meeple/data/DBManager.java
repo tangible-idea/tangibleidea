@@ -91,8 +91,25 @@ public class DBManager extends DBCore
 		
 		Cursor CS= this.GetCursorFromDB(strTableName, strCol);
 		
-		if(CS.moveToFirst())
-		{    //if 가 참이면 얻어온 데이타가 1개 이상 
+		if( CS.getCount() < 25 )	// 채팅이 25줄보다 적으면
+		{
+			if(CS.moveToFirst())
+			{    //moveToFirst 가 참이면 얻어온 데이타가 1개 이상 
+				do
+				{
+					if( CS.getString(1).equals( SPUtil.getString(_context, "AccountID") ) )
+						bMyChat= true;
+					else
+						bMyChat= false;
+					
+					res.add( new ChatEntry( bMyChat, CS.getString(0), CS.getString(3) ) ); 
+				}while(CS.moveToNext());
+			}
+		}
+		else	// 채팅이 25줄보다 많으면
+		{
+			CS.moveToPosition( CS.getCount() - 25);
+			
 			do
 			{
 				if( CS.getString(1).equals( SPUtil.getString(_context, "AccountID") ) )
@@ -103,6 +120,8 @@ public class DBManager extends DBCore
 				res.add( new ChatEntry( bMyChat, CS.getString(0), CS.getString(3) ) ); 
 			}while(CS.moveToNext());
 		}
+		
+
 		
 		CS.close();
 

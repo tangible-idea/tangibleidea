@@ -105,11 +105,19 @@
     
   	<ImageView android:id="@+id/ePhoto"
   	android:layout_below="@+id/e_img_label"
-    android:layout_width="74.6dip"
-    android:layout_height="74.6dip"
+    android:layout_width="74dip"
+    android:layout_height="74dip"
+    android:layout_marginLeft="23.6dip"
+    android:layout_marginTop="2.3dip"
+    android:src="@drawable/no_profileimage" />
+  	
+  	<ImageView android:id="@+id/photo_over_shadow"
+  	android:layout_below="@+id/e_img_label"
+    android:layout_width="74.9dip"
+    android:layout_height="74.9dip"
     android:layout_marginLeft="23.3dip"
     android:layout_marginTop="2dip"
-    android:src="@drawable/no_profileimage" />
+    android:src="@drawable/profile_img_shadow" />
 
     
     <TextView
