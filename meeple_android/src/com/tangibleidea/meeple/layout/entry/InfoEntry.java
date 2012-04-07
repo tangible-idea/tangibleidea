@@ -1,4 +1,4 @@
-package com.tangibleidea.meeple.layout;
+package com.tangibleidea.meeple.layout.entry;
 
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 

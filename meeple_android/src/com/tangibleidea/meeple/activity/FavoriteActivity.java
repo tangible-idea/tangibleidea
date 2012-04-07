@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.layout.FavoriteListAdapter;
-import com.tangibleidea.meeple.layout.InfoEntry;
+import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
 import com.tangibleidea.meeple.server.RequestMethods;

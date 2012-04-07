@@ -32,6 +32,9 @@ public class LobbyActivity extends ActivityGroup
 	{
 		super.onCreate(savedInstanceState);
 		
+		System.gc();
+		dalvik.system.VMRuntime.getRuntime().setTargetHeapUtilization(0.7f);
+		
 		setContentView(R.layout.lobby_tap);
 
 		setupTabHost();

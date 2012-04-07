@@ -1,6 +1,7 @@
 package com.tangibleidea.meeple.layout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,12 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
+import com.tangibleidea.meeple.data.EnumMeepleStatus;
+import com.tangibleidea.meeple.layout.entry.RecentTalkEntry;
+import com.tangibleidea.meeple.layout.enums.EnumRecentTalkStatus;
 
 public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
 {
 	private ArrayList<RecentTalkEntry> items;
 	private int viewResource;
 	private Context context;
+	private final static int s_SEPRATE_POS= 0;	// 구분자가 들어가는 위치
+	
+	private HashMap<Integer,Boolean> mapRecenttalkLabel= new HashMap<Integer,Boolean>();
 	  
 	public RecentTalkListAdapter(Context context, int rsrcId, int txtId, ArrayList<RecentTalkEntry> data)
 	{
@@ -25,8 +32,24 @@ public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
 	    this.items = data;
 	    this.viewResource = rsrcId;
 	}
-          
-    @Override
+       
+	@Override
+	public int getCount()
+	{
+		return items.size();
+	}
+	
+	public int getRealPosition(int pos)
+	{
+		if( pos < s_SEPRATE_POS )
+		{
+			return pos;
+		}else{
+			return pos-1;
+		}
+	}
+
+	@Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
         View v = convertView;

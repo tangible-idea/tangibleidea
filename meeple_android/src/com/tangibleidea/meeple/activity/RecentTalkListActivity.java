@@ -17,8 +17,8 @@ import android.widget.ListView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.DBManager;
-import com.tangibleidea.meeple.layout.RecentTalkEntry;
 import com.tangibleidea.meeple.layout.RecentTalkListAdapter;
+import com.tangibleidea.meeple.layout.entry.RecentTalkEntry;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
 import com.tangibleidea.meeple.server.RecentChat;
@@ -41,6 +41,8 @@ public class RecentTalkListActivity extends ListActivity
 	private List<MentorInfo> InProgress_tors; 
 	
 	private DBManager DBMgr;
+	
+	
 	
 
 	
@@ -132,7 +134,7 @@ public class RecentTalkListActivity extends ListActivity
 			{
 				for(MenteeInfo tee : InProgress_tees)
 				{
-					arraylist.add( new RecentTalkEntry(false, "0", tee.getAccountId(), tee.getName(), "대화내용 없음","0", "현재시각" ) );
+					arraylist.add( new RecentTalkEntry(false, "0", tee.getAccountId(), tee.getName(), "대화내용 없음","0", "" ) );
 				}
 				
 				LoadingDL.setMessage("최근 대화를 불러오는 중");
@@ -142,7 +144,7 @@ public class RecentTalkListActivity extends ListActivity
 			{
 				for(MentorInfo tor : InProgress_tors)
 				{
-					arraylist.add( new RecentTalkEntry(false, "0", tor.getAccountId(), tor.getName(), "대화내용 없음","0", "현재시각" ) );
+					arraylist.add( new RecentTalkEntry(false, "0", tor.getAccountId(), tor.getName(), "대화내용 없음","0", "" ) );
 				}
 				
 				LoadingDL.setMessage("최근 대화를 불러오는 중");

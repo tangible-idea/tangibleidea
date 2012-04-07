@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
+import com.tangibleidea.meeple.layout.entry.UnivEntry;
 
 public class UnivListAdapter extends ArrayAdapter<UnivEntry>
 {

@@ -5,9 +5,7 @@ import java.util.HashMap;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Paint;
-import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +22,19 @@ import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.activity.LobbyActivity;
 import com.tangibleidea.meeple.activity.PopupActivity;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
+import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.RequestImageMethods;
 import com.tangibleidea.meeple.util.SPUtil;
+
+class ViewHolder_ProfileList
+{
+	ImageView IMG_ProfilePic;
+}
 
 public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements android.view.View.OnClickListener
 {
 		//private HashMap<Integer, Bitmap> mapProfileImages= new HashMap<Integer, Bitmap>();
-		private ImageView CurrImageView= null;
+//		private ImageView CurrImageView= null;
 //		private String CurrID= null;
 //		private int CurrPos= 0;
 	
@@ -99,13 +103,22 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
       @Override
       public View getView(final int position, View convertView, ViewGroup parent)
       {
+    	  ViewHolder_ProfileList holder;
           View v = convertView;
           
           if (v == null)
           {
               LayoutInflater li = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
               v = li.inflate(rsrc, null);
-          } 
+              
+    		  holder = new ViewHolder_ProfileList();
+    		  holder.IMG_ProfilePic = (ImageView)v.findViewById(R.id.ePhoto);
+    		  v.setTag(holder);
+          }
+          else
+          {
+        	  holder = (ViewHolder_ProfileList)v.getTag();
+          }
           
           InfoEntry e = items.get(position); 
           
@@ -133,17 +146,14 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  
           
         	  // 이미지를 다운로드하고 설정하는 부분
-              if (e.getPhotoId() != -1)
-              {
-            	  this.CurrImageView= (ImageView) v.findViewById(R.id.ePhoto);
+//              if (e.getPhotoId() != -1)
+//              {    			
+            	  holder.IMG_ProfilePic= (ImageView) v.findViewById(R.id.ePhoto);
             	  RequestImageMethods RIM= new RequestImageMethods();
-          		  RIM.DownloadImage( this.CurrImageView, e.getID() );	// 이미지를 다운로드 받고 
-            	  //this.CurrPos= position;
-            	  //this.CurrID= e.getID();
-            	  //this.StartImageDownloadThread();	// 현재 상황에 맞는 프로필 이미지를 스레드를 통해 다운로드한다.             	  
-              } else {
-            	  CurrImageView.setImageResource(R.drawable.no_profileimage);  
-              }
+          		  RIM.DownloadImage2( holder.IMG_ProfilePic, e.getID() );	// 이미지를 다운로드 받고    	  
+//              } else {
+//            	  holder.imgView.setImageResource(R.drawable.no_profileimage);  
+//              }
               
               // 테이블 내에 들어갈 작업들
               ImageView IMG_in_caption= (ImageView) v.findViewById(R.id.e_img_table_in_caption);
@@ -152,7 +162,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
               final Button BTN_in_talk= (Button) v.findViewById(R.id.e_btn_table_in_talk);
         	  ImageView IMG_LBL= (ImageView) v.findViewById(R.id.e_img_label);
         	  
-        	  CurrImageView.setOnClickListener(new OnClickListener()
+        	  holder.IMG_ProfilePic.setOnClickListener(new OnClickListener()
         	  {
 				
 				@Override

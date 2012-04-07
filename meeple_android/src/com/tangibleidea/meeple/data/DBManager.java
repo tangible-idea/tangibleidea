@@ -8,7 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
-import com.tangibleidea.meeple.layout.ChatEntry;
+import com.tangibleidea.meeple.layout.entry.ChatEntry;
 import com.tangibleidea.meeple.server.Chat;
 import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.SPUtil;
