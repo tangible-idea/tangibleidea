@@ -370,6 +370,26 @@ public class RequestMethods
 		return res; 
 	}
 	
+	/**
+	 * 현재 클라이언트가 가지고 있는 세션 정보가 서버와 일치한지 확인한다.
+	 * @param _context
+	 * @return
+	 */
+	public boolean CheckLogin(Context _context)
+	{	
+	    String URI = Global.SERVER + "CheckLogin?"
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session");
+	    
+	    String strRes= this.RequestStringToServer(URI);
+	    
+	    if(strRes.equals("true"))
+	    {
+	    	return true;
+	    }else{
+	    	return false;
+	    }
+	}
 	
 	/**
 	 * 자신과 연결된 멘토의 정보를 가져옵니다.
@@ -829,7 +849,7 @@ public class RequestMethods
 	 * @param bAccept : 수락 여부
 	 * @return : 서버에서 쿼리 성공여부
 	 */
-	public boolean RespondRecommendation(Context _context, String oppoAccount, boolean bMentor, boolean bAccept)
+	public boolean RespondRecommendation(Context _context, String oppoAccount, boolean bAccept)
 	{
 		boolean res;
 		String strAccept;
@@ -898,6 +918,8 @@ public class RequestMethods
 	    	Log.e( "JSONException", e.getMessage() );
 		}
 	    
+	    Log.d("GetRecentChatsNew::returned", URI);
+	    
 	    return res;
 	}
 	
@@ -940,6 +962,8 @@ public class RequestMethods
 	    {
 	    	Log.e( "JSONException", e.getMessage() );
 		}
+	    
+	    Log.d("SendChatNew::returned", URI);
 	    
 	    return res;
 	}
@@ -984,6 +1008,8 @@ public class RequestMethods
 	    {
 	    	Log.e( "JSONException", e.getMessage() );
 		}
+	    
+	    Log.d("GetChatsNew::returned", URI);
 	    
 	    return res;
 	}

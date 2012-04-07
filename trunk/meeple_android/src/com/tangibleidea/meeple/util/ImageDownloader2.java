@@ -52,6 +52,7 @@ import android.widget.ImageView;
  * file.</p>
  *
  * A local cache of downloaded images is maintained internally to improve performance.
+ * @deprecated
  */
 public class ImageDownloader2 {
     private static final String LOG_TAG = "ImageDownloader";
@@ -255,6 +256,11 @@ public class ImageDownloader2 {
         return null;
     }
 
+    /**
+     * @deprecated
+     * @param url
+     * @return
+     */
     public Bitmap downloadBitmap(String url)
     {
         final int IO_BUFFER_SIZE = 4 * 1024;

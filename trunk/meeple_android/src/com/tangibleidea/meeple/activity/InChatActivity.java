@@ -23,8 +23,8 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.DBManager;
-import com.tangibleidea.meeple.layout.ChatEntry;
 import com.tangibleidea.meeple.layout.ChatListAdapter;
+import com.tangibleidea.meeple.layout.entry.ChatEntry;
 import com.tangibleidea.meeple.server.Chat;
 import com.tangibleidea.meeple.server.RequestMethods;
 import com.tangibleidea.meeple.util.ChatManager;
@@ -136,6 +136,7 @@ public class InChatActivity extends ListActivity implements OnClickListener
 		});
 		
 		Global.s_HasNewChat= true;
+		this.StartGetChatsThread();
 		this.StartPollingThread();
 	}
 	

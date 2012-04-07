@@ -18,6 +18,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.tangibleidea.meeple.data.ImageRepository;
 import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.ImageDownloader2;
 import com.tangibleidea.meeple.util.SPUtil;
@@ -84,6 +85,9 @@ public class RequestImageMethods extends RequestMethods
 		}
 	}
 	
+	/**
+	 * @deprecated
+	 */
 	public void DownloadImage(ImageView IV, String AccountID) 
 	{
 		String URL= Global.SERVER_IMG+ AccountID+".jpg";
@@ -94,6 +98,9 @@ public class RequestImageMethods extends RequestMethods
 		downloader.download(URL, IV);
 	}
 	
+	/**
+	 * @deprecated
+	 */
 	public Bitmap DownloadImageToThread(String AccountID)
 	{
 		Bitmap res;
@@ -107,4 +114,14 @@ public class RequestImageMethods extends RequestMethods
 		
 		return res;
 	}
+	
+	public void DownloadImage2(ImageView IV, String AccountID)
+	{
+		String URL= Global.SERVER_IMG+ AccountID+".jpg";
+		
+		Log.d("RIM::DownloadImage2", URL);
+		
+		ImageRepository.INSTANCE.setImageBitmap(URL, IV);
+	}
+	
 }

@@ -8,6 +8,8 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,11 +22,11 @@ import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
-import com.tangibleidea.meeple.layout.InfoEntry;
+import com.tangibleidea.meeple.data.ImageRepository;
 import com.tangibleidea.meeple.layout.ProfileListAdapter;
+import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
-import com.tangibleidea.meeple.server.RequestImageMethods;
 import com.tangibleidea.meeple.server.RequestMethods;
 import com.tangibleidea.meeple.util.SPUtil;
 
@@ -56,6 +58,11 @@ public class MeepleListActivity extends ListActivity
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.pending_meeple);
+		
+        // 셋팅하기전에 로딩시 보여줄 이미지 셋팅
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.no_profileimage);
+        ImageRepository.INSTANCE.setDefaultBitmap(bitmap);
+		
 		
 		Pending_tees= new ArrayList<MenteeInfo>();
 		Waiting_tees= new ArrayList<MenteeInfo>();
@@ -136,6 +143,15 @@ public class MeepleListActivity extends ListActivity
         		RequestMethods RM= new RequestMethods();        		
         		tees= RM.GetMenteeRecommmendations(mContext);
         		
+        		if(tees==null || tees.isEmpty())
+        		{
+        			if(!RM.CheckLogin(mContext))
+        			{
+        				LoadingHandler.sendEmptyMessage(-1);
+        				return;
+        			}
+        		}
+        		
         		for(MenteeInfo MI : tees)	// 가져온 멘티 리스트를 상태에 맞게 분류
         		{
         			if( MI.eSTAT == EnumMeepleStatus.E_MENTEE_PENDING ) 
@@ -145,7 +161,7 @@ public class MeepleListActivity extends ListActivity
         			else if( MI.eSTAT == EnumMeepleStatus.E_MENTEE_INPROGRESS ) 
         				InProgress_tees.add(MI);
         		}
-        		LoadingHandler.sendEmptyMessage(3);
+        		LoadingHandler.sendEmptyMessage(3); 
     		}
     		else
     		{
@@ -153,6 +169,15 @@ public class MeepleListActivity extends ListActivity
          		
         		RequestMethods RM= new RequestMethods();
         		tors= RM.GetMentorRecommmendations(mContext);
+        		
+        		if(tors==null || tors.isEmpty())
+        		{
+        			if(!RM.CheckLogin(mContext))
+        			{
+        				LoadingHandler.sendEmptyMessage(-1);
+        				return;
+        			}
+        		}
         		
         		for(MentorInfo MO : tors)	// 가져온 멘토 리스트를 상태에 맞게 분류
         		{
@@ -177,6 +202,11 @@ public class MeepleListActivity extends ListActivity
 	{
 		public void handleMessage(Message msg)
 		{
+			if(msg.what==-1)
+			{
+				LoadingDL.hide();
+				ShowAlertDialog("세션이 종료됨", "다시 로그인해주세요~", "확인");
+			}
 			if(msg.what==0)
 			{
 				if(AA!=null)
@@ -286,7 +316,7 @@ public class MeepleListActivity extends ListActivity
             public void onClick(DialogInterface dialog, int whichButton)
             {
             	RequestMethods RM= new RequestMethods();
-            	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(),true , true))
+            	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(), true))
             	{
             		LoadingMeeplesInfo();
             	}else{
@@ -299,7 +329,7 @@ public class MeepleListActivity extends ListActivity
         	public void onClick(DialogInterface dialog, int whichButton)
             {
             	RequestMethods RM= new RequestMethods();
-        		RM.RespondRecommendation(mContext, arraylist.get(SelItem).getID(),true , false);
+        		RM.RespondRecommendation(mContext, arraylist.get(SelItem).getID(), false);
         		LoadingMeeplesInfo();
             }
         })
@@ -339,7 +369,7 @@ public class MeepleListActivity extends ListActivity
             public void onClick(DialogInterface dialog, int whichButton)
             {
             	RequestMethods RM= new RequestMethods();
-            	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(),false , true))
+            	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(), true))
             	{
             		LoadingMeeplesInfo();
             	}else{
@@ -352,7 +382,7 @@ public class MeepleListActivity extends ListActivity
         	public void onClick(DialogInterface dialog, int whichButton)
             {
             	RequestMethods RM= new RequestMethods();
-            	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(),false, false))
+            	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(), false))
             	{
             		LoadingMeeplesInfo();
             	}else{
