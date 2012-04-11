@@ -4,23 +4,22 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content">
    
-	<RelativeLayout
-	android:id="@+id/RL_label"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content">
+<!-- 	<RelativeLayout -->
+<!-- 	android:id="@+id/RL_label" -->
+<!-- 	android:layout_width="fill_parent" -->
+<!-- 	android:layout_height="wrap_content"> -->
 
-	    <!-- 라벨 -->
-		<ImageView
-		android:id="@+id/eRecentTalk_IMGLabel"
-		android:src="@drawable/label_lasttalk"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" />
+	    라벨
+<!-- 		<ImageView -->
+<!-- 		android:id="@+id/eRecentTalk_IMGLabel" -->
+<!-- 		android:src="@drawable/label_lasttalk" -->
+<!-- 		android:layout_width="fill_parent" -->
+<!-- 		android:layout_height="wrap_content" /> -->
 	
-	</RelativeLayout>
+<!-- 	</RelativeLayout> -->
 	
 	<RelativeLayout
 	android:id="@+id/RL_content"
-	android:layout_below="@+id/RL_label"
 	android:layout_width="fill_parent"
 	android:layout_height="76dip"
   	android:background="@drawable/talk_list_table">
@@ -76,6 +75,7 @@
 	    android:id="@+id/eRecentTalkContent"
 	    android:layout_toRightOf="@+id/ePhoto"
 	    android:layout_marginLeft="8dip"
+	    android:layout_marginRight="23dip"
 	    android:layout_marginTop="3dip"
 	    android:layout_below="@+id/eRecentTalkName"
 	    android:layout_width="fill_parent"
