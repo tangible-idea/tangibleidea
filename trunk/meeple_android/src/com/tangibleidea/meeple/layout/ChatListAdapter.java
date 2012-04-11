@@ -72,7 +72,7 @@ public class ChatListAdapter  extends ArrayAdapter<ChatEntry>
         	  {
         		  VH.TXT_MYCHAT.setText( e.getContent() );
         		  VH.TXT_MYCHAT.setBackgroundResource(R.drawable.talk_my_message_balloon);
-        		  VH.TXT_MYTIME.setText( e.getTime() );
+        		  VH.TXT_MYTIME.setText( e.getTime().substring(11) );
         		  VH.TXT_OPPOCHAT.setText("");
         		  VH.TXT_OPPOCHAT.setBackgroundResource(R.drawable.transpercy_image);
         		  VH.TXT_OPPOTIME.setText("");
@@ -83,7 +83,7 @@ public class ChatListAdapter  extends ArrayAdapter<ChatEntry>
 	    		  VH.TXT_MYTIME.setText( "" );
 	    		  VH.TXT_OPPOCHAT.setText( e.getContent() );
 	    		  VH.TXT_OPPOCHAT.setBackgroundResource(R.drawable.talk_message_balloon);
-	    		  VH.TXT_OPPOTIME.setText( e.getTime() );
+	    		  VH.TXT_OPPOTIME.setText( e.getTime().substring(11) );
 	    		  VH.IMG_OPPO.setImageResource(R.drawable.no_profileimage);
         	  }
         	  

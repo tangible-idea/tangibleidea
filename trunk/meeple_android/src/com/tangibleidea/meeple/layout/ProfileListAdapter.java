@@ -103,7 +103,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
       @Override
       public View getView(final int position, View convertView, ViewGroup parent)
       {
-    	  ViewHolder_ProfileList holder;
+    	  ViewHolder_ProfileList VH;
           View v = convertView;
           
           if (v == null)
@@ -111,16 +111,16 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
               LayoutInflater li = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
               v = li.inflate(rsrc, null);
               
-    		  holder = new ViewHolder_ProfileList();
-    		  holder.IMG_ProfilePic = (ImageView)v.findViewById(R.id.ePhoto);
-    		  v.setTag(holder);
+    		  VH = new ViewHolder_ProfileList();
+    		  VH.IMG_ProfilePic = (ImageView)v.findViewById(R.id.ePhoto);
+    		  v.setTag(VH);
           }
           else
           {
-        	  holder = (ViewHolder_ProfileList)v.getTag();
+        	  VH = (ViewHolder_ProfileList)v.getTag();
           }
           
-          InfoEntry e = items.get(position); 
+          final InfoEntry e = items.get(position); 
           
           if (e != null)
           {
@@ -148,9 +148,9 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  // 이미지를 다운로드하고 설정하는 부분
 //              if (e.getPhotoId() != -1)
 //              {    			
-            	  holder.IMG_ProfilePic= (ImageView) v.findViewById(R.id.ePhoto);
+            	  VH.IMG_ProfilePic= (ImageView) v.findViewById(R.id.ePhoto);
             	  RequestImageMethods RIM= new RequestImageMethods();
-          		  RIM.DownloadImage2( holder.IMG_ProfilePic, e.getID() );	// 이미지를 다운로드 받고    	  
+          		  RIM.DownloadImage2( VH.IMG_ProfilePic, e.getID() );	// 이미지를 다운로드 받고    	  
 //              } else {
 //            	  holder.imgView.setImageResource(R.drawable.no_profileimage);  
 //              }
@@ -162,7 +162,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
               final Button BTN_in_talk= (Button) v.findViewById(R.id.e_btn_table_in_talk);
         	  ImageView IMG_LBL= (ImageView) v.findViewById(R.id.e_img_label);
         	  
-        	  holder.IMG_ProfilePic.setOnClickListener(new OnClickListener()
+        	  VH.IMG_ProfilePic.setOnClickListener(new OnClickListener()
         	  {
 				
 				@Override
@@ -171,6 +171,9 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					Log.d("ProfileListAdapter", "Click::ProfilePopup "+position);
 					
 					Intent intent= new Intent(mContext, PopupActivity.class);
+					intent.putExtra("position", position);
+					intent.putExtra("name", e.getName());
+					intent.putExtra("profile", e.getSchool());
 					mContext.startActivity(intent);
 					
 				}
