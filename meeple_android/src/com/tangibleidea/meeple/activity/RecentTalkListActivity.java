@@ -82,8 +82,9 @@ public class RecentTalkListActivity extends ListActivity
     {
     	try 
     	{
-    		if( !arraylist.isEmpty() )
-    			arraylist.clear();
+    		if( !arraylist.isEmpty() )	// arraylist에 뭔가 들어가 있으면...
+    			arraylist.clear();		// 지워주자.
+    		arraylist.add(null);	// 첫번째는 구분자로 들어가자.
     		
     		boolean isMentor= SPUtil.getBoolean(mContext, "isMentor");
     		
@@ -185,6 +186,9 @@ public class RecentTalkListActivity extends ListActivity
 					
 					for(int i=0; i<arraylist.size(); ++i)
 					{
+						if(arraylist.get(i)==null)
+							continue;
+						
 						if( arraylist.get(i).getOppoName().equals(oppoName))	
 						{	// 지금 리스트에 추가하려고 하는 상대방ID가 이미 InProgress에서 추가된 리스트이면 제외시킨다.
 							arraylist.remove(i);

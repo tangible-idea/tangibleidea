@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -150,7 +151,8 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 //              {    			
             	  VH.IMG_ProfilePic= (ImageView) v.findViewById(R.id.ePhoto);
             	  RequestImageMethods RIM= new RequestImageMethods();
-          		  RIM.DownloadImage2( VH.IMG_ProfilePic, e.getID() );	// 이미지를 다운로드 받고    	  
+          		  RIM.DownloadImage2( VH.IMG_ProfilePic, e.getID() );	// 이미지를 다운로드 받고
+          		  VH.IMG_ProfilePic.setBackgroundColor(Color.BLACK);
 //              } else {
 //            	  holder.imgView.setImageResource(R.drawable.no_profileimage);  
 //              }
@@ -172,6 +174,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					
 					Intent intent= new Intent(mContext, PopupActivity.class);
 					intent.putExtra("position", position);
+					intent.putExtra("id", e.getID());
 					intent.putExtra("name", e.getName());
 					intent.putExtra("profile", e.getSchool());
 					mContext.startActivity(intent);
