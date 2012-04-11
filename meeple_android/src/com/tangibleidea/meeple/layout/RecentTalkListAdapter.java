@@ -1,6 +1,10 @@
 package com.tangibleidea.meeple.layout;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import android.content.Context;
@@ -12,9 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
-import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.layout.entry.RecentTalkEntry;
-import com.tangibleidea.meeple.layout.enums.EnumRecentTalkStatus;
 
 public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
 {
@@ -71,10 +73,32 @@ public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
         	TextView TXT_Time= (TextView) v.findViewById(R.id.eRecentTalkTime);
         	TextView TXT_Content= (TextView) v.findViewById(R.id.eRecentTalkContent);
         	
+        	Calendar rightNow = Calendar.getInstance();
+        	int dayOFyear= rightNow.get(Calendar.DATE);
+        	int dayOFyear_talk = 0;
+        	
+        	SimpleDateFormat format= new SimpleDateFormat("yyyy.MM.dd a h:mm");
+        	try
+        	{
+				Date talkTime= format.parse(e.getTime());
+				
+	        	if( talkTime.getDate() == dayOFyear ) // 대화 날짜가 오늘이면
+	        	{
+	        		TXT_Time.setText( talkTime.getMonth()+"월 "+talkTime.getDate()+"일");
+	        	}else{
+	        		TXT_Time.setText( talkTime.getHours()+":"+talkTime.getMinutes() );
+	        	}
+			}
+        	catch (ParseException e1)
+			{
+				e1.printStackTrace();
+			}
+
+        	
         	IMG_profile.setImageResource(R.drawable.no_profileimage);
         	TXT_Name.setText( e.getOppoName() );
         	TXT_Content.setText( e.getContent() );
-        	TXT_Time.setText( e.getTime() );
+        	
         	
         	if( e.getCount().equals("0") )
         	{
@@ -87,9 +111,9 @@ public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
         	if( e.isEndChat() )
         	{
         		TXT_recentCount.setVisibility(View.INVISIBLE);
-        		IMG_label.setImageResource(R.drawable.label_lasttalk);
+        		IMG_label.setImageResource(R.drawable.talk_list_last_label);
         	}else{
-        		IMG_label.setImageResource(R.drawable.label_nowtalk);
+        		IMG_label.setImageResource(R.drawable.talk_list_now_label);
         	}
             
         }

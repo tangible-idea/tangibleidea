@@ -1,81 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:background="#cccccc">
+    android:layout_height="wrap_content">
    
 	<RelativeLayout
-	android:id="@+id/RelativeLayout01"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content">
-    
-    
-	<ImageView
-	android:id="@+id/eRecentTalk_IMGLabel"
-	android:src="@drawable/label_lasttalk"
+	android:id="@+id/RL_label"
 	android:layout_width="fill_parent"
-	android:layout_height="wrap_content" />
-  
-  	<ImageView android:id="@+id/ePhoto"
-  	android:layout_marginTop="8dip"
-  	android:layout_marginLeft="8dip"
-  	android:layout_below="@+id/eRecentTalk_IMGLabel"
-    android:layout_width="40dip"
-    android:layout_height="40dip"
-    android:src="@drawable/no_profileimage" />
+	android:layout_height="wrap_content">
 
-  	<TextView
-    android:id="@+id/eRecentTalkCount"
-    android:layout_marginLeft="8dip"
-    android:gravity="center"
-    android:layout_below="@+id/ePhoto"
-    android:layout_width="40dip"
-    android:layout_height="wrap_content"
-    android:background="#DE4D23"
-    android:textColor="#eeeeee"
-    android:text="0"
-    android:textSize="15sp" />
-  	
-  	<TextView
-    android:id="@+id/eViewSpace"
-    android:layout_below="@+id/eRecentTalkCount"
-    android:layout_width="fill_parent"
-    android:layout_height="8dip"
-     />
-  	    
-  	    
-    
-    <TextView
-    android:id="@+id/eRecentTalkName"
-    android:layout_toRightOf="@+id/ePhoto"
-    android:layout_marginLeft="8dip"
-    android:layout_below="@+id/eRecentTalk_IMGLabel"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textColor="#000000"
-    android:textSize="22sp" />
-    
-    <TextView
-    android:id="@+id/eRecentTalkTime"
-    android:layout_alignParentRight="true"
-    android:layout_marginTop="8dip"
-    android:layout_below="@+id/eRecentTalk_IMGLabel"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textColor="#555555"
-    android:textSize="10sp" />
-    
-    <TextView
-    android:id="@+id/eRecentTalkContent"
-    android:layout_toRightOf="@+id/ePhoto"
-    android:layout_marginLeft="8dip"
-    android:layout_below="@+id/eRecentTalkName"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:textColor="#000000"
-    android:textSize="16sp" />
+	    <!-- 라벨 -->
+		<ImageView
+		android:id="@+id/eRecentTalk_IMGLabel"
+		android:src="@drawable/label_lasttalk"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+	
+	</RelativeLayout>
+	
+	<RelativeLayout
+	android:id="@+id/RL_content"
+	android:layout_below="@+id/RL_label"
+	android:layout_width="fill_parent"
+	android:layout_height="76dip"
+  	android:background="@drawable/talk_list_table">
   
+	    <!-- 사진 -->
+	  	<ImageView android:id="@+id/ePhoto"
+	  	android:layout_marginTop="7.3dip"
+  		android:layout_marginLeft="6dip"
+	    android:layout_width="35.3dip"
+	    android:layout_height="35.3dip"
+	    android:src="@drawable/no_profileimage" />
+	
+	  	<!-- 새로운 채팅 카운트 -->
+	  	<TextView
+	    android:id="@+id/eRecentTalkCount"
+	    android:layout_marginLeft="6dip"
+	    android:gravity="center"
+	    android:layout_below="@+id/ePhoto"
+	    android:layout_width="35.3dip"
+	    android:layout_height="14.7dip"
+	    android:background="#90bf00"
+	    android:textColor="#ffffff"
+	    android:text="0"
+	    android:textSize="12sp" />
+
+	  	    
+	  	    
+	    <!-- 이름 -->
+	    <TextView
+	    android:id="@+id/eRecentTalkName"
+	    android:layout_toRightOf="@+id/ePhoto"
+	    android:layout_marginLeft="8dip"
+	    android:layout_marginTop="5.8dip"
+	    android:layout_marginRight="18.7dip"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"    
+	    android:textColor="#000000"
+	    android:textSize="19sp" />
+	    
+	    <!-- 시간 -->
+	    <TextView
+	    android:id="@+id/eRecentTalkTime"
+	    android:layout_alignParentRight="true"
+	    android:paddingRight="6.7dip"
+	    android:layout_marginTop="16.7dip"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:textColor="#757575"
+	    android:textSize="11sp" />
+	    
+	    <!-- 채팅내용 -->
+	    <TextView
+	    android:id="@+id/eRecentTalkContent"
+	    android:layout_toRightOf="@+id/ePhoto"
+	    android:layout_marginLeft="8dip"
+	    android:layout_marginTop="3dip"
+	    android:layout_below="@+id/eRecentTalkName"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:lines="2"
+	    android:textColor="#777777"
+	    android:textSize="14sp" />
+	    
+	    	  	
+	  	<!-- 가장 밑 공간 -->
+	  	<TextView
+	    android:id="@+id/eViewSpace"
+	    android:layout_below="@+id/eRecentTalkContent"
+	    android:layout_width="fill_parent"
+	    android:layout_height="8dip"
+	     />
+	  
   </RelativeLayout>
   
-</LinearLayout>
+</RelativeLayout>
