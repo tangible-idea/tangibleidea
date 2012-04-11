@@ -43,27 +43,13 @@ public class InChatActivity extends ListActivity implements OnClickListener
 	
 	private String strChat="";
 	private boolean bPolling= true;
-	
 
-
-	//ListView listview;
+	int retry= 0;
 	List<Chat> chats;
-//	Cursor mCursor;
-//	ChatCursorAdapter mAdapter;
-	
-	
 	
 	ArrayAdapter<ChatEntry> AA;
 	ArrayList<ChatEntry> arraylist= new ArrayList<ChatEntry>();
 	
-//    private ArrayAdapter<String> mAdapter;    
-//    private ArrayList<String> mStrings = new ArrayList<String>();
-	
-	
-	
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onResume()
-	 */
 	@Override
 	protected void onResume()
 	{	
@@ -162,19 +148,44 @@ public class InChatActivity extends ListActivity implements OnClickListener
     private Runnable GetChatsThread = new Runnable()	// 채팅목록을 가져오는 스레드
     {
     	public void run()
-    	{	
-    		String TableName= SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount();    		
-        	RequestMethods RM= new RequestMethods();
-        	
-        	
-        	ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(TableName, "_id") ) );	// 채팅목록을 어디까지 가져왔나?
-        	chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), ChatMgr.getCurrChatID());	// 서버에서 채팅내용 가져옴
-        	DBMgr.InsertChatDB(TableName, chats);	// 가져온 것을 DB에 채팅내용 삽입
-        	ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(TableName, "_id") ) );	// 채팅목록을 어디까지 가져왔나?
-        	
-        	UIHandler.sendEmptyMessage(0); // UI 새로고침
+    	{
+    		GetChatsRange(26);
     	}
     };
+    
+    // 범위만큼 채팅을 가져옴
+    public void GetChatsRange(int range)
+    {
+		RequestMethods RM= new RequestMethods();
+		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
+		
+		int nLastChatID= Integer.parseInt( ChatMgr.getCurrChatID() );
+		
+		if( nLastChatID < range )	// 채팅 개수가 25개(기본값) 미만이면
+		{
+			chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), "0");	// 채팅 전부 가져옴
+				
+			if(chats==null)	// 가져오는데 실패하면 범위를 줄인다.
+			{
+				++retry;
+				this.GetChatsRange(26 - retry*5);
+				return;
+			}
+		}
+		else
+		{
+			chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), Integer.toString(nLastChatID-range) );	// 현재채팅부터 25번째까지 가져옴
+
+			if(chats==null)	// 가져오는데 실패하면 범위를 줄인다.
+			{
+				++retry;
+				this.GetChatsRange(26 - retry*5);
+				return;
+			}
+		}
+		
+		UIHandler.sendEmptyMessage(0); // UI 새로고침
+    }
     
     private Runnable SendChatsThread = new Runnable()
     {
@@ -251,50 +262,32 @@ public class InChatActivity extends ListActivity implements OnClickListener
 	
 	private void RefreshChatEntry()
 	{		
-		Global.s_HasNewChat= false;
-		
-//		mCursor= DBMgr.MakeCursorChat(this, SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount());
-//		mAdapter= new ChatCursorAdapter(this, mCursor);
-//		listview.setAdapter(mAdapter);
-//		listview.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
-		//mAdapter.getCursor().requery();
-		
+		Global.s_HasNewChat= false;	// 
+		retry= 0; // 채팅 가져오기 실패횟수 초기화
 		
 		arraylist.clear();
 		AA.clear();
-//
-		String TableName= SPUtil.getString(mContext, "AccountID")+"_"+ ChatMgr.getCurrOppoAccount();
 		
-		arraylist= DBMgr.GetChatToArrayList(this, TableName);	// DB채팅목록을 가져와서 리스트에 세팅함
-		
-		if(arraylist==null)
+		this.ChatEntrySet();	// 채팅 엔트리 설정		
+	}
+	
+	public void ChatEntrySet()
+	{
+		if(chats==null)
 			return;
-				
-		for( ChatEntry CE : arraylist )
-		{
-			AA.add(CE);
+		
+		for(Chat C : chats)
+		{	
+			boolean bMyChat;
+			if( C.getSenderAccount().equals( SPUtil.getString(mContext, "AccountID") ))
+			{
+				bMyChat= true;
+			}else{
+				bMyChat= false;
+			}
+			
+			arraylist.add(new ChatEntry(bMyChat, C.getChat(), C.getDateTime()));
 		}
-		
-		
-//		Global.s_HasNewChat= false;
-//		AA.notifyDataSetChanged();
-//		
-//		mStrings.clear();
-//		
-//		String TableName= SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount();
-//		
-//		mStrings= DBMgr.GetChatToArrayListTEST(this, TableName);	// DB채팅목록을 가져와서 리스트에 세팅함
-//		
-//		if(mStrings==null)
-//			return;
-//			
-//		for( String str : mStrings )
-//		{
-//			mAdapter.add(str);
-//		}
-//		
-//		Global.s_HasNewChat= false;
-//		mAdapter.notifyDataSetChanged();
 	}
 
 	@Override

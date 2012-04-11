@@ -1,5 +1,6 @@
 package com.tangibleidea.meeple.server;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -143,7 +144,7 @@ public class RequestMethods
 		JSONArray jarr= null;
 		HttpClient httpClient = new DefaultHttpClient();
 		
-		_strURI= _strURI.replaceAll("\\p{Space}", "%20");
+		_strURI= _strURI.replaceAll("\\p{Space}", "%20");	// 스페이스를 %20로 변환함
 		//_strURI= _strURI.replaceAll("\\p{Punct}", "");
 		
 		Log.d( Global.LOG_TAG, _strURI );
@@ -156,11 +157,18 @@ public class RequestMethods
 	        HttpEntity responseEntity = response.getEntity();
 	        
 	        char[] buffer = new char[(int)responseEntity.getContentLength()];
+	        
+	        Log.d("RequestJSONArrayToServer","request length : "+Integer.toString(buffer.length));	        
+	        
 	        InputStream stream = responseEntity.getContent();
 	        InputStreamReader reader = new InputStreamReader(stream);
-	        reader.read(buffer);
-	        stream.close();
 	        
+	      //stream을 리더로 읽기 
+	        BufferedReader br = new BufferedReader(reader);
+
+	        br.read(buffer);
+	        stream.close();
+	          
 	        jarr = new JSONArray(new String(buffer));
 	    }
 	    catch (IOException e)
@@ -969,6 +977,33 @@ public class RequestMethods
 	}
 	
 	
+
+	/**
+	 * 해당 대화의 마지막 채팅ID를 가져온다.
+	 * @param _context
+	 * @param oppoAccount
+	 * @return
+	 */
+	public String GetLastChatID(Context _context, String oppoAccount)
+	{
+		String res= null;
+		
+	    String URI = Global.SERVER + "LastRealChatIdNew?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&oppoAccount=" + oppoAccount
+	      		+"&session=" +SPUtil.getString(_context, "session");
+	    
+	    res= this.RequestStringToServer(URI);
+	    
+	    if(res == null)
+	    	return null;
+
+	    Log.d("GetLastChatID::returned", URI);
+	    
+	    return res;
+	}
+	
+	
 	/**
 	 * 인채팅에서 최근 채팅가져옴
 	 * @param oppoAccount
@@ -1007,6 +1042,7 @@ public class RequestMethods
 	    catch (JSONException e)
 	    {
 	    	Log.e( "JSONException", e.getMessage() );
+	    	res=null;
 		}
 	    
 	    Log.d("GetChatsNew::returned", URI);

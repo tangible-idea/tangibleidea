@@ -80,7 +80,7 @@ public class LoginActivity extends Activity implements OnClickListener
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
 		super.onActivityResult(requestCode, resultCode, data);
-		
+		 
 		int nRes= -1;
 		
 		if(resultCode == RESULT_OK && data != null)

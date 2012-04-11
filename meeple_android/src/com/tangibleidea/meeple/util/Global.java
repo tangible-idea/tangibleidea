@@ -8,7 +8,7 @@ import com.tangibleidea.meeple.data.EnumError;
 
 public class Global
 {
-	public final static String SERVER_IP= 	"http://64.23.67.167";//"http://tangibleidea.co.kr";//"http://64.23.67.167";	//1.234.2.227
+	public final static String SERVER_IP= 	"http://tangibleidea.co.kr";//"http://tangibleidea.co.kr";//"http://64.23.67.167";	//1.234.2.227
 	public final static String SERVER= 		SERVER_IP+ ":9091/MeepleService/";	// C#서버+메서드?+인자1=값1&인자2=값2 (HTTP GET 방식)
 	public final static String SERVER_IMG= 	SERVER_IP+ "/userImage/";	// 이미지를 볼 수 있는 경로+유저이름+".jpg" (테스트는 userImage_test)
 	//public final static String SERVER= "http://192.168.1.5:9091/MeepleService/";
