@@ -19,13 +19,13 @@ class ViewHolder_InChatList
 	ImageView IMG_OPPO;
 }
 
-public class ChatListAdapter  extends ArrayAdapter<ChatEntry>
+public class InChatListAdapter  extends ArrayAdapter<ChatEntry>
 {
 	  private ArrayList<ChatEntry> items;
       private int viewResource;
       private Context context;
       
-      public ChatListAdapter(Context context, int rsrcId, int txtId, ArrayList<ChatEntry> data)
+      public InChatListAdapter(Context context, int rsrcId, int txtId, ArrayList<ChatEntry> data)
       {
           super(context, rsrcId, txtId, data);
           this.context= context;

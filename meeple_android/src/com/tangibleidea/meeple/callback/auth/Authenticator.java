@@ -1,4 +1,4 @@
-package com.tangibleidea.meeple.auth;
+package com.tangibleidea.meeple.callback.auth;
 
 public interface Authenticator
 {

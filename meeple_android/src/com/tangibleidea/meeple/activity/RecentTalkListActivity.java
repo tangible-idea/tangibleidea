@@ -44,8 +44,15 @@ public class RecentTalkListActivity extends ListActivity
 	
 	
 	
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		
+		//if( getIntent().getBooleanExtra("refresh", false) )
+			this.GetRecentChats();
+	}
 
-	
 	@Override
 	public void onCreate(Bundle savedInstanceState)
 	{

@@ -21,10 +21,14 @@ import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.activity.LobbyActivity;
+import com.tangibleidea.meeple.activity.MeepleListActivity;
 import com.tangibleidea.meeple.activity.PopupActivity;
+import com.tangibleidea.meeple.callback.auth.OnAuthListener;
+import com.tangibleidea.meeple.callback.common.OnMeepleInteraction;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.RequestImageMethods;
+import com.tangibleidea.meeple.server.RequestMethods;
 import com.tangibleidea.meeple.util.SPUtil;
 
 class ViewHolder_ProfileList
@@ -39,23 +43,25 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 //		private String CurrID= null;
 //		private int CurrPos= 0;
 	
-	  private ArrayList<InfoEntry> items;
-      private int rsrc;
-      private Context mContext;
+	private OnMeepleInteraction CBInteraction;
+	
+	private ArrayList<InfoEntry> items;
+    private int rsrc;
+    private Context mContext;
       
-      private ImageView[] IMG_covers;
-      private TextView[] TXT_name, TXT_sub;
-      private Button[] BTN_slide;//, BTN_slide2;
-      private boolean[] bSlide;	// 
-      private int nPos;	// 현재 선택된 포지션
+    private ImageView[] IMG_covers;
+    private TextView[] TXT_name, TXT_sub;
+    private Button[] BTN_slide;//, BTN_slide2;
+    private boolean[] bSlide;	// 
+    private int nPos;	// 현재 선택된 포지션
+    
+    private Animation ANI_scale, ANI_scale2;
+    private Animation ANI_trans, ANI_trans2;
+    private Animation ANI_fadeout, ANI_fadein;
+    
+    private HashMap<Integer,EnumMeepleStatus> mapMeepleLabel= new HashMap<Integer,EnumMeepleStatus>();
       
-      private Animation ANI_scale, ANI_scale2;
-      private Animation ANI_trans, ANI_trans2;
-      private Animation ANI_fadeout, ANI_fadein;
-      
-      private HashMap<Integer,EnumMeepleStatus> mapMeepleLabel= new HashMap<Integer,EnumMeepleStatus>();
-      
-      int nLoop= 0;
+    int nLoop= 0;
       
       public ProfileListAdapter(Context context, int rsrcId, int txtId, ArrayList<InfoEntry> data)
       {
@@ -189,7 +195,12 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				public void onClick(View v)
 				{
 					if( bSlide[position] )
-						Log.d("ProfileListAdapter", "Click::OK "+position);
+					{
+						RequestMethods RM= new RequestMethods();
+						RM.RespondRecommendation(mContext, e.getID(), true);
+						
+						CBInteraction.OnRespound(true);
+					}
 				}
         	  });
         	  
@@ -200,7 +211,12 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				public void onClick(View v)
 				{
 					if( bSlide[position] )
-						Log.d("ProfileListAdapter", "Click::NO "+position);
+					{
+						RequestMethods RM= new RequestMethods();
+						RM.RespondRecommendation(mContext, e.getID(), false);
+						
+						CBInteraction.OnRespound(false);
+					}
 				}
         	  });
         	  
@@ -230,7 +246,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					  
     				  if( (position!=0) )
     				  {					  
-    					  if(mapMeepleLabel.get(position-1) == EnumMeepleStatus.E_MENTEE_PENDING)
+    					  if(mapMeepleLabel.get(position-1) == EnumMeepleStatus.E_MENTEE_PENDING || mapMeepleLabel.get(position-1) == EnumMeepleStatus.E_MENTEE_WAITING)
     					  {
     						  IMG_LBL.setBackgroundResource(R.drawable.title_blank_17);
     						  return v;
@@ -248,7 +264,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					  
         			  if( (position!=0) )
     				  {
-    					  if(mapMeepleLabel.get(position-1) == EnumMeepleStatus.E_MENTEE_WAITING)
+    					  if(mapMeepleLabel.get(position-1) == EnumMeepleStatus.E_MENTEE_WAITING || mapMeepleLabel.get(position-1) == EnumMeepleStatus.E_MENTEE_PENDING)
     					  {
     						  
     						  IMG_LBL.setBackgroundResource(R.drawable.title_blank_17);
@@ -394,6 +410,13 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 		}
 		
 	}
+	
+	// 콜백 등록 메서드
+	public void SetOnMeepleInteractionListener(OnMeepleInteraction _CB)
+	{
+		this.CBInteraction= _CB;
+	}
+
 	
 	
 //	private void StartImageDownloadThread()
