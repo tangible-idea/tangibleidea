@@ -6,14 +6,54 @@
     android:layout_height="fill_parent"
     android:background="@drawable/background">
     
-    <TextView
-        android:id="@+id/txt_favorite_status"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:textColor="#88030303"/>
+     <RelativeLayout
+	android:id="@+id/RL_content"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+	
+	  	 <ImageView
+		  android:id="@+id/img_navigation_bg"
+		  android:src="@drawable/navigation_bg"
+		  android:layout_width="fill_parent" 
+		  android:layout_height="wrap_content"
+		  ></ImageView>
+		  	 
+	     <RelativeLayout
+		android:id="@+id/RL_subtap"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="0dip">
+		  
+			  <ImageView
+			  android:id="@+id/subtap_friend"
+			  android:layout_width="wrap_content" 
+			  android:layout_height="wrap_content"
+			  android:background="@drawable/fav_tapbtn_meeplefriend_pre"
+			  />
+			  
+			  <ImageView
+			  android:id="@+id/subtap_message"
+			  android:layout_toRightOf="@+id/subtap_friend"
+			  android:layout_width="wrap_content" 
+			  android:layout_height="wrap_content"
+			  android:background="@drawable/fav_tapbtn_note_nor"
+			  />
+		  
+		  </RelativeLayout>
+  	 
+  	 </RelativeLayout>
+  	 
+<!--     <TextView -->
+<!--         android:id="@+id/txt_favorite_status" -->
+<!--         android:layout_width="wrap_content"  -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:textSize="32sp" -->
+<!--         android:textColor="#88030303"/> -->
     
   <ListView android:id="@android:id/list"
+  		android:layout_below="@+id/RL_content"
+  		android:layout_marginTop="-12dip"
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content"
         android:drawSelectorOnTop="false"

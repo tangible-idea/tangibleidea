@@ -21,9 +21,7 @@ import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.activity.LobbyActivity;
-import com.tangibleidea.meeple.activity.MeepleListActivity;
 import com.tangibleidea.meeple.activity.PopupActivity;
-import com.tangibleidea.meeple.callback.auth.OnAuthListener;
 import com.tangibleidea.meeple.callback.common.OnMeepleInteraction;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.layout.entry.InfoEntry;
@@ -155,7 +153,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  // 이미지를 다운로드하고 설정하는 부분
 //              if (e.getPhotoId() != -1)
 //              {    			
-            	  VH.IMG_ProfilePic= (ImageView) v.findViewById(R.id.ePhoto);
+            	  //VH.IMG_ProfilePic= (ImageView) v.findViewById(R.id.ePhoto);
             	  RequestImageMethods RIM= new RequestImageMethods();
           		  RIM.DownloadImage2( VH.IMG_ProfilePic, e.getID() );	// 이미지를 다운로드 받고
           		  VH.IMG_ProfilePic.setBackgroundColor(Color.BLACK);
