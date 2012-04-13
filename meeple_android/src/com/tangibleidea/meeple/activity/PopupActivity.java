@@ -2,6 +2,7 @@ package com.tangibleidea.meeple.activity;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -14,13 +15,14 @@ import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.server.RequestImageMethods;
+import com.tangibleidea.meeple.server.RequestMethods;
 
 public class PopupActivity extends Activity implements OnClickListener
 {
 	RelativeLayout RL_window;
 	ImageView IMG_profile;
-	Button BTN_close;
-	TextView TXT_name, TXT_profile, TXT_info;
+	Button BTN_close, BTN_interaction;
+	TextView TXT_name, TXT_profile, TXT_comment;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -34,20 +36,26 @@ public class PopupActivity extends Activity implements OnClickListener
 		
 		TXT_name= (TextView) findViewById(R.id.txt_popup_name);
 		TXT_profile= (TextView) findViewById(R.id.txt_popup_profile);
-		TXT_info= (TextView) findViewById(R.id.txt_popup_info);
+		TXT_comment= (TextView) findViewById(R.id.txt_popup_info);
 		IMG_profile= (ImageView) findViewById(R.id.img_popup_photo);
 		BTN_close= (Button) findViewById(R.id.btn_popup_exit);
 		BTN_close.setOnClickListener(this);
+		BTN_interaction= (Button) findViewById(R.id.btn_popup_interaction);
+		BTN_interaction.setOnClickListener(this);
 		
 		RL_window= (RelativeLayout) findViewById(R.id.view_popupwindow_all);
 		
+		TXT_name.setPaintFlags(TXT_name.getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
 		TXT_name.setText( this.getIntent().getStringExtra("name") );
 		TXT_profile.setText( this.getIntent().getStringExtra("profile") );
+		TXT_comment.setText( this.getIntent().getStringExtra("comment") );
 		//TXT_name.setText( this.getIntent().getStringExtra("info") );
+		
 		
 		RequestImageMethods RIM= new RequestImageMethods();
 		RIM.DownloadImage2( IMG_profile, this.getIntent().getStringExtra("id") );	// 이미지를 다운로드 받고
 		IMG_profile.setBackgroundColor(Color.BLACK);
+		
 	}
 
 	/* (non-Javadoc)
@@ -74,6 +82,11 @@ public class PopupActivity extends Activity implements OnClickListener
 		if(v.getId() == R.id.btn_popup_exit)
 		{
 			finish();
+		}
+		
+		if(v.getId()==R.id.btn_popup_interaction)
+		{
+			
 		}
 		
 	}

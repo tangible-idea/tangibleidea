@@ -15,6 +15,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
@@ -23,6 +24,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
@@ -45,14 +47,15 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 	private Context mContext;
 	private Button BTN_send, BTN_close;
 	private EditText EDT_chat;
+	private ProgressBar PGB_loading;
 	
 	private String strChat="";
-	private boolean bPolling= true;
+	private boolean bPolling= true, bLoading= false;
 
 	int retry= 0;
 	List<Chat> chats;
 	
-	ArrayAdapter<ChatEntry> AA;
+	InChatListAdapter Adaoter;
 	ArrayList<ChatEntry> arraylist= new ArrayList<ChatEntry>();
 	
 	@Override
@@ -73,19 +76,23 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		
 		mContext= this;
 		
+		ChatMgr.ResetChat();	// 채팅 범위 초기화
+		
 		DBMgr= new DBManager(mContext);
 		DBMgr.CreateNewChatTable(SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount());
 		// 없으면 새로 만든다.
 		
 		setContentView(R.layout.inchat);
 		
-		AA = new InChatListAdapter(this, R.layout.entry_chat, R.id.eMyChat, arraylist);
-        setListAdapter(AA);
+		Adaoter = new InChatListAdapter(this, R.layout.entry_chat, R.id.eMyChat, arraylist);
+        setListAdapter(Adaoter);
        
         getListView().setOnScrollListener(this);
         getListView().setSelection(arraylist.size());	// 채팅의 마지막으로 스크롤한다.
 		
-		
+        PGB_loading= (ProgressBar) findViewById(R.id.progress_chat_loading);
+        PGB_loading.setVisibility(View.INVISIBLE);
+        
         BTN_send= (Button) findViewById(R.id.btn_send);
 		BTN_send.setOnClickListener(this);
 		BTN_send.setEnabled(false);
@@ -163,6 +170,8 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
     // 범위만큼 채팅을 가져옴
     public void GetChatsRange(int range)
     {
+    	UIHandler.sendEmptyMessage(99);
+    	
 		RequestMethods RM= new RequestMethods();
 		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
 		
@@ -175,9 +184,10 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 			if(chats==null)	// 가져오는데 실패하면 범위를 줄인다.
 			{
 				++retry;
-				this.GetChatsRange(26 - retry*5);
+				this.GetChatsRange(ChatMgr.nChatRange - retry*5);
 				return;
 			}
+			ChatMgr.bChatEnd= true;
 		}
 		else
 		{
@@ -186,7 +196,7 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 			if(chats==null)	// 가져오는데 실패하면 범위를 줄인다.
 			{
 				++retry;
-				this.GetChatsRange(26 - retry*5);
+				this.GetChatsRange(ChatMgr.nChatRange - retry*5);
 				return;
 			}
 		}
@@ -258,6 +268,14 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 				EDT_chat.setEnabled(true);
 				BTN_send.setEnabled(false);
 			} 
+			else if(msg.what==99)
+			{
+				SetLoadingLock(true);
+			}
+			else if(msg.what==100)
+			{
+				SetLoadingLock(false);
+			}
 		}
 	};
 	
@@ -274,11 +292,14 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		retry= 0; // 채팅 가져오기 실패횟수 초기화
 		
 		arraylist.clear();
-		AA.clear();
+		Adaoter.clear();
 		
 		this.ChatEntrySet();	// 채팅 엔트리 설정		
 	}
 	
+	/**
+	 * 가져온 채팅을 리스트로 세팅한다.
+	 */
 	public void ChatEntrySet()
 	{
 		if(chats==null)
@@ -296,6 +317,9 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 			
 			arraylist.add(new ChatEntry(bMyChat, C.getChat(), C.getDateTime()));
 		}
+		
+		UIHandler.sendEmptyMessage(100);
+		
 	}
 	
 	@Override
@@ -363,10 +387,14 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
 	{
-		Log.d("InChatActivity", Integer.toString(firstVisibleItem) );
-		if(firstVisibleItem==0)
+		//Log.d("InChatActivity", Integer.toString(firstVisibleItem) );
+		if(firstVisibleItem==0 && !(totalItemCount <= visibleItemCount) )	// 총리스트수가 화면에 보이는 리스트수보다 적거나 같지 않으면
 		{
-			GetChatsRange(ChatMgr.nChatRange+1);
+			if(!bLoading && !ChatMgr.bChatEnd)
+			{
+				ChatMgr.AddRange(25);	// 범위 늘리고
+				StartGetChatsThread();	// 다시 목록 가져옴.
+			}
 		}
 		
 	}
@@ -380,5 +408,24 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 	}
 
 
+	private void SetLoadingLock(boolean bLock)
+	{
+//		LayoutInflater li = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        View v = li.inflate(R.layout.header_progress, null);
+        
+		if(bLock)
+		{
+			bLoading= true;	// 목록 가져오는 동안 Lock
+			PGB_loading.setVisibility(View.VISIBLE);
+			//getListView().addHeaderView(v);
+		}
+		else
+		{
+			//getListView().removeHeaderView(v);
+			bLoading= false;	// 목록 다 가져오고 세팅도 했으니 lock해제
+			PGB_loading.setVisibility(View.INVISIBLE);
+			
+		}
+	}
 
 }

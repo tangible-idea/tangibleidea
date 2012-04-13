@@ -1,6 +1,7 @@
 package com.tangibleidea.meeple.server;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -19,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 
 import com.tangibleidea.meeple.data.DBManager;
@@ -155,21 +157,19 @@ public class RequestMethods
 		      
 		    HttpResponse response = httpClient.execute(request); 
 	        HttpEntity responseEntity = response.getEntity();
-	        
-	        char[] buffer = new char[(int)responseEntity.getContentLength()];
-	        
-	        Log.d("RequestJSONArrayToServer","request length : "+Integer.toString(buffer.length));	        
-	        
 	        InputStream stream = responseEntity.getContent();
-	        InputStreamReader reader = new InputStreamReader(stream);
 	        
-	      //stream을 리더로 읽기 
-	        BufferedReader br = new BufferedReader(reader);
-
-	        br.read(buffer);
-	        stream.close();
+	        ByteArrayOutputStream content= new ByteArrayOutputStream();
+	        int readBytes= 0;
+	        final int bufferLength = 2048;	// 한번에 가져오는 버퍼길이
+	        byte[] sBuffer = new byte[bufferLength];
+	        
+	        while((readBytes= stream.read(sBuffer)) != -1)	// -1 이 나올때까지 읽는다.
+	        {
+	        	content.write(sBuffer, 0, readBytes);
+	        }
 	          
-	        jarr = new JSONArray(new String(buffer));
+	        jarr = new JSONArray(new String(content.toByteArray()));
 	    }
 	    catch (IOException e)
 	    {
@@ -453,7 +453,7 @@ public class RequestMethods
 	{
 		List<MenteeInfo> res= new ArrayList<MenteeInfo>();
 		
-	    String URI = Global.SERVER + "GetRelationsMentor?"
+	    String URI = Global.SERVER + "GetRelationsMentee?"
 	      		+"account=" + SPUtil.getString(_context, "AccountID")
 	      		+"&session=" +SPUtil.getString(_context, "session");
 	    try
@@ -946,7 +946,7 @@ public class RequestMethods
 	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
 	      		+"&oppoAccount=" + oppoAccount
 	      		+"&session=" + SPUtil.getString(_context, "session")
-	      		+"&chat=" + chat;
+	      		+"&chat=" + Uri.encode(chat);	// URI 인코딩
 	    
 	    try
 	    {

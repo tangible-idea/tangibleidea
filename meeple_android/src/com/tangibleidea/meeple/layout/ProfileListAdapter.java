@@ -181,6 +181,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					intent.putExtra("id", e.getID());
 					intent.putExtra("name", e.getName());
 					intent.putExtra("profile", e.getSchool());
+					intent.putExtra("comment", e.getComment());
 					mContext.startActivity(intent);
 					
 				}
