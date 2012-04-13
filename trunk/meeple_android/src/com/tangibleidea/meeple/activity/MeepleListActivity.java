@@ -213,7 +213,7 @@ public class MeepleListActivity extends ListActivity
 		OnMeepleInteraction callback= new OnMeepleInteraction()
 		{	
 			@Override
-			public void OnRespound(boolean bAccept)
+			public void OnRespound(boolean bAccept)	// 상대방을 수락하거나 거절하면 일로 넘어온다.
 			{
 				LoadingMeeplesInfo();				
 			}
@@ -251,14 +251,16 @@ public class MeepleListActivity extends ListActivity
 			{
 				LoadingDL.hide();
 				
+				
+				for(MenteeInfo tee : InProgress_tees)
+					arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(),tee.getComment(), 0, EnumMeepleStatus.E_MENTEE_INPROGRESS) );	
+				
 				for(MenteeInfo tee : Pending_tees)
-					arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(), 0, EnumMeepleStatus.E_MENTEE_PENDING) );
+					arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(),tee.getComment(), 0, EnumMeepleStatus.E_MENTEE_PENDING) );
 				
 				for(MenteeInfo tee : Waiting_tees)
-					arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(), 0, EnumMeepleStatus.E_MENTEE_WAITING) );
-						
-				for(MenteeInfo tee : InProgress_tees)
-					arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(), 0, EnumMeepleStatus.E_MENTEE_INPROGRESS) );				
+					arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(),tee.getComment(), 0, EnumMeepleStatus.E_MENTEE_WAITING) );
+							
 		        
 				Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
 				Adapter.SetOnMeepleInteractionListener(callback);
@@ -282,11 +284,11 @@ public class MeepleListActivity extends ListActivity
 			{
 				LoadingDL.hide();
 				
-				for(MentorInfo tor : Pending_tors)
-					arraylist.add( new InfoEntry( tor.getAccountId(), tor.getName(), tor.getUniv(), tor.getMajor(), 0, EnumMeepleStatus.E_MENTOR_PENDING) );
-				
 				for(MentorInfo tor : InProgress_tors)
-					arraylist.add( new InfoEntry( tor.getAccountId(), tor.getName(), tor.getUniv(), tor.getMajor(), 0, EnumMeepleStatus.E_MENTOR_INPROGRESS) );
+					arraylist.add( new InfoEntry( tor.getAccountId(), tor.getName(), tor.getUniv(), tor.getMajor(),tor.getComment(), 0, EnumMeepleStatus.E_MENTOR_INPROGRESS) );
+				for(MentorInfo tor : Pending_tors)
+					arraylist.add( new InfoEntry( tor.getAccountId(), tor.getName(), tor.getUniv(), tor.getMajor(),tor.getComment(), 0, EnumMeepleStatus.E_MENTOR_PENDING) );
+				
 				
 		        if(arraylist.isEmpty())	// 추천받은 멘토가 없는 경우 멘티가 대기번호를 받는다.
 		        { 

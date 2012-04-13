@@ -10,15 +10,17 @@ public class InfoEntry
 	private String strName;
     private String strSchool;
     private String strSub;
+    private String strComment;
     private int photo;
     
-    public InfoEntry(String _id, String _name, String _school,String _sub, int _photo, EnumMeepleStatus eStat)
+    public InfoEntry(String _id, String _name, String _school,String _sub, String _comment, int _photo, EnumMeepleStatus eStat)
     {
     	this.strID= _id;
         this.strName = _name;
         this.strSchool = _school;
         this.strSub= _sub;
         this.photo = _photo;
+        this.strComment= _comment;
         this.eSTAT= eStat;
     }
     
@@ -45,5 +47,10 @@ public class InfoEntry
     public int getPhotoId()
     {
         return photo;
+    }
+    
+    public String getComment()
+    {
+    	return strComment;
     }
 }
