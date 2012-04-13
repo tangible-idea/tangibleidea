@@ -21,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
+import com.tangibleidea.meeple.callback.common.OnMeepleInteraction;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.data.ImageRepository;
 import com.tangibleidea.meeple.layout.ProfileListAdapter;
@@ -36,7 +37,8 @@ public class MeepleListActivity extends ListActivity
 	private Context mContext; 
 	private ProgressDialog LoadingDL;
 	
-	ArrayAdapter<InfoEntry> AA;
+	//ArrayAdapter<InfoEntry> AA;
+	ProfileListAdapter Adapter;
 	final ArrayList<InfoEntry> arraylist= new ArrayList<InfoEntry>();
 
 	private List<MenteeInfo> tees, Pending_tees, Waiting_tees, InProgress_tees;
@@ -94,9 +96,17 @@ public class MeepleListActivity extends ListActivity
 		mContext= this;
 		LoadingDL = new ProgressDialog(mContext);
 		LoadingMeeplesInfo();
+		
+		
+
+		
+		
 	}
 
 	
+	/**
+	 * 미플 정보 가져온다. (업데이트)
+	 */
 	public void LoadingMeeplesInfo()
 	{
 		Thread thread = new Thread(null, BackgroundThread, "Background");
@@ -200,8 +210,18 @@ public class MeepleListActivity extends ListActivity
     
 	public Handler LoadingHandler = new Handler()
 	{
+		OnMeepleInteraction callback= new OnMeepleInteraction()
+		{	
+			@Override
+			public void OnRespound(boolean bAccept)
+			{
+				LoadingMeeplesInfo();				
+			}
+		};
+		
 		public void handleMessage(Message msg)
 		{
+			
 			if(msg.what==-1)
 			{
 				LoadingDL.hide();
@@ -209,9 +229,9 @@ public class MeepleListActivity extends ListActivity
 			}
 			if(msg.what==0)
 			{
-				if(AA!=null)
-					AA.clear();
-				
+				if(Adapter!=null)
+					Adapter.clear();
+								
 				BTN_waitlinenumber.setVisibility(View.INVISIBLE);
 				LoadingDL.setMessage("멘티 목록을 불러오는 중...");
 		        //LoadingDL.setMessage("나를 기다리는 멘티들을 불러오는 중");
@@ -240,8 +260,11 @@ public class MeepleListActivity extends ListActivity
 				for(MenteeInfo tee : InProgress_tees)
 					arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(), 0, EnumMeepleStatus.E_MENTEE_INPROGRESS) );				
 		        
-				AA = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
-		        setListAdapter(AA);
+				Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
+				Adapter.SetOnMeepleInteractionListener(callback);
+		        setListAdapter(Adapter);
+		        
+		        
 			}
 			else if(msg.what==10)
 			{
@@ -266,14 +289,15 @@ public class MeepleListActivity extends ListActivity
 					arraylist.add( new InfoEntry( tor.getAccountId(), tor.getName(), tor.getUniv(), tor.getMajor(), 0, EnumMeepleStatus.E_MENTOR_INPROGRESS) );
 				
 		        if(arraylist.isEmpty())	// 추천받은 멘토가 없는 경우 멘티가 대기번호를 받는다.
-		        {
+		        { 
 		        	RequestMethods RM= new RequestMethods();
 		        	TXT_pending.setVisibility(View.VISIBLE);
 		        	TXT_pending.setText("대기번호 : "+RM.GetWatingLines(mContext));
 		        }else{
 		        	TXT_pending.setVisibility(View.GONE);
-		        	AA = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
-			        setListAdapter(AA); 
+		        	Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
+		        	Adapter.SetOnMeepleInteractionListener(callback);
+			        setListAdapter(Adapter); 
 		        }
 			}
 		}

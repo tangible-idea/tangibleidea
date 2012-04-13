@@ -141,18 +141,6 @@ public class FavoriteActivity extends ListActivity
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 	public void onListItemClick(ListView l, View v, int pos, long id)
 	{
 		

@@ -6,7 +6,7 @@ public class ChatManager
 	private String C2DMoppoAccount="";	// C2DM으로 왔음. pending된 intent로 갈때 채팅할 상대방ID
 	private String CurrOppoAccount="";	// 현재 나와 대화하고 있는 사람
 	private String CurrChatID="";		// 현재 대화하고 있는 채팅방 ID
-	public int nChatRange= 0;			// 채팅 가져오는 범위 (마지막채팅번호가 80이고 범위가 25이면 -> 55~80까지 가져옴)
+	public int nChatRange= 26;			// 채팅 가져오는 범위 (마지막채팅번호가 80이고 범위가 25이면 -> 55~80까지 가져옴)
 	
 	private final static ChatManager instance= new ChatManager();
 	

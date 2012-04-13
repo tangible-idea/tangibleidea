@@ -3,8 +3,11 @@ package com.tangibleidea.meeple.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +18,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +28,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.DBManager;
-import com.tangibleidea.meeple.layout.ChatListAdapter;
+import com.tangibleidea.meeple.layout.InChatListAdapter;
 import com.tangibleidea.meeple.layout.entry.ChatEntry;
 import com.tangibleidea.meeple.server.Chat;
 import com.tangibleidea.meeple.server.RequestMethods;
@@ -31,14 +36,14 @@ import com.tangibleidea.meeple.util.ChatManager;
 import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.SPUtil;
 
-public class InChatActivity extends ListActivity implements OnClickListener
+public class InChatActivity extends ListActivity implements OnClickListener, OnScrollListener
 {
 	private DBManager DBMgr;
 	private Thread GetThread, SendThread, PollingThread;
 	
 	private ChatManager ChatMgr= ChatManager.GetInstance();
 	private Context mContext;
-	private Button BTN_send;
+	private Button BTN_send, BTN_close;
 	private EditText EDT_chat;
 	
 	private String strChat="";
@@ -56,7 +61,7 @@ public class InChatActivity extends ListActivity implements OnClickListener
 		super.onResume();
 		
 		ChatMgr.AcceptC2DMuser();
-		//listview= (ListView) findViewById(R.id.list_inchat);
+		//getListView().setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
 		
 	}
 
@@ -74,17 +79,19 @@ public class InChatActivity extends ListActivity implements OnClickListener
 		
 		setContentView(R.layout.inchat);
 		
-		AA = new ChatListAdapter(this, R.layout.entry_chat, R.id.eMyChat, arraylist);
+		AA = new InChatListAdapter(this, R.layout.entry_chat, R.id.eMyChat, arraylist);
         setListAdapter(AA);
-        
-//        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mStrings);    
-//        setListAdapter(mAdapter);
-
+       
+        getListView().setOnScrollListener(this);
+        getListView().setSelection(arraylist.size());	// 채팅의 마지막으로 스크롤한다.
 		
 		
-		BTN_send= (Button) findViewById(R.id.btn_send);
+        BTN_send= (Button) findViewById(R.id.btn_send);
 		BTN_send.setOnClickListener(this);
 		BTN_send.setEnabled(false);
+		
+		BTN_close= (Button) findViewById(R.id.btn_inchat_end);
+		BTN_close.setOnClickListener(this);
 		
 		EDT_chat= (EditText) findViewById(R.id.edt_content);
 		
@@ -149,7 +156,7 @@ public class InChatActivity extends ListActivity implements OnClickListener
     {
     	public void run()
     	{
-    		GetChatsRange(26);
+    		GetChatsRange(ChatMgr.nChatRange);
     	}
     };
     
@@ -184,6 +191,7 @@ public class InChatActivity extends ListActivity implements OnClickListener
 			}
 		}
 		
+		ChatMgr.nChatRange= range;	// 현재 가져온 범위 등록 (성공한 경우만)		
 		UIHandler.sendEmptyMessage(0); // UI 새로고침
     }
     
@@ -289,11 +297,37 @@ public class InChatActivity extends ListActivity implements OnClickListener
 			arraylist.add(new ChatEntry(bMyChat, C.getChat(), C.getDateTime()));
 		}
 	}
-
+	
 	@Override
 	public void onClick(View v)
 	{
-		this.SendChat();
+		if(v.getId()==R.id.btn_send)
+			this.SendChat();
+		
+		if(v.getId()==R.id.btn_inchat_end)
+		{
+			new AlertDialog.Builder(this)
+	        .setTitle("[대화 끝내기]")
+	        .setMessage("상대방과 더 이상 대화를 할 수 없게 됩니다.\n종료하시겠습니까?") 
+	        .setPositiveButton("종료", new DialogInterface.OnClickListener()
+	        {
+	            public void onClick(DialogInterface dialog, int whichButton)
+	            {
+	    			RequestMethods RM= new RequestMethods();
+	    			RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount());
+	    			finish();
+	            }
+	        })
+	        .setNegativeButton("계속", new DialogInterface.OnClickListener()
+	        {
+	        	public void onClick(DialogInterface dialog, int whichButton)
+	            {
+	            }
+	        })
+	        .show();
+			
+
+		}
 	}
 
 	/* (non-Javadoc)
@@ -323,6 +357,26 @@ public class InChatActivity extends ListActivity implements OnClickListener
         PollingThread= null;
         
 		super.onDestroy();
+	}
+
+
+	@Override
+	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
+	{
+		Log.d("InChatActivity", Integer.toString(firstVisibleItem) );
+		if(firstVisibleItem==0)
+		{
+			GetChatsRange(ChatMgr.nChatRange+1);
+		}
+		
+	}
+
+
+	@Override
+	public void onScrollStateChanged(AbsListView view, int scrollState)
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 

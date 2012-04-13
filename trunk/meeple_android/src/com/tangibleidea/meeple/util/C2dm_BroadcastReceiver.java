@@ -72,7 +72,7 @@ import com.tangibleidea.meeple.activity.LobbyActivity;
 	        		NT.setLatestEventInfo(context, "미플 공지사항", c2dm_msg, LobbyIntent_p);	        	
 		        	NotiMgr.notify(9093, NT);
 	        	}
-	        	else if( c2dm_type.equals("recommand") )
+	        	else if( c2dm_type.equals("recommend") )
 	        	{
 	        		NT.setLatestEventInfo(context, "미플 알림", c2dm_msg, LobbyIntent_p);	        	
 		        	NotiMgr.notify(9090, NT);

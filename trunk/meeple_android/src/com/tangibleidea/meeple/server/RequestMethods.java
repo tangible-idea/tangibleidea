@@ -1155,6 +1155,29 @@ public class RequestMethods
 	}
 	
 	/**
+	 * 채팅을 끝낸다.
+	 * @param _context
+	 * @param oppoAccount : 끝낼 상대방 계정
+	 * @return : 성공/실패
+	 */
+	public boolean CloseChatting(Context _context, String oppoAccount)
+	{	
+		String URI = Global.SERVER + "CloseChatting?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&oppoAccount=" + oppoAccount
+	      		+"&session=" + SPUtil.getString(_context, "session");
+		
+		if( this.RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	/**
 	 * 고려대 인증
 	 * @param ID : 아이디
 	 * @param PW : 패스워드
@@ -1184,6 +1207,7 @@ public class RequestMethods
 		
 		return res; 
 	}
+	
 	
 
 }

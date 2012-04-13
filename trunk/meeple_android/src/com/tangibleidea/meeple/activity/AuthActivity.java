@@ -17,9 +17,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.tangibleidea.meeple.R;
-import com.tangibleidea.meeple.auth.Authenticator;
-import com.tangibleidea.meeple.auth.OnAuthListener;
-import com.tangibleidea.meeple.auth.UnivAuth;
+import com.tangibleidea.meeple.callback.auth.Authenticator;
+import com.tangibleidea.meeple.callback.auth.OnAuthListener;
+import com.tangibleidea.meeple.callback.auth.UnivAuth;
 import com.tangibleidea.meeple.util.Global;
 
 public class AuthActivity extends Activity implements Authenticator, OnClickListener
