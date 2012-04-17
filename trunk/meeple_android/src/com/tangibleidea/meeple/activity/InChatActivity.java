@@ -1,13 +1,15 @@
 package com.tangibleidea.meeple.activity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,13 +17,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -40,8 +40,8 @@ import com.tangibleidea.meeple.util.SPUtil;
 
 public class InChatActivity extends ListActivity implements OnClickListener, OnScrollListener
 {
-	private DBManager DBMgr;
 	private Thread GetThread, SendThread, PollingThread;
+	private RequestMethods RM;
 	
 	private ChatManager ChatMgr= ChatManager.GetInstance();
 	private Context mContext;
@@ -53,9 +53,9 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 	private boolean bPolling= true, bLoading= false;
 
 	int retry= 0;
-	List<Chat> chats;
+	List<Chat> chats, chats2;
 	
-	InChatListAdapter Adaoter;
+	InChatListAdapter Adapter;
 	ArrayList<ChatEntry> arraylist= new ArrayList<ChatEntry>();
 	
 	@Override
@@ -75,17 +75,18 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		super.onCreate(savedInstanceState);
 		
 		mContext= this;
-		
+		RM= new RequestMethods();
 		ChatMgr.ResetChat();	// 채팅 범위 초기화
+		chats2= new ArrayList<Chat>();
 		
-		DBMgr= new DBManager(mContext);
-		DBMgr.CreateNewChatTable(SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount());
+//		DBMgr= new DBManager(mContext);
+//		DBMgr.CreateNewChatTable(SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount());
 		// 없으면 새로 만든다.
 		
 		setContentView(R.layout.inchat);
 		
-		Adaoter = new InChatListAdapter(this, R.layout.entry_chat, R.id.eMyChat, arraylist);
-        setListAdapter(Adaoter);
+		Adapter = new InChatListAdapter(this, R.layout.entry_chat, R.id.eMyChat, arraylist);
+        setListAdapter(Adapter);
        
         getListView().setOnScrollListener(this);
         getListView().setSelection(arraylist.size());	// 채팅의 마지막으로 스크롤한다.
@@ -172,7 +173,6 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
     {
     	UIHandler.sendEmptyMessage(99);
     	
-		RequestMethods RM= new RequestMethods();
 		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
 		
 		int nLastChatID= Integer.parseInt( ChatMgr.getCurrChatID() );
@@ -201,19 +201,62 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 			}
 		}
 		
+		this.InsertDateRowsInChat();	// chats 리스트에 중간중간 날짜를 넣는다.
+		
 		ChatMgr.nChatRange= range;	// 현재 가져온 범위 등록 (성공한 경우만)		
 		UIHandler.sendEmptyMessage(0); // UI 새로고침
+    }
+    
+    private void InsertDateRowsInChat()
+    {
+    	if(!chats2.isEmpty())	// 비어있지 않으면 비운다.
+    		chats2.clear();
+    	
+    	Date talkTime1= null;	// 대화시간1 (1row before)
+    	Date talkTime2= null;	// 대화시간2 (현재 row)
+    	
+    	for(Chat C : chats)
+    	{	
+			try
+			{
+				SimpleDateFormat format= new SimpleDateFormat("yyyy.MM.dd a h:mm");
+				
+				if(talkTime1==null)	// 이전 시간에 대한 정보가 없으면
+				{
+					talkTime1= format.parse(C.getDateTime());	// 이전 시간 정보를 넣고
+					chats2.add(new Chat(null, null, null, (1900+talkTime1.getYear())+"년 "+(1+talkTime1.getMonth())+"월 "+talkTime1.getDate()+"일", null));	// 처음 대화 시작한 날짜 라벨
+					chats2.add(C);								// 처음대화는 그대로 복사한다.
+					continue;
+				}
+				else
+				{
+					talkTime2= format.parse(C.getDateTime());	// 현재 시간 정보를 2번에 넣고
+					if( talkTime1.getMonth()==talkTime2.getMonth() && talkTime1.getDate()==talkTime2.getDate() ) // 1번과 2번의 대화 날짜가 같으면
+					{
+						talkTime1= talkTime2;	// 2번을 1번에 넣고 다음으로 넘김
+						chats2.add(C);			// 그대로 복사한다.
+						continue;
+					}
+					else	// 날짜가 다르면 라벨을 끼워준다.
+					{
+						chats2.add(new Chat(null, null, null, (1900+talkTime2.getYear())+"년 "+(1+talkTime2.getMonth())+"월 "+talkTime2.getDate()+"일", null));
+						chats2.add(C);
+					}
+					talkTime1= talkTime2;	// 2번을 1번에 넣고 다음으로 넘김
+				}
+			}
+			catch (ParseException e)
+			{
+				e.printStackTrace();
+			}
+    	}
     }
     
     private Runnable SendChatsThread = new Runnable()
     {
     	public void run()
     	{	
-    		//String TableName= SPUtil.getString(mContext, "AccountID")+"_"+Global.s_CurrOppoAccount;
-    		RequestMethods RM= new RequestMethods();
-    		
-    		RM.SendChatNew(mContext, ChatMgr.getCurrOppoAccount(), strChat);
-    		
+    		RM.SendChatNew(mContext, ChatMgr.getCurrOppoAccount(), strChat);    		
     		StartGetChatsThread();	// 서버에서 새로운 채팅을 가져온다.
     		
     		UIHandler.sendEmptyMessage(2); // 다시 채팅 가능
@@ -292,7 +335,7 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		retry= 0; // 채팅 가져오기 실패횟수 초기화
 		
 		arraylist.clear();
-		Adaoter.clear();
+		Adapter.clear();
 		
 		this.ChatEntrySet();	// 채팅 엔트리 설정		
 	}
@@ -302,20 +345,33 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 	 */
 	public void ChatEntrySet()
 	{
-		if(chats==null)
+		if(chats2==null)
 			return;
 		
-		for(Chat C : chats)
-		{	
-			boolean bMyChat;
-			if( C.getSenderAccount().equals( SPUtil.getString(mContext, "AccountID") ))
+		try
+		{
+			for(Chat C : chats2)
 			{
-				bMyChat= true;
-			}else{
-				bMyChat= false;
+				if( C.getSenderAccount() == null )	// 보낸이 없으면 날짜라벨이므로 패스
+				{
+					arraylist.add(new ChatEntry(false, null, C.getDateTime()));
+					continue;
+				}
+				
+				boolean bMyChat;
+				if( C.getSenderAccount().equals( SPUtil.getString(mContext, "AccountID") ))	// 보낸이가 자신이면 내 채팅이다.
+				{
+					bMyChat= true;
+				}else{
+					bMyChat= false;
+				}
+				
+				arraylist.add(new ChatEntry(bMyChat, C.getChat(), C.getDateTime()));
 			}
+		}
+		catch(Exception e)
+		{
 			
-			arraylist.add(new ChatEntry(bMyChat, C.getChat(), C.getDateTime()));
 		}
 		
 		UIHandler.sendEmptyMessage(100);
@@ -337,7 +393,6 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 	        {
 	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
-	    			RequestMethods RM= new RequestMethods();
 	    			RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount());
 	    			finish();
 	            }
@@ -361,9 +416,7 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 	protected void onDestroy()
 	{		
 		boolean retry = true;
-		
-		DBMgr.DBClose();
-		
+				
 		bPolling= false;	// 루프를 멈추고		
         while (retry)
         {
