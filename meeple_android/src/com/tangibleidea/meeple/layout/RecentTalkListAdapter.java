@@ -3,15 +3,12 @@ package com.tangibleidea.meeple.layout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -80,13 +77,23 @@ public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
         	
         	try
         	{
-        		Calendar rightNow = Calendar.getInstance();        	
-            	SimpleDateFormat format= new SimpleDateFormat("yyyy.MM.dd a h:mm");
+        		
+        		SimpleDateFormat format= new SimpleDateFormat("yyyy.MM.dd a h:mm");
 				Date talkTime= format.parse(e.getTime());
+				Date nowTime= new Date();
 				
-	        	if( talkTime.getDate() == rightNow.get(Calendar.DATE) ) // 대화 날짜가 오늘이면
+	        	if( talkTime.getMonth()==nowTime.getMonth() && talkTime.getDate()==nowTime.getDate() )// 대화 날짜가 오늘이면
 	        	{
-	        		TXT_Time.setText( talkTime.getHours()+":"+talkTime.getMinutes() );
+	        		String timeMarker="";
+	        		if(talkTime.getHours() > 12)
+	        		{
+	        			talkTime.setHours(talkTime.getHours()-12);
+	        			timeMarker="오후";
+	        		}
+	        		else
+	        			timeMarker="오전";
+	        		
+	        		TXT_Time.setText( String.format("%s %02d:%02d", timeMarker, talkTime.getHours(),talkTime.getMinutes() ) );
 	        	}else{
 	        		TXT_Time.setText( talkTime.getMonth()+"월 "+talkTime.getDate()+"일");
 	        	}
