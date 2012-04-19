@@ -1,4 +1,4 @@
-package com.tangibleidea.meeple.layout;
+package com.tangibleidea.meeple.layout.adapter;
 
 import java.util.ArrayList;
 

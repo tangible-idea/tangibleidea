@@ -12,13 +12,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.DBManager;
-import com.tangibleidea.meeple.layout.RecentTalkListAdapter;
+import com.tangibleidea.meeple.layout.adapter.RecentTalkListAdapter;
 import com.tangibleidea.meeple.layout.entry.RecentTalkEntry;
+import com.tangibleidea.meeple.layout.enums.EnumRecentTalkStatus;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
 import com.tangibleidea.meeple.server.RecentChat;
@@ -30,10 +30,12 @@ import com.tangibleidea.meeple.util.SPUtil;
 public class RecentTalkListActivity extends ListActivity
 {
 	private ChatManager ChatMgr= ChatManager.GetInstance();
-	private int SelItem= -1;
+	//private int SelItem= -1;
 	private Context mContext;
 	private ProgressDialog LoadingDL;
-	ArrayAdapter<RecentTalkEntry> list1;
+	private RecentTalkListAdapter Adapter;
+	private RequestMethods RM;
+	
 	final ArrayList<RecentTalkEntry> arraylist= new ArrayList<RecentTalkEntry>();
 
 	private List<RecentChat> recentChats;
@@ -63,7 +65,7 @@ public class RecentTalkListActivity extends ListActivity
 		mContext= this;
 		DBMgr= new DBManager(mContext);
 		LoadingDL = new ProgressDialog(mContext);
-		GetRecentChats();
+		RM= new RequestMethods();
 	}
 	
 	public void GetRecentChats()
@@ -91,11 +93,9 @@ public class RecentTalkListActivity extends ListActivity
     	{
     		if( !arraylist.isEmpty() )	// arraylist에 뭔가 들어가 있으면...
     			arraylist.clear();		// 지워주자.
-    		arraylist.add(null);	// 첫번째는 구분자로 들어가자.
+    		arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_LABEL_INPROGRESS, null, null, null, null, null, null));	// 첫번째는 구분자로 들어가자.
     		
     		boolean isMentor= SPUtil.getBoolean(mContext, "isMentor");
-    		
-    		RequestMethods RM= new RequestMethods();
     		
    		
     		if(isMentor)
@@ -109,12 +109,9 @@ public class RecentTalkListActivity extends ListActivity
     			LoadingHandler.sendEmptyMessage(21);
     		}
     		
-    		recentChats= RM.GetRecentChatsNew( mContext, SPUtil.getString(mContext, "AccountID") );    		
+    		recentChats= RM.GetRecentChatsNew( mContext, SPUtil.getString(mContext, "AccountID") );   
     		
     		LoadingHandler.sendEmptyMessage(30);
-    		
-    		
-    		
     	}
     	catch (Exception ex)
     	{
@@ -138,11 +135,12 @@ public class RecentTalkListActivity extends ListActivity
 		        LoadingDL.setIndeterminate(true);
 		        LoadingDL.show();
 			}
-			else if(msg.what==20)
+			else if(msg.what==20)	// 멘토가 대화중인 멘티의 정보를 추가한다.
 			{
 				for(MenteeInfo tee : InProgress_tees)
 				{
-					arraylist.add( new RecentTalkEntry(false, "0", tee.getAccountId(), tee.getName(), "대화내용 없음","0", "" ) );
+					arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "0",  tee.getAccountId(), tee.getName(), "대화내용 없음", "0", ""));
+					//arraylist.add( new RecentTalkEntry(false, "0", tee.getAccountId(), tee.getName(), "대화내용 없음","0", "" ) );
 				}
 				
 				LoadingDL.setMessage("최근 대화를 불러오는 중");
@@ -152,7 +150,8 @@ public class RecentTalkListActivity extends ListActivity
 			{
 				for(MentorInfo tor : InProgress_tors)
 				{
-					arraylist.add( new RecentTalkEntry(false, "0", tor.getAccountId(), tor.getName(), "대화내용 없음","0", "" ) );
+					arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "0",  tor.getAccountId(), tor.getName(), "대화내용 없음", "0", ""));
+					//arraylist.add( new RecentTalkEntry(false, "0", tor.getAccountId(), tor.getName(), "대화내용 없음","0", "" ) );
 				}
 				
 				LoadingDL.setMessage("최근 대화를 불러오는 중");
@@ -168,7 +167,6 @@ public class RecentTalkListActivity extends ListActivity
 				{
 					String myid= SPUtil.getString(mContext, "AccountID");
 					String sess= SPUtil.getString(mContext, "Session");
-					RequestMethods RM= new RequestMethods();
 					
 					if( SPUtil.getBoolean(mContext, "isMentor") )
 					{	
@@ -193,7 +191,7 @@ public class RecentTalkListActivity extends ListActivity
 					
 					for(int i=0; i<arraylist.size(); ++i)
 					{
-						if(arraylist.get(i)==null)
+						if((arraylist.get(i).eSTAT == EnumRecentTalkStatus.E_LABEL_FINISHED) || (arraylist.get(i).eSTAT == EnumRecentTalkStatus.E_LABEL_INPROGRESS) )	// 라벨이라면 건너뜀
 							continue;
 						
 						if( arraylist.get(i).getOppoName().equals(oppoName))	
@@ -201,25 +199,34 @@ public class RecentTalkListActivity extends ListActivity
 							arraylist.remove(i);
 						}
 					}
-					arraylist.add( new RecentTalkEntry(false, RC.getCount(), oppoID, oppoName, RC.getChat(), RC.getChatId(), RC.getDateTime()) );
+					arraylist.add( new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, RC.getCount(), oppoID, oppoName, RC.getChat(), RC.getChatId(), RC.getDateTime()) );
 				}
 				
-				list1 = new RecentTalkListAdapter(mContext, R.layout.entry_recent_talk, R.id.eName, arraylist);
-			    setListAdapter(list1); 
+				arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_LABEL_FINISHED, null, null, null, null, null, null));	// 끝나는 구분자 추가.
+				arraylist.addAll(DBMgr.GetEndChatInfo());
+				
+				Adapter = new RecentTalkListAdapter(mContext, R.layout.entry_recent_talk, R.id.eName, arraylist);
+			    setListAdapter(Adapter); 
 			}
 		}
 	};
 	
-	
+	// 최근대화탭에서 항목을 선택했을 때
 	public void onListItemClick(ListView l, View v, int pos, long id)
 	{
-		SelItem= pos;
-		
+try	// 에러나면 구분자이므로 무시
+{
 		ChatMgr.setCurrOppoAccount( ( arraylist.get(pos).getAccountID() ) );
-		ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(SPUtil.getString(mContext, "AccountID")+"_"+arraylist.get(pos).getAccountID(), "_id") ) );
+		//ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(SPUtil.getString(mContext, "AccountID")+"_"+arraylist.get(pos).getAccountID(), "_id") ) );
+		ChatMgr.setCurrOppoName( arraylist.get(pos).getOppoName() );
 		
 		Intent intent=new Intent(mContext, InChatActivity.class);
 		startActivityForResult(intent, Global.s_nIntent_InChat);
+}
+catch(Exception e)
+{
+	
+}
 	}
 	
 	/* (non-Javadoc)
@@ -229,7 +236,7 @@ public class RecentTalkListActivity extends ListActivity
 	public void onDestroy()
 	{		
 		DBMgr.DBClose();
-		
+		RM= null;
 		super.onDestroy();
 	}
 	

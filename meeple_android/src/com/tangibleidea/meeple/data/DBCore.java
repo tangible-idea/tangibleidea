@@ -11,18 +11,20 @@ import com.tangibleidea.meeple.util.Global;
 
 class DBCore
 {
-
-	//protected DataBaseHelper DBhelper;
-	
+	protected DataBaseHelper DBhelper;	
 	protected SQLiteDatabase DB;
 	
 	protected DBCore(Context _context)
 	{	
 //		try
 //{
-		DB = _context.openOrCreateDatabase(Global.DB_NAME,
-			 Context.MODE_PRIVATE,
-			 null);
+//		DB = _context.openOrCreateDatabase(Global.DB_NAME,
+//				 Context.MODE_PRIVATE,
+//				 null);
+		DBhelper= new DataBaseHelper(_context);	// Helper를 만들어주고
+		
+		DB = DBhelper.getWritableDatabase();	// Helper에 DB쓰기 권한을 준다.
+
 //}
 //		catch(Exception e) // 권한이나 디스크 공간문제로 오류가 날 수 있으므로 방어코드로 Readable을 넣는다.
 //		{
@@ -262,10 +264,11 @@ class DBCore
 	//public void DBopen()
 	
 	
-	public void CreateNewChatTable(String _strTableName)
+	// 대화 테이블을 만든다.
+	public void CreateNewChatTable(SQLiteDatabase _DB, String _strTableName)
 	{
 		//_DB.execSQL("CREATE TABLE "+DB_NAME+" ("+
-		DB.execSQL("CREATE TABLE IF NOT EXISTS "+ _strTableName +" ("+	// 채팅 테이블을 만든다.
+		_DB.execSQL("CREATE TABLE IF NOT EXISTS "+ _strTableName +" ("+	// 채팅 테이블을 만든다.
 				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
 				"chat TEXT, " +								// 채팅내용 (String)
 				"senderid TEXT, " +							// 보낸사람ID (String)
@@ -274,19 +277,29 @@ class DBCore
 				")");		
 	}
 	
-	
-	public void CreateNewMessageTable(String _strTableName)
+	// 쪽지 테이블을 만든다.
+	public void CreateNewMessageTable(SQLiteDatabase _DB, String _strTableName)
 	{
 		//_DB.execSQL("CREATE TABLE "+DB_NAME+" ("+
-		DB.execSQL("CREATE TABLE IF NOT EXISTS "+ _strTableName +" ("+	// 메세지 테이블을 만든다.
+		_DB.execSQL("CREATE TABLE IF NOT EXISTS "+ _strTableName +" ("+	// 메세지 테이블을 만든다.
 				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
 				"chat TEXT, " +								// 메세지내용 (String)
 				"senderid TEXT, " +							// 보낸사람ID (String)
 				"receverid TEXT, " +						// 받는사람ID (String)
 				"date TEXT" +								// 시간(String)
-				")");
-
-		
+				")");		
+	}
+	
+	// 끝낸 채팅 정보 테이블을 만든다.
+	public void CreateEndChatInfoTable(SQLiteDatabase _DB, String _strTableName)
+	{
+		_DB.execSQL("CREATE TABLE IF NOT EXISTS "+ _strTableName +" ("+	// 테이블 생성
+				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
+				"account TEXT, " +							// 상대방 계정 정보(String)
+				"name TEXT, " +								// 상대방 이름 (String)
+				"last_chat TEXT, " +						// 마지막으로 받은 채팅 (String)
+				"date TEXT" +								// 시간 (String)
+				")");		
 	}
 	
 	
@@ -296,6 +309,8 @@ class DBCore
 		protected DataBaseHelper(Context context)
 		{
 			super(context, Global.DB_NAME, null, Global.DB_VERSION);
+			
+			//CreateEndChatInfoTable(Global.DB_TABLE_ENDCHAT);
 		}
 
 		/**
@@ -304,7 +319,8 @@ class DBCore
 		@Override
 		public void onCreate(SQLiteDatabase _DB)
 		{
-			//CreateMyInfoTable(_DB);
+			CreateNewChatTable(_DB, Global.DB_TABLE_CHAT);
+			CreateEndChatInfoTable(_DB, Global.DB_TABLE_ENDCHAT);			
 			
 			Log.d(Global.LOG_TAG, "Call DB TABLE onCreate Complete");
 		}
@@ -319,6 +335,9 @@ class DBCore
 		public void onUpgrade(SQLiteDatabase _DB, int oldVer, int newVer) 
 		{
 			Log.w(Global.LOG_TAG, "Upgrading database : " + oldVer + " to "+newVer + ", which will destroy all old data");
+			
+			CreateNewChatTable(_DB, Global.DB_TABLE_CHAT);
+			CreateEndChatInfoTable(_DB, Global.DB_TABLE_ENDCHAT);		
 
 		}
 		

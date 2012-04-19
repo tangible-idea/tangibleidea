@@ -24,7 +24,7 @@ import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.callback.common.OnMeepleInteraction;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.data.ImageRepository;
-import com.tangibleidea.meeple.layout.ProfileListAdapter;
+import com.tangibleidea.meeple.layout.adapter.ProfileListAdapter;
 import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;

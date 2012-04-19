@@ -83,7 +83,8 @@
     android:background="@drawable/profile_table" />
     
     <!-- 테이블 껍데기 위에 슬라이드 버튼. -->
-    <Button android:id="@+id/e_btn_slide"
+    <com.tangibleidea.meeple.layout.PathButton
+    android:id="@+id/e_btn_slide"
     android:layout_below="@+id/e_img_label"
   	android:layout_toRightOf="@+id/e_img_frame"
   	android:layout_width="wrap_content"
