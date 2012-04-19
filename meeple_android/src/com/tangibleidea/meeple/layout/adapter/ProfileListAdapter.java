@@ -41,7 +41,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 //		private ImageView CurrImageView= null;
 //		private String CurrID= null;
 //		private int CurrPos= 0;
-	
+	private RequestMethods RM;
 	private OnMeepleInteraction CBInteraction;
 	
 	private ArrayList<InfoEntry> items;
@@ -68,6 +68,8 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
           this.mContext= context;
           this.items = data;
           this.rsrc = rsrcId;
+          
+          RM= new RequestMethods();
           
           bSlide= new boolean[data.size()];
           for(boolean b : bSlide)	// 초기값
@@ -196,7 +198,6 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				{
 					if( bSlide[position] )
 					{
-						RequestMethods RM= new RequestMethods();
 						RM.RespondRecommendation(mContext, e.getID(), true);
 						
 						CBInteraction.OnRespound(true);
@@ -212,7 +213,6 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				{
 					if( bSlide[position] )
 					{
-						RequestMethods RM= new RequestMethods();
 						RM.RespondRecommendation(mContext, e.getID(), false);
 						
 						CBInteraction.OnRespound(false);
@@ -236,7 +236,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  
         	  if( SPUtil.getBoolean(mContext, "isMentor") )	// 자신이 멘토일 경우...
         	  {  
-        		  if( e.eSTAT == EnumMeepleStatus.E_MENTEE_PENDING ) // 멘티가 대기중인 경우... (막 추천됨)
+        		  if( e.eSTAT == EnumMeepleStatus.E_MENTEE_PENDING ) // 멘티가 대기중인 경우... (방금 추천됨)
         		  {
 					  IMG_in_caption.setBackgroundResource(R.drawable.text_img_mentee_accept);	// 멘티를 수락하시겠습니까?
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_ok);
@@ -256,11 +256,13 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         		  }
         		  else if( e.eSTAT == EnumMeepleStatus.E_MENTEE_WAITING ) // 멘티를 대기중인 경우... (멘토가 이미 수락했음)
         		  {
-        			  IMG_in_caption.setBackgroundResource(R.drawable.text_img_mentee_accept);	// 멘티를 대기중입니다.
+        			  IMG_in_caption.setBackgroundResource(R.drawable.text_img_wait_mentee_accept);	// 멘티를 대기중입니다.
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_talk.setBackgroundResource(R.drawable.btn_tap_talk_blank);	// 대화하기는 없앰
 					  BTN_in_talk.setOnClickListener(null);
+					  BTN_in_yes.setOnClickListener(null);
+					  BTN_in_no.setOnClickListener(null);
 					  
         			  if( (position!=0) )
     				  {
@@ -301,6 +303,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_ok);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_no);
 					  BTN_in_talk.setBackgroundResource(R.drawable.btn_tap_talk_blank);	// 대화하기 안보여줌
+					  BTN_in_talk.setOnClickListener(null);
 					  
         			  if( (position!=0) )
     				  {
@@ -318,6 +321,8 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_talk.setBackgroundResource(R.drawable.btn_tap_talk);	// 대화하기만 보여줌
+					  BTN_in_yes.setOnClickListener(null);
+					  BTN_in_no.setOnClickListener(null);
 					  
         			  if( (position!=0) )
     				  {  

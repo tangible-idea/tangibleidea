@@ -30,7 +30,7 @@ import com.tangibleidea.meeple.util.SPUtil;
 public class RecentTalkListActivity extends ListActivity
 {
 	private ChatManager ChatMgr= ChatManager.GetInstance();
-	//private int SelItem= -1;
+	private int Endchat_Sperate=0;	// 끝난 채팅의 구분선
 	private Context mContext;
 	private ProgressDialog LoadingDL;
 	private RecentTalkListAdapter Adapter;
@@ -203,6 +203,7 @@ public class RecentTalkListActivity extends ListActivity
 				}
 				
 				arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_LABEL_FINISHED, null, null, null, null, null, null));	// 끝나는 구분자 추가.
+				Endchat_Sperate= arraylist.size();
 				arraylist.addAll(DBMgr.GetEndChatInfo());
 				
 				Adapter = new RecentTalkListAdapter(mContext, R.layout.entry_recent_talk, R.id.eName, arraylist);
@@ -214,19 +215,28 @@ public class RecentTalkListActivity extends ListActivity
 	// 최근대화탭에서 항목을 선택했을 때
 	public void onListItemClick(ListView l, View v, int pos, long id)
 	{
+
 try	// 에러나면 구분자이므로 무시
 {
 		ChatMgr.setCurrOppoAccount( ( arraylist.get(pos).getAccountID() ) );
 		//ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(SPUtil.getString(mContext, "AccountID")+"_"+arraylist.get(pos).getAccountID(), "_id") ) );
 		ChatMgr.setCurrOppoName( arraylist.get(pos).getOppoName() );
-		
-		Intent intent=new Intent(mContext, InChatActivity.class);
-		startActivityForResult(intent, Global.s_nIntent_InChat);
 }
 catch(Exception e)
 {
-	
+	return;
 }
+		if(pos < Endchat_Sperate)
+		{
+			Intent intent=new Intent(mContext, InChatActivity.class);
+			startActivityForResult(intent, Global.s_nIntent_InChat);
+		}
+		else
+		{
+			Intent intent=new Intent(mContext, EndChatActivity.class);
+			startActivityForResult(intent, Global.s_nIntent_InChat);
+		}
+
 	}
 	
 	/* (non-Javadoc)
