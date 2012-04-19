@@ -8,7 +8,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
+import com.tangibleidea.meeple.activity.RecentTalkListActivity;
 import com.tangibleidea.meeple.layout.entry.ChatEntry;
+import com.tangibleidea.meeple.layout.entry.RecentTalkEntry;
+import com.tangibleidea.meeple.layout.enums.EnumRecentTalkStatus;
 import com.tangibleidea.meeple.server.Chat;
 import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.SPUtil;
@@ -46,7 +49,52 @@ public class DBManager extends DBCore
 			
 			CV.clear();
 		}
+	}
+	
+	/**
+	 * 끝난 채팅 정보를 입력한다.
+	 * @param oppoAccount : 끝낸 상대방 정보
+	 * @param lastChat : 마지막 채팅
+	 * @param date : 끝낸 날짜
+	 */
+	public void InsertEndChatInfo(String oppoAccount, String oppoName, String lastChat, String date)
+	{
+		ContentValues CV= new ContentValues();
+		CV.put("account", oppoAccount);
+		CV.put("name", oppoName);
+		CV.put("last_chat", lastChat);
+		CV.put("date", date);
 		
+		Long lRow= DB.insert(Global.DB_TABLE_ENDCHAT, "0", CV);
+		
+		if (lRow < 0)
+			Log.e(Global.LOG_TAG,"DBInsert error!");
+		
+		CV.clear();
+	}
+	
+	/**
+	 * 끝낸 채팅 정보들을 가져 온다.
+	 * @return : RecentTalkEntry
+	 */
+	public ArrayList<RecentTalkEntry> GetEndChatInfo()
+	{
+		ArrayList<RecentTalkEntry> res= new ArrayList<RecentTalkEntry>();
+		
+		String[] strCol= {"account", "name", "last_chat", "date"};
+		
+		Cursor CS= this.GetCursorFromDB(Global.DB_TABLE_ENDCHAT, strCol);
+		
+		if(CS.moveToFirst())
+		{
+			do
+			{
+				res.add(new RecentTalkEntry(EnumRecentTalkStatus.E_FINISHED_TALK, "0", CS.getString(0), CS.getString(1), CS.getString(2), "0", CS.getString(3)));
+			}
+			while(CS.moveToNext());
+		}
+		
+		return res;
 	}
 	
 	/**
@@ -82,6 +130,12 @@ public class DBManager extends DBCore
 		return DB.rawQuery("SELECT * FROM "+strTableName, null);
 	}
 	
+	/**
+	 * DB에 저장된 채팅 리스트 전부를 가져온다.
+	 * @param _context
+	 * @param strTableName
+	 * @return
+	 */
 	public ArrayList<ChatEntry> GetChatToArrayList(Context _context, String strTableName)
 	{
 		ArrayList<ChatEntry> res= new ArrayList<ChatEntry>();

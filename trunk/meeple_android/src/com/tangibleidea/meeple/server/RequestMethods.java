@@ -635,9 +635,9 @@ public class RequestMethods
 		    	String time= jarr.getJSONObject(i).getString("LastModifiedTime");
 		    	res.add( new MenteeInfo(id,name,school,grade,email,comment,image,time) );
 		    	
-		    	DBManager DBMgr= new DBManager(_context);
-		    	DBMgr.CreateNewChatTable( SPUtil.getString(_context, "AccountID") +"_"+ res.get(i).getAccountId() ); // 테이블명 : 내ID_상대방ID
-		    	DBMgr.DBClose();
+//		    	DBManager DBMgr= new DBManager(_context);
+//		    	DBMgr.CreateNewChatTable( SPUtil.getString(_context, "AccountID") +"_"+ res.get(i).getAccountId() ); // 테이블명 : 내ID_상대방ID
+//		    	DBMgr.DBClose();
 		    }
 		    
 
@@ -837,9 +837,9 @@ public class RequestMethods
 		    	String univ= jarr.getJSONObject(i).getString("Univ");
 		    	res.add( new MentorInfo(id,name, univ, email, major, promo, comment, image, time) );
 		    	
-		    	DBManager DBMgr= new DBManager(_context);
-		    	DBMgr.CreateNewChatTable( SPUtil.getString(_context, "AccountID") +"_"+ res.get(i).getAccountId() ); // 테이블명 : 내ID_상대방ID
-		    	DBMgr.DBClose();
+//		    	DBManager DBMgr= new DBManager(_context);
+//		    	DBMgr.CreateNewChatTable( SPUtil.getString(_context, "AccountID") +"_"+ res.get(i).getAccountId() ); // 테이블명 : 내ID_상대방ID
+//		    	DBMgr.DBClose();
 		    }
    
 	    }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.DBManager;
-import com.tangibleidea.meeple.layout.InChatListAdapter;
+import com.tangibleidea.meeple.layout.adapter.InChatListAdapter;
 import com.tangibleidea.meeple.layout.entry.ChatEntry;
 import com.tangibleidea.meeple.server.Chat;
 import com.tangibleidea.meeple.server.RequestMethods;
@@ -40,8 +41,9 @@ import com.tangibleidea.meeple.util.SPUtil;
 
 public class InChatActivity extends ListActivity implements OnClickListener, OnScrollListener
 {
-	private Thread GetThread, SendThread, PollingThread;
+	private Thread GetThread, SendThread, PollingThread, FinishAndSaveChatThread;
 	private RequestMethods RM;
+	private ProgressDialog LoadingDL;
 	
 	private ChatManager ChatMgr= ChatManager.GetInstance();
 	private Context mContext;
@@ -75,13 +77,12 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		super.onCreate(savedInstanceState);
 		
 		mContext= this;
+		LoadingDL = new ProgressDialog(mContext);
 		RM= new RequestMethods();
 		ChatMgr.ResetChat();	// 채팅 범위 초기화
 		chats2= new ArrayList<Chat>();
 		
-//		DBMgr= new DBManager(mContext);
-//		DBMgr.CreateNewChatTable(SPUtil.getString(mContext, "AccountID")+"_"+ChatMgr.getCurrOppoAccount());
-		// 없으면 새로 만든다.
+
 		
 		setContentView(R.layout.inchat);
 		
@@ -159,12 +160,30 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
     	PollingThread.start();
 	}
 	
+	private void StartFinishThread()
+	{
+		FinishAndSaveChatThread= new Thread(null, FinishChatThread, "FinishAndSaveChatThread");
+	}
+	
+    private Runnable FinishChatThread = new Runnable()	// 채팅목록을 가져오는 스레드
+    {
+    	public void run()
+    	{
+    		UIHandler.sendEmptyMessage(10);	// 대화를 저장한다.
+    		
+    		DBManager DBMgr= new DBManager(mContext);    		
+    		DBMgr.InsertEndChatInfo(ChatMgr.getCurrOppoAccount(), ChatMgr.getCurrOppoName(), GetChatsLastOne().getChat(), GetChatsLastOne().getDateTime());
+    		
+    		UIHandler.sendEmptyMessage(11);	// 대화를 저장한다.
+    	}
+    }; 
+	
     
     private Runnable GetChatsThread = new Runnable()	// 채팅목록을 가져오는 스레드
     {
     	public void run()
     	{
-    		GetChatsRange(ChatMgr.nChatRange);
+    		GetChatsRange(ChatMgr.nChatRange);	// 지정된 범위만큼 채팅을 가져오자
     	}
     };
     
@@ -179,14 +198,7 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		
 		if( nLastChatID < range )	// 채팅 개수가 25개(기본값) 미만이면
 		{
-			chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), "0");	// 채팅 전부 가져옴
-				
-			if(chats==null)	// 가져오는데 실패하면 범위를 줄인다.
-			{
-				++retry;
-				this.GetChatsRange(ChatMgr.nChatRange - retry*5);
-				return;
-			}
+			this.GetAllChats();
 			ChatMgr.bChatEnd= true;
 		}
 		else
@@ -207,6 +219,27 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		UIHandler.sendEmptyMessage(0); // UI 새로고침
     }
     
+    // 채팅 마지막 한개만 가져온다.
+    public Chat GetChatsLastOne()
+    {
+    	Chat res= null;
+
+    	ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
+    	int nLastChatID= Integer.parseInt( ChatMgr.getCurrChatID() );
+    	
+		res= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), Integer.toString(nLastChatID-1) ).get(0);
+		
+		return res;
+    }
+    
+    // 모든 채팅을 다 가져온다.
+    public void GetAllChats()
+    {
+		chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), "0");	// 채팅 전부 가져옴
+		InsertDateRowsInChat();
+    }
+    
+    //날짜가 달라질때마다 날짜정보를 넣어준다.
     private void InsertDateRowsInChat()
     {
     	if(!chats2.isEmpty())	// 비어있지 않으면 비운다.
@@ -287,40 +320,50 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
     	}
     };
 
-    
-    
-
+////////////////////////////////////////////////////////////////////////////////    
+// UI 업데이트 핸들러
+////////////////////////////////////////////////////////////////////////////////
 	public Handler UIHandler = new Handler()
 	{
 		public void handleMessage(Message msg)
 		{
-			if(msg.what==0)
+			if(msg.what==0)	// 받은 정보를 채팅UI로 업데이트 할 때
 			{
 				RefreshChatEntry();
 			}
-			else if(msg.what==1)
+			else if(msg.what==1)	// 채팅이 전송 중일 때
 			{
 				EDT_chat.setText("");
 				EDT_chat.setHint("전송중...");
 				EDT_chat.setEnabled(false);
 				BTN_send.setEnabled(false);
 			}
-			else if(msg.what==2)
+			else if(msg.what==2)	// 채팅 전송을 마쳤을 때
 			{
 				EDT_chat.setHint("");
 				EDT_chat.setEnabled(true);
 				BTN_send.setEnabled(false);
 			} 
-			else if(msg.what==99)
+			else if(msg.what==10)	// 채팅을 끝내서 DB에 저장할 때
+			{
+				LoadingDL.setMessage("끝난 대화를 저장하고 있습니다...\n대화탭에서 끝난 대화를 다시 볼 수 있습니다.");
+				LoadingDL.show();
+			}
+			else if(msg.what==11)	// 채팅이 DB에 저장 끝낫을 때
+			{
+				LoadingDL.hide();
+			}
+			else if(msg.what==99)	// 위로 스크롤 하여 이전 채팅을 로딩할 때
 			{
 				SetLoadingLock(true);
 			}
-			else if(msg.what==100)
+			else if(msg.what==100)	// 이전 채팅의 로딩을 마쳣을 때
 			{
 				SetLoadingLock(false);
 			}
 		}
 	};
+////////////////////////////////////////////////////////////////////////////////
 	
 	private void SendChat()
 	{
@@ -393,6 +436,7 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 	        {
 	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
+	            	StartFinishThread();	// 끝낸 대화 정보를 저장한다.
 	    			RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount());
 	    			finish();
 	            }

@@ -1,4 +1,4 @@
-package com.tangibleidea.meeple.layout;
+package com.tangibleidea.meeple.layout.adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,6 +24,7 @@ import com.tangibleidea.meeple.activity.LobbyActivity;
 import com.tangibleidea.meeple.activity.PopupActivity;
 import com.tangibleidea.meeple.callback.common.OnMeepleInteraction;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
+import com.tangibleidea.meeple.layout.PathButton;
 import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.RequestImageMethods;
 import com.tangibleidea.meeple.server.RequestMethods;
@@ -49,7 +50,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
       
     private ImageView[] IMG_covers;
     private TextView[] TXT_name, TXT_sub;
-    private Button[] BTN_slide;//, BTN_slide2;
+    private PathButton[] BTN_slide;//, BTN_slide2;
     private boolean[] bSlide;	// 
     private int nPos;	// 현재 선택된 포지션
     
@@ -74,7 +75,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         		  
           TXT_name= new TextView[data.size()];
           TXT_sub= new TextView[data.size()];
-          BTN_slide= new Button[data.size()];
+          BTN_slide= new PathButton[data.size()];
           //BTN_slide2= new Button[data.size()];
           IMG_covers= new ImageView[data.size()];
           
@@ -143,7 +144,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  TXT_sub[position]= (TextView)v.findViewById(R.id.eSchool);
         	  TXT_sub[position].setText(e.getSchool());
         	  
-        	  BTN_slide[position]= (Button)v.findViewById(R.id.e_btn_slide);
+        	  BTN_slide[position]= (PathButton)v.findViewById(R.id.e_btn_slide);
         	  BTN_slide[position].setOnClickListener(this);
         	  BTN_slide[position].setTag(position);
         	  
@@ -338,25 +339,25 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 	@Override
 	public void onClick(View v)
 	{
-		Button currBTN= (Button) v;	// 현재 클릭한 버튼 받아옴
+		PathButton currBTN= (PathButton) v;	// 현재 클릭한 버튼 받아옴
 		
-		for(Button btn : BTN_slide)
+		for(PathButton btn : BTN_slide)
 		{
 			nPos= (Integer) btn.getTag();	// 위치를 알아낸다.
 			
-			if(btn==currBTN)
+			if(currBTN.getTag()==btn.getTag())
 			{	
 				if(!bSlide[nPos])
 				{
 					bSlide[nPos]= true;
 					
-					
 					TXT_name[nPos].startAnimation(ANI_fadeout);
 					TXT_sub[nPos].startAnimation(ANI_fadeout);
 					
-					IMG_covers[nPos].startAnimation(ANI_scale);
-					currBTN.startAnimation(ANI_trans);
-					currBTN.setBackgroundResource(R.drawable.button_right_slide);
+					btn.setOffset(-230, 0);
+					IMG_covers[nPos].startAnimation(ANI_scale);					
+					btn.startAnimation(ANI_trans);
+					btn.setBackgroundResource(R.drawable.button_right_slide);
 					
 //					param_BTN_slide= new RelativeLayout.LayoutParams( currBTN.getLayoutParams() );
 //					param_BTN_slide.setMargins(param_BTN_slide.leftMargin+350, param_BTN_slide.topMargin+80, param_BTN_slide.rightMargin, param_BTN_slide.bottomMargin);
@@ -369,9 +370,10 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 					TXT_name[nPos].startAnimation(ANI_fadein);
 					TXT_sub[nPos].startAnimation(ANI_fadein);
 					
+					btn.setOffset(0, 0);
 					IMG_covers[nPos].startAnimation(ANI_scale2);
-					currBTN.startAnimation(ANI_trans2);
-					currBTN.setBackgroundResource(R.drawable.button_left_slide);
+					btn.startAnimation(ANI_trans2);					
+					btn.setBackgroundResource(R.drawable.button_left_slide);
 					
 //					param_BTN_slide= new RelativeLayout.LayoutParams( currBTN.getLayoutParams() );
 //					param_BTN_slide.setMargins(param_BTN_slide.leftMargin, param_BTN_slide.topMargin, param_BTN_slide.rightMargin, param_BTN_slide.bottomMargin);

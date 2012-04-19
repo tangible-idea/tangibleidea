@@ -1,8 +1,10 @@
 package com.tangibleidea.meeple.layout.entry;
 
+import com.tangibleidea.meeple.layout.enums.EnumRecentTalkStatus;
+
 public class RecentTalkEntry
 {
-	private boolean bEndChat;
+	public EnumRecentTalkStatus eSTAT= EnumRecentTalkStatus.E_NONE;
 	private String strCount;
 	private String strID;
 	private String strOppoName;
@@ -11,18 +13,21 @@ public class RecentTalkEntry
 	private String strTime;
 	
 	/**
-	 * 
-	 * @param bEndChat
-	 * @param nCount
-	 * @param strContent
-	 * @param strTime
+	 * 최근대화엔트리 설정
+	 * @param bEndChat : 끝난 채팅인가요
+	 * @param strCount : 새로운 채팅이 몇개인가?
+	 * @param strOppoID : 상대방 ID
+	 * @param strOppoName : 상대방 이름
+	 * @param strContent : 최근 대화
+	 * @param strChatID : 마지막 채팅 ID
+	 * @param strTime : 마지막 채팅 시간
 	 */
-	public RecentTalkEntry(boolean bEndChat, String strCount, String strOppoID, String strOppoName, String strContent, String strChatID, String strTime)
+	public RecentTalkEntry(EnumRecentTalkStatus stat, String strCount, String strOppoID, String strOppoName, String strContent, String strChatID, String strTime)
 	{
 		super();
+		this.eSTAT= stat;
 		this.strCount= strCount;
 		this.strID= strOppoID;
-		this.bEndChat = bEndChat;
 		this.strOppoName= strOppoName;
 		this.strContent = strContent;
 		this.strChatID= strChatID;
@@ -34,7 +39,9 @@ public class RecentTalkEntry
 	 */
 	public boolean isEndChat()
 	{
-		return bEndChat;
+		if(eSTAT==EnumRecentTalkStatus.E_FINISHED_TALK)	// 끝난 채팅이면
+			return true;
+		return false;
 	}
 
 	/**

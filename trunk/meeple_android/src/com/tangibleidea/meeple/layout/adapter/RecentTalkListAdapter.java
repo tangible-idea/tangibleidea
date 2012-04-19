@@ -1,4 +1,4 @@
-package com.tangibleidea.meeple.layout;
+package com.tangibleidea.meeple.layout.adapter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.layout.entry.RecentTalkEntry;
+import com.tangibleidea.meeple.layout.enums.EnumRecentTalkStatus;
 
 public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
 {
@@ -54,16 +55,23 @@ public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
         RecentTalkEntry e = items.get(position); 	// 각 포지션에 맞는 Entry를 가져온다.
         
         
-        if (e == null)	// null이면 구분자를 넣어준다. (임시)
+        if (e != null)	// null이 아니면 진행
         {
-        	ImageView img= new ImageView(mContext);
-        	img.setScaleType(ScaleType.FIT_XY);
-        	img.setImageResource(R.drawable.talk_list_now_label);
-        	//img.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-        	v=img;
-        }
-        else
-        {
+        	if(e.eSTAT == EnumRecentTalkStatus.E_LABEL_INPROGRESS)
+        	{
+        		ImageView img= new ImageView(mContext);
+            	img.setScaleType(ScaleType.FIT_XY);
+            	img.setImageResource(R.drawable.talk_list_now_label);
+            	return img;
+        	}
+        	if(e.eSTAT == EnumRecentTalkStatus.E_LABEL_FINISHED)
+        	{
+        		ImageView img= new ImageView(mContext);
+            	img.setScaleType(ScaleType.FIT_XY);
+            	img.setImageResource(R.drawable.talk_list_last_label);
+            	return img;
+        	}
+        	
         	LayoutInflater li = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = li.inflate(viewResource, null); 
             

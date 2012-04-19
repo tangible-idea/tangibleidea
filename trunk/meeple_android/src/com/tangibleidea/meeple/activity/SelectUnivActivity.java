@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.tangibleidea.meeple.R;
-import com.tangibleidea.meeple.layout.UnivListAdapter;
+import com.tangibleidea.meeple.layout.adapter.UnivListAdapter;
 import com.tangibleidea.meeple.layout.entry.UnivEntry;
 import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.HangulUtils;
