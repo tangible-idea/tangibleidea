@@ -87,6 +87,12 @@
         android:configChanges="keyboardHidden|orientation"
 	    ></activity>
         
+        <activity android:name=".activity.EndChatActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+	    ></activity>
+        
 		<activity android:name=".activity.RecentTalkListActivity"
 	    android:label="@string/app_name"
 	    android:screenOrientation="portrait"

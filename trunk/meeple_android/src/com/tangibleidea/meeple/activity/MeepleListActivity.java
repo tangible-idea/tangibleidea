@@ -96,11 +96,6 @@ public class MeepleListActivity extends ListActivity
 		mContext= this;
 		LoadingDL = new ProgressDialog(mContext);
 		LoadingMeeplesInfo();
-		
-		
-
-		
-		
 	}
 
 	
