@@ -170,6 +170,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
               final Button BTN_in_no= (Button) v.findViewById(R.id.e_btn_table_in_no);
               final Button BTN_in_talk= (Button) v.findViewById(R.id.e_btn_table_in_talk);
         	  ImageView IMG_LBL= (ImageView) v.findViewById(R.id.e_img_label);
+        	  ImageView IMG_notice= (ImageView) v.findViewById(R.id.e_notice);
         	  
         	  VH.IMG_ProfilePic.setOnClickListener(new OnClickListener()
         	  {
@@ -235,9 +236,16 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  });
         	  
         	  if( SPUtil.getBoolean(mContext, "isMentor") )	// 자신이 멘토일 경우...
-        	  {  
-        		  if( e.eSTAT == EnumMeepleStatus.E_MENTEE_PENDING ) // 멘티가 대기중인 경우... (방금 추천됨)
+        	  {
+        		  if( e.eSTAT == EnumMeepleStatus.E_MENTEE_NULL )	// 추천받은 멘티가 없을 경우
         		  {
+        			  IMG_notice.setBackgroundResource(R.drawable.notice_my_mentee);
+        			  BTN_slide[position].setVisibility(View.INVISIBLE);
+        		  }
+
+        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTEE_PENDING ) // 멘토에게 멘티가 추천된 경우... (방금 추천됨)
+        		  {
+        			  IMG_notice.setImageResource(R.drawable.notice_new_mentee);
 					  IMG_in_caption.setBackgroundResource(R.drawable.text_img_mentee_accept);	// 멘티를 수락하시겠습니까?
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_ok);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_no);
@@ -256,6 +264,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         		  }
         		  else if( e.eSTAT == EnumMeepleStatus.E_MENTEE_WAITING ) // 멘티를 대기중인 경우... (멘토가 이미 수락했음)
         		  {
+        			  IMG_notice.setImageResource(R.drawable.notice_wait_mentee);
         			  IMG_in_caption.setBackgroundResource(R.drawable.text_img_wait_mentee_accept);	// 멘티를 대기중입니다.
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_blank);
@@ -277,6 +286,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         		  }
         		  else if( e.eSTAT == EnumMeepleStatus.E_MENTEE_INPROGRESS ) // 둘 다 수락했을 경우... (대화중)
         		  {
+        			  IMG_notice.setImageResource(R.drawable.notice_blank);
         			  IMG_in_caption.setBackgroundResource(R.drawable.text_img_mentor_accept_blank);	// 캡션을 안보이게함
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_blank);
@@ -297,8 +307,14 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  }
         	  else
         	  {
-        		  if( e.eSTAT == EnumMeepleStatus.E_MENTOR_PENDING )
+        		  if( e.eSTAT == EnumMeepleStatus.E_MENTOR_NULL )	// 추천받은 멘토가 없을 경우
         		  {
+        			  IMG_notice.setImageResource(R.drawable.notice_my_mentor);
+        			  BTN_slide[position].setVisibility(View.INVISIBLE);
+        		  }
+        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTOR_PENDING )	// 멘토가 수락해서 -> 멘티에게 멘토가 추천된 경우
+        		  {
+        			  IMG_notice.setImageResource(R.drawable.notice_new_mentor);
         			  IMG_in_caption.setBackgroundResource(R.drawable.text_img_mentee_accept);	// 멘토를 수락하시겠습니까?
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_ok);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_no);
@@ -315,8 +331,9 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
     				  }
         			  IMG_LBL.setBackgroundResource(R.drawable.title_new_mentor);
         		  }
-        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTOR_INPROGRESS )
+        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTOR_INPROGRESS )	// 둘 다 수락 했음
         		  {
+        			  IMG_notice.setImageResource(R.drawable.notice_blank);
         			  IMG_in_caption.setBackgroundResource(R.drawable.text_img_mentor_accept_blank);	// 캡션을 안보이게함
 					  BTN_in_yes.setBackgroundResource(R.drawable.btn_new_meeple_blank);
 					  BTN_in_no.setBackgroundResource(R.drawable.btn_new_meeple_blank);

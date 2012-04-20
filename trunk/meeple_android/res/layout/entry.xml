@@ -16,6 +16,15 @@
     android:layout_height="wrap_content"
     android:background="@drawable/title_my_mentee" />
     
+  	<!-- 상대방 멘토 또는 추천 상태에 대해서 설명해주는 알림창-->
+  	<ImageView android:id="@+id/e_notice"
+  	android:layout_toRightOf="@+id/e_img_label"
+  	android:layout_marginLeft="18.3dip"
+  	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/notice_my_mentee"/>
+  	
+  	<!-- 상대방 미플의 프로필 사진 겉의 프레임이다.-->
     <ImageView android:id="@+id/e_img_frame"
   	android:layout_below="@+id/e_img_label"
     android:layout_width="wrap_content"
