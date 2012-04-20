@@ -15,7 +15,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,6 +36,7 @@ public class MeepleListActivity extends ListActivity
 	private Context mContext; 
 	private ProgressDialog LoadingDL;
 	
+	private RequestMethods RM;
 	//ArrayAdapter<InfoEntry> AA;
 	ProfileListAdapter Adapter;
 	final ArrayList<InfoEntry> arraylist= new ArrayList<InfoEntry>();
@@ -44,7 +44,6 @@ public class MeepleListActivity extends ListActivity
 	private List<MenteeInfo> tees, Pending_tees, Waiting_tees, InProgress_tees;
 	private List<MentorInfo> tors, Pending_tors, InProgress_tors; 
 	
-	private TextView TXT_pending;
 	private Button BTN_waitlinenumber, BTN_refresh;
 	
 	
@@ -61,6 +60,8 @@ public class MeepleListActivity extends ListActivity
 
 		setContentView(R.layout.pending_meeple);
 		
+		RM= new RequestMethods();
+		
         // 셋팅하기전에 로딩시 보여줄 이미지 셋팅
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.no_profileimage);
         ImageRepository.INSTANCE.setDefaultBitmap(bitmap);
@@ -72,7 +73,6 @@ public class MeepleListActivity extends ListActivity
 		Pending_tors= new ArrayList<MentorInfo>();
 		InProgress_tors= new ArrayList<MentorInfo>();
 		
-		TXT_pending= (TextView) findViewById(R.id.txt_pending);
 		BTN_refresh= (Button) findViewById(R.id.btn_refresh);
 		BTN_refresh.setOnClickListener(new OnClickListener()
 		{
@@ -88,7 +88,6 @@ public class MeepleListActivity extends ListActivity
 			@Override
 			public void onClick(View v)
 			{
-				RequestMethods RM= new RequestMethods();
 				ShowAlertDialog("[대기번호]", "대기번호 : "+RM.GetWatingLines(mContext), "확인");
 			}
 		});
@@ -144,8 +143,7 @@ public class MeepleListActivity extends ListActivity
     		if( SPUtil.getBoolean(mContext, "isMentor") ) 
     		{
         		LoadingHandler.sendEmptyMessage(0);
-         		
-        		RequestMethods RM= new RequestMethods();        		
+         		        		
         		tees= RM.GetMenteeRecommmendations(mContext);
         		
         		if(tees==null || tees.isEmpty())
@@ -172,7 +170,6 @@ public class MeepleListActivity extends ListActivity
     		{
         		LoadingHandler.sendEmptyMessage(10);
          		
-        		RequestMethods RM= new RequestMethods();
         		tors= RM.GetMentorRecommmendations(mContext);
         		
         		if(tors==null || tors.isEmpty())
@@ -255,8 +252,12 @@ public class MeepleListActivity extends ListActivity
 				
 				for(MenteeInfo tee : Waiting_tees)
 					arraylist.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(),tee.getComment(), 0, EnumMeepleStatus.E_MENTEE_WAITING) );
-							
-		        
+				
+		        if(arraylist.isEmpty())	// 추천받은 멘티가 없는경우 빈 엔트리 하나 추가.
+		        { 
+		        	arraylist.add( new InfoEntry( "", "", "", "", "", 0, EnumMeepleStatus.E_MENTEE_NULL) );   
+		        }
+						
 				Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
 				Adapter.SetOnMeepleInteractionListener(callback);
 		        setListAdapter(Adapter);
@@ -285,17 +286,14 @@ public class MeepleListActivity extends ListActivity
 					arraylist.add( new InfoEntry( tor.getAccountId(), tor.getName(), tor.getUniv(), tor.getMajor(),tor.getComment(), 0, EnumMeepleStatus.E_MENTOR_PENDING) );
 				
 				
-		        if(arraylist.isEmpty())	// 추천받은 멘토가 없는 경우 멘티가 대기번호를 받는다.
+		        if(arraylist.isEmpty())	// 추천받은 멘토가 없는경우 빈 엔트리 하나 추가.
 		        { 
-		        	RequestMethods RM= new RequestMethods();
-		        	TXT_pending.setVisibility(View.VISIBLE);
-		        	TXT_pending.setText("대기번호 : "+RM.GetWatingLines(mContext));
-		        }else{
-		        	TXT_pending.setVisibility(View.GONE);
-		        	Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
-		        	Adapter.SetOnMeepleInteractionListener(callback);
-			        setListAdapter(Adapter); 
+		        	arraylist.add( new InfoEntry( "", "", "", "", "", 0, EnumMeepleStatus.E_MENTOR_NULL) );   
 		        }
+		        
+		        Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
+	        	Adapter.SetOnMeepleInteractionListener(callback);
+		        setListAdapter(Adapter);
 			}
 		}
 	}; 
@@ -336,7 +334,6 @@ public class MeepleListActivity extends ListActivity
         {
             public void onClick(DialogInterface dialog, int whichButton)
             {
-            	RequestMethods RM= new RequestMethods();
             	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(), true))
             	{
             		LoadingMeeplesInfo();
@@ -349,7 +346,6 @@ public class MeepleListActivity extends ListActivity
         {
         	public void onClick(DialogInterface dialog, int whichButton)
             {
-            	RequestMethods RM= new RequestMethods();
         		RM.RespondRecommendation(mContext, arraylist.get(SelItem).getID(), false);
         		LoadingMeeplesInfo();
             }
@@ -389,7 +385,6 @@ public class MeepleListActivity extends ListActivity
         {
             public void onClick(DialogInterface dialog, int whichButton)
             {
-            	RequestMethods RM= new RequestMethods();
             	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(), true))
             	{
             		LoadingMeeplesInfo();
@@ -402,7 +397,6 @@ public class MeepleListActivity extends ListActivity
         {
         	public void onClick(DialogInterface dialog, int whichButton)
             {
-            	RequestMethods RM= new RequestMethods();
             	if(RM.RespondRecommendation( mContext, arraylist.get(SelItem).getID(), false))
             	{
             		LoadingMeeplesInfo();

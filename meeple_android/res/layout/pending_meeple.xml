@@ -54,13 +54,4 @@
 	    android:listSelector="@drawable/selector"
 	    />
   
-  <TextView
-      android:id="@+id/txt_pending"
-      android:layout_width="fill_parent" 
-      android:layout_height="wrap_content"
-      android:textColor="#aa000000"
-      android:textSize="30sp"
-      android:text="대기중입니다."
-      android:visibility="gone" />
-
 </LinearLayout>
