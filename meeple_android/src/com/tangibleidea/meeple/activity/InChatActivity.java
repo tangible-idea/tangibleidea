@@ -350,8 +350,10 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 			} 
 			else if(msg.what==10)	// 채팅을 끝내서 DB에 저장할 때
 			{
+try{
 				LoadingDL.setMessage("끝난 대화를 저장하고 있습니다...\n대화탭에서 끝난 대화를 다시 볼 수 있습니다.");
 				LoadingDL.show();
+} catch(Exception e)	{}
 			}
 			else if(msg.what==11)	// 채팅이 DB에 저장 끝낫을 때
 			{

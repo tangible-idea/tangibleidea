@@ -1212,6 +1212,24 @@ public class RequestMethods
 		return res;
 	}
 	
+	/**
+	 * 관계를 맺는다. (친구추가)
+	 * @param _context
+	 * @param OppoAccount : 내 계정과 친구 맺을 상대방ID
+	 * @return : 성공여부(boolean)
+	 */
+	public boolean AddRelation(Context _context, String OppoAccount)
+	{	
+		String URI = Global.SERVER + "AddRelation?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"oppoAccount=" + OppoAccount
+	      		+"&session=" + SPUtil.getString(_context, "session");
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
+	
 	
 	
 	

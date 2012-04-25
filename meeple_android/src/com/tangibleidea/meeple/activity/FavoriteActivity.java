@@ -18,13 +18,13 @@ import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.layout.adapter.FavoriteListAdapter;
 import com.tangibleidea.meeple.layout.adapter.MessageListAdapter;
-import com.tangibleidea.meeple.layout.entry.ChatEntry;
 import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.layout.entry.MessageEntry;
 import com.tangibleidea.meeple.server.Chat;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
 import com.tangibleidea.meeple.server.RequestMethods;
+import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.SPUtil;
 
 public class FavoriteActivity extends ListActivity implements OnClickListener
@@ -96,24 +96,36 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
     {
     	public void run()
     	{
-    		LoadingHandler.sendEmptyMessage(0);
     		
-    		GetFavoriteRelationsProcessing();
     		
-    		LoadingHandler.sendEmptyMessage(1);
-    	}
+    		if(Global.s_LIST_Relations.isEmpty())	// 다른 곳에서 받아온 관계가 없으면 새로 받아온다.
+    		{
+    			LoadingHandler.sendEmptyMessage(0);
+	    		GetFavoriteRelationsProcessing();
+	    		LoadingHandler.sendEmptyMessage(1);
+    		}
+			else	// 이미 가져온 것이 있으면..	// 그것을 넣어준다.
+			{
+				arraylist.clear();
+				arraylist.addAll(Global.s_LIST_Relations);
+				LoadingHandler.sendEmptyMessage(2);	// 어댑터에 세팅만 해준다.
+			}
+    		
+		}
     };
     
     private Runnable BackgroundThread2 = new Runnable()
     {
     	public void run()
     	{
-    		LoadingHandler.sendEmptyMessage(10);
+
+			LoadingHandler.sendEmptyMessage(10);
     		
     		LIST_message= RM.GetMessages(mContext);
     		
     		if(LIST_message != null)
     			LoadingHandler.sendEmptyMessage(11);
+
     	}
     };
     
@@ -149,12 +161,8 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 			{
 				LoadingDL.hide();
 				
-				if(LIST_mentors==null && LIST_mentees==null)
-	            {
-					//TXT_status.setText("추가된 미플이 없음");
-					//TXT_status.setVisibility(View.VISIBLE);
+				if(LIST_mentors==null && LIST_mentees==null)	// 가져온 것이 없으면 패스
 	            	return;
-	            }
 				
 				if( SPUtil.getBoolean(mContext, "isMentor") )
 				{
@@ -170,6 +178,12 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 				Adapter= new FavoriteListAdapter(mContext, R.layout.entry_favorite, R.id.eName, arraylist);
 				setListAdapter(Adapter);
 			}
+			else if(msg.what==2)
+			{
+				Adapter= new FavoriteListAdapter(mContext, R.layout.entry_favorite, R.id.eName, arraylist);
+				setListAdapter(Adapter);
+			}
+			
 			else if(msg.what==10)
 			{
 		        LoadingDL.setMessage("쪽지를 가져오는 중");

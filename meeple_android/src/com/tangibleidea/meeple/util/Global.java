@@ -1,10 +1,13 @@
 package com.tangibleidea.meeple.util;
 
+import java.util.ArrayList;
+
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
 import com.tangibleidea.meeple.data.EnumError;
+import com.tangibleidea.meeple.layout.entry.InfoEntry;
 
 public class Global
 {
@@ -14,7 +17,10 @@ public class Global
 	//public final static String SERVER= "http://192.168.1.5:9091/MeepleService/";
 	//112.168.48.138
 	
-	public static final int s_nRequest_Fail= -100;	// 
+	public static ArrayList<InfoEntry> s_LIST_Relations= new ArrayList<InfoEntry>();
+	
+	public static final int s_nRequest_Fail= -100;	//
+	public static final int s_nRequest_Fail_Session= -101;	// 세션이 안맞는다.
 	public static final int s_nRequest_MentorJoin= 100;	// 멘티가입
 	public static final int s_nRequest_MenteeJoin= 101;	// 멘토가입
 	public static final int s_nRequest_Login= 200;	// 로그인했음

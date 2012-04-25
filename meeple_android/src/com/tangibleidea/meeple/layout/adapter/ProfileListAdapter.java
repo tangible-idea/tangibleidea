@@ -3,10 +3,13 @@ package com.tangibleidea.meeple.layout.adapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +31,7 @@ import com.tangibleidea.meeple.layout.PathButton;
 import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.RequestImageMethods;
 import com.tangibleidea.meeple.server.RequestMethods;
+import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.SPUtil;
 
 class ViewHolder_ProfileList
@@ -37,13 +41,10 @@ class ViewHolder_ProfileList
 
 public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements android.view.View.OnClickListener
 {
-		//private HashMap<Integer, Bitmap> mapProfileImages= new HashMap<Integer, Bitmap>();
-//		private ImageView CurrImageView= null;
-//		private String CurrID= null;
-//		private int CurrPos= 0;
 	private RequestMethods RM;
 	private OnMeepleInteraction CBInteraction;	// 이 Adapter를 가지고 있는 Activity에 터치 여부를 전달하기 위한 콜백이다.
 	private static boolean bFirstClick= true;
+	private ProgressDialog LoadingDL;
 	
 	private ArrayList<InfoEntry> items;
     private int rsrc;
@@ -71,6 +72,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
           this.rsrc = rsrcId;
           
           RM= new RequestMethods();
+          LoadingDL= new ProgressDialog(mContext);
           
           bSlide= new boolean[data.size()];
           for(boolean b : bSlide)	// 초기값
@@ -193,39 +195,58 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  
         	  VH.IMG_ProfilePic.setOnClickListener(new OnClickListener()
         	  {
-				
-				@Override
-				public void onClick(View v)
-				{
-					Log.d("ProfileListAdapter", "Click::ProfilePopup "+position);
-					
-					Intent intent= new Intent(mContext, PopupActivity.class);
-					intent.putExtra("position", position);
-					intent.putExtra("id", e.getID());
-					intent.putExtra("name", e.getName());
-					intent.putExtra("profile", e.getSchool());
-					intent.putExtra("comment", e.getComment());
-					mContext.startActivity(intent);
-					
-				}
+					@Override
+					public void onClick(View v)
+					{
+						Log.d("ProfileListAdapter", "Click::ProfilePopup "+position);
+						
+						Intent intent= new Intent(mContext, PopupActivity.class);
+						intent.putExtra("position", position);
+						intent.putExtra("id", e.getID());
+						intent.putExtra("name", e.getName());
+						intent.putExtra("profile", e.getSchool());
+						intent.putExtra("comment", e.getComment());
+						
+						if( (e.eSTAT==EnumMeepleStatus.E_MENTEE_INPROGRESS) || (e.eSTAT==EnumMeepleStatus.E_MENTOR_INPROGRESS) )	// 현재 대화중이면
+							intent.putExtra("recommandation", "T");
+						else
+							intent.putExtra("recommandation", "F");
+						
+						if(Global.s_LIST_Relations.isEmpty())	// 내 아무도 없으면
+							intent.putExtra("relation", "F");
+						else
+						{
+							intent.putExtra("relation", "F");
+							
+							for(InfoEntry IE : Global.s_LIST_Relations)
+								if( e.getID().equals( IE.getID() ) )
+								{
+									intent.putExtra("relation", "T");		// 나와 친구사이이면 T
+									break;
+								}
+						}
+						
+						mContext.startActivity(intent);
+						
+					}
         	  });
         	  
-        	  BTN_in_yes.setOnClickListener(new OnClickListener()
+        	  BTN_in_yes.setOnClickListener(new OnClickListener()		// 수락 버튼을 눌렀을 때
         	  {
 				
 				@Override
 				public void onClick(View v)
 				{
 					if( bSlide[position] )
-					{
-						RM.RespondRecommendation(mContext, e.getID(), true);
-						
-						CBInteraction.OnRespound(true);
+					{	
+						nPos= position;
+						Thread thread1 = new Thread(null, AcceptThread, e.getID());
+				    	thread1.start();
 					}
 				}
         	  });
         	  
-        	  BTN_in_no.setOnClickListener(new OnClickListener()
+        	  BTN_in_no.setOnClickListener(new OnClickListener()		// 거절 버튼을 눌렀을 때
         	  {
 				
 				@Override
@@ -233,9 +254,9 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				{
 					if( bSlide[position] )
 					{
-						RM.RespondRecommendation(mContext, e.getID(), false);
-						
-						CBInteraction.OnRespound(false);
+						nPos= position;
+						Thread thread2 = new Thread(null, RejectThread, e.getID());
+				    	thread2.start();
 					}
 				}
         	  });
@@ -303,7 +324,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
     				  }
         			  IMG_LBL.setBackgroundResource(R.drawable.title_new_mentee);
         		  }
-        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTEE_INPROGRESS ) // 둘 다 수락했을 경우... (대화중)
+        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTEE_INPROGRESS ) // 둘 다 수락했을 경우... (멘토입장)
         		  {
         			  IMG_notice.setImageResource(R.drawable.notice_blank);
         			  IMG_in_caption.setBackgroundResource(R.drawable.text_img_mentor_accept_blank);	// 캡션을 안보이게함
@@ -350,7 +371,7 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
     				  }
         			  IMG_LBL.setBackgroundResource(R.drawable.title_new_mentor);
         		  }
-        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTOR_INPROGRESS )	// 둘 다 수락 했음
+        		  else if( e.eSTAT == EnumMeepleStatus.E_MENTOR_INPROGRESS )	// 둘 다 수락 했음 (멘티입장)
         		  {
         			  IMG_notice.setImageResource(R.drawable.notice_blank);
         			  IMG_in_caption.setBackgroundResource(R.drawable.text_img_mentor_accept_blank);	// 캡션을 안보이게함
@@ -469,6 +490,54 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 	}
 
 	
+    private Runnable AcceptThread = new Runnable()
+    {
+    	public void run()
+    	{	
+    		LoadingHandler.sendEmptyMessage(0);
+    		RM.RespondRecommendation(mContext, items.get(nPos).getID(), true);    		
+    		LoadingHandler.sendEmptyMessage(1);
+    	}
+    };
+    
+    private Runnable RejectThread = new Runnable()
+    {
+    	public void run()
+    	{	
+    		LoadingHandler.sendEmptyMessage(10);
+    		RM.RespondRecommendation(mContext, items.get(nPos).getID(), false);
+    		LoadingHandler.sendEmptyMessage(11);
+    	}
+    };
+	
+	public Handler LoadingHandler = new Handler()
+	{
+		public void handleMessage(Message msg)
+		{
+			if(msg.what==0)
+			{
+				LoadingDL.setMessage("상대방을 수락하는 중...");
+				LoadingDL.setIndeterminate(true);
+				LoadingDL.show();
+			}
+			else if(msg.what==1)
+			{
+				LoadingDL.hide();
+				CBInteraction.OnRespound(true);
+			}
+			else if(msg.what==10)
+			{
+				LoadingDL.setMessage("상대방을 거절하는 중...");
+				LoadingDL.setIndeterminate(true);
+				LoadingDL.show();
+			}
+			else if(msg.what==11)
+			{	
+				LoadingDL.hide();
+				CBInteraction.OnRespound(false);
+			}
+		}
+	};
 	
 //	private void StartImageDownloadThread()
 //	{
