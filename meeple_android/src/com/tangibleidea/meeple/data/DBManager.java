@@ -20,12 +20,12 @@ import com.tangibleidea.meeple.util.SPUtil;
 
 public class DBManager extends DBCore
 {
-	private Context context;
+	private Context mContext;
 	
 	public DBManager(Context _context)
 	{
 		super(_context);
-		context= _context;
+		mContext= _context;
 	}
 	
 	
@@ -60,7 +60,8 @@ public class DBManager extends DBCore
 	public void InsertEndChatInfo(String oppoAccount, String oppoName, String lastChat, String date)
 	{
 		ContentValues CV= new ContentValues();
-		CV.put("account", oppoAccount);
+		CV.put("my_account", SPUtil.getString(mContext, "AccountID"));
+		CV.put("oppo_account", oppoAccount);
 		CV.put("name", oppoName);
 		CV.put("last_chat", lastChat);
 		CV.put("date", date);
@@ -81,7 +82,7 @@ public class DBManager extends DBCore
 	{
 		ArrayList<RecentTalkEntry> res= new ArrayList<RecentTalkEntry>();
 		
-		String[] strCol= {"account", "name", "last_chat", "date"};
+		String[] strCol= {"my_account", "oppo_account", "name", "last_chat", "date"};
 		
 		Cursor CS= this.GetCursorFromDB(Global.DB_TABLE_ENDCHAT, strCol);
 		
@@ -89,7 +90,8 @@ public class DBManager extends DBCore
 		{
 			do
 			{
-				res.add(new RecentTalkEntry(EnumRecentTalkStatus.E_FINISHED_TALK, "0", CS.getString(0), CS.getString(1), CS.getString(2), "0", CS.getString(3)));
+				if( CS.getString(0).equals(SPUtil.getString(mContext, "AccountID")) )	// DB에 저장된 정보가 나의 정보가 일치하면
+					res.add(new RecentTalkEntry(EnumRecentTalkStatus.E_FINISHED_TALK, "0", CS.getString(1), CS.getString(2), CS.getString(3), "0", CS.getString(4)));
 			}
 			while(CS.moveToNext());
 		}

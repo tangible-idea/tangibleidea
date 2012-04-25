@@ -17,7 +17,11 @@ import android.widget.ListView;
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.layout.adapter.FavoriteListAdapter;
+import com.tangibleidea.meeple.layout.adapter.MessageListAdapter;
+import com.tangibleidea.meeple.layout.entry.ChatEntry;
 import com.tangibleidea.meeple.layout.entry.InfoEntry;
+import com.tangibleidea.meeple.layout.entry.MessageEntry;
+import com.tangibleidea.meeple.server.Chat;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
 import com.tangibleidea.meeple.server.RequestMethods;
@@ -27,6 +31,7 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 {	
 	private ProgressDialog LoadingDL;
 	private Context mContext;
+	private RequestMethods RM;
 	
 	private ImageView IMGBTN_friend, IMGBTN_message;
 	
@@ -35,12 +40,18 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 	private List<MentorInfo> LIST_mentors= null;
 	private List<MenteeInfo> LIST_mentees= null;
 	
-	private boolean bFriend_subtab= true; 
+	private MessageListAdapter Adapter2;
+	private final ArrayList<MessageEntry> arraylist2= new ArrayList<MessageEntry>();
+	private List<Chat> LIST_message= null;
+	
+	private static boolean bFriend_subtab= true; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        
+        RM= new RequestMethods();
      
         setContentView(R.layout.favorite_list);
         mContext= this;
@@ -52,13 +63,30 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
         IMGBTN_friend.setOnClickListener(this);
         IMGBTN_message.setOnClickListener(this);
         
-        GetFavoriteRelations();
+        if(bFriend_subtab)	// 서브탭이 즐겨찾기탭이면
+        {
+			IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_pre);
+			IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_nor);
+        	GetFavoriteRelations();
+        }
+        else
+        {
+        	IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_nor);
+			IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_pre);
+        	GetMessages();
+        }
     }
     
     
 	public void GetFavoriteRelations()
 	{
     	Thread thread = new Thread(null, BackgroundThread, "Background");
+    	thread.start();
+	}
+	
+	public void GetMessages()
+	{
+    	Thread thread = new Thread(null, BackgroundThread2, "Background");
     	thread.start();
 	}
 
@@ -70,19 +98,30 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
     	{
     		LoadingHandler.sendEmptyMessage(0);
     		
-    		backgroundThreadProcessing();
+    		GetFavoriteRelationsProcessing();
     		
     		LoadingHandler.sendEmptyMessage(1);
     	}
     };
     
+    private Runnable BackgroundThread2 = new Runnable()
+    {
+    	public void run()
+    	{
+    		LoadingHandler.sendEmptyMessage(10);
+    		
+    		LIST_message= RM.GetMessages(mContext);
+    		
+    		if(LIST_message != null)
+    			LoadingHandler.sendEmptyMessage(11);
+    	}
+    };
+    
     // 백그라운드에서 몇 가지 처리를 수행하는 메서드.
-    private void backgroundThreadProcessing()
+    private void GetFavoriteRelationsProcessing()
     {
     	try 
-    	{
-            RequestMethods RM= new RequestMethods();
-            
+    	{   
             if( SPUtil.getBoolean(mContext, "isMentor") )
             	LIST_mentees= RM.GetRelationsMentee(mContext);
             else
@@ -100,9 +139,11 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 		{
 			if(msg.what==0)
 			{
-		        LoadingDL.setMessage("정보를 가져오는 중");
+		        LoadingDL.setMessage("상대방 정보를 가져오는 중");
 		        LoadingDL.setIndeterminate(true);
 		        LoadingDL.show();
+		        
+		        arraylist.clear();
 			}
 			else if(msg.what==1)
 			{
@@ -126,9 +167,31 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 							
 				}
 				
-				
 				Adapter= new FavoriteListAdapter(mContext, R.layout.entry_favorite, R.id.eName, arraylist);
 				setListAdapter(Adapter);
+			}
+			else if(msg.what==10)
+			{
+		        LoadingDL.setMessage("쪽지를 가져오는 중");
+		        LoadingDL.setIndeterminate(true);
+		        LoadingDL.show();
+		        
+		        arraylist2.clear();
+			}
+			else if(msg.what==11)
+			{
+				LoadingDL.hide();
+				
+				for(Chat C : LIST_message)
+				{
+					if(C.getSenderAccount().equals( SPUtil.getString(mContext, "AccountID") ))
+						arraylist2.add(new MessageEntry(true, C.getSenderAccount(), C.getChat(), C.getDateTime()));
+					else
+						arraylist2.add(new MessageEntry(false, C.getSenderAccount(), C.getChat(), C.getDateTime()));					
+				}
+				
+				Adapter2= new MessageListAdapter(mContext, R.layout.entry_messages, R.id.eName, arraylist2);
+				setListAdapter(Adapter2);
 			}
 		}
 	};
@@ -149,16 +212,26 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 		
 		if(v.getId()==R.id.subtap_friend)
 		{
-			bFriend_subtab= true;
-			IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_pre);
-			IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_nor);
+			if(!bFriend_subtab)
+			{
+				bFriend_subtab= true;
+				IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_pre);
+				IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_nor);
+				
+				GetFavoriteRelations();
+			}
 		}
 		
 		if(v.getId()==R.id.subtap_message)
 		{
-			bFriend_subtab= false;
-			IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_nor);
-			IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_pre);
+			if(bFriend_subtab)
+			{
+				bFriend_subtab= false;
+				IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_nor);
+				IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_pre);
+				
+				GetMessages();
+			}
 		}
 		
 		

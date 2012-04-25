@@ -42,7 +42,8 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 //		private String CurrID= null;
 //		private int CurrPos= 0;
 	private RequestMethods RM;
-	private OnMeepleInteraction CBInteraction;
+	private OnMeepleInteraction CBInteraction;	// 이 Adapter를 가지고 있는 Activity에 터치 여부를 전달하기 위한 콜백이다.
+	private static boolean bFirstClick= true;
 	
 	private ArrayList<InfoEntry> items;
     private int rsrc;
@@ -75,37 +76,60 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
           for(boolean b : bSlide)	// 초기값
         	  b= false;
         		  
+		  ANI_scale= AnimationUtils.loadAnimation(mContext, R.anim.my_scale);
+		  ANI_trans= AnimationUtils.loadAnimation(mContext, R.anim.my_translate);
+		  ANI_fadeout= AnimationUtils.loadAnimation(mContext, R.anim.my_fadeout);
+		  ANI_fadein= AnimationUtils.loadAnimation(mContext, R.anim.my_fadein);
+		  ANI_scale2= AnimationUtils.loadAnimation(mContext, R.anim.my_scale2);
+		  ANI_trans2= AnimationUtils.loadAnimation(mContext, R.anim.my_translate2);
+		  
+		  ANI_scale.setFillEnabled(true);
+		  ANI_scale.setFillAfter(true);
+		  
+		  ANI_trans.setFillEnabled(true);
+		  ANI_trans.setFillAfter(true);
+		  
+		  ANI_fadeout.setFillEnabled(true);
+		  ANI_fadeout.setFillAfter(true);
+		  
+		  ANI_fadein.setFillEnabled(true);
+		  ANI_fadein.setFillAfter(true);
+		  
+		  ANI_scale2.setFillEnabled(true);
+		  ANI_scale2.setFillAfter(true);
+		  
+		  ANI_trans2.setFillEnabled(true);
+		  ANI_trans2.setFillAfter(true);
+		  
           TXT_name= new TextView[data.size()];
           TXT_sub= new TextView[data.size()];
           BTN_slide= new PathButton[data.size()];
           //BTN_slide2= new Button[data.size()];
           IMG_covers= new ImageView[data.size()];
           
-          ANI_scale= AnimationUtils.loadAnimation(mContext, R.anim.my_scale);
-          ANI_trans= AnimationUtils.loadAnimation(mContext, R.anim.my_translate);
-          ANI_fadeout= AnimationUtils.loadAnimation(mContext, R.anim.my_fadeout);
-          ANI_fadein= AnimationUtils.loadAnimation(mContext, R.anim.my_fadein);
-          ANI_scale2= AnimationUtils.loadAnimation(mContext, R.anim.my_scale2);
-          ANI_trans2= AnimationUtils.loadAnimation(mContext, R.anim.my_translate2);
           
-          ANI_scale.setFillEnabled(true);
-          ANI_scale.setFillAfter(true);
-
+          ANI_scale.setAnimationListener(new Animation.AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation)
+			{
+				Log.d("ANI_scale", "start");
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				Log.d("ANI_scale", "repeat");
+				
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				Log.d("ANI_scale", "end");
+				
+			}
+		});
           
-          ANI_trans.setFillEnabled(true);
-          ANI_trans.setFillAfter(true);
-          
-          ANI_fadeout.setFillEnabled(true);
-          ANI_fadeout.setFillAfter(true);
-          
-          ANI_fadein.setFillEnabled(true);
-          ANI_fadein.setFillAfter(true);
-          
-          ANI_scale2.setFillEnabled(true);
-          ANI_scale2.setFillAfter(true);
-          
-          ANI_trans2.setFillEnabled(true);
-          ANI_trans2.setFillAfter(true);
+        
       }
       
       @Override
@@ -134,11 +158,6 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
           {
         	  mapMeepleLabel.put(position, e.eSTAT);	// 포지션별 Enum값을 기억한다.
         	  
-              //((TextView)v.findViewById(R.id.eName)).setText(e.getName()+" ("+e.getID()+")");
-              //((TextView)v.findViewById(R.id.eSchool)).setText(e.getSchool()+" "+e.getSub());
-        	  //((TextView)v.findViewById(R.id.eName)).setText(e.getName());
-        	  //((TextView)v.findViewById(R.id.eSchool)).setText(e.getSchool());
-        	  
         	  TXT_name[position]= (TextView)v.findViewById(R.id.eName);
         	  TXT_name[position].setText(e.getName());
         	  TXT_name[position].setPaintFlags(TXT_name[position].getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);  
@@ -146,11 +165,11 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  TXT_sub[position]= (TextView)v.findViewById(R.id.eSchool);
         	  TXT_sub[position].setText(e.getSchool());
         	  
-        	  BTN_slide[position]= (PathButton)v.findViewById(R.id.e_btn_slide);
-        	  BTN_slide[position].setOnClickListener(this);
-        	  BTN_slide[position].setTag(position);
-        	  
         	  IMG_covers[position]= (ImageView)v.findViewById(R.id.e_img_table);
+        	  
+        	  BTN_slide[position]= (PathButton)v.findViewById(R.id.e_btn_slide);
+        	  BTN_slide[position].setTag(position);        	  
+        	  BTN_slide[position].setOnClickListener(this);
         	  
           
         	  // 이미지를 다운로드하고 설정하는 부분
@@ -361,7 +380,14 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 	@Override
 	public void onClick(View v)
 	{
+		if(bFirstClick)
+		{
+			CBInteraction.OnRespound(true);	// 한번 다시 리프레시
+			bFirstClick= false;
+		}
+		
 		PathButton currBTN= (PathButton) v;	// 현재 클릭한 버튼 받아옴
+		
 		
 		for(PathButton btn : BTN_slide)
 		{
@@ -373,11 +399,12 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				{
 					bSlide[nPos]= true;
 					
+					IMG_covers[nPos].startAnimation(ANI_scale);
+					
 					TXT_name[nPos].startAnimation(ANI_fadeout);
 					TXT_sub[nPos].startAnimation(ANI_fadeout);
 					
 					btn.setOffset(-230, 0);
-					IMG_covers[nPos].startAnimation(ANI_scale);					
 					btn.startAnimation(ANI_trans);
 					btn.setBackgroundResource(R.drawable.button_right_slide);
 					
@@ -389,11 +416,12 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
 				{
 					bSlide[nPos]= false;
 					
+					IMG_covers[nPos].startAnimation(ANI_scale2);
+					
 					TXT_name[nPos].startAnimation(ANI_fadein);
 					TXT_sub[nPos].startAnimation(ANI_fadein);
 					
 					btn.setOffset(0, 0);
-					IMG_covers[nPos].startAnimation(ANI_scale2);
 					btn.startAnimation(ANI_trans2);					
 					btn.setBackgroundResource(R.drawable.button_left_slide);
 					

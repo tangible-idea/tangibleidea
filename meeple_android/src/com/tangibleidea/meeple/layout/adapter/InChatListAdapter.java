@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.layout.entry.ChatEntry;
+import com.tangibleidea.meeple.server.RequestImageMethods;
+import com.tangibleidea.meeple.util.ChatManager;
 
 //class ViewHolder_InChatList
 //{
@@ -30,6 +30,7 @@ public class InChatListAdapter  extends ArrayAdapter<ChatEntry>
 	  private ArrayList<ChatEntry> items;
       private int viewResource;
       private Context mContext;
+      private ChatManager chatMgr= ChatManager.GetInstance();
       
       public InChatListAdapter(Context context, int rsrcId, int txtId, ArrayList<ChatEntry> data)
       {
@@ -46,8 +47,6 @@ public class InChatListAdapter  extends ArrayAdapter<ChatEntry>
     	  //ViewHolder_InChatList VH;    	  
           View v = convertView;
           
-
-          
           if (v == null)
           {
               LayoutInflater li = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -62,14 +61,6 @@ public class InChatListAdapter  extends ArrayAdapter<ChatEntry>
           {
         	  if(e.getContent()==null)	// 채팅 내용이 없으면 라벨이다.
         	  {
-//        		  TextView txt= new TextView(mContext);
-//        		  txt.setBackgroundResource(R.drawable.talk_time_label);
-//        		  txt.setText(e.getTime());
-//        		  txt.setTextColor(Color.WHITE);
-//        		  txt.setGravity(Gravity.CENTER);
-//        		  txt.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-//        		  return txt;
-        		  
         		  LayoutInflater li = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                   v = li.inflate(R.layout.listbody_timemarker, null);
                   TextView txt= (TextView) v.findViewById(R.id.txt_time);
@@ -102,7 +93,9 @@ public class InChatListAdapter  extends ArrayAdapter<ChatEntry>
 	    		  TXT_OPPOCHAT.setText( e.getContent() );
 	    		  TXT_OPPOCHAT.setBackgroundResource(R.drawable.talk_message_balloon);
 	    		  TXT_OPPOTIME.setText( e.getTime().substring(11) );
-	    		  IMG_OPPO.setImageResource(R.drawable.no_profileimage);
+	    		  RequestImageMethods RIM= new RequestImageMethods();
+	    		  RIM.DownloadImage2( IMG_OPPO, chatMgr.getCurrOppoAccount() );	// 이미지를 다운로드 받고
+	    		  IMG_OPPO.setBackgroundColor(Color.BLACK);
         	  }
           }
           
