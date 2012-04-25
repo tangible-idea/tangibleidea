@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content">
+   
+	<RelativeLayout
+	android:id="@+id/RL_content"
+	android:layout_width="fill_parent"
+	android:layout_height="119.3dip"
+	android:layout_marginTop="14.7dip"
+	android:layout_marginLeft="7.3dip"
+	android:layout_marginRight="7.3dip"
+  	android:background="@drawable/bg_note">
+  
+	    <!-- 사진 -->
+	  	<ImageView android:id="@+id/ePhoto"
+	  	android:layout_marginTop="8dip"
+  		android:layout_marginLeft="12dip"
+	    android:layout_width="35.3dip"
+	    android:layout_height="35.3dip"
+	    android:src="@drawable/no_profileimage" />
+	  	    
+	    <!-- 이름 -->
+
+	    <TextView
+	        android:id="@+id/eName"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerVertical="true"
+	        android:layout_marginLeft="6dip"
+	        android:layout_alignParentTop="true"
+	        android:layout_marginTop="8dip"
+	        android:layout_toRightOf="@+id/ePhoto"
+	        android:text="김나나"
+	        android:textColor="#000000"
+	        android:textSize="16.5sp" />
+	    
+	    <!-- 쪽지내용 -->
+	    <TextView
+	    android:id="@+id/eContent"
+	    android:layout_below="@+id/eName"
+	    android:layout_toRightOf="@+id/ePhoto"
+	    android:layout_marginLeft="6dip"
+	    android:layout_marginRight="23.3dip"
+	    android:layout_marginTop="5.7dip"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용 쪽지내용"
+	    android:lines="5"
+	    android:textColor="#5d4a2c"
+	    android:textSize="10sp" />
+	    	  	
+  	    <!-- 날짜 -->
+	    <TextView
+	    android:id="@+id/eDate"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginTop="8dip"
+	    android:layout_marginRight="23.3dip"
+	    android:paddingRight="23.3dip"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="11. 09. 23"
+	    android:lines="5"
+	    android:textColor="#5d4a2c"
+	    android:textSize="10sp" />
+	    
+	  
+  </RelativeLayout>
+  
+	    <Button
+        android:id="@+id/e_btn_reply"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginRight="7.3dip"
+	    android:background="@drawable/button_message_reply"
+	        />
+  
+</RelativeLayout>

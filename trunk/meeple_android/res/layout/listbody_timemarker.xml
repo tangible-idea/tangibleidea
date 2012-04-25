@@ -23,14 +23,12 @@
 	    android:id="@+id/txt_time"
 	    android:text="OOOO년 OO월 OO일"
 	    android:textColor="#f0f0f0"
-	    android:textSize="12dip"
+	    android:textSize="10dip"
 	    android:gravity="center"
 	    android:background="@drawable/talk_time_label"
-	    android:layout_marginLeft="80dip"
-	    android:layout_marginRight="80dip"
 	    android:layout_marginTop="5dip"
 	    android:layout_marginBottom="5dip"
-	    android:layout_width="wrap_content"
+	    android:layout_width="match_parent"
     	android:layout_height="wrap_content"
     	/>
 

@@ -1173,6 +1173,45 @@ public class RequestMethods
 	}
 	
 	
+	/**
+	 * 쪽지리스트를 가져온다.
+	 * @param _context
+	 * @return
+	 */
+	public List<Chat> GetMessages(Context _context)
+	{
+		ArrayList<Chat> res= new ArrayList<Chat>();
+		
+		String URI = Global.SERVER + "GetMessages?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session");
+		
+		try
+	    {
+		    JSONArray jarr= this.RequestJSONArrayToServer(URI);
+		    
+		    if(jarr == null)
+		    	return null;
+		    
+		    for(int i=0; i<jarr.length(); ++i)
+		    {
+		    	JSONObject json= jarr.getJSONObject(i);
+		    	String _chat= json.getString("message");
+		    	String _dateTime= json.getString("dateTime");
+		    	String _receiverAccount= json.getString("receiverAccount");
+		    	String _senderAccount= json.getString("senderAccount");
+		    	res.add( new Chat(_senderAccount, _receiverAccount, _chat, _dateTime, "0") );
+		    }
+		}
+	    catch (JSONException e)
+	    {
+	    	Log.e( "JSONException", e.getMessage() );
+	    	res=null;
+		}
+		
+		return res;
+	}
+	
 	
 	
 	

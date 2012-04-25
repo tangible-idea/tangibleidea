@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.layout.entry.RecentTalkEntry;
 import com.tangibleidea.meeple.layout.enums.EnumRecentTalkStatus;
+import com.tangibleidea.meeple.server.RequestImageMethods;
 
 public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
 {
@@ -111,8 +113,17 @@ public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
 				e1.printStackTrace();
 			}
 
-        	
-        	IMG_profile.setImageResource(R.drawable.no_profileimage);
+try
+{
+      	  	RequestImageMethods RIM= new RequestImageMethods();
+    		RIM.DownloadImage2( IMG_profile, e.getAccountID() );	// 이미지를 다운로드 받고
+    		IMG_profile.setBackgroundColor(Color.BLACK);
+}
+catch(OutOfMemoryError ex)
+{
+	
+}
+    		
         	TXT_Name.setText( e.getOppoName() );
         	TXT_Content.setText( e.getContent() );
         	
