@@ -28,6 +28,7 @@ import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
 import com.tangibleidea.meeple.server.RequestMethods;
+import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.SPUtil;
 
 public class MeepleListActivity extends ListActivity
@@ -37,12 +38,15 @@ public class MeepleListActivity extends ListActivity
 	private ProgressDialog LoadingDL;
 	
 	private RequestMethods RM;
-	//ArrayAdapter<InfoEntry> AA;
+	
+	
 	ProfileListAdapter Adapter;
 	final ArrayList<InfoEntry> arraylist= new ArrayList<InfoEntry>();
-
 	private List<MenteeInfo> tees, Pending_tees, Waiting_tees, InProgress_tees;
-	private List<MentorInfo> tors, Pending_tors, InProgress_tors; 
+	private List<MentorInfo> tors, Pending_tors, InProgress_tors;
+	
+	private List<MentorInfo> LIST_mentors= null;
+	private List<MenteeInfo> LIST_mentees= null;
 	
 	private Button BTN_waitlinenumber, BTN_refresh;
 	
@@ -140,7 +144,7 @@ public class MeepleListActivity extends ListActivity
     			arraylist.clear();
     		}
     		
-    		if( SPUtil.getBoolean(mContext, "isMentor") ) 
+    		if( SPUtil.getBoolean(mContext, "isMentor") ) 	// 현재 멘토 계정이면...
     		{
         		LoadingHandler.sendEmptyMessage(0);
          		        		
@@ -191,8 +195,42 @@ public class MeepleListActivity extends ListActivity
         		
         		LoadingHandler.sendEmptyMessage(30);
     		}
+    		
+    		LoadingHandler.sendEmptyMessage(100);
+    		GetFavoriteRelationsProcessing();
+    		LoadingHandler.sendEmptyMessage(101);
 
     		
+    	}
+    	catch (Exception ex)
+    	{
+    		ex.toString();
+    	}
+    }
+    
+    // 백그라운드에서 몇 가지 처리를 수행하는 메서드.
+    private void GetFavoriteRelationsProcessing()
+    {
+    	try 
+    	{   
+            if( SPUtil.getBoolean(mContext, "isMentor") )
+            	LIST_mentees= RM.GetRelationsMentee(mContext);
+            else
+            	LIST_mentors= RM.GetRelationsMentor(mContext);
+            
+			if(LIST_mentors==null && LIST_mentees==null)	// 가져온 것이 없으면 패스
+            	return;
+			
+			Global.s_LIST_Relations.clear();
+			
+			if( SPUtil.getBoolean(mContext, "isMentor") )
+			{
+				for(MenteeInfo tee : LIST_mentees)
+					Global.s_LIST_Relations.add( new InfoEntry( tee.getAccountId(), tee.getName(), tee.getSchool(), tee.getGrade(),tee.getComment(), -1, EnumMeepleStatus.E_NONE) );
+			}else{
+				for(MentorInfo tor : LIST_mentors)
+					Global.s_LIST_Relations.add( new InfoEntry( tor.getAccountId(), tor.getName(), tor.getUniv(), tor.getMajor(),tor.getComment(), -1, EnumMeepleStatus.E_NONE) );	
+			}
     	}
     	catch (Exception ex)
     	{
@@ -267,9 +305,8 @@ public class MeepleListActivity extends ListActivity
 			else if(msg.what==10)
 			{
 				LoadingDL.setMessage("멘토 목록을 불러오는 중...");
-				 //LoadingDL.setMessage("나를 수락한 멘토를 불러오는 중");
-			     LoadingDL.setIndeterminate(true);
-			     LoadingDL.show();
+				LoadingDL.setIndeterminate(true);
+				LoadingDL.show();
 			}
 //			else if(msg.what==20)
 //			{
@@ -294,6 +331,16 @@ public class MeepleListActivity extends ListActivity
 		        Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
 	        	Adapter.SetOnMeepleInteractionListener(callback);
 		        setListAdapter(Adapter);
+			}
+			else if(msg.what==100)
+			{
+				LoadingDL.setMessage("친구 목록을 불러오는 중...");
+				LoadingDL.setIndeterminate(true);
+				LoadingDL.show();
+			}
+			else if(msg.what==101)
+			{
+				LoadingDL.hide();
 			}
 		}
 	}; 

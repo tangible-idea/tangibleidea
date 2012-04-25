@@ -1,6 +1,8 @@
 package com.tangibleidea.meeple.activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -19,10 +21,15 @@ import com.tangibleidea.meeple.server.RequestMethods;
 
 public class PopupActivity extends Activity implements OnClickListener
 {
-	RelativeLayout RL_window;
-	ImageView IMG_profile;
-	Button BTN_close, BTN_interaction;
-	TextView TXT_name, TXT_profile, TXT_comment;
+	private Context mContext;
+	
+	private RelativeLayout RL_window;
+	private ImageView IMG_profile;
+	private Button BTN_close, BTN_interaction;
+	private TextView TXT_name, TXT_profile, TXT_comment;
+	
+	private boolean bFriend= false;	// 즐겨찾기 맺은 상태인가?
+	private RequestMethods RM;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -31,6 +38,9 @@ public class PopupActivity extends Activity implements OnClickListener
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		
+		mContext= this;
+		RM= new RequestMethods();
 		
 		setContentView(R.layout.popup_layout);
 		
@@ -41,7 +51,22 @@ public class PopupActivity extends Activity implements OnClickListener
 		BTN_close= (Button) findViewById(R.id.btn_popup_exit);
 		BTN_close.setOnClickListener(this);
 		BTN_interaction= (Button) findViewById(R.id.btn_popup_interaction);
-		BTN_interaction.setOnClickListener(this);
+		
+		if( this.getIntent().getStringExtra("recommandation").equals("T") )	// 추천상태이면
+		{
+			if( this.getIntent().getStringExtra("relation").equals("T") )	// 나와 친구이면
+			{
+				bFriend= true;
+				BTN_interaction.setBackgroundResource(R.drawable.btn_popup_send_note);	// 상호작용이 쪽지보내기 버튼이고
+			}
+			else
+				BTN_interaction.setBackgroundResource(R.drawable.btn_popup_add_favorite);	// 친구아니면 친구하기 버튼이다.
+			BTN_interaction.setOnClickListener(this);
+		}
+		else
+			BTN_interaction.setVisibility(View.INVISIBLE);	// 추천상태가 아니면 버튼을 안보이게 한다.
+		
+		
 		
 		RL_window= (RelativeLayout) findViewById(R.id.view_popupwindow_all);
 		
@@ -50,6 +75,8 @@ public class PopupActivity extends Activity implements OnClickListener
 		TXT_profile.setText( this.getIntent().getStringExtra("profile") );
 		TXT_comment.setText( this.getIntent().getStringExtra("comment") );
 		//TXT_name.setText( this.getIntent().getStringExtra("info") );
+		
+			
 		
 		
 		RequestImageMethods RIM= new RequestImageMethods();
@@ -86,7 +113,19 @@ public class PopupActivity extends Activity implements OnClickListener
 		
 		if(v.getId()==R.id.btn_popup_interaction)
 		{
-			
+			if(bFriend)	// 친구상태이므로 -> 쪽지보내기 버튼 일 때
+			{
+				Intent intent= new Intent(PopupActivity.this, SendMessageActivity.class);
+				startActivity(intent);
+			}
+			else
+			{
+				if( RM.AddRelation(mContext, getIntent().getStringExtra("id")) )	// 친구상태가 아니므로 -> 친구맺기 버튼 일 때
+				{
+					bFriend= true;
+					BTN_interaction.setBackgroundResource(R.drawable.btn_popup_send_note);	// 상호작용이 쪽지보내기 버튼이고
+				}
+			}
 		}
 		
 	}
