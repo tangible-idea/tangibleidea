@@ -1,18 +1,20 @@
 package com.tangibleidea.meeple.layout.entry;
 
+
 public class MessageEntry extends ChatEntry
 {
-	String strOppoName= "";
+	String strOppoID= "";
 	
-	public MessageEntry(boolean bMyChat, String OppoName, String strContent, String strTime)
+	public MessageEntry(boolean bMyChat, String OppoID, String strContent, String strTime)
 	{
 		super(bMyChat, strContent, strTime);
 		
-		this.strOppoName= OppoName;
+		this.strOppoID= OppoID;
+	}
+	
+	public String GetOppoID()
+	{
+		return this.strOppoID;
 	}
 
-	public String GetOppoName()
-	{
-		return this.strOppoName;
-	}
 }

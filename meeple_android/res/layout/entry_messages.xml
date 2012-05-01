@@ -8,7 +8,7 @@
 	android:id="@+id/RL_content"
 	android:layout_width="fill_parent"
 	android:layout_height="119.3dip"
-	android:layout_marginTop="14.7dip"
+	android:layout_marginTop="0dip"
 	android:layout_marginLeft="7.3dip"
 	android:layout_marginRight="7.3dip"
   	android:background="@drawable/bg_note">

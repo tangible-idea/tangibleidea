@@ -196,6 +196,7 @@ public class LoginActivity extends Activity implements OnClickListener
 	    				SPUtil.putString(mContext, "Comment" ,tee.getComment());
 	    				SPUtil.putString(mContext, "Email" ,tee.getEmail());
 	    				SPUtil.putString(mContext, "Image" ,tee.getImage());
+	    				SPUtil.putString(mContext, "Name" ,tee.getName());
 	    				SPUtil.putString(mContext, "Grade" ,tee.getGrade());
 	    				SPUtil.putString(mContext, "School" ,tee.getSchool());
 	    			}
