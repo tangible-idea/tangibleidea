@@ -29,7 +29,7 @@
 		  ></ImageView>
 		  
 	  	  <Button
-		  android:id="@+id/btn_waitnumber"
+		  android:id="@+id/btn_message_send"
 		  android:background="@drawable/button_message_send"
 		  android:layout_marginLeft="250dip"
 		  android:layout_marginTop="4dip"
@@ -39,7 +39,7 @@
 			  	
 	    <!-- 상대방 사진 -->
 	    <ImageView
-		android:id="@+id/eOppoPhoto"
+		android:id="@+id/img_photo_oppo"
 	  	android:layout_below="@+id/img_navigation_bg"
 	  	android:layout_marginTop="10dip"
 	  	android:layout_marginLeft="12dip"
@@ -49,7 +49,7 @@
     
     	    <!-- 이름 -->
 	    <TextView
-	    android:id="@+id/eName"
+	    android:id="@+id/txt_name_oppo"
 	    android:layout_below="@+id/img_navigation_bg"
 	    android:layout_marginLeft="53.3dip"
 	    android:layout_marginTop="10dip"
@@ -60,7 +60,7 @@
 	    android:textSize="18sp" />
 	    
 	    <EditText
-	    android:id="@+id/edt_message"
+	    android:id="@+id/edt_message_content"
 	    android:layout_below="@+id/img_navigation_bg"
 	    android:layout_marginTop="57.3dip"
 	    android:layout_marginLeft="53.3dip"

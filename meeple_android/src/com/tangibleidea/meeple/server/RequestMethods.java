@@ -1222,8 +1222,28 @@ public class RequestMethods
 	{	
 		String URI = Global.SERVER + "AddRelation?"
 	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
-	      		+"oppoAccount=" + OppoAccount
+	      		+"&oppoAccount=" + OppoAccount
 	      		+"&session=" + SPUtil.getString(_context, "session");
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
+	
+	/**
+	 * 메세지(쪽지)를 전송한다.
+	 * @param _context
+	 * @param OppoAccount : 쪽지 보낼 상대 ID
+	 * @param Message : 메세지 내용
+	 * @return : 성공 여부
+	 */
+	public boolean SendMessage(Context _context, String OppoAccount, String Message)
+	{
+		String URI = Global.SERVER + "SendMessage?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&oppoAccount=" + OppoAccount
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&message=" + Message;
 		
 		if( RequestStringToServer(URI).equals("true") )
 			return true;

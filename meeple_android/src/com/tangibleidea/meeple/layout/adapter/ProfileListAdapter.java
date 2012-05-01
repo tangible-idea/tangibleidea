@@ -173,17 +173,12 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
         	  BTN_slide[position].setTag(position);        	  
         	  BTN_slide[position].setOnClickListener(this);
         	  
-          
-        	  // 이미지를 다운로드하고 설정하는 부분
-//              if (e.getPhotoId() != -1)
-//              {    			
-            	  //VH.IMG_ProfilePic= (ImageView) v.findViewById(R.id.ePhoto);
+          try{
             	  RequestImageMethods RIM= new RequestImageMethods();
           		  RIM.DownloadImage2( VH.IMG_ProfilePic, e.getID() );	// 이미지를 다운로드 받고
           		  VH.IMG_ProfilePic.setBackgroundColor(Color.BLACK);
-//              } else {
-//            	  holder.imgView.setImageResource(R.drawable.no_profileimage);  
-//              }
+          }catch(Exception ex) {}
+          		  
               
               // 테이블 내에 들어갈 작업들
               ImageView IMG_in_caption= (ImageView) v.findViewById(R.id.e_img_table_in_caption);
