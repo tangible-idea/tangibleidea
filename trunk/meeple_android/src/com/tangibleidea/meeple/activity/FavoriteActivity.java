@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -216,7 +217,25 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
     
 	public void onListItemClick(ListView l, View v, int pos, long id)
 	{
-		
+		if(bFriend_subtab)	// 친구 탭일 때는
+		{
+			InfoEntry e= arraylist.get(pos);
+			
+			Intent intent= new Intent(mContext, PopupActivity.class);
+			intent.putExtra("id", e.getID() );
+			intent.putExtra("name", e.getName() );
+			intent.putExtra("profile", e.getSchool() );
+			intent.putExtra("comment", e.getComment() );
+			
+			intent.putExtra("recommandation", "T");	// 즐겨찾기 창에서 클릭하면 쪽지보내기를 띄워준다.
+			intent.putExtra("relation", "T");	// 즐겨찾기 창에서 클릭했다는 건 무조건 친구사이라는 거다.
+			
+			mContext.startActivity(intent);
+		}
+		else	// 쪽지 탭일 때는 
+		{
+			
+		}
 	}
 
 

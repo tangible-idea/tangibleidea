@@ -30,6 +30,8 @@ public class PopupActivity extends Activity implements OnClickListener
 	
 	private boolean bFriend= false;	// 즐겨찾기 맺은 상태인가?
 	private RequestMethods RM;
+	
+	private String strID= "", strName= "";
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -69,19 +71,24 @@ public class PopupActivity extends Activity implements OnClickListener
 		
 		
 		RL_window= (RelativeLayout) findViewById(R.id.view_popupwindow_all);
-		
 		TXT_name.setPaintFlags(TXT_name.getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
-		TXT_name.setText( this.getIntent().getStringExtra("name") );
+		
+		strID= this.getIntent().getStringExtra("id");
+		strName= this.getIntent().getStringExtra("name");
+		
+		TXT_name.setText( strName );
 		TXT_profile.setText( this.getIntent().getStringExtra("profile") );
 		TXT_comment.setText( this.getIntent().getStringExtra("comment") );
 		//TXT_name.setText( this.getIntent().getStringExtra("info") );
 		
-			
-		
-		
+try{
 		RequestImageMethods RIM= new RequestImageMethods();
-		RIM.DownloadImage2( IMG_profile, this.getIntent().getStringExtra("id") );	// 이미지를 다운로드 받고
+		RIM.DownloadImage2( IMG_profile, strID );	// 이미지를 다운로드 받고
 		IMG_profile.setBackgroundColor(Color.BLACK);
+}catch(Exception e)
+{
+	
+}
 		
 	}
 
@@ -116,11 +123,13 @@ public class PopupActivity extends Activity implements OnClickListener
 			if(bFriend)	// 친구상태이므로 -> 쪽지보내기 버튼 일 때
 			{
 				Intent intent= new Intent(PopupActivity.this, SendMessageActivity.class);
+				intent.putExtra("id", strID);
+				intent.putExtra("name", strName);
 				startActivity(intent);
 			}
 			else
 			{
-				if( RM.AddRelation(mContext, getIntent().getStringExtra("id")) )	// 친구상태가 아니므로 -> 친구맺기 버튼 일 때
+				if( RM.AddRelation(mContext, strID) )	// 친구상태가 아니므로 -> 친구맺기 버튼 일 때
 				{
 					bFriend= true;
 					BTN_interaction.setBackgroundResource(R.drawable.btn_popup_send_note);	// 상호작용이 쪽지보내기 버튼이고

@@ -88,7 +88,7 @@ public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
         	try
         	{
         		
-        		SimpleDateFormat format= new SimpleDateFormat("yyyy.MM.dd a h:mm");
+        		SimpleDateFormat format= new SimpleDateFormat("yyyy.MM.dd a h:mm");	// 날짜포맷을 이와 같이 통일한다.
 				Date talkTime= format.parse(e.getTime());
 				Date nowTime= new Date();
 				
@@ -103,9 +103,9 @@ public class RecentTalkListAdapter extends ArrayAdapter<RecentTalkEntry>
 	        		else
 	        			timeMarker="오전";
 	        		
-	        		TXT_Time.setText( String.format("%s %02d:%02d", timeMarker, talkTime.getHours(),talkTime.getMinutes() ) );
+	        		TXT_Time.setText( String.format("%s %02d:%02d", timeMarker, talkTime.getHours(),talkTime.getMinutes() ) );	// 오늘일 경우 시간포맷은 이렇게...
 	        	}else{
-	        		TXT_Time.setText( talkTime.getMonth()+"월 "+talkTime.getDate()+"일");
+	        		TXT_Time.setText( talkTime.getMonth()+"월 "+talkTime.getDate()+"일");	// 아니면 X월 X일로 표시
 	        	}
 			}
         	catch (ParseException e1)
@@ -119,7 +119,7 @@ try
     		RIM.DownloadImage2( IMG_profile, e.getAccountID() );	// 이미지를 다운로드 받고
     		IMG_profile.setBackgroundColor(Color.BLACK);
 }
-catch(OutOfMemoryError ex)
+catch(Exception ex)
 {
 	
 }
