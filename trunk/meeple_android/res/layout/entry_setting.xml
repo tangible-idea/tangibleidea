@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content">
+   
+	<RelativeLayout
+	android:id="@+id/RL_content"
+	android:layout_width="fill_parent"
+	android:layout_height="56dip"
+  	android:background="#e6e6e6">
+  
+	    <!-- 내용 이미지 -->
+	  	<ImageView android:id="@+id/e_img_content"
+  		android:layout_marginLeft="12dip"
+  		android:layout_centerVertical="true"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    />
+	
+	    <!-- 내용 텍스트 -->
+	  	<TextView android:id="@+id/e_txt_content"
+  		android:layout_marginLeft="12dip"
+  		android:layout_centerVertical="true"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:textSize="18.7sp"
+	    android:textColor="#000000"
+	    />
+	  	    
+	 	<!-- 오른쪽 화살표 장식 -->
+	  	<ImageView android:id="@+id/e_img_arrow"
+	  	android:layout_alignParentRight="true"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/arrow_list_setting"
+	    />
+	  	
+	  	<!-- 구분선 -->
+<!-- 	  	<View -->
+<!-- 	  	    android:id="@+id/divider" -->
+<!-- 	  	android:background="#a1a1a1" -->
+<!-- 	  	android:layout_width="fill_parent" -->
+<!-- 	    android:layout_height="0.5dip"/> -->
+	  
+  </RelativeLayout>
+  
+</RelativeLayout>

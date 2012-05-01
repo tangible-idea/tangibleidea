@@ -1,186 +1,197 @@
 package com.tangibleidea.meeple.activity;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
+import java.util.ArrayList;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
-import com.tangibleidea.meeple.server.RequestImageMethods;
-import com.tangibleidea.meeple.server.RequestMethods;
+import com.tangibleidea.meeple.layout.adapter.SettingAdapter;
+import com.tangibleidea.meeple.layout.entry.SettingEntry;
+import com.tangibleidea.meeple.layout.enums.EnumSettingStatus;
 import com.tangibleidea.meeple.util.SPUtil;
 
-public class ProfileSettingActivity extends Activity implements android.view.View.OnClickListener
+public class ProfileSettingActivity extends ListActivity// implements android.view.View.OnClickListener
 {
-	private ImageView IMG_profile;
-	private TextView TXT_info;
-	private boolean isMentor;
-	private String strAccountID, strName, strISMentor, strEmail;
-	private String strSchool, strGrade;
-	private String strMajor, strPromo, strUniv;
+//	private ImageView IMG_profile;
+//	private TextView TXT_info;
+//	private boolean isMentor;
+//	private String strAccountID, strName, strISMentor, strEmail;
+//	private String strSchool, strGrade;
+//	private String strMajor, strPromo, strUniv;
+	
+	private SettingAdapter Adapter;
+	final ArrayList<SettingEntry> arraylist= new ArrayList<SettingEntry>();
 	
     @Override 
     protected void onCreate(Bundle savedInstanceState)
     {
          super.onCreate(savedInstanceState);
                           
-         setContentView(R.layout.setting_myinfo);
+         setContentView(R.layout.setting);
          
-         IMG_profile= (ImageView) findViewById(R.id.img_Photo);
-         TXT_info= (TextView) findViewById(R.id.txt_myinfo);
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_LABEL_PROFILE, 0));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, SPUtil.getString(this, "Name") ));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_LABEL_INFO, 0));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_1 ));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_2 ));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_3 ));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_LABEL_REPORT, 0));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_4 ));
          
-         strAccountID= SPUtil.getString(this, "AccountID");
-         strName= SPUtil.getString(this, "AccountID");
-         isMentor=  SPUtil.getBoolean(this, "isMentor");
-         strEmail= SPUtil.getString(this, "Email");
+         Adapter= new SettingAdapter(this, R.layout.entry_setting, R.id.e_txt_content, arraylist);
+         setListAdapter(Adapter);
+    }
          
-         IMG_profile.setOnClickListener(this);
-         
-         if(isMentor)
-         {
-        	 strISMentor= "(멘토)";
-        	 strUniv=SPUtil.getString(this, "Univ");
-        	 strMajor= SPUtil.getString(this, "Major");
-        	 strPromo= SPUtil.getString(this, "Promo");
-        	 TXT_info.setText("아이디 : "+strAccountID+" "+strISMentor
-        			 +"\n대학교 : "+strUniv
-        			 +"\n이메일 : "+strEmail
-        			 +"\n이름 : "+strName
-        			 +"\n전공 : "+strMajor
-        			 +"\n학번 : "+strPromo
-        			 );
-        	 
-         }
-         else
-         {
-        	 strISMentor= "(멘티)";
-        	 strSchool= SPUtil.getString(this, "School");
-        	 strGrade= SPUtil.getString(this, "Grade");
-        	 
-        	 TXT_info.setText("아이디 : "+strAccountID+" "+strISMentor
-        			 +"\n학교 : "+strSchool
-        			 +"\n이메일 : "+strEmail
-        			 +"\n이름 : "+strName
-        			 +"\n학년 : "+strGrade
-        			 );
-         }
-         
-         RequestImageMethods RIM= new RequestImageMethods();
-         RIM.DownloadImage(IMG_profile, SPUtil.getString(this, "AccountID"));         
+//         IMG_profile= (ImageView) findViewById(R.id.img_Photo);
+//         TXT_info= (TextView) findViewById(R.id.txt_myinfo);
+//         
+//         strAccountID= SPUtil.getString(this, "AccountID");
+//         strName= SPUtil.getString(this, "AccountID");
+//         isMentor=  SPUtil.getBoolean(this, "isMentor");
+//         strEmail= SPUtil.getString(this, "Email");
+//         
+//         IMG_profile.setOnClickListener(this);
+//         
+//         if(isMentor)
+//         {
+//        	 strISMentor= "(멘토)";
+//        	 strUniv=SPUtil.getString(this, "Univ");
+//        	 strMajor= SPUtil.getString(this, "Major");
+//        	 strPromo= SPUtil.getString(this, "Promo");
+//        	 TXT_info.setText("아이디 : "+strAccountID+" "+strISMentor
+//        			 +"\n대학교 : "+strUniv
+//        			 +"\n이메일 : "+strEmail
+//        			 +"\n이름 : "+strName
+//        			 +"\n전공 : "+strMajor
+//        			 +"\n학번 : "+strPromo
+//        			 );
+//        	 
+//         }
+//         else
+//         {
+//        	 strISMentor= "(멘티)";
+//        	 strSchool= SPUtil.getString(this, "School");
+//        	 strGrade= SPUtil.getString(this, "Grade");
+//        	 
+//        	 TXT_info.setText("아이디 : "+strAccountID+" "+strISMentor
+//        			 +"\n학교 : "+strSchool
+//        			 +"\n이메일 : "+strEmail
+//        			 +"\n이름 : "+strName
+//        			 +"\n학년 : "+strGrade
+//        			 );
+//         }
+//         
+//         RequestImageMethods RIM= new RequestImageMethods();
+//         RIM.DownloadImage(IMG_profile, SPUtil.getString(this, "AccountID"));         
          
     }
-
-	@Override
-	public void onClick(View v)
-	{
-		new AlertDialog.Builder(this)
-        .setTitle("프로필 사진 변경")
-        .setMessage("어떤 방법으로 변경하시겠습니까?")
-        .setPositiveButton("갤러리에서 선택", new DialogInterface.OnClickListener()
-        {
-        	@Override
-			public void onClick(DialogInterface dialog, int which)
-        	{
-        		Intent i= new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);	
-        		startActivityForResult(i, 0);
-			}
-        })
-        .setNeutralButton("사진 찍기", new DialogInterface.OnClickListener()
-        {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which)
-			{
-				Intent i= new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);	
-				startActivityForResult(i, 1);
-			}
-		})
-        .show();
-		
-		
-	}
-
-	/* (non-Javadoc)
-	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
-	 */
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		super.onActivityResult(requestCode, resultCode, data);
-		
-		if(resultCode == RESULT_OK)
-		{
-			if(requestCode==0)
-			{
-				Uri imageURI= data.getData(); 
-				
-				try
-				{					
-					BitmapFactory.Options bmpOptions= new BitmapFactory.Options();
-					
-					bmpOptions.inJustDecodeBounds= true; 	// 일단 정보만 얻어와보자
-					BitmapFactory.decodeStream(getContentResolver().openInputStream(imageURI), null, bmpOptions);
-					
-					if(bmpOptions.outWidth > 200 || bmpOptions.outHeight > 200)	// 가로,세로가 500px 이상이면
-					{
-						if( bmpOptions.outHeight > bmpOptions.outWidth ) // 세로가 더 크면...
-						{
-							bmpOptions.inSampleSize= bmpOptions.outHeight / 200; // 샘플링배율= 2000/10= 10;
-						}else{
-							bmpOptions.inSampleSize= bmpOptions.outWidth / 200;
-						}
-					}else{
-						bmpOptions.inSampleSize= 1;				// 크기가 작으면 그대로 올린다
-					}
-					
-					bmpOptions.inJustDecodeBounds= false;	// 정보만 얻어올때는 true
-					Bitmap bmp= BitmapFactory.decodeStream(getContentResolver().openInputStream(imageURI), null, bmpOptions);
-					
-					ByteArrayOutputStream BAOS= new ByteArrayOutputStream();
-					bmp.compress(CompressFormat.JPEG, 85, BAOS);	// 85%의 화질로 올린다.
-					byte[] byteArray= BAOS.toByteArray();
-					 
-					RequestImageMethods RIM= new RequestImageMethods();
-					RIM.UploadImage(this, byteArray);
-					
-					IMG_profile.setImageBitmap(bmp);
-				}
-				catch(FileNotFoundException e)
-				{
-					Log.e("onActivityResult::FileNotFoundException", e.toString());
-				}
-			}
-			
-			if(requestCode==1)
-			{
-				Bundle extra= data.getExtras();
-				Bitmap bmp= (Bitmap) extra.get("data");
-				
-				ByteArrayOutputStream BAOS= new ByteArrayOutputStream();
-				bmp.compress(CompressFormat.JPEG, 100, BAOS);
-				byte[] byteArray= BAOS.toByteArray();
-				
-				RequestImageMethods RIM= new RequestImageMethods();
-				RIM.UploadImage(this, byteArray);
-				
-				IMG_profile.setImageBitmap(bmp);
-			}
-			
-		}
-	}
+    
+    
+//
+//
+//	@Override
+//	public void onClick(View v)
+//	{
+//		new AlertDialog.Builder(this)
+//        .setTitle("프로필 사진 변경")
+//        .setMessage("어떤 방법으로 변경하시겠습니까?")
+//        .setPositiveButton("갤러리에서 선택", new DialogInterface.OnClickListener()
+//        {
+//        	@Override
+//			public void onClick(DialogInterface dialog, int which)
+//        	{
+//        		Intent i= new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);	
+//        		startActivityForResult(i, 0);
+//			}
+//        })
+//        .setNeutralButton("사진 찍기", new DialogInterface.OnClickListener()
+//        {
+//			
+//			@Override
+//			public void onClick(DialogInterface dialog, int which)
+//			{
+//				Intent i= new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);	
+//				startActivityForResult(i, 1);
+//			}
+//		})
+//        .show();
+//	}
+//
+//	/* (non-Javadoc)
+//	 * @see android.app.Activity#onActivityResult(int, int, android.content.Intent)
+//	 */
+//	@Override
+//	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+//	{
+//		super.onActivityResult(requestCode, resultCode, data);
+//		
+//		if(resultCode == RESULT_OK)
+//		{
+//			if(requestCode==0)
+//			{
+//				Uri imageURI= data.getData(); 
+//				
+//				try
+//				{					
+//					BitmapFactory.Options bmpOptions= new BitmapFactory.Options();
+//					
+//					bmpOptions.inJustDecodeBounds= true; 	// 일단 정보만 얻어와보자
+//					BitmapFactory.decodeStream(getContentResolver().openInputStream(imageURI), null, bmpOptions);
+//					
+//					if(bmpOptions.outWidth > 200 || bmpOptions.outHeight > 200)	// 가로,세로가 500px 이상이면
+//					{
+//						if( bmpOptions.outHeight > bmpOptions.outWidth ) // 세로가 더 크면...
+//						{
+//							bmpOptions.inSampleSize= bmpOptions.outHeight / 200; // 샘플링배율= 2000/10= 10;
+//						}else{
+//							bmpOptions.inSampleSize= bmpOptions.outWidth / 200;
+//						}
+//					}else{
+//						bmpOptions.inSampleSize= 1;				// 크기가 작으면 그대로 올린다
+//					}
+//					
+//					bmpOptions.inJustDecodeBounds= false;	// 정보만 얻어올때는 true
+//					Bitmap bmp= BitmapFactory.decodeStream(getContentResolver().openInputStream(imageURI), null, bmpOptions);
+//					
+//					ByteArrayOutputStream BAOS= new ByteArrayOutputStream();
+//					bmp.compress(CompressFormat.JPEG, 85, BAOS);	// 85%의 화질로 올린다.
+//					byte[] byteArray= BAOS.toByteArray();
+//					 
+//					RequestImageMethods RIM= new RequestImageMethods();
+//					RIM.UploadImage(this, byteArray);
+//					
+//					IMG_profile.setImageBitmap(bmp);
+//				}
+//				catch(FileNotFoundException e)
+//				{
+//					Log.e("onActivityResult::FileNotFoundException", e.toString());
+//				}
+//			}
+//			
+//			if(requestCode==1)
+//			{
+//				Bundle extra= data.getExtras();
+//				Bitmap bmp= (Bitmap) extra.get("data");
+//				
+//				ByteArrayOutputStream BAOS= new ByteArrayOutputStream();
+//				bmp.compress(CompressFormat.JPEG, 100, BAOS);
+//				byte[] byteArray= BAOS.toByteArray();
+//				
+//				RequestImageMethods RIM= new RequestImageMethods();
+//				RIM.UploadImage(this, byteArray);
+//				
+//				IMG_profile.setImageBitmap(bmp);
+//			}
+//			
+//		}
+//	}
 	
+    
+    
+    
+    
+    
     
 //    private PreferenceScreen createPreferenceHierarchy()
 //    {
@@ -261,4 +272,3 @@ public class ProfileSettingActivity extends Activity implements android.view.Vie
 //        
 //		return root;
 //    }
-}

@@ -53,6 +53,8 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         
         RM= new RequestMethods();
+        
+
      
         setContentView(R.layout.favorite_list);
         mContext= this;
@@ -63,6 +65,10 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
         
         IMGBTN_friend.setOnClickListener(this);
         IMGBTN_message.setOnClickListener(this);
+        
+		ImageView view= new ImageView(mContext);
+		view.setImageResource(R.drawable.title_blank_14);
+		getListView().addHeaderView(view);
         
         if(bFriend_subtab)	// 서브탭이 즐겨찾기탭이면
         {
@@ -197,6 +203,7 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 			{
 				LoadingDL.hide();
 				
+
 				for(Chat C : LIST_message)
 				{
 					if(C.getSenderAccount().equals( SPUtil.getString(mContext, "AccountID") ))
@@ -204,7 +211,7 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 					else
 						arraylist2.add(new MessageEntry(false, C.getSenderAccount(), C.getChat(), C.getDateTime()));					
 				}
-				
+
 				Adapter2= new MessageListAdapter(mContext, R.layout.entry_messages, R.id.eName, arraylist2);
 				setListAdapter(Adapter2);
 			}
