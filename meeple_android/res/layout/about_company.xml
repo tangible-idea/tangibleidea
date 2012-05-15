@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6E6E6"
+    android:orientation="vertical" >
+    
+  <ImageView
+      android:id="@+id/img_top"
+      android:src="@drawable/label_setting_inform"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content">      
+  </ImageView>
+  
+       
+	  <ImageView
+	      android:id="@+id/img_about_tangibleidea1"
+	      android:src="@drawable/img_inform_tangible_01"
+	      android:layout_below="@+id/img_top"
+	      android:layout_centerHorizontal="true"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content">      
+	  </ImageView>
+	  
+	        <ImageView
+	      android:id="@+id/img_about_tangibleidea2"
+	      android:src="@drawable/img_inform_tangible_02"
+	      android:layout_below="@+id/img_about_tangibleidea1"
+	      android:layout_centerHorizontal="true"
+	      android:layout_width="wrap_content"
+	      android:layout_height="wrap_content">      
+	  </ImageView>
+  
+
+</RelativeLayout>
