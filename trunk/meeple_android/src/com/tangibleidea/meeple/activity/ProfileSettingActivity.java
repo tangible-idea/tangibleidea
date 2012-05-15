@@ -3,7 +3,10 @@ package com.tangibleidea.meeple.activity;
 import java.util.ArrayList;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.layout.adapter.SettingAdapter;
@@ -31,17 +34,41 @@ public class ProfileSettingActivity extends ListActivity// implements android.vi
          setContentView(R.layout.setting);
          
          arraylist.add(new SettingEntry(EnumSettingStatus.E_LABEL_PROFILE, 0));
-         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, SPUtil.getString(this, "Name") ));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, SPUtil.getString(this, "Name") ));	// 프로필변경(1)
          arraylist.add(new SettingEntry(EnumSettingStatus.E_LABEL_INFO, 0));
-         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_1 ));
-         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_2 ));
-         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_3 ));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_1 ));	// 공지사항(3)
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_2 ));	// 미플Tips(4)
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_3 ));	// 회사소개(5)
          arraylist.add(new SettingEntry(EnumSettingStatus.E_LABEL_REPORT, 0));
-         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_4 ));
+         arraylist.add(new SettingEntry(EnumSettingStatus.E_NOLABEL, R.drawable.list_text_img_02_4 ));	// 신고하기(7)
          
          Adapter= new SettingAdapter(this, R.layout.entry_setting, R.id.e_txt_content, arraylist);
          setListAdapter(Adapter);
     }
+    
+	public void onListItemClick(ListView l, View v, int pos, long id)
+	{
+		switch(pos)
+		{
+		case 1:
+			break;
+		case 3:
+
+			break;
+		case 4:
+			Intent intent4= new Intent(ProfileSettingActivity.this, AboutCompanyActivity.class);
+			startActivity(intent4);
+			break;
+		case 5:
+			Intent intent5= new Intent(ProfileSettingActivity.this, AboutMeepleActivity.class);
+			startActivity(intent5);
+			break;
+		case 7:
+			Intent intent7= new Intent(ProfileSettingActivity.this, ReportActivity.class);
+			startActivity(intent7);
+			break;
+		}
+	}
          
 //         IMG_profile= (ImageView) findViewById(R.id.img_Photo);
 //         TXT_info= (TextView) findViewById(R.id.txt_myinfo);
