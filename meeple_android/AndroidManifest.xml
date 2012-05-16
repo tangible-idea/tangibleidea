@@ -63,7 +63,7 @@
         android:configChanges="keyboardHidden|orientation"
 	    ></activity>
         
-        <activity android:name=".activity.ProfileSettingActivity"
+        <activity android:name=".activity.SettingActivity"
 	    android:label="@string/app_name"
 	    android:screenOrientation="portrait"
         android:configChanges="keyboardHidden|orientation"
@@ -122,6 +122,18 @@
 	    android:screenOrientation="portrait"
         android:configChanges="keyboardHidden|orientation"
 	    ></activity>
+		
+		<activity android:name=".activity.NoticeActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation">
+			<intent-filter>
+			    <action android:name="android.intent.action.VIEW"/>
+			    <category android:name="android.intent.category.DEFAULT"/>
+			    <category android:name="android.intent.category.BROWSABLE"/>
+			    <data android:scheme="http"/>
+		   </intent-filter>
+		</activity>
 		
 	    <activity android:name=".activity.PopupActivity"
 	    android:label="@string/app_name"

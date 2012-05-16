@@ -14,7 +14,7 @@ import com.tangibleidea.meeple.layout.entry.SettingEntry;
 import com.tangibleidea.meeple.layout.enums.EnumSettingStatus;
 import com.tangibleidea.meeple.util.SPUtil;
 
-public class ProfileSettingActivity extends ListActivity// implements android.view.View.OnClickListener
+public class SettingActivity extends ListActivity// implements android.view.View.OnClickListener
 {
 //	private ImageView IMG_profile;
 //	private TextView TXT_info;
@@ -53,18 +53,19 @@ public class ProfileSettingActivity extends ListActivity// implements android.vi
 		case 1:
 			break;
 		case 3:
-
+			Intent intent3= new Intent(SettingActivity.this, NoticeActivity.class);
+			startActivity(intent3);
 			break;
 		case 4:
-			Intent intent4= new Intent(ProfileSettingActivity.this, AboutCompanyActivity.class);
+			Intent intent4= new Intent(SettingActivity.this, AboutCompanyActivity.class);
 			startActivity(intent4);
 			break;
 		case 5:
-			Intent intent5= new Intent(ProfileSettingActivity.this, AboutMeepleActivity.class);
+			Intent intent5= new Intent(SettingActivity.this, AboutMeepleActivity.class);
 			startActivity(intent5);
 			break;
 		case 7:
-			Intent intent7= new Intent(ProfileSettingActivity.this, ReportActivity.class);
+			Intent intent7= new Intent(SettingActivity.this, ReportActivity.class);
 			startActivity(intent7);
 			break;
 		}
