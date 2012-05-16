@@ -44,7 +44,7 @@ public class LobbyActivity extends ActivityGroup
 		setupTab(new TextView(this), "tab1", new Intent(this, MeepleListActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 		setupTab(new TextView(this), "tab2", new Intent(this, RecentTalkListActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 		setupTab(new TextView(this), "tab3", new Intent(this, FavoriteActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-		setupTab(new TextView(this), "tab4", new Intent(this, ProfileSettingActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+		setupTab(new TextView(this), "tab4", new Intent(this, SettingActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 	}
 
 	/* (non-Javadoc)

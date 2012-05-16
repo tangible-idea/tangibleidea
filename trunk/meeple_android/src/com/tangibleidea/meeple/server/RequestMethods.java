@@ -1250,6 +1250,25 @@ public class RequestMethods
 		return false;
 	}
 	
+	/**
+	 * 다른 유저를 신고합니다.
+	 * @param _context
+	 * @param OppoAccount : 신고할 유저ID
+	 * @param Content : 신고내용
+	 * @return : 신고 성공 여부
+	 */
+	public boolean ReportUser(Context _context, String OppoAccount, String Content)
+	{
+		String URI = Global.SERVER + "ReportUser?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&oppoAccount=" + OppoAccount
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&content=" + Content; 
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
 	
 	
 	

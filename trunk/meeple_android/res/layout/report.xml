@@ -38,7 +38,7 @@
 	      android:layout_marginTop="17.3dip"
 	      android:background="@drawable/set_profile_text"
 	      android:layout_width="158.7dip"
-	      android:layout_height="26dip"/>
+	      android:layout_height="wrap_content"/>
 	  
 	  <Button 
 	      android:id="@+id/btn_report"
@@ -68,7 +68,7 @@
 	      android:layout_marginTop="14.7dip"
 	      android:background="@drawable/set_profile_text"
 	      android:layout_width="234dip"
-	      android:layout_height="108dip"
+	      android:layout_height="wrap_content"
 	      android:lines="6"/>
 	  
   
