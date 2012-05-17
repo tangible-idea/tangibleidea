@@ -4,13 +4,34 @@
     android:layout_height="match_parent"
     android:background="#E6E6E6"
     android:orientation="vertical" >
-    
+    
   <ImageView
       android:id="@+id/img_top"
-      android:src="@drawable/label_setting_myprofile"
       android:layout_width="fill_parent"
-      android:layout_height="wrap_content">      
+      android:layout_height="wrap_content"
+      android:background="@drawable/setting_label_bg" >
+      
   </ImageView>
+  
+    <ImageView
+      android:id="@+id/img_top_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/setting_label_text_01_my_profile" >
+      
+  </ImageView>
+  
+  <Button 
+      android:id="@+id/btn_profile_edit"
+      android:background="@drawable/button_edit"
+      android:layout_alignParentRight="true"
+      android:paddingRight="10dip"
+      android:layout_marginRight="10dip"
+      android:layout_marginTop="10dip"
+      android:layout_below="@+id/img_top"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
   
     <ImageView
       android:id="@+id/img_profile_image"
@@ -41,6 +62,7 @@
       android:layout_toRightOf="@+id/img_profile_image"
       android:layout_marginTop="3dip"
       android:layout_marginLeft="10dip"
+      android:textColor="#000000"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content">      
   </TextView>
@@ -63,6 +85,7 @@
       android:layout_toRightOf="@+id/img_profile_image"
       android:layout_marginTop="3dip"
       android:layout_marginLeft="10dip"
+      android:textColor="#000000"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content">      
   </TextView>
@@ -79,12 +102,86 @@
   
           <ImageView
       android:id="@+id/img_base_profile_bg"
-      android:src="@drawable/set_profile_text"
+      android:background="@drawable/set_profile_text"
       android:layout_below="@+id/img_base_profile_title"
       android:layout_marginTop="10dip"
       android:layout_marginLeft="10dip"
-      android:layout_width="300dip"
-      android:layout_height="100dip">      
+      android:paddingRight="10dip"
+      android:layout_marginRight="10dip"
+      android:layout_width="fill_parent"
+      android:layout_height="90dip">      
   </ImageView>
+  
+          <!-- 1구분선 -->
+          <View 
+              android:background="#AAAAAA"
+              android:layout_width="fill_parent"
+              android:layout_height="0.3dip"
+              android:layout_below="@+id/img_base_profile_title"
+              android:layout_marginTop="40dip"
+      		  android:layout_marginLeft="10dip"
+      		  android:layout_marginRight="10dip"
+              />
+          
+          <!-- 2구분선 -->
+              <View 
+              android:background="#AAAAAA"
+              android:layout_width="fill_parent"
+              android:layout_height="0.3dip"
+              android:layout_below="@+id/img_base_profile_title"
+              android:layout_marginTop="70dip"
+      		  android:layout_marginLeft="10dip"
+      		  android:layout_marginRight="10dip"
+              />
+              
+              <ImageView 
+              android:src="@drawable/text_img_set_01"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/img_base_profile_title"
+              android:layout_marginTop="10dip"
+              android:layout_marginLeft="10dip"
+              />
+              
+               <ImageView 
+              android:src="@drawable/text_img_set_02"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/img_base_profile_title"
+              android:layout_marginTop="40dip"
+              android:layout_marginLeft="10dip"
+              />
+               
+              <ImageView 
+              android:src="@drawable/text_img_set_03"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/img_base_profile_title"
+              android:layout_marginTop="70dip"
+              android:layout_marginLeft="10dip"
+              />
+  
+               <ImageView
+      android:id="@+id/img_today_profile_title"
+      android:src="@drawable/setting_subtitle_04"
+      android:layout_below="@+id/img_base_profile_bg"
+      android:layout_marginTop="35dip"
+      android:layout_marginLeft="10dip"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">      
+  </ImageView>
+  
+          <ImageView
+      android:id="@+id/img_today_profile_bg"
+      android:background="@drawable/set_profile_text"
+      android:layout_below="@+id/img_today_profile_title"
+      android:layout_marginTop="10dip"
+      android:layout_marginLeft="10dip"
+      android:paddingRight="10dip"
+      android:layout_marginRight="10dip"
+      android:layout_width="fill_parent"
+      android:layout_height="30dip">      
+  </ImageView>
+  
      
 </RelativeLayout>
