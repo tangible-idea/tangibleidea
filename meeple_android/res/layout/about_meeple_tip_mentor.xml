@@ -7,8 +7,16 @@
     
   <ImageView
       android:id="@+id/img_top"
-      android:src="@drawable/label_setting_tip"
+      android:background="@drawable/setting_label_bg"
       android:layout_width="fill_parent"
+      android:layout_height="wrap_content">      
+  </ImageView>
+  
+      
+  <ImageView
+      android:id="@+id/img_top_title"
+      android:src="@drawable/setting_label_text_02_2_tip"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content">      
   </ImageView>
   

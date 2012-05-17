@@ -51,17 +51,19 @@ public class SettingActivity extends ListActivity// implements android.view.View
 		switch(pos)
 		{
 		case 1:
+			Intent intent1= new Intent(SettingActivity.this, ModifyProfileActivity.class);
+			startActivity(intent1);
 			break;
 		case 3:
 			Intent intent3= new Intent(SettingActivity.this, NoticeActivity.class);
 			startActivity(intent3);
 			break;
 		case 4:
-			Intent intent4= new Intent(SettingActivity.this, AboutCompanyActivity.class);
+			Intent intent4= new Intent(SettingActivity.this, AboutMeepleActivity.class);
 			startActivity(intent4);
 			break;
 		case 5:
-			Intent intent5= new Intent(SettingActivity.this, AboutMeepleActivity.class);
+			Intent intent5= new Intent(SettingActivity.this, AboutCompanyActivity.class);
 			startActivity(intent5);
 			break;
 		case 7:
