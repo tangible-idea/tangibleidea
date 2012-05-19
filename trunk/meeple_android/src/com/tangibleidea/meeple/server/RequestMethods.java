@@ -1271,7 +1271,77 @@ public class RequestMethods
 	}
 	
 	
+	public boolean ChangeName(Context _context, String name)
+	{
+		String URI = Global.SERVER + "ChangeName?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&name=" + name; 
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
 	
+	public boolean ChangeComment(Context _context, String comment)
+	{
+		String URI = Global.SERVER + "ChangeComment?"
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&comment=" + comment; 
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
+	
+	public boolean ChangeSchool(Context _context, String school)
+	{
+		String URI = Global.SERVER + "ChangeSchool?"
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&school=" + school; 
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
+	
+	public boolean ChangeGrade(Context _context, String grade)
+	{
+		String URI = Global.SERVER + "ChangeSchool?"
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&grade=" + grade; 
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
+	
+	public boolean ChangeMajor(Context _context, String major)
+	{
+		String URI = Global.SERVER + "ChangeSchool?"
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&major=" + major; 
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
+	
+	public boolean ChangePromo(Context _context, String promo)
+	{
+		String URI = Global.SERVER + "ChangeSchool?"
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&promo=" + promo; 
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
 	
 	/**
 	 * 고려대 인증
