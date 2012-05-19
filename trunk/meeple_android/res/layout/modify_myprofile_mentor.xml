@@ -33,14 +33,39 @@
       android:layout_height="wrap_content"
       />
   
+    <Button 
+      android:id="@+id/btn_profile_confirm"
+      android:background="@drawable/button_confirm"
+      android:layout_alignParentRight="true"
+      android:layout_marginRight="70dip"
+      android:layout_marginTop="10dip"
+      android:layout_below="@+id/img_top"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="invisible"
+      />
+    
+        <Button 
+      android:id="@+id/btn_profile_cancel"
+      android:background="@drawable/button_cancel"
+      android:layout_alignParentRight="true"
+      android:paddingRight="10dip"
+      android:layout_marginRight="10dip"
+      android:layout_marginTop="10dip"
+      android:layout_below="@+id/img_top"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:visibility="invisible"
+      />
+  
     <ImageView
       android:id="@+id/img_profile_image"
       android:src="@drawable/no_profileimage"
       android:layout_below="@+id/img_top"
       android:layout_marginTop="10dip"
       android:layout_marginLeft="10dip"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content">      
+      android:layout_width="72dip"
+      android:layout_height="72dip">      
   </ImageView>
 
         <ImageView
@@ -109,7 +134,7 @@
       android:paddingRight="10dip"
       android:layout_marginRight="10dip"
       android:layout_width="fill_parent"
-      android:layout_height="90dip">      
+      android:layout_height="120dip">      
   </ImageView>
   
           <!-- 1구분선 -->
@@ -133,8 +158,19 @@
       		  android:layout_marginLeft="10dip"
       		  android:layout_marginRight="10dip"
               />
+          <!-- 3구분선 -->
+              <View 
+              android:background="#AAAAAA"
+              android:layout_width="fill_parent"
+              android:layout_height="0.3dip"
+              android:layout_below="@+id/img_base_profile_title"
+              android:layout_marginTop="100dip"
+      		  android:layout_marginLeft="10dip"
+      		  android:layout_marginRight="10dip"
+              />
               
               <ImageView 
+              android:id="@+id/txt_set1"
               android:src="@drawable/text_img_set_01"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -144,6 +180,7 @@
               />
               
                <ImageView 
+              android:id="@+id/txt_set2"
               android:src="@drawable/text_img_set_02"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -153,13 +190,82 @@
               />
                
               <ImageView 
-              android:src="@drawable/text_img_set_03"
+              android:id="@+id/txt_set3"
+              android:src="@drawable/text_img_set_04"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_below="@+id/img_base_profile_title"
               android:layout_marginTop="70dip"
               android:layout_marginLeft="10dip"
               />
+              
+                            <ImageView 
+              android:id="@+id/txt_set4"
+              android:src="@drawable/text_img_set_06"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/img_base_profile_title"
+              android:layout_marginTop="100dip"
+              android:layout_marginLeft="10dip"
+              />
+              
+              <EditText
+                  android:id="@+id/ edt_set1"
+                  android:layout_width="300dip"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@+id/img_base_profile_title"
+                  android:layout_marginLeft="10dip"
+                  android:layout_marginTop="16.7dip"
+                  android:layout_toRightOf="@+id/txt_set1"
+                  android:background="#00000000"
+                  android:text="멘토"
+     		  	  android:maxLength="10"
+      		      android:lines="1"
+                  android:textSize="14sp" />
+              
+              <EditText 
+              android:id="@+id/ edt_set2"
+              android:layout_below="@+id/img_base_profile_title"
+              android:layout_marginTop="47dip"
+              android:layout_marginLeft="10dip"
+              android:layout_toRightOf="@+id/txt_set2"
+              android:layout_width="300dip"
+          	  android:layout_height="wrap_content"
+          	  android:text="대학교이름"
+          	  android:maxLength="20"
+      		  android:lines="1"
+          	  android:textSize="14sp"
+          	  android:background="#00000000"
+               />
+              
+              <EditText
+                  android:id="@+id/ edt_set3"
+                  android:layout_width="300dip"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@+id/img_base_profile_title"
+                  android:layout_marginLeft="10dip"
+                  android:layout_marginTop="77dip"
+                  android:layout_toRightOf="@+id/txt_set3"
+                  android:background="#00000000"
+                  android:text="2000"
+                  android:numeric="signed"
+     		      android:maxLength="4"
+      		  	  android:lines="1"
+                  android:textSize="14sp" />
+              
+              <EditText
+                  android:id="@+id/ edt_set4"
+                  android:layout_width="300dip"
+                  android:layout_height="wrap_content"
+                  android:layout_below="@+id/img_base_profile_title"
+                  android:layout_marginLeft="10dip"
+                  android:layout_marginTop="106dip"
+                  android:layout_toRightOf="@+id/txt_set4"
+                  android:background="#00000000"
+                  android:text="컴퓨터공학"
+        		  android:maxLength="20"
+      		      android:lines="1"
+                  android:textSize="14sp" />
   
                <ImageView
       android:id="@+id/img_today_profile_title"
@@ -182,6 +288,29 @@
       android:layout_width="fill_parent"
       android:layout_height="30dip">      
   </ImageView>
+  
+          <ImageView
+              android:id="@+id/img_today_profile_subtitle"
+              android:src="@drawable/text_img_set_05"
+              android:layout_below="@+id/img_today_profile_title"
+              android:layout_marginLeft="10dip"
+              android:layout_marginTop="9dip"
+              android:layout_width="wrap_content"
+      		  android:layout_height="wrap_content"
+              />
+  
+                        <EditText 
+              android:id="@+id/ edt_today_profile"
+              android:layout_below="@+id/img_today_profile_title"
+              android:layout_toRightOf="@+id/img_today_profile_subtitle"
+              android:layout_marginTop="16dip"
+              android:layout_marginLeft="10dip"
+              android:layout_width="200dip"
+          	  android:layout_height="wrap_content"
+          	  android:text="오늘의 한마디는 이래요~"
+          	  android:textSize="14sp"
+          	  android:background="#00000000"
+               />
   
      
 </RelativeLayout>
