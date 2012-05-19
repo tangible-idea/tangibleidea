@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.server.RequestImageMethods;
@@ -31,6 +32,11 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 	Button BTN_edit, BTN_confirm, BTN_cancel;
 	TextView TXT_account, TXT_email;
 	EditText EDT_name, EDT_school, EDT_subprofile, EDT_major, EDT_today;
+	
+	RequestImageMethods RIM;
+	
+	String strName, strSchool, strSubprofile, strMajor, strToday;
+	//String strName2, strSchool2, strSubprofile2, strMajor2, strToday2;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -39,6 +45,8 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
+		
+		RIM= new RequestImageMethods();
 		
 		if( SPUtil.getBoolean(this, "isMentor") )
 		{
@@ -54,7 +62,7 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 		IMG_profile= (ImageView) findViewById(R.id.img_profile_image);
 		IMG_profile.setOnClickListener(this);
 		
-		BTN_edit= (Button) findViewById(R.id.btn_profile_cancel);
+		BTN_edit= (Button) findViewById(R.id.btn_profile_edit);
 		BTN_confirm= (Button) findViewById(R.id.btn_profile_confirm);
 		BTN_cancel= (Button) findViewById(R.id.btn_profile_cancel);
 		
@@ -80,7 +88,11 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 		}
 		
 		BTN_edit.requestFocus();
-		//this.SetEditable(false);
+		BTN_edit.setOnClickListener(this);
+		BTN_confirm.setOnClickListener(this);
+		BTN_edit.setOnClickListener(this);
+		
+		this.SetEditable(false);
 	}
 
 	/* (non-Javadoc)
@@ -91,24 +103,7 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 	{
 		super.onStart();
 		
-		TXT_account.setText(SPUtil.getString(this, "AccountID"));
-		TXT_email.setText(SPUtil.getString(this, "Email"));
-		
-		EDT_name.setText(SPUtil.getString(this, "Name"));
-		
-		if(bMentor)
-		{
-			EDT_school.setText(SPUtil.getString(this, "Univ"));
-			EDT_subprofile.setText(SPUtil.getString(this, "Promo"));
-			EDT_major.setText(SPUtil.getString(this, "Major"));
-		}
-		else
-		{
-			EDT_school.setText(SPUtil.getString(this, "School"));
-			EDT_subprofile.setText(SPUtil.getString(this, "Grade"));
-		}
-		
-		EDT_today.setText( SPUtil.getString(this, "comment") );		
+		this.ResetProfile();
 		
 		RequestImageMethods RIM= new RequestImageMethods();
 		RIM.DownloadImage(IMG_profile, SPUtil.getString(this, "AccountID"));
@@ -161,8 +156,30 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 		{
 			SetEditable(true);
 		}
+		if(v.getId() == R.id.edt_today_profile)
+		{
+			SetEditable(true);
+		}
+		
+		if(v.getId() == R.id.btn_profile_edit)
+		{
+			SetEditable(true);
+		}
+		if(v.getId() == R.id.btn_profile_confirm)
+		{
+			this.SendProfile2Server();
+		}
+		if(v.getId() == R.id.btn_profile_cancel)
+		{
+			this.ResetProfile();
+			
+		}
 	}
 	
+	/**
+	 * 수정가능여부
+	 * @param _bEditable
+	 */
 	public void SetEditable(boolean _bEditable)
 	{		
 		if(bEdit== _bEditable)	// 상태가 같으면 패스
@@ -183,15 +200,117 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 			BTN_cancel.setVisibility(View.INVISIBLE);
 		}
 		
-//		EDT_name.setFocusableInTouchMode(bEdit);
-//		EDT_school.setFocusableInTouchMode(bEdit);
-//		EDT_subprofile.setFocusableInTouchMode(bEdit);
-//		EDT_today.setFocusableInTouchMode(bEdit);
-//		
-//		if(bMentor)
-//		{
-//			EDT_major.setFocusableInTouchMode(bEdit);
-//		}
+		EDT_name.setFocusableInTouchMode(bEdit);
+		EDT_school.setFocusableInTouchMode(bEdit);
+		EDT_subprofile.setFocusableInTouchMode(bEdit);
+		EDT_today.setFocusableInTouchMode(bEdit);
+		
+		if(bMentor)
+		{
+			EDT_major.setFocusableInTouchMode(bEdit);
+		}
+	}
+	
+	/**
+	 * 프로필을 원래대로 되돌린다.
+	 */
+	void ResetProfile()
+	{
+		TXT_account.setText(SPUtil.getString(this, "AccountID"));
+		TXT_email.setText(SPUtil.getString(this, "Email"));
+		
+		EDT_name.setText(SPUtil.getString(this, "Name"));
+		
+		if(bMentor)
+		{
+			EDT_school.setText(SPUtil.getString(this, "Univ"));
+			EDT_subprofile.setText(SPUtil.getString(this, "Promo"));
+			EDT_major.setText(SPUtil.getString(this, "Major"));
+		}
+		else
+		{
+			EDT_school.setText(SPUtil.getString(this, "School"));
+			EDT_subprofile.setText(SPUtil.getString(this, "Grade"));
+		}
+		
+		EDT_today.setText( SPUtil.getString(this, "Comment") );		
+		
+		this.SetEditable(false);
+	}
+	
+	void SendProfile2Server()
+	{
+		boolean bSuccess= true;
+		
+		strName= EDT_name.getText().toString();
+		strSchool= EDT_school.getText().toString();
+		strSubprofile= EDT_subprofile.getText().toString();
+		strToday= EDT_today.getText().toString();
+		if(bMentor)
+			strMajor= EDT_major.getText().toString();
+		
+		if( !strName.equals( SPUtil.getString(this, "Name")) ) 
+		{
+			if( !RIM.ChangeName(this, strName) )
+				bSuccess= false;
+			SPUtil.putString(this, "Name", strName);
+		}
+		if( !strToday.equals( SPUtil.getString(this, "Comment")) ) 
+		{
+			if( !RIM.ChangeComment(this, strToday) )
+				bSuccess= false;
+			SPUtil.putString(this, "Comment", strToday);
+		}
+		
+		
+		if( bMentor )
+		{
+			if( !strSchool.equals( SPUtil.getString(this, "Univ")) )
+			{
+				if( !RIM.ChangeSchool(this, strSchool) )
+					bSuccess= false;
+				else
+					SPUtil.putString(this, "Univ", strSchool);
+			}
+			if( !strSubprofile.equals( SPUtil.getString(this, "Promo")) )
+			{
+				if( !RIM.ChangePromo(this, strSubprofile) )
+					bSuccess= false;
+				else
+					SPUtil.putString(this, "Promo", strSubprofile);
+			}
+			if( !strMajor.equals( SPUtil.getString(this, "Major")) )
+			{
+				if( !RIM.ChangeMajor(this, strMajor) )
+					bSuccess= false;
+				else
+					SPUtil.putString(this, "Major", strMajor);
+			}
+		}
+		else
+		{
+			if( !strSchool.equals( SPUtil.getString(this, "School")) )
+			{
+				if( !RIM.ChangeSchool(this, strSchool) )
+					bSuccess= false;
+				else
+					SPUtil.putString(this, "School", strSchool);
+			}
+			if( !strSubprofile.equals( SPUtil.getString(this, "Grade")) )
+			{
+				if( !RIM.ChangeGrade(this, strSubprofile) )
+					bSuccess= false;
+				else
+					SPUtil.putString(this, "Grade", strSubprofile);
+			}
+		}
+		
+		if(bSuccess)
+			Toast.makeText(this, "정보가 저장되었습니다.", 0 ).show();
+		else
+			Toast.makeText(this, "정보저장 실패.", 0 ).show();
+		
+		this.SetEditable(false);
 	}
 	
 	@Override
@@ -231,7 +350,7 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 					bmp.compress(CompressFormat.JPEG, 85, BAOS);	// 85%의 화질로 올린다.
 					byte[] byteArray= BAOS.toByteArray();
 					 
-					RequestImageMethods RIM= new RequestImageMethods();
+					//RequestImageMethods RIM= new RequestImageMethods();
 					RIM.UploadImage(this, byteArray);
 					
 					IMG_profile.setImageBitmap(bmp);
@@ -251,7 +370,7 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 				bmp.compress(CompressFormat.JPEG, 100, BAOS);
 				byte[] byteArray= BAOS.toByteArray();
 				
-				RequestImageMethods RIM= new RequestImageMethods();
+				//RequestImageMethods RIM= new RequestImageMethods();
 				RIM.UploadImage(this, byteArray);
 				
 				IMG_profile.setImageBitmap(bmp);

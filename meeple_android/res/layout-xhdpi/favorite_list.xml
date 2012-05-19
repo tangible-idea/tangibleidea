@@ -13,7 +13,7 @@
 	
 	  	 <ImageView
 		  android:id="@+id/img_navigation_bg"
-		  android:src="@drawable/navigation_bg_720"
+		  android:src="@drawable/navigation_bg"
 		  android:layout_width="fill_parent" 
 		  android:layout_height="wrap_content"
 		  ></ImageView>

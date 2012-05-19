@@ -12,10 +12,10 @@
 		
     	<EditText
     	    android:id="@+id/edt_id"
-    	    android:layout_width="230dip"
+    	    android:layout_width="200dip"
     	    android:layout_height="wrap_content"
-    	    android:layout_marginLeft="62dip"
-    	    android:layout_marginTop="175dip"
+    	    android:layout_marginLeft="58dip"
+    	    android:layout_marginTop="155dip"
     	    android:singleLine="true"
     	    android:background="#00000000">
 </EditText>
@@ -24,20 +24,20 @@
     	android:id="@+id/edt_pw"
     	android:password="true"
     	android:singleLine="true"
-    	android:layout_width="230dip"
+    	android:layout_width="200dip"
     	android:layout_height="wrap_content"
-    	android:layout_marginTop="15.7dip"
-    	android:layout_marginLeft="62dip"
+    	android:layout_marginTop="10.3dip"
+    	android:layout_marginLeft="58dip"
     	android:layout_below="@+id/edt_id"
     	android:background="#00000000"
     	></EditText>
     	        	
     	<Button
     	android:id="@+id/btn_login"
-    	android:layout_width="252dip"
+    	android:layout_width="223.3dip"
     	android:layout_height="31.3dip"
-    	android:layout_marginTop="275dip"
-    	android:layout_marginLeft="55dip"
+    	android:layout_marginTop="244dip"
+    	android:layout_marginLeft="48dip"
     	android:background="@drawable/btn_login_nor"
     	></Button>
     	
@@ -45,7 +45,7 @@
     	    android:id="@+id/img_login_bg"
     	    android:layout_width="wrap_content"
     	    android:layout_height="wrap_content"
-    	    android:layout_marginTop="275dip"
+    	    android:layout_marginTop="244dip"
     		android:layout_centerHorizontal="true"
     	    android:background="@drawable/text_img_login"/>
     	
@@ -60,9 +60,9 @@
     	
     	<Button
     	android:id="@+id/btn_join_mentor"
-    	android:layout_width="123dip"
+    	android:layout_width="104dip"
     	android:layout_height="31.3dip"
-    	android:layout_marginTop="95.3dip"
+    	android:layout_marginTop="83.3dip"
     	android:layout_marginLeft="45dip"
     	android:layout_below="@+id/img_find_id_pw"
     	android:background="@drawable/btn_login_nor"
@@ -71,8 +71,8 @@
     	<ImageView 
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:layout_marginTop="95.3dip"
-    	android:layout_marginLeft="69dip"
+    	android:layout_marginTop="83.3dip"
+    	android:layout_marginLeft="59dip"
     	android:layout_below="@+id/img_find_id_pw"
     	android:background="@drawable/text_img_join_mentor"
     	/>
@@ -81,9 +81,9 @@
     	
     	<Button
     	android:id="@+id/btn_join_mentee"
-    	android:layout_width="123dip"
+    	android:layout_width="104dip"
     	android:layout_height="31.3dip"
-    	android:layout_marginTop="95.3dip"
+    	android:layout_marginTop="83.3dip"
     	android:layout_marginLeft="15.3dip"
     	android:layout_below="@+id/img_find_id_pw"
     	android:layout_toRightOf="@+id/btn_join_mentor"
@@ -94,8 +94,8 @@
     	 <ImageView 
     	android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:layout_marginTop="95.3dip"
-    	android:layout_marginLeft="38.3dip"
+    	android:layout_marginTop="83.3dip"
+    	android:layout_marginLeft="29.3dip"
     	android:layout_below="@+id/img_find_id_pw"
     	    	android:layout_toRightOf="@+id/btn_join_mentor"
     	android:background="@drawable/text_img_join_mentee"
