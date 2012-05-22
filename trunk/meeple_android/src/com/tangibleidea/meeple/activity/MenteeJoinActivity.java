@@ -24,7 +24,8 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 {
 	Button BTN_join;
 	EditText EDT_ID, EDT_PW, EDT_email, EDT_name, EDT_school, EDT_grade;
-	Spinner SPN_gender; String strGender="0";
+	Spinner SPN_gender, SPN_category;
+	String strGender="0";
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -43,26 +44,37 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 		EDT_school= (EditText) findViewById(R.id.edt_school);
 		EDT_grade= (EditText) findViewById(R.id.edt_grade);
 		SPN_gender= (Spinner) findViewById(R.id.spn_gender);
+		SPN_category= (Spinner) findViewById(R.id.spn_category);
 		
 		BTN_join= (Button) findViewById(R.id.btn_join);
 		BTN_join.setOnClickListener(this);
 		SPN_gender.setOnItemSelectedListener(this);
+		SPN_category.setOnItemSelectedListener(this);
 		
 	}
 	
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View v, int position, long id)
 	{
-		try
+		if(v.getId()==R.id.spn_category)
 		{
-			if( SPUtil.getString(this, "reg_id").equals("0") )
-				Global.C2DM_ID_Register(this);
-		}catch(Exception e)
-		{
-			Global.C2DM_ID_Register(this);
-		}
 			
-		strGender= Integer.toString(position);		
+		}
+		
+		if(v.getId()==R.id.spn_gender)
+		{
+			try
+			{
+				if( SPUtil.getString(this, "reg_id").equals("0") )
+					Global.C2DM_ID_Register(this);
+			}catch(Exception e)
+			{
+				Global.C2DM_ID_Register(this);
+			}
+				
+			strGender= Integer.toString(position);	
+		}
+	
 	}
 
 	@Override
