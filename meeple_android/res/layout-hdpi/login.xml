@@ -17,8 +17,8 @@
     	    android:layout_marginLeft="58dip"
     	    android:layout_marginTop="155dip"
     	    android:singleLine="true"
-    	    android:background="#00000000">
-</EditText>
+    	    android:background="#00000000"
+    	    />
     	
     	<EditText	
     	android:id="@+id/edt_pw"
@@ -30,7 +30,7 @@
     	android:layout_marginLeft="58dip"
     	android:layout_below="@+id/edt_id"
     	android:background="#00000000"
-    	></EditText>
+    	/>
     	        	
     	<Button
     	android:id="@+id/btn_login"
@@ -39,7 +39,7 @@
     	android:layout_marginTop="244dip"
     	android:layout_marginLeft="48dip"
     	android:background="@drawable/btn_login_nor"
-    	></Button>
+    	/>
     	
     	<ImageView 
     	    android:id="@+id/img_login_bg"

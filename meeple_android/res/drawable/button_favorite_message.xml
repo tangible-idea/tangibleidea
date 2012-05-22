@@ -2,12 +2,12 @@
 <selector
 xmlns:android="http://schemas.android.com/apk/res/android">
 	<item
-	android:drawable="@drawable/fav_tapbtn_meeplefriend_pre"
+	android:drawable="@drawable/fav_tabbtn_meeplefriend_pre"
 	android:state_pressed="true" 
 	android:state_enabled="true"/>
 
 	<item
-	android:drawable="@drawable/fav_tapbtn_meeplefriend_nor" 
+	android:drawable="@drawable/fav_tabbtn_meeplefriend_nor" 
 	android:state_enabled="true"/>
 	
 </selector>
