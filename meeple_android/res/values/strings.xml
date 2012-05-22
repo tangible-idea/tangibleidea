@@ -18,12 +18,13 @@
     </string-array>
     
     <string-array name="category">
-    	<item>상담 분류</item>
-        <item>1.입시상담</item>
-        <item>2.학업상담</item>
-        <item>3.진로상담</item>
-        <item>4.개인상담</item>
-        <item>5.그 외</item>
+    	<item>원하는 멘토</item>
+        <item>이과계열 멘토</item>
+        <item>문과계열 멘토</item>
+        <item>음악</item>
+        <item>미술</item>
+        <item>체육</item>
+        <item>아무 멘토나</item>
     </string-array>
 
     <string name="mailbox_favorite">즐겨찾기</string>

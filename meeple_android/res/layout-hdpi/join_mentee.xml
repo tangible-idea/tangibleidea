@@ -10,23 +10,31 @@
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent">
 
-<!--     	<TextView -->
-<!--     	android:id="@+id/txt_id" -->
-<!--     	android:text="아이디" -->
-<!--     	android:layout_width="50dip" -->
-<!--     	android:layout_height="wrap_content" -->
-<!--     	>    	     -->
-<!--     	</TextView> -->
+
     	    
     	<EditText	
     	android:id="@+id/edt_id"
-    	android:hint="ID 입력"
+    	android:hint="4~12글자"
+    	android:maxLength="12"
     	android:singleLine="true"
     	android:layout_width="150dip"
     	android:layout_height="wrap_content"
     	android:layout_marginTop="50dip"
     	android:layout_centerHorizontal="true"
     	></EditText>
+    	
+    	<TextView
+    	android:id="@+id/txt_id"
+    	android:text="아이디"
+    	    	android:textSize="18sp"
+    	android:layout_marginRight="5dip"
+    	android:textColor="#000000"
+    	android:layout_toLeftOf="@+id/edt_id"
+    	android:layout_marginTop="60dip"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	/>
+    	
     	
 <!--     	<TextView -->
 <!--     	android:id="@+id/txt_pw" -->
@@ -38,7 +46,8 @@
     	
     	<EditText	
     	android:id="@+id/edt_pw"
-    	android:hint="PW 입력"
+    	android:hint="4~12글자"
+    	android:maxLength="12"
     	android:password="true"
     	android:singleLine="true"
     	android:layout_width="150dip"
@@ -48,8 +57,22 @@
     	android:layout_centerHorizontal="true"
     	></EditText>
     	
+    	<TextView
+    	android:id="@+id/txt_pw"
+    	android:text="비밀번호"
+    	android:textSize="18sp"
+    	android:layout_marginTop="10dip"
+    	android:layout_marginRight="5dip"
+    	android:textColor="#000000"
+    	android:layout_below="@+id/edt_id"
+    	android:layout_toLeftOf="@+id/edt_pw"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	/>
+    	
     	<EditText	
     	android:id="@+id/edt_name"
+    	android:maxLength="10"
     	android:hint="이름 입력"
     	android:singleLine="true"
     	android:layout_width="150dip"
@@ -59,7 +82,18 @@
     	android:layout_centerHorizontal="true"
     	></EditText>
 
-
+    	<TextView
+    	android:id="@+id/txt_name"
+    	android:text="이름"
+    	android:textSize="18sp"
+    	android:layout_marginTop="10dip"
+    	android:layout_marginRight="5dip"
+    	android:textColor="#000000"
+    	android:layout_below="@+id/edt_pw"
+    	android:layout_toLeftOf="@+id/edt_pw"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	/>
     	        
 		<EditText	
     	android:id="@+id/edt_email"
@@ -72,6 +106,19 @@
     	android:layout_below="@+id/edt_name"
     	android:layout_centerHorizontal="true"
     	></EditText>
+		
+		    	<TextView
+    	android:id="@+id/txt_email"
+    	android:text="이메일"
+    	android:textSize="18sp"
+    	android:layout_marginTop="10dip"
+    	android:layout_marginRight="5dip"
+    	android:textColor="#000000"
+    	android:layout_below="@+id/edt_name"
+    	android:layout_toLeftOf="@+id/edt_name"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	/>
     	            
 		<EditText	
     	android:id="@+id/edt_school"
@@ -83,6 +130,19 @@
     	android:layout_below="@+id/edt_email"
     	android:layout_centerHorizontal="true"
     	></EditText>
+		
+				    	<TextView
+    	android:id="@+id/txt_school"
+    	android:text="학교"
+    	android:textSize="18sp"
+    	android:layout_marginTop="10dip"
+    	android:layout_marginRight="5dip"
+    	android:textColor="#000000"
+    	android:layout_below="@+id/edt_email"
+    	android:layout_toLeftOf="@+id/edt_name"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	/>
     	                
 		<EditText	
     	android:id="@+id/edt_grade"
@@ -95,6 +155,18 @@
     	android:layout_below="@+id/edt_school"
     	android:layout_centerHorizontal="true"
     	></EditText>
+		<TextView
+    	android:id="@+id/txt_school"
+    	android:text="학년"
+    	android:textSize="18sp"
+    	android:layout_marginTop="10dip"
+    	android:layout_marginRight="5dip"
+    	android:textColor="#000000"
+    	android:layout_below="@+id/edt_school"
+    	android:layout_toLeftOf="@+id/edt_school"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	/>
 		
 		<Spinner
    	    android:id="@+id/spn_gender"
@@ -105,22 +177,47 @@
    		android:layout_centerHorizontal="true"
    	    />
 		
-		<Button
-		android:id="@+id/btn_category"
-		android:text="원하는 멘토링"
+		<TextView
+    	android:id="@+id/txt_gender"
+    	android:text="성별"
+    	android:textSize="18sp"
+    	android:layout_marginTop="10dip"
+    	android:layout_marginRight="5dip"
+    	android:textColor="#000000"
+    	android:layout_below="@+id/edt_grade"
+    	android:layout_toLeftOf="@+id/edt_grade"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	/>
+		
+		<Spinner
+		android:id="@+id/spn_category"
 		android:layout_width="150dip"
     	android:layout_height="wrap_content"
+    	android:entries="@array/category"
     	android:layout_below="@+id/spn_gender"
     	android:layout_centerHorizontal="true"
-		>
-		</Button>
+		/>
+		
+				<TextView
+    	android:id="@+id/txt_gender"
+    	android:text="멘토링"
+    	android:textSize="18sp"
+    	android:layout_marginTop="10dip"
+    	android:layout_marginRight="5dip"
+    	android:textColor="#000000"
+    	android:layout_below="@+id/spn_gender"
+    	android:layout_toLeftOf="@+id/spn_gender"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	/>
     	                    
 		<Button
 		android:id="@+id/btn_join"
 		android:text="가입하기"
 		android:layout_width="150dip"
     	android:layout_height="wrap_content"
-    	android:layout_below="@+id/btn_category"
+    	android:layout_below="@+id/spn_category"
     	android:layout_centerHorizontal="true"
 		>
 		    
