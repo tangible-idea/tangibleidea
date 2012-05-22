@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+  
+    <RelativeLayout
+	android:id="@+id/RelativeLayout01"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+  
+	  <ImageView
+	  android:id="@+id/img_navigation_bg"
+	  android:src="@drawable/navigation_bg_720"
+	  android:layout_width="fill_parent" 
+	  android:layout_height="123px"
+	  ></ImageView>
+	  
+		<ProgressBar android:id="@+id/progress_chat_loading"
+		style="?android:attr/progressBarStyleSmall"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="14dip"
+		android:layout_centerHorizontal="true"/>
+	  
+	   <Button
+	  android:id="@+id/btn_inchat_end"
+	  android:background="@drawable/button_inchat_end"
+	  android:layout_marginLeft="280dip"
+	  android:layout_marginTop="6dip"
+	  android:layout_width="wrap_content" 
+	  android:layout_height="wrap_content"
+	  ></Button> 
+   
+  </RelativeLayout>
+	
+	  <ListView android:id="@android:id/list"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content"
+	        android:drawSelectorOnTop="false"
+	        android:divider="#00ffffff"
+	        android:cacheColorHint="#00000000"
+	        android:layout_weight="1"
+	        android:transcriptMode="alwaysScroll"
+	        android:listSelector="@drawable/selector">	      
+	  </ListView>
+  
+
+     <RelativeLayout 
+	 android:layout_height="38.7dip" 
+	 android:layout_width="fill_parent"
+	 android:background="@drawable/bg_message_send" 
+	 android:layout_gravity="bottom"
+	 android:paddingTop="0px"
+	 android:paddingBottom="0px">
+	      
+      <EditText
+      android:id="@+id/edt_content"
+      android:layout_alignParentBottom="true"
+      android:layout_width="230dip" 
+      android:layout_height="31.3dip"
+      android:lines="1"
+      android:maxLines="3"
+      android:layout_marginLeft="10dip"
+      android:layout_marginTop="4.7dip"
+      android:layout_marginBottom="4.7dip"
+      android:background="@drawable/bg_message_text"
+      android:paddingTop="0px"
+	 android:paddingBottom="0px"
+      >
+      </EditText>
+      
+      <Button
+      android:id="@+id/btn_send"
+      android:layout_toRightOf="@+id/edt_content"
+      android:layout_marginTop="4.7dip"
+      android:layout_marginLeft="7.3dip"
+      android:layout_marginRight="7.3dip"
+ 	  android:layout_width="wrap_content" 
+      android:layout_height="30dip"
+      android:background="@drawable/button_inchat_send"
+      android:paddingTop="0px"
+	 android:paddingBottom="0px"
+      >          
+      </Button>
+      
+	</RelativeLayout>
+          
+          
+      
+
+</LinearLayout>

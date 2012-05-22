@@ -72,14 +72,14 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
         
         if(bFriend_subtab)	// 서브탭이 즐겨찾기탭이면
         {
-			IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_pre);
-			IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_nor);
+			IMGBTN_friend.setImageResource(R.drawable.fav_tabbtn_meeplefriend_pre);
+			IMGBTN_message.setImageResource(R.drawable.fav_tabbtn_note_nor);
         	GetFavoriteRelations();
         }
         else
         {
-        	IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_nor);
-			IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_pre);
+        	IMGBTN_friend.setImageResource(R.drawable.fav_tabbtn_meeplefriend_nor);
+			IMGBTN_message.setImageResource(R.drawable.fav_tabbtn_note_pre);
         	GetMessages();
         }
     }
@@ -224,9 +224,12 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
     
 	public void onListItemClick(ListView l, View v, int pos, long id)
 	{
+		if(pos==0)
+			return;
+		
 		if(bFriend_subtab)	// 친구 탭일 때는
 		{
-			InfoEntry e= arraylist.get(pos);
+			InfoEntry e= arraylist.get(pos-1);
 			
 			Intent intent= new Intent(mContext, PopupActivity.class);
 			intent.putExtra("id", e.getID() );
@@ -255,8 +258,8 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 			if(!bFriend_subtab)
 			{
 				bFriend_subtab= true;
-				IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_pre);
-				IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_nor);
+				IMGBTN_friend.setImageResource(R.drawable.fav_tabbtn_meeplefriend_pre);
+				IMGBTN_message.setImageResource(R.drawable.fav_tabbtn_note_nor);
 				
 				GetFavoriteRelations();
 			}
@@ -267,8 +270,8 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 			if(bFriend_subtab)
 			{
 				bFriend_subtab= false;
-				IMGBTN_friend.setImageResource(R.drawable.fav_tapbtn_meeplefriend_nor);
-				IMGBTN_message.setImageResource(R.drawable.fav_tapbtn_note_pre);
+				IMGBTN_friend.setImageResource(R.drawable.fav_tabbtn_meeplefriend_nor);
+				IMGBTN_message.setImageResource(R.drawable.fav_tabbtn_note_pre);
 				
 				GetMessages();
 			}

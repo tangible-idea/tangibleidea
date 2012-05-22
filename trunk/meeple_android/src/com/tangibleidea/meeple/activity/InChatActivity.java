@@ -447,7 +447,7 @@ try{
 	    			finish();
 	            }
 	        })
-	        .setNegativeButton("계속", new DialogInterface.OnClickListener()
+	        .setNegativeButton("계속 대화", new DialogInterface.OnClickListener()
 	        {
 	        	public void onClick(DialogInterface dialog, int whichButton)
 	            {

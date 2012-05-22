@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:background="@drawable/background">
+
+	    	      
+			<ImageView
+	        android:id="@+id/img_message_background"
+	        android:background="@drawable/bg_note" 
+	        android:layout_width="match_parent" 
+			android:layout_height="246dip"
+	        />
+			
+	  	 <ImageView
+		  android:id="@+id/img_navigation_bg"
+		  android:src="@drawable/navigation_bg_720"
+		  android:layout_width="fill_parent" 
+		  android:layout_height="123px"
+		  ></ImageView>
+		  	 
+		  <ImageView
+		  android:id="@+id/img_navigation_title"
+		  android:src="@drawable/navigation_title_03_01"
+		  android:layout_width="fill_parent" 
+		  android:layout_height="wrap_content"
+		  ></ImageView>
+		  
+	  	  <Button
+		  android:id="@+id/btn_message_send"
+		  android:background="@drawable/button_message_send"
+		  android:layout_marginLeft="280dip"
+		  android:layout_marginTop="6dip"
+		  android:layout_width="wrap_content" 
+		  android:layout_height="wrap_content"
+		  ></Button> 
+			  	
+	    <!-- 상대방 사진 -->
+	    <ImageView
+		android:id="@+id/img_photo_oppo"
+	  	android:layout_below="@+id/img_navigation_bg"
+	  	android:layout_marginTop="10dip"
+	  	android:layout_marginLeft="12dip"
+	    android:layout_width="35.3dip"
+	    android:layout_height="35.3dip"
+	    android:src="@drawable/no_profileimage" />
+    
+    	    <!-- 이름 -->
+	    <TextView
+	    android:id="@+id/txt_name_oppo"
+	    android:layout_below="@+id/img_navigation_bg"
+	    android:layout_marginLeft="53.3dip"
+	    android:layout_marginTop="10dip"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="김나나"    
+	    android:textColor="#000000"
+	    android:textSize="18sp" />
+	    
+	    <EditText
+	    android:id="@+id/edt_message_content"
+	    android:layout_below="@+id/img_navigation_bg"
+	    android:layout_marginTop="57.3dip"
+	    android:layout_marginLeft="53.3dip"
+	    android:layout_width="250.7dip"
+	    android:layout_height="wrap_content"
+	    android:textSize="13.3sp"
+	    android:hint="보낼 쪽지의 내용을 적어주세요."
+	    android:maxLength="90"
+	    android:lines="6"
+	    />
+    	
+
+
+</RelativeLayout>
