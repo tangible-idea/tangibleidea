@@ -11,8 +11,10 @@ import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -63,6 +65,9 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
     private HashMap<Integer,EnumMeepleStatus> mapMeepleLabel= new HashMap<Integer,EnumMeepleStatus>();
       
     int nLoop= 0;
+    
+	Display display;
+	int nWid, nHei;
       
       public ProfileListAdapter(Context context, int rsrcId, int txtId, ArrayList<InfoEntry> data)
       {
@@ -78,12 +83,29 @@ public class ProfileListAdapter extends ArrayAdapter<InfoEntry> implements andro
           for(boolean b : bSlide)	// 초기값
         	  b= false;
         		  
+		  display= ((WindowManager)context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+		  nWid= display.getWidth();
+		  nHei= display.getHeight();  
+		  
+		  Log.d("display size","display width="+nWid+"  //  display height="+nHei );
+        		  
 		  ANI_scale= AnimationUtils.loadAnimation(mContext, R.anim.my_scale);
-		  ANI_trans= AnimationUtils.loadAnimation(mContext, R.anim.my_translate);
 		  ANI_fadeout= AnimationUtils.loadAnimation(mContext, R.anim.my_fadeout);
 		  ANI_fadein= AnimationUtils.loadAnimation(mContext, R.anim.my_fadein);
 		  ANI_scale2= AnimationUtils.loadAnimation(mContext, R.anim.my_scale2);
-		  ANI_trans2= AnimationUtils.loadAnimation(mContext, R.anim.my_translate2);
+		  
+		  if( nWid==720 || nWid==800 )	// 720x1280 or 800x1280
+		  {
+			  ANI_trans= AnimationUtils.loadAnimation(mContext, R.anim.my_translate_1280);
+			  ANI_trans2= AnimationUtils.loadAnimation(mContext, R.anim.my_translate2_1280);
+		  }
+		  else
+		  {
+			  ANI_trans= AnimationUtils.loadAnimation(mContext, R.anim.my_translate);
+			  ANI_trans2= AnimationUtils.loadAnimation(mContext, R.anim.my_translate2);
+		  }
+		  
+		 
 		  
 		  ANI_scale.setFillEnabled(true);
 		  ANI_scale.setFillAfter(true);

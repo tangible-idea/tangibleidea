@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -52,6 +53,20 @@ public class LoginActivity extends Activity implements OnClickListener
 		BTN_Login.setOnClickListener(this);
 		BTN_join_mentee.setOnClickListener(this);
 		BTN_join_mentor.setOnClickListener(this);
+		
+		if( getIntent().getBooleanExtra("logout_session", false) )	// 세션아웃으로 로그아웃되었으면
+		{
+			ShowAlertDialog("[셰션 종료]", "세션이 종료되었습니다.\n다시 로그인해주세요~", "확인");
+			return;
+		}
+		
+		
+		if( SPUtil.getString(mContext, "password")!=null )	// 한번이라도 로그인했으면?	
+		{
+			this.Login();
+		}
+		
+
 	}
 
 	@Override
@@ -128,8 +143,20 @@ public class LoginActivity extends Activity implements OnClickListener
     	{
     		LoadingHandler.sendEmptyMessage(0);
    		
-    		RequestMethods RM= new RequestMethods();
-    		login= RM.Login( this, TXT_ID.getText().toString() , TXT_PW.getText().toString() );			
+    		if( SPUtil.getString(mContext, "password")!=null )	// 한번이라도 로그인했으면?	
+    		{
+    			RequestMethods RM= new RequestMethods();
+        		login= RM.Login( this, SPUtil.getString(mContext, "AccountID") , SPUtil.getString(mContext, "password") );
+        		Log.d("Auto Login", "ID="+ SPUtil.getString(mContext, "AccountID")+ "PW"+ SPUtil.getString(mContext, "password") );
+    		}
+    		else
+    		{
+	    		RequestMethods RM= new RequestMethods();
+	    		login= RM.Login( this, TXT_ID.getText().toString() , TXT_PW.getText().toString() );			
+    		}
+    		
+    		SPUtil.putString(mContext, "AccountID", TXT_ID.getText().toString() );
+    		SPUtil.putString(mContext, "password", TXT_PW.getText().toString() );
     		
     		LoadingHandler.sendEmptyMessage(1);
     		
@@ -177,6 +204,7 @@ public class LoginActivity extends Activity implements OnClickListener
 	    			SPUtil.putBoolean(mContext, "isMentor", login.isMentor());
 	    			SPUtil.putString(mContext, "session", login.getSession());
 	    			
+	    			
 	    			if(login.isMentor())
 	    			{
 	    				MentorInfo tor= login.getMentor();
@@ -206,7 +234,7 @@ public class LoginActivity extends Activity implements OnClickListener
 	    			finish();
 	    			
 	    		}else{
-	    			ShowAlertDialog("로그인", "실패", "확인");
+	    			ShowAlertDialog("로그인", "아이디 또는 패스워드가 올바르지 않습니다.", "확인");
 	    		}
 			}
 		}

@@ -109,7 +109,16 @@ public class RecentTalkListActivity extends ListActivity
     			LoadingHandler.sendEmptyMessage(21);
     		}
     		
-    		recentChats= RM.GetRecentChatsNew( mContext, SPUtil.getString(mContext, "AccountID") );   
+    		recentChats= RM.GetRecentChatsNew( mContext, SPUtil.getString(mContext, "AccountID") );
+    		
+    		if(recentChats==null)	// 정보가 안들어왔으면...
+    		{
+    			if(!RM.CheckLogin(mContext))
+    			{
+	    			LoadingHandler.sendEmptyMessage(-1);
+	    			return;
+    			}
+    		}
     		
     		LoadingHandler.sendEmptyMessage(30);
     	}
@@ -123,6 +132,13 @@ public class RecentTalkListActivity extends ListActivity
 	{
 		public void handleMessage(Message msg)
 		{
+			if(msg.what==-1)
+			{
+				LoadingDL.hide();
+				Intent intent= new Intent(mContext, LoginActivity.class);
+				intent.putExtra("logout_session", true);
+				startActivity(intent);
+			}
 			if(msg.what==10)
 			{
 		        LoadingDL.setMessage("연결된 멘티를 불러오는 중");

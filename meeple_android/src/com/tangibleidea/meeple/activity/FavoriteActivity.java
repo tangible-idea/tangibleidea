@@ -130,8 +130,15 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
     		
     		LIST_message= RM.GetMessages(mContext);
     		
-    		if(LIST_message != null)
+    		if(LIST_message != null)	// 서버로부터 쪽지정보가 왔으면..
     			LoadingHandler.sendEmptyMessage(11);
+    		else
+    		{
+    			if(!RM.CheckLogin(mContext))
+    			{
+	    			LoadingHandler.sendEmptyMessage(-1);
+    			}
+    		}
 
     	}
     };
@@ -156,6 +163,13 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 	{
 		public void handleMessage(Message msg)
 		{
+			if(msg.what==-1)
+			{
+				LoadingDL.hide();
+				Intent intent= new Intent(mContext, LoginActivity.class);
+				intent.putExtra("logout_session", true);
+				startActivity(intent);
+			}
 			if(msg.what==0)
 			{
 		        LoadingDL.setMessage("상대방 정보를 가져오는 중");
@@ -206,8 +220,8 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
 
 				for(Chat C : LIST_message)
 				{
-					if(C.getSenderAccount().equals( SPUtil.getString(mContext, "AccountID") ))
-						arraylist2.add(new MessageEntry(true, C.getSenderAccount(), C.getChat(), C.getDateTime()));
+					if(C.getSenderAccount().equals( SPUtil.getString(mContext, "AccountID") ))	// 내가 보냈으면...
+						arraylist2.add(new MessageEntry(true, C.getReceiverAccount(), C.getChat(), C.getDateTime()));
 					else
 						arraylist2.add(new MessageEntry(false, C.getSenderAccount(), C.getChat(), C.getDateTime()));					
 				}

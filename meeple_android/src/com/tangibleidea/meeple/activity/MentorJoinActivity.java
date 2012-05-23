@@ -174,17 +174,32 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 	{
 		if(EDT_ID.getText().toString().equals(""))
 		{
-			this.ShowAlertDialog("가입 오류", "아이디를 입력해주세요~", "확인");
+			this.ShowAlertDialog("가입", "아이디를 입력해주세요~", "확인");
+			return false;
+		}
+		else if(EDT_ID.getText().toString().length() < 4)
+		{
+			this.ShowAlertDialog("가입", "아이디는 4글자 이상 입력해주세요.", "확인");
 			return false;
 		}
 		else if(EDT_PW.getText().toString().equals(""))
 		{
-			this.ShowAlertDialog("가입 오류", "비밀번호를 입력해주세요~", "확인");
+			this.ShowAlertDialog("가입", "비밀번호를 입력해주세요~", "확인");
+			return false;
+		}
+		else if(EDT_PW.getText().toString().length() < 4)
+		{
+			this.ShowAlertDialog("가입", "비밀번호는 4글자 이상 입력해주세요.", "확인");
 			return false;
 		}
 		else if(EDT_email.getText().toString().equals(""))
 		{
 			this.ShowAlertDialog("가입 오류", "이메일을 입력해주세요~", "확인");
+			return false;
+		}
+		else if(EDT_email.getText().toString().indexOf("@") == -1)	// 골뱅이가 없으면
+		{
+			this.ShowAlertDialog("가입", "이메일이 올바르지 않습니다.", "확인");
 			return false;
 		}
 		else if(EDT_name.getText().toString().equals(""))

@@ -84,7 +84,7 @@ public class MessageListAdapter  extends ArrayAdapter<MessageEntry> implements a
         	{
         		VH.BTN_reply.setVisibility(View.GONE);
         		VH.TXT_content.setText(e.getContent());
-        		VH.TXT_name.setText(e.GetOppoID());
+        		VH.TXT_name.setVisibility(View.INVISIBLE);
         		VH.TXT_time.setText(e.getTime());
         		VH.IMG_fromlabel.setVisibility(View.VISIBLE);
         		VH.IMG_arrow.setVisibility(View.VISIBLE);
@@ -101,6 +101,7 @@ try{
         	{
         		VH.BTN_reply.setVisibility(View.VISIBLE);
         		VH.TXT_content.setText(e.getContent());
+        		VH.TXT_name.setVisibility(View.VISIBLE);
         		VH.TXT_name.setText(e.GetOppoID());
         		VH.TXT_time.setText(e.getTime());
         		VH.IMG_fromlabel.setVisibility(View.INVISIBLE);

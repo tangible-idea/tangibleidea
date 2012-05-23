@@ -13,19 +13,21 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.server.RequestImageMethods;
 import com.tangibleidea.meeple.util.SPUtil;
 
-public class ModifyProfileActivity extends Activity implements OnClickListener
+public class ModifyProfileActivity extends Activity implements OnClickListener, OnEditorActionListener
 {
 	boolean bMentor, bEdit=false;
 	ImageView IMG_profile;
@@ -82,6 +84,12 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 		EDT_school.setOnClickListener(this);
 		EDT_subprofile.setOnClickListener(this);
 		EDT_today.setOnClickListener(this);
+		
+		EDT_name.setOnEditorActionListener(this);
+		EDT_school.setOnEditorActionListener(this);
+		EDT_subprofile.setOnEditorActionListener(this);
+		EDT_today.setOnEditorActionListener(this);
+		
 		if(bMentor)
 		{
 			EDT_major.setOnClickListener(this);
@@ -90,6 +98,7 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 		BTN_edit.requestFocus();
 		BTN_edit.setOnClickListener(this);
 		BTN_confirm.setOnClickListener(this);
+		BTN_cancel.setOnClickListener(this);
 		BTN_edit.setOnClickListener(this);
 		
 		this.SetEditable(false);
@@ -253,13 +262,13 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 		{
 			if( !RIM.ChangeName(this, strName) )
 				bSuccess= false;
-			SPUtil.putString(this, "Name", strName);
+			
 		}
 		if( !strToday.equals( SPUtil.getString(this, "Comment")) ) 
 		{
 			if( !RIM.ChangeComment(this, strToday) )
 				bSuccess= false;
-			SPUtil.putString(this, "Comment", strToday);
+			
 		}
 		
 		
@@ -269,22 +278,16 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 			{
 				if( !RIM.ChangeSchool(this, strSchool) )
 					bSuccess= false;
-				else
-					SPUtil.putString(this, "Univ", strSchool);
 			}
 			if( !strSubprofile.equals( SPUtil.getString(this, "Promo")) )
 			{
 				if( !RIM.ChangePromo(this, strSubprofile) )
 					bSuccess= false;
-				else
-					SPUtil.putString(this, "Promo", strSubprofile);
 			}
 			if( !strMajor.equals( SPUtil.getString(this, "Major")) )
 			{
 				if( !RIM.ChangeMajor(this, strMajor) )
 					bSuccess= false;
-				else
-					SPUtil.putString(this, "Major", strMajor);
 			}
 		}
 		else
@@ -293,22 +296,38 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 			{
 				if( !RIM.ChangeSchool(this, strSchool) )
 					bSuccess= false;
-				else
-					SPUtil.putString(this, "School", strSchool);
+					
 			}
 			if( !strSubprofile.equals( SPUtil.getString(this, "Grade")) )
 			{
 				if( !RIM.ChangeGrade(this, strSubprofile) )
 					bSuccess= false;
-				else
-					SPUtil.putString(this, "Grade", strSubprofile);
+					
 			}
 		}
 		
 		if(bSuccess)
+		{
 			Toast.makeText(this, "정보가 저장되었습니다.", 0 ).show();
+			SPUtil.putString(this, "Name", strName);
+			SPUtil.putString(this, "Comment", strToday);
+			if( bMentor )
+			{
+				SPUtil.putString(this, "Univ", strSchool);
+				SPUtil.putString(this, "Promo", strSubprofile);
+				SPUtil.putString(this, "Major", strMajor);				
+			}
+			else
+			{
+				SPUtil.putString(this, "School", strSchool);
+				SPUtil.putString(this, "Grade", strSubprofile);				
+			}
+		}
 		else
+		{
 			Toast.makeText(this, "정보저장 실패.", 0 ).show();
+			this.ResetProfile();
+		}
 		
 		this.SetEditable(false);
 	}
@@ -377,6 +396,13 @@ public class ModifyProfileActivity extends Activity implements OnClickListener
 			}
 			
 		}
+	}
+
+	@Override
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+	{
+		this.SetEditable(true);
+		return false;
 	}
 
 }
