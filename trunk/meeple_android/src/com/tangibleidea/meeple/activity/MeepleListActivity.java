@@ -8,6 +8,7 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -255,7 +256,9 @@ public class MeepleListActivity extends ListActivity
 			if(msg.what==-1)
 			{
 				LoadingDL.hide();
-				ShowAlertDialog("세션이 종료됨", "다시 로그인해주세요~", "확인");
+				Intent intent= new Intent(mContext, LoginActivity.class);
+				intent.putExtra("logout_session", true);
+				startActivity(intent);
 			}
 			if(msg.what==0)
 			{

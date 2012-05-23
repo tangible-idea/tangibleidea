@@ -59,7 +59,7 @@
       <EditText
       android:id="@+id/edt_content"
       android:layout_alignParentBottom="true"
-      android:layout_width="230dip" 
+      android:layout_width="270dip" 
       android:layout_height="31.3dip"
       android:lines="1"
       android:maxLines="3"
