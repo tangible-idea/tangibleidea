@@ -56,12 +56,12 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View v, int position, long id)
 	{
-		if(v.getId()==R.id.spn_category)
+		if(arg0==SPN_category)
 		{
 			
 		}
 		
-		if(v.getId()==R.id.spn_gender)
+		if(arg0==SPN_gender)
 		{
 			try
 			{

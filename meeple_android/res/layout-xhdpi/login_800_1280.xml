@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/main_login_bg">
+
+    	<RelativeLayout
+		android:id="@+id/RelativeLayout01"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		
+    	<EditText
+    	    android:id="@+id/edt_id"
+    	    android:layout_width="230dip"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginLeft="63.3dip"
+    	    android:layout_marginTop="175dip"
+    	    android:singleLine="true"
+    	    android:background="#00000000">
+</EditText>
+    	
+    	<EditText	
+    	android:id="@+id/edt_pw"
+    	android:password="true"
+    	android:singleLine="true"
+    	android:layout_width="230dip"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="15dip"
+    	android:layout_marginLeft="63.3dip"
+    	android:layout_below="@+id/edt_id"
+    	android:background="#00000000"
+    	></EditText>
+    	        	
+    	<Button
+    	android:id="@+id/btn_login"
+    	android:layout_width="279dip"
+    	android:layout_height="31.3dip"
+    	android:layout_marginTop="275dip"
+    	android:layout_marginLeft="61.7dip"
+    	android:background="@drawable/btn_login_nor"
+    	></Button>
+    	
+    	<ImageView 
+    	    android:id="@+id/img_login_bg"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginTop="275dip"
+    		android:layout_centerHorizontal="true"
+    	    android:background="@drawable/text_img_login"/>
+    	
+    	<ImageView 
+    	    android:id="@+id/img_find_id_pw"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_below="@+id/img_login_bg"
+    	    android:layout_marginTop="20dip"
+    	    android:layout_centerHorizontal="true"
+    	    android:background="@drawable/text_img_login_search"/>
+    	
+    	<Button
+    	android:id="@+id/btn_join_mentor"
+    	android:layout_width="130dip"
+    	android:layout_height="31.3dip"
+    	android:layout_marginTop="125.3dip"
+    	android:layout_marginLeft="60dip"
+    	android:layout_below="@+id/img_find_id_pw"
+    	android:background="@drawable/btn_login_nor"
+    	></Button>
+    	
+    	<ImageView 
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="125.3dip"
+    	android:layout_marginLeft="86dip"
+    	android:layout_below="@+id/img_find_id_pw"
+    	android:background="@drawable/text_img_join_mentor"
+    	/>
+    	
+    	
+    	
+    	<Button
+    	android:id="@+id/btn_join_mentee"
+    	android:layout_width="130dip"
+    	android:layout_height="31.3dip"
+    	android:layout_marginTop="125.3dip"
+    	android:layout_marginLeft="15.3dip"
+    	android:layout_below="@+id/img_find_id_pw"
+    	android:layout_toRightOf="@+id/btn_join_mentor"
+    	android:background="@drawable/btn_login_nor"
+    	></Button>
+    		    
+    	
+    	 <ImageView 
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_marginTop="125.3dip"
+    	android:layout_marginLeft="42.3dip"
+    	android:layout_below="@+id/img_find_id_pw"
+    	    	android:layout_toRightOf="@+id/btn_join_mentor"
+    	android:background="@drawable/text_img_join_mentee"
+    	/>
+    		    
+    	</RelativeLayout>
+    
+
+</LinearLayout>

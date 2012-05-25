@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,14 +34,34 @@ public class LoginActivity extends Activity implements OnClickListener
 	Context mContext;
 	LoginResponse login;
 	
+	Display display;
+	int nWid, nHei;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.login);
-		
 		mContext= this;
+		
+		display= ((WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+		nWid= display.getWidth();
+		nHei= display.getHeight(); 
+	  
+		Log.d("display size","display width="+nWid+"  //  display height="+nHei );
+	  
+		if(nWid==800 && nHei==1280)
+		{
+			setContentView(R.layout.login_800_1280);
+		}
+		else
+		{
+			setContentView(R.layout.login);
+		}
+		  
+		
+		
+		
 		
 		LoadingDL = new ProgressDialog(this);
 		
