@@ -1,6 +1,5 @@
 package com.tangibleidea.meeple.server;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +22,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
-import com.tangibleidea.meeple.data.DBManager;
 import com.tangibleidea.meeple.data.EnumError;
 import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.server_response.LoginResponse;
@@ -293,14 +291,14 @@ public class RequestMethods
 		
 		Encoder encoder= new Encoder(_strPW);
 	    String URI = Global.SERVER + "RegisterMenteeAndroid?"
-		      		+"account=" + _strID
+		      		+"account=" + Uri.encode(_strID)
 		      		+"&password="+ encoder.Encode()
 		      		+"&isPush="+ IsPush
 		      		+"&androidpush="+SPUtil.getString(_context, "reg_id")
-		      		+"&email="+ _strEmail
-		      		+"&name="+ _strName
+		      		+"&email="+ Uri.encode(_strEmail)
+		      		+"&name="+ Uri.encode(_strName)
 		      		+"&gender="+ _strGender
-		      		+"&school="+ _strSchool
+		      		+"&school="+ Uri.encode(_strSchool)
 		      		+"&grade="+ _strGrade;
 	   
 	    try
@@ -348,16 +346,16 @@ public class RequestMethods
 		
 		Encoder encoder= new Encoder(_strPW);
 	    String URI = Global.SERVER + "RegisterMentorAndroid?"
-		      		+"account=" + _strID
+		      		+"account=" + Uri.encode(_strID)
 		      		+"&password="+ encoder.Encode()
 		      		+"&isPush="+ IsPush
 		      		+"&androidpush="+SPUtil.getString(_context, "reg_id")
-		      		+"&name="+ _strName
+		      		+"&name="+ Uri.encode(_strName)
 		      		+"&gender="+ _strGender
-		      		+"&email="+ _strEmail
+		      		+"&email="+ Uri.encode(_strEmail)
 		      		+"&univ="+ _strUniv
 	    			+"&promo="+_strPromo
-	    			+"&major="+_strMajor;
+	    			+"&major="+Uri.encode(_strMajor);
 	   
 	    try
 	    {

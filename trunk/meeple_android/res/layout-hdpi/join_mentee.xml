@@ -147,6 +147,7 @@
 		<EditText	
     	android:id="@+id/edt_grade"
     	android:hint="학년 입력"
+    	android:maxLength="1"
     	android:singleLine="true"
     	android:numeric="decimal"
     	android:layout_width="150dip"
