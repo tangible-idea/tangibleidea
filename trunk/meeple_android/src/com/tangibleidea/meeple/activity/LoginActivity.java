@@ -177,8 +177,13 @@ public class LoginActivity extends Activity implements OnClickListener
 	    		login= RM.Login( this, TXT_ID.getText().toString() , TXT_PW.getText().toString() );			
     		}
     		
-    		SPUtil.putString(mContext, "AccountID", TXT_ID.getText().toString() );
-    		SPUtil.putString(mContext, "password", TXT_PW.getText().toString() );
+    		if( (!TXT_ID.getText().toString().equals("")) && (!TXT_ID.getText().toString().equals("")) )
+    		{
+        		SPUtil.putString(mContext, "AccountID", TXT_ID.getText().toString() );
+        		SPUtil.putString(mContext, "password", TXT_PW.getText().toString() );
+    		}
+    		
+
     		
     		LoadingHandler.sendEmptyMessage(1);
     		

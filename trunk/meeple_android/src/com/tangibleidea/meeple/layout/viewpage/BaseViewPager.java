@@ -83,6 +83,7 @@ public class BaseViewPager extends RelativeLayout {
 		params.addRule(rule);
 		params.addRule(RelativeLayout.CENTER_HORIZONTAL);
 		v.setLayoutParams(params);
+		//
 		
 		super.addView(v);
 	}

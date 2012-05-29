@@ -26,7 +26,7 @@ public class PageControl extends View implements IPageControl {
 		
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-	    setMeasuredDimension(10 * (mPageSize + (mPageSize - 1)), 10);
+	    setMeasuredDimension(20 * (mPageSize + (mPageSize - 1)), 20);
 	}
 	
 	@Override
@@ -69,13 +69,15 @@ public class PageControl extends View implements IPageControl {
 		invalidate();
 	}
 		
-	private static final float RADIUS = 5;
-	private static final int PADDING = 10;
+	private static final float RADIUS = 10;
+	private static final int PADDING = 12;
 	
 	
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
+		
+		//this.setBackgroundColor(Color.rgb(230, 230, 230));
 			
 		float x = RADIUS;
 		float y = RADIUS;

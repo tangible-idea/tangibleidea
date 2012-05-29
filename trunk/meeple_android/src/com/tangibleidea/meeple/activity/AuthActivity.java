@@ -185,6 +185,7 @@ public class AuthActivity extends Activity implements Authenticator, OnClickList
 				
 				Intent intent= new Intent(AuthActivity.this, MentorJoinActivity.class);
 				startActivityForResult(intent, Global.s_nRequest_MentorJoin);
+				finish();
 			}
 			if(msg.what==2)
 			{

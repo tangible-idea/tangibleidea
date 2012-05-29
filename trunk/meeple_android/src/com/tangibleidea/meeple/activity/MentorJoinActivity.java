@@ -139,13 +139,15 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 			if(msg.what==2)
 			{
 				LoadingDL.hide();
-				Intent intent= new Intent();
-				Bundle result= new Bundle();
-				
-				result.putInt("result", 1); // 성공값 첨부 
-				intent.putExtras(result);
-				setResult(RESULT_OK, intent); // 결과값 보냄
-				finish();
+//				Intent intent= new Intent();
+//				Bundle result= new Bundle();
+//				
+//				result.putInt("result", 1); // 성공값 첨부 
+//				intent.putExtras(result);
+//				setResult(RESULT_OK, intent); // 결과값 보냄
+//				finish();
+				Intent intent= new Intent(MentorJoinActivity.this, LoginActivity.class);
+				startActivityForResult(intent, Global.s_nRequest_MentorJoin);
 			}
 			if(msg.what==3)
 			{
