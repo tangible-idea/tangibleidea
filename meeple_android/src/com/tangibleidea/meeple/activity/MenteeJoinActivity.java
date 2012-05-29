@@ -163,7 +163,7 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 			this.ShowAlertDialog("가입", "이메일을 입력해주세요~", "확인");
 			return false;
 		}
-		else if(EDT_email.getText().toString().indexOf("@") == -1)
+		else if(EDT_email.getText().toString().indexOf("@") == -1)	// 골뱅이가 없으면
 		{
 			this.ShowAlertDialog("가입", "이메일이 올바르지 않습니다.", "확인");
 			return false;

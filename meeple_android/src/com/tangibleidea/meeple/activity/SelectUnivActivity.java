@@ -1,7 +1,6 @@
 package com.tangibleidea.meeple.activity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -31,6 +30,7 @@ public class SelectUnivActivity extends ListActivity
 	final ArrayList<UnivEntry> arraylist= new ArrayList<UnivEntry>();
 	final ArrayList<UnivEntry> arraylist_filt= new ArrayList<UnivEntry>();
 	private String searchKeyword="";
+	private boolean bFiltered= false;
 	
 	
 	/* (non-Javadoc)
@@ -132,10 +132,16 @@ public class SelectUnivActivity extends ListActivity
 	{
 		this.ResetUnivArrayList(); 		// 한번 필터링 해주고
 		
-		if(searchKeyword.equals(""))	// 필터링목록이 없으면, 본목록을 띄워주고 있으면 필터링목록을 띄워줌			
+		if(searchKeyword.equals(""))	// 필터링목록이 없으면, 본목록을 띄워주고 있으면 필터링목록을 띄워줌	
+		{
 			list1 =  new UnivListAdapter(mContext, R.layout.entry_univ, R.id.eUnivName, arraylist);
+			bFiltered= true;
+		}
 		else
+		{
 			list1 =  new UnivListAdapter(mContext, R.layout.entry_univ, R.id.eUnivName, arraylist_filt);
+			bFiltered= false;
+		}
 		
 		setListAdapter(list1);
 	}
@@ -171,22 +177,29 @@ public class SelectUnivActivity extends ListActivity
 
 	public void onListItemClick(ListView l, View v, final int pos, long id)
 	{
+		if(bFiltered)
+			Global.s_MyUniv= arraylist_filt.get(pos).getUnivName();
+		else
+			Global.s_MyUniv= arraylist.get(pos).getUnivName();
+		
 		new AlertDialog.Builder(this)
         .setTitle("대학교 선택 확인")
-        .setMessage("["+arraylist.get(pos).getUnivName() + "]\n선택하신 학교가 맞나요?") 
+        .setMessage("["+ Global.s_MyUniv + "]\n선택하신 학교가 맞나요?") 
         .setPositiveButton("확인", new DialogInterface.OnClickListener()
         {
             public void onClick(DialogInterface dialog, int whichButton)
             {
-            	Global.s_MyUniv= arraylist.get(pos).getUnivName();
+            	 
             	
-            	if(pos==6 || pos==17 || pos==19 || pos==28 )	 // 인증이 있는 학교면(서연고서)
+            	if(pos==6 || pos==19 || pos==28 )	 // 인증이 있는 학교면(서연고)
             	{
             		Intent intent= new Intent(SelectUnivActivity.this, AuthActivity.class);
             		startActivity(intent);
+            		finish();
             	}else{	
             		Intent intent= new Intent(SelectUnivActivity.this, MentorJoinActivity.class);
             		startActivity(intent);
+            		finish();
             	}
             }
         })

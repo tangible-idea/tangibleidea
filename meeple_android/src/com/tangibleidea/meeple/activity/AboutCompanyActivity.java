@@ -2,6 +2,7 @@ package com.tangibleidea.meeple.activity;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.tangibleidea.meeple.R;
@@ -27,6 +28,7 @@ public class AboutCompanyActivity extends Activity
 		BaseViewPager pager = new BaseViewPager(mContext);
 		pager.setPageControl(new PageControl(mContext));
 		pager.setAdapter(new SampleAdapter(mContext));
+		pager.setBackgroundColor(Color.rgb(230, 230, 230));
 		setContentView(pager);
 	}
 

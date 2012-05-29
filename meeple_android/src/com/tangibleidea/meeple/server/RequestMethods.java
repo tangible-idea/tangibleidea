@@ -1272,7 +1272,7 @@ public class RequestMethods
 	public boolean ChangeName(Context _context, String name)
 	{
 		String URI = Global.SERVER + "ChangeName?"
-	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
 	      		+"&session=" + SPUtil.getString(_context, "session")
 	      		+"&name=" + name; 
 		
