@@ -25,7 +25,7 @@ namespace Server
 
         private string DbPath( string account )
         {
-            return @"E:\UserDb\"+account + ".db3";
+            return @"C:\meeple\UserDb\" + account + ".db3";
         }
   
         private void Connect( string dbPath )
@@ -120,6 +120,8 @@ namespace Server
                 }
             }
         }
+
+
 
         public int LastSendMessageNew(string account)
         {
@@ -235,7 +237,48 @@ namespace Server
                 }
             }
         }
-        
+
+        // 실제 서버 DB에 있는 마지막 ChatId
+        public int LastRealChatIDNew(string account, string oppoAccount)
+        {
+            lock (locker)
+            {
+                try
+                {
+                    Connect(DbPath(account + "_" + oppoAccount));
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    command = new SQLiteCommand("select * from Histories where HistoryType='Chat' order by rowid desc", connection);
+                    reader = command.ExecuteReader();
+                    int ret = -1;
+                    if (reader.Read())
+                    {
+                        ret = Convert.ToInt32(reader["LastSendId"]);
+                    }
+                    reader.Close();
+                    connection.Close();
+                    return ret;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+                finally
+                {
+                    if (connection != null
+                        && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
+
+
+
         public int LastRequestedMessage( string account )
         {
             lock ( locker )
