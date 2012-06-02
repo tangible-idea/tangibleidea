@@ -81,6 +81,7 @@ namespace Server
                     {
                         OnlineMentor.Remove(account);
                         mentorListBox.Items.Remove(account);
+                        mentorLabel.Text = "online mentor (" + mentorListBox.Items.Count + "명)";
                     }
                 }
             }
@@ -92,6 +93,7 @@ namespace Server
                     {
                         OnlineMentee.Remove(account);
                         menteeListBox.Items.Remove(account);
+                        menteeLabel.Text = "online mentee (" + menteeListBox.Items.Count + "명)";
                     }
                 }
             }

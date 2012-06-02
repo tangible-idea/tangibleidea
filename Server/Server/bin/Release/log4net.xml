@@ -6,7 +6,7 @@
     </layout>
   </appender>
   <appender name="RollingFile" type="log4net.Appender.RollingFileAppender">
-    <file value="E:\MEEPLE.LOGS\meeple_server" />
+    <file value="C:\meeple\MEEPLE.LOGS\meeple_server" />
     <StaticLogFileName value="false"/>
     <appendToFile value="true" />
     <datePattern value="-yyyy-MM-dd.'log'" />

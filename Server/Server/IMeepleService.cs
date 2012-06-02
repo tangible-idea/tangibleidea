@@ -14,52 +14,63 @@ namespace Server
     {
         // TODO: 여기에 서비스 작업을 추가합니다.
 
+        // 멘토를 등록한다. (아이폰)
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         // password는 MD5 Hash로 인크립트해서 보낼 것. MD5 인크립트의 결과는 256bit(32byte이다)
         RegisterResponse RegisterMentor(string account, string password, bool isPush, string push, string name, int gender, string email, string univ, string major, int promo);
 
+        // 멘토를 등록한다. (안드로이드)
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         // password는 MD5 Hash로 인크립트해서 보낼 것. MD5 인크립트의 결과는 256bit(32byte이다)
         RegisterResponse RegisterMentorAndroid( string account, string password, bool isPush, string androidpush, string name, int gender, string email, string univ, string major, int promo );
 
+        // 멘티를 등록한다. (아이폰)
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         // password는 MD5 Hash로 인크립트해서 보낼 것. MD5 인크립트의 결과는 256bit(32byte이다)
         RegisterResponse RegisterMentee(string account, string password, bool isPush, string push, string name, int gender, string email, string school, int grade);
 
+        // 멘티를 등록한다. (안드로이드)
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         // password는 MD5 Hash로 인크립트해서 보낼 것. MD5 인크립트의 결과는 256bit(32byte이다)
         RegisterResponse RegisterMenteeAndroid( string account, string password, bool isPush, string androidpush, string name, int gender, string email, string school, int grade );
 
+        // 로그인 (아이폰)
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         // password는 MD5 Hash로 인크립트해서 보낼 것. MD5 인크립트의 결과는 256bit(32byte이다)
         LoginResponse Login(string account, string password, bool isPush, string push);
 
+        // 로그인 (안드로이드)
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         // password는 MD5 Hash로 인크립트해서 보낼 것. MD5 인크립트의 결과는 256bit(32byte이다)
         LoginResponse LoginAndroid(string account, string password, bool isPush, string androidpush );
 
+        // 로그아웃 (deprecated)
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         bool Logout( string account );
 
+        // 멘토 정보를 가져온다.
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         MentorInfo GetMentorInfo( string localAccount, string oppoAccount, string session );
 
+        // 멘티정보를 가져온다.
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         MenteeInfo GetMenteeInfo( string localAccount, string oppoAccount, string session );
 
+        // 멘토 정보를 바꾼다.
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         bool ChangeMentorInfo( string account, string session, string name, int gender, string email, string univ, string major, int promo, string comment, string image );
 
+        // 멘티 정보를 바꾼다.
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         bool ChangeMenteeInfo( string account, string session, string name, int gender, string email, string school, int grade, string comment, string image );
@@ -92,21 +103,26 @@ namespace Server
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         bool ChangePromo( string account, string session, int promo );
 
+        // 서버에서 추천해준 상대방 미플의 수락 여부를 결정한다.
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         bool RespondRecommendation( string localAccount, string oppoAccount, string session, bool accept );
 
+        // 나를 기다리고 있는 상대방을 불러온다.
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         List<MeepleInfo> PendingRecommendations( string localAccount, string session );
 
+        // 나와 대화중인 상대방을 불러온다.
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         List<MeepleInfo> InProgressRecommendations( string localAccount, string session );
 
+        // 내가 기다리고 있는 상대방을 불러온다.
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         List<MeepleInfo> WaitingRecommendations( string localAccount, string session );
+
 
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
@@ -147,12 +163,19 @@ namespace Server
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         bool CheckChatsNew(string localAccount, string oppoAccount, string session);
 
-        [OperationContract]
-        [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
-        int LastChatId( string localAccount, string session );
+        //[OperationContract]
+        //[WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
+        //int LastChatId( string localAccount, string session );
+
+        // 클라이언트에서 마지막으로 요청한 ChatID
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         int LastChatIdNew(string localAccount, string oppoAccount, string session);
+
+        // 실제 서버상 채팅DB의 마지막 ChatID
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        int LastRealChatIdNew(string localAccount, string oppoAccount, string session);
 
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
@@ -228,6 +251,8 @@ namespace Server
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         List<RecentChat> GetRecentChatsNew(string localAccount, string session);
 
+
+        // 로그인 상태를 확인한다. (현재 세션이 맞는지 확인)
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         bool CheckLogin(string account, string session);

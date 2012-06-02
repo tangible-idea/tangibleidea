@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace Server
 {
@@ -13,7 +14,7 @@ namespace Server
 
         public DatabaseCoordinator()
         {
-            connection = new SqlConnection("Password=sksmsrhksflwkek;Persist Security Info=True;User ID=DBAdmin;Initial Catalog=Meeple;Data Source=RENT-1177\\SQLEXPRESS");
+            connection = new SqlConnection("Password=sksmsrhksflwkek;Persist Security Info=True;User ID=DBAdmin;Initial Catalog=Meeple;Data Source=WINDOWS-2CFD36G\\SQLEXPRESS");
         }
 
         // 성공하면 AccountId(> 0)를 리턴, 이미 아이디가 있거나 실패하면 -1을 리턴
@@ -535,6 +536,7 @@ namespace Server
                 }
             }
         }
+
 
         // 해당하는 대화중이 있을 경우 0보다 큰 값을 리턴, 없는 경우 0을 리턴, 실패할경우 -1을 리턴
         public int CheckRecommendation( string mentorAccount, string menteeAccount )
@@ -1689,4 +1691,32 @@ namespace Server
             return 1;
         }
     }
+
+
+    //public class ThreadGoTo_1
+    //{
+    //    public void Go()
+    //    {
+    //        for (int i = 0; i < 25; i++)
+    //        {
+    //            Console.Write("A_"+i.ToString() + " | ");
+    //        }
+    //    }
+    //}
+    //public class ThreadGoTo_2
+    //{
+    //    public void Go()
+    //    {
+    //        for (int i = 0; i < 25; i++)
+    //        {
+    //            if (i == 10)
+    //            {
+    //                Thread.Sleep(1000);
+    //            }
+    //            Console.Write("B"+i.ToString() + " | ");
+    //        }
+    //    }
+    // }
+
+
 }

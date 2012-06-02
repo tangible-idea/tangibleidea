@@ -75,59 +75,59 @@ namespace Server
             Program.onlineCoord.OnlineMentor= ShuffleList(Program.onlineCoord.OnlineMentor);    // 멘토리스트를 셔플해준다.
 
             foreach ( string mentorAccount in Program.onlineCoord.OnlineMentor )
-            {
-                Program.logCoord.WriteOnlyTextLog(">멘토 " + mentorAccount + "에게 추천해줄 멘티를 찾아보자");
+            {//
+                //Program.logCoord.WriteOnlyTextLog(">멘토 " + mentorAccount + "에게 추천해줄 멘티를 찾아보자");
                 int numberOfMentees = Program.dbCoord.CountMentorRecommendation( mentorAccount );   // 멘토 계정에 추천되어있는 멘티 수
-                Program.logCoord.WriteOnlyTextLog("->이 멘토에게 할당된 "+numberOfMentees+"명의 멘티가 있군...");
+               // Program.logCoord.WriteOnlyTextLog("->이 멘토에게 할당된 "+numberOfMentees+"명의 멘티가 있군...");
                 if (numberOfMentees < 3) // 가 3명 미만이면
                 {
-                    Program.logCoord.WriteOnlyTextLog("-->이 멘토에게 "+ (3-numberOfMentees)+"명의 멘티를 더 붙여주자");
+                    //Program.logCoord.WriteOnlyTextLog("-->이 멘토에게 "+ (3-numberOfMentees)+"명의 멘티를 더 붙여주자");
                     for (int i = 0; i < 3 - numberOfMentees; i++) // 필요한 멘티수 만큼 추천을 추가해줌 : 3-(추천수)
                     {
                         foreach (string menteeAccount in Program.onlineCoord.OnlineMentee) // 한번이라도 접속한 멘티중에서 
                         {
-                            Program.logCoord.WriteOnlyTextLog("--->멘티 " + menteeAccount+"는 어떨까..?");
+                            //Program.logCoord.WriteOnlyTextLog("--->멘티 " + menteeAccount+"는 어떨까..?");
                             if (Program.dbCoord.CountMenteeRecommendation(menteeAccount) == 0)  // 멘토의 추천이 없는 멘티만 골라서
                             {
-                                Program.logCoord.WriteOnlyTextLog("---->이 멘티는 멘토가 없군! 매칭 시켜줘야겟다! ["+mentorAccount+"]<-매칭준비->["+menteeAccount+"]");
+                               // Program.logCoord.WriteOnlyTextLog("---->이 멘티는 멘토가 없군! 매칭 시켜줘야겟다! ["+mentorAccount+"]<-매칭준비->["+menteeAccount+"]");
                                 if (Program.dbCoord.AddRecommendation(mentorAccount, menteeAccount) == 0)   // 추천해줌
                                 {
                                     if (Program.dbCoord.IsApple(mentorAccount))   // 애플이면
                                     {
-                                        Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 아이폰을 쓰고있으니까 아이폰 푸시를 날려주자");
+                                        //Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 아이폰을 쓰고있으니까 아이폰 푸시를 날려주자");
                                         int count = GetMenteeBadgeCount(mentorAccount);
                                         string pushToken = Program.dbCoord.GetDeviceToken(mentorAccount);
-                                        Program.pushProvider.SendPushMessage(pushToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", count, "default", "3");
+                                        //Program.pushProvider.SendPushMessage(pushToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", count, "default", "3");
                                     }
                                     else
                                     {
-                                        Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 안드로이드를 쓰고있으니까 안드로이드 푸시를 날려주자");
+                                        //Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 안드로이드를 쓰고있으니까 안드로이드 푸시를 날려주자");
                                         string androidToken = Program.dbCoord.GetAndroidDeviceToken(mentorAccount);
-                                        Program.AndroidPushProvider.sendMessage(androidToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", "recommend");
+                                        //Program.AndroidPushProvider.sendMessage(androidToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", "recommend");
                                     }
                                     break;
                                 }
                                 else
                                 {
-                                    Program.logCoord.WriteOnlyTextLog("----->매칭이 실패했다. AddRecommendation에서.. [" + mentorAccount + "]<-/매칭실패/->[" + menteeAccount + "]");
+                                    //Program.logCoord.WriteOnlyTextLog("----->매칭이 실패했다. AddRecommendation에서.. [" + mentorAccount + "]<-/매칭실패/->[" + menteeAccount + "]");
                                 }
                             }
                             else
                             {
-                                Program.logCoord.WriteOnlyTextLog("---->이 멘티는 멘토의 추천이 이미 있군... 다른 멘티를 찾아보자");
+                                //Program.logCoord.WriteOnlyTextLog("---->이 멘티는 멘토의 추천이 이미 있군... 다른 멘티를 찾아보자");
                             }
                         }
-                        Program.logCoord.WriteOnlyTextLog("--->더이상 온라인 멘티가 없군");
+                        //Program.logCoord.WriteOnlyTextLog("--->더이상 온라인 멘티가 없군");
                     }
                 }
                 else
                 {
-                    Program.logCoord.WriteOnlyTextLog("-->3명이니까 다음 멘토로 넘어가자");
+                    //Program.logCoord.WriteOnlyTextLog("-->3명이니까 다음 멘토로 넘어가자");
                 }
-                Program.logCoord.WriteOnlyTextLog("->그럼 다음 멘토로 넘어가자");
+                //Program.logCoord.WriteOnlyTextLog("->그럼 다음 멘토로 넘어가자");
             }
 
-            Program.logCoord.WriteOnlyTextLog(">더 이상 온라인 멘토가 없군... 그러면 상태를 다시 한번 확인해보자");
+            //Program.logCoord.WriteOnlyTextLog(">더 이상 온라인 멘토가 없군... 그러면 상태를 다시 한번 확인해보자");
 
             for( int i=0; i<Program.onlineCoord.OnlineMentor.Count; ++i)
             {
@@ -278,6 +278,12 @@ namespace Server
 
             return totalnum;
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Program.onlineCoord.Logout(txtToAction.Text);
+        }
+
 
 
     }

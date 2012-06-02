@@ -6,6 +6,7 @@ using System.IO;
 using AntsCode.Util;
 using System.Drawing;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Server
 {
@@ -30,7 +31,7 @@ namespace Server
                 try
                 {
                     // Open file for reading
-                    System.IO.FileStream _FileStream = new System.IO.FileStream(@"E:\UserImage\" +account+ ".jpg", System.IO.FileMode.Create, System.IO.FileAccess.Write);
+                    System.IO.FileStream _FileStream = new System.IO.FileStream(@"C:\meeple\UserImage\" + account + ".jpg", System.IO.FileMode.Create, System.IO.FileAccess.Write);
 
                     // Writes a block of bytes to this stream using data from a byte array.
                     _FileStream.Write(parser.FileContents, 0, parser.FileContents.Length);
@@ -76,6 +77,25 @@ namespace Server
             else if (!isPush)
             {
                 push = "0000000000000000000000000000000000000000000000000000000000000000";
+            }
+
+            Regex regex_num_eng = new System.Text.RegularExpressions.Regex(@"^[0-9a-zA-Z]{4,20}$");
+            if (!regex_num_eng.IsMatch(account))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 아이디가 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "아이디가 올바르지 않습니다.");
+            }
+            Regex regex_kor_eng = new System.Text.RegularExpressions.Regex(@"^[가-힣a-zA-Z]*$");
+            if (!regex_kor_eng.IsMatch(name))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 이름이 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "이름이 올바르지 않습니다.");
+            }
+            Regex regex_mail = new System.Text.RegularExpressions.Regex(@"^[_0-9a-zA-Z-]+@[0-9a-zA-Z-]+(.[_0-9a-zA-Z-]+)*$");
+            if (!regex_mail.IsMatch(email))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 이메일이 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "이메일이 올바르지 않습니다.");
             }
 
             bool isApple = true;      //
@@ -135,12 +155,31 @@ namespace Server
                 )
             {
                 // 인자가 이상합니다.
-                Program.logCoord.WriteLog( account + "라는 놈이 RegisterMentor를 하려고 했는데 넘어온 인자가 병맛이라 처리 안됨\t" + DateTime.Now );
+                Program.logCoord.WriteLog( account + "가 RegisterMentorAndroid를 하려고 했는데 넘어온 인자가 병맛이라 처리 안됨\t" + DateTime.Now );
                 return new RegisterResponse( false, "", "폼에 들어가야할 길이를 확인하세요" );
             }
             else if  ( !isPush )
             {
                 androidpush = "0";
+            }
+
+            Regex regex_num_eng = new System.Text.RegularExpressions.Regex(@"^[0-9a-zA-Z]{4,20}$");
+            if (!regex_num_eng.IsMatch(account))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 아이디가 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "아이디가 올바르지 않습니다.");
+            }
+            Regex regex_kor_eng = new System.Text.RegularExpressions.Regex(@"^[가-힣a-zA-Z]*$");
+            if (!regex_kor_eng.IsMatch(name))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 이름이 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "이름이 올바르지 않습니다.");
+            }
+            Regex regex_mail = new System.Text.RegularExpressions.Regex(@"^[_0-9a-zA-Z-]+@[0-9a-zA-Z-]+(.[_0-9a-zA-Z-]+)*$");
+            if (!regex_mail.IsMatch(email))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 이메일이 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "이메일이 올바르지 않습니다.");
             }
 
             bool isApple = false;       //
@@ -208,6 +247,25 @@ namespace Server
                 push = "0000000000000000000000000000000000000000000000000000000000000000";
             }
 
+            Regex regex_num_eng = new System.Text.RegularExpressions.Regex(@"^[0-9a-zA-Z]{4,20}$");
+            if (!regex_num_eng.IsMatch(account))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 아이디가 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "아이디가 올바르지 않습니다.");
+            }
+            Regex regex_kor_eng = new System.Text.RegularExpressions.Regex(@"^[가-힣a-zA-Z]*$");
+            if (!regex_kor_eng.IsMatch(name))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 이름이 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "이름이 올바르지 않습니다.");
+            }
+            Regex regex_mail = new System.Text.RegularExpressions.Regex(@"^[_0-9a-zA-Z-]+@[0-9a-zA-Z-]+(.[_0-9a-zA-Z-]+)*$");
+            if (!regex_mail.IsMatch(email))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 이메일이 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "이메일이 올바르지 않습니다.");
+            }
+
             bool isApple = true;
             string androidpush = "0";
             
@@ -271,6 +329,25 @@ namespace Server
             else if  ( !isPush )
             {
                 androidpush = "0";
+            }
+
+            Regex regex_num_eng = new System.Text.RegularExpressions.Regex(@"^[0-9a-zA-Z]{4,20}$");
+            if (!regex_num_eng.IsMatch(account))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 아이디가 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "아이디가 올바르지 않습니다.");
+            }
+            Regex regex_kor_eng = new System.Text.RegularExpressions.Regex(@"^[가-힣a-zA-Z]*$");
+            if (!regex_kor_eng.IsMatch(name))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 이름이 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "이름이 올바르지 않습니다.");
+            }
+            Regex regex_mail = new System.Text.RegularExpressions.Regex(@"^[_0-9a-zA-Z-]+@[0-9a-zA-Z-]+(.[_0-9a-zA-Z-]+)*$");
+            if (!regex_mail.IsMatch(email))
+            {
+                Program.logCoord.WriteLog(account + "가 RegisterMenteeAndroid를 하려고 했는데 이메일이 올바르지 않음\t" + DateTime.Now);
+                return new RegisterResponse(false, "", "이메일이 올바르지 않습니다.");
             }
 
             bool isApple = false;
@@ -1161,27 +1238,28 @@ namespace Server
             return Program.sqliteCoord.CheckChatsNew(localAccount,oppoAccount);
         }
 
-        public int LastChatId( string localAccount, string session )
-        {
-            if ( Program.onlineCoord.GetSession( localAccount ) != session)
-            {
-                Program.logCoord.WriteLog( localAccount + "\tsession이 틀렸음\t" + DateTime.Now );
-                return 0;
-            }
+        //public int LastChatId( string localAccount, string session )
+        //{
+        //    if ( Program.onlineCoord.GetSession( localAccount ) != session)
+        //    {
+        //        Program.logCoord.WriteLog( localAccount + "\tsession이 틀렸음\t" + DateTime.Now );
+        //        return 0;
+        //    }
 
-            int lastChatId = Program.sqliteCoord.LastRequestedChat( localAccount );
-            if ( lastChatId < 0 )
-            {
-                Program.logCoord.WriteLog( localAccount + "가 Db에서 LastRequestedChat 망함\t" + DateTime.Now );
-                return 0;
-            }
-            else
-            {
-                Program.logCoord.WriteLog( localAccount + "가 LastChatId 수행\t" + DateTime.Now );
-                return lastChatId;
-            }
-        }
+        //    int lastChatId = Program.sqliteCoord.LastRequestedChat( localAccount );
+        //    if ( lastChatId < 0 )
+        //    {
+        //        Program.logCoord.WriteLog( localAccount + "가 Db에서 LastRequestedChat 망함\t" + DateTime.Now );
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        Program.logCoord.WriteLog( localAccount + "가 LastChatId 수행\t" + DateTime.Now );
+        //        return lastChatId;
+        //    }
+        //}
 
+        // 클라이언트에서 마지막으로 요청한 ChatID
         public int LastChatIdNew(string localAccount, string oppoAccount, string session)
         {
             if (Program.onlineCoord.GetSession(localAccount) != session)
@@ -1202,6 +1280,30 @@ namespace Server
                 return lastChatId;
             }
         }
+
+        // 실제 서버상 채팅DB의 마지막 ChatID
+        public int LastRealChatIdNew(string localAccount, string oppoAccount, string session)
+        {
+            if (Program.onlineCoord.GetSession(localAccount) != session)
+            {
+                Program.logCoord.WriteLog(localAccount + "\tsession이 틀렸음\t" + DateTime.Now);
+                return 0;
+            }
+
+            int lastChatId = Program.sqliteCoord.LastRealChatIDNew(localAccount, oppoAccount);
+            if (lastChatId < 0)
+            {
+                Program.logCoord.WriteLog(localAccount + "가 Db에서 LastRequestedChat 망함\t" + DateTime.Now);
+                return 0;
+            }
+            else
+            {
+                Program.logCoord.WriteLog(localAccount + "가 LastRealChatId 수행\t" + DateTime.Now);
+                return lastChatId;
+            }
+        }
+
+
 
         public bool RejectChatting( string localAccount, string oppoAccount, string session )
         {
@@ -1508,7 +1610,7 @@ namespace Server
                 return null;
             }
 
-            Program.logCoord.WriteLog(localAccount + "가 GetMessages 수행\t" + DateTime.Now);
+            Program.logCoord.WriteLog(localAccount + "가 GetMessagesFirst 수행\t" + DateTime.Now);
             return Program.sqliteCoord.GetMessagesFirst(localAccount);
         }
 

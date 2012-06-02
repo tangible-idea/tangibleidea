@@ -34,19 +34,22 @@ namespace Server
             this.lstMentee = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.txtToAction = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // logs
             // 
             this.logs.BackColor = System.Drawing.Color.Black;
-            this.logs.Font = new System.Drawing.Font("Dotum", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.logs.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.logs.ForeColor = System.Drawing.Color.White;
             this.logs.Location = new System.Drawing.Point(12, 12);
             this.logs.Multiline = true;
             this.logs.Name = "logs";
             this.logs.ReadOnly = true;
             this.logs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.logs.Size = new System.Drawing.Size(634, 393);
+            this.logs.Size = new System.Drawing.Size(634, 423);
             this.logs.TabIndex = 0;
             this.logs.Text = "test";
             // 
@@ -90,12 +93,41 @@ namespace Server
             this.label2.TabIndex = 4;
             this.label2.Text = "online mentee (0명)";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(856, 412);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(27, 23);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "-";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(889, 412);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(27, 23);
+            this.btnLogin.TabIndex = 5;
+            this.btnLogin.Text = "+";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            // 
+            // txtToAction
+            // 
+            this.txtToAction.Location = new System.Drawing.Point(666, 413);
+            this.txtToAction.Name = "txtToAction";
+            this.txtToAction.Size = new System.Drawing.Size(184, 21);
+            this.txtToAction.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(925, 414);
+            this.ClientSize = new System.Drawing.Size(925, 440);
+            this.Controls.Add(this.txtToAction);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstMentee);
@@ -117,5 +149,8 @@ namespace Server
         private System.Windows.Forms.ListBox lstMentee;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private Button btnLogout;
+        private Button btnLogin;
+        private TextBox txtToAction;
     }
 }
