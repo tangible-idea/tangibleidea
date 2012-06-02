@@ -41,6 +41,7 @@
             this.txtTarget = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.chkTarget = new System.Windows.Forms.CheckBox();
+            this.chkInit = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // logs
@@ -67,7 +68,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 15);
-            this.textBox1.MaxLength = 255;
+            this.textBox1.MaxLength = 100;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(673, 21);
             this.textBox1.TabIndex = 2;
@@ -78,9 +79,9 @@
             this.lblTextLenth.AutoSize = true;
             this.lblTextLenth.Location = new System.Drawing.Point(14, 1);
             this.lblTextLenth.Name = "lblTextLenth";
-            this.lblTextLenth.Size = new System.Drawing.Size(59, 12);
+            this.lblTextLenth.Size = new System.Drawing.Size(503, 12);
             this.lblTextLenth.TabIndex = 3;
-            this.lblTextLenth.Text = "0/255글자";
+            this.lblTextLenth.Text = "글자수제한 : 아이폰 256byte, 안드로이드 1024byte 이지만, 길게쓰면 전송이 안될 수도 있다.";
             // 
             // chkIOS
             // 
@@ -183,11 +184,25 @@
             this.chkTarget.UseVisualStyleBackColor = true;
             this.chkTarget.CheckedChanged += new System.EventHandler(this.chkTarget_CheckedChanged);
             // 
+            // chkInit
+            // 
+            this.chkInit.AutoSize = true;
+            this.chkInit.Checked = true;
+            this.chkInit.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkInit.Location = new System.Drawing.Point(622, -1);
+            this.chkInit.Name = "chkInit";
+            this.chkInit.Size = new System.Drawing.Size(144, 16);
+            this.chkInit.TabIndex = 13;
+            this.chkInit.Text = "전송 후 대화내용 삭제";
+            this.chkInit.UseVisualStyleBackColor = true;
+            this.chkInit.CheckedChanged += new System.EventHandler(this.chkInit_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 519);
+            this.Controls.Add(this.chkInit);
             this.Controls.Add(this.chkTarget);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTarget);
@@ -225,5 +240,6 @@
         private System.Windows.Forms.TextBox txtTarget;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkTarget;
+        private System.Windows.Forms.CheckBox chkInit;
     }
 }

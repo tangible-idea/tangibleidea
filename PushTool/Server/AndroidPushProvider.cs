@@ -34,10 +34,10 @@ namespace Server
 
 
         // 푸쉬 메서드
-        public void sendMessage(string registrationId, string message, string type)
+        public bool sendMessage(string registrationId, string message, string type)
         {
-            if (registrationId == null || registrationId=="NULL" || registrationId == "0")
-                return;
+            if (registrationId == null || registrationId == "NULL" || registrationId == "0")
+                return false;
 
             //Certeficate was not being accepted for the sercure call 
             //ServicePointManager.ServerCertificateValidationCallback += new RemoteCertificateValidationCallback(ValidateServerCertificate); 
@@ -66,21 +66,30 @@ namespace Server
             dataStream.Write(byteArray, 0, byteArray.Length);
             dataStream.Close();
 
-            WebResponse response = request.GetResponse();
-            HttpStatusCode responseCode = ((HttpWebResponse)response).StatusCode;
-            if (responseCode.Equals(HttpStatusCode.Unauthorized) || responseCode.Equals(HttpStatusCode.Forbidden))
+            WebResponse response;
+            try
             {
-                Console.WriteLine("Unauthorized - need new token");
+                response = request.GetResponse();
+                HttpStatusCode responseCode = ((HttpWebResponse)response).StatusCode;
+                if (responseCode.Equals(HttpStatusCode.Unauthorized) || responseCode.Equals(HttpStatusCode.Forbidden))
+                {
+                    Console.WriteLine("Unauthorized - need new token");
+                }
+                else if (!responseCode.Equals(HttpStatusCode.OK))
+                {
+                    Console.WriteLine("Response from web service not OK :");
+                    Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+                }
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                string responseLine = reader.ReadLine();
+                reader.Close();
             }
-            else if (!responseCode.Equals(HttpStatusCode.OK))
+            catch(WebException ex)
             {
-                Console.WriteLine("Response from web service not OK :");
-                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+                return false;
             }
 
-            StreamReader reader = new StreamReader(response.GetResponseStream());
-            string responseLine = reader.ReadLine();
-            reader.Close();
+            return true;
         }
 
         private string getPostStringFrom(NameValueCollection nameValuePair)

@@ -9,9 +9,18 @@ using System.Windows.Forms;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.ServiceModel.Description;
+using System.Threading;
 
 namespace Server
 {
+    // 푸시를 보내는 스레드
+    //public class SendPushThread
+    //{
+    //    public void Send()
+    //    {
+    //    }
+    //}
+
     public partial class MainForm : Form
     {
         ServiceHost serviceHost = null;
@@ -51,15 +60,14 @@ namespace Server
             else
                 button1.Enabled = true;
 
-            lblTextLenth.Text = textBox1.TextLength.ToString() + "/255글자";
+            lblTextLenth.Text = textBox1.TextLength.ToString() + "/127글자";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SendPush()
         {
             String text = textBox1.Text;
             List<IdAndPush> pushlist = Program.dbCoord.GetIdAndPush();
             int count1 = 0, count2 = 0;
-            
 
             foreach (IdAndPush temp in pushlist)    // 푸시리스트를 돌면서
             {
@@ -79,12 +87,23 @@ namespace Server
                         if (temp.isApple)
                         {
                             Program.pushProvider.SendPushMessage(text, temp.push);
-                            Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.push + "] 푸쉬 전달 완료");
+                            this.Invoke(new MethodInvoker(delegate()
+                            {
+                                    Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.push + "] 푸쉬 전달 완료");
+                            }));
+                            
                         }
                         else
                         {
-                            Program.androidPushProvider.sendMessage(temp.androidpush, text, "notice");
-                            Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.androidpush.Substring(0, 64) + "...] 푸쉬 전달 완료");
+                            
+                            this.Invoke(new MethodInvoker(delegate()
+                            {
+                                if( Program.androidPushProvider.sendMessage(temp.androidpush, text, "notice") )
+                                    Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.androidpush.Substring(0, 64) + "...] 푸쉬 전달 완료");
+                                else
+                                    Program.logCoord.WriteLog("Id :[" + temp.userId + "] 푸쉬 전달 오류");
+                            }));
+                            
                         }
                     }
                     continue;
@@ -97,17 +116,28 @@ namespace Server
                         if (chkMentor.Checked && temp.isMentor) // 멘토에 체크되어있으면
                         {
                             Program.pushProvider.SendPushMessage(text, temp.push);
-                            Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.push + "] 푸쉬 전달 완료");
+                            this.Invoke(new MethodInvoker(delegate()
+                            {
+                                Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.push + "] 푸쉬 전달 완료");
+                            }));
                             count1++;
                         }
                         if (chkMentee.Checked && !temp.isMentor) // 멘티에 체크되어있으면
                         {
                             Program.pushProvider.SendPushMessage(text, temp.push);
-                            Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.push + "] 푸쉬 전달 완료");
+                            this.Invoke(new MethodInvoker(delegate()
+                            {
+                                Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.push + "] 푸쉬 전달 완료");
+                            }));
                             count1++;
                         }
-                    }else{
-                        Program.logCoord.WriteLog("Id :[" + temp.userId + "] 아이폰 체크해제 되어 있어서 푸시 안보냄");
+                    }
+                    else
+                    {
+                        this.Invoke(new MethodInvoker(delegate()
+                        {
+                            Program.logCoord.WriteLog("Id :[" + temp.userId + "] 아이폰 체크해제 되어 있어서 푸시 안보냄");
+                        }));
                     }
                 }
                 else // 안드로이드면
@@ -115,31 +145,57 @@ namespace Server
                     if (chkAndroid.Checked) // 안드로이드 체크ㅇ
                     {
                         if (chkMentor.Checked && temp.isMentor) // 멘토에 체크되어있으면
-                        {
-                            Program.androidPushProvider.sendMessage(temp.androidpush, text, "notice");
-                            Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.androidpush.Substring(0, 64) + "...] 푸쉬 전달 완료");
+                        {   
+                            this.Invoke(new MethodInvoker(delegate()
+                            {
+                                if(Program.androidPushProvider.sendMessage(temp.androidpush, text, "notice"))
+                                    Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.androidpush.Substring(0, 64) + "...] 푸쉬 전달 완료");
+                                else
+                                    Program.logCoord.WriteLog("Id :[" + temp.userId + "] 푸쉬 전달 오류");
+                            }));
                             count2++;
                         }
                         if (chkMentee.Checked && !temp.isMentor) // 멘티에 체크되어있으면
-                        {
-                            Program.androidPushProvider.sendMessage(temp.androidpush, text, "notice");
-                            Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.androidpush.Substring(0, 64) + "...] 푸쉬 전달 완료");
+                        {   
+                            this.Invoke(new MethodInvoker(delegate()
+                            {
+                                if(Program.androidPushProvider.sendMessage(temp.androidpush, text, "notice"))
+                                    Program.logCoord.WriteLog("Id :[" + temp.userId + "] Push :[" + temp.androidpush.Substring(0, 64) + "...] 푸쉬 전달 완료");
+                                else
+                                    Program.logCoord.WriteLog("Id :[" + temp.userId + "] 푸쉬 전달 오류");
+                            }));
                             count2++;
                         }
                     }
                     else
                     {
-                        Program.logCoord.WriteLog("Id :[" + temp.userId + "] 안드로이드 체크해제 되어 있어서 푸시 안보냄");
+                        this.Invoke(new MethodInvoker(delegate()
+                        {
+                            Program.logCoord.WriteLog("Id :[" + temp.userId + "] 안드로이드 체크해제 되어 있어서 푸시 안보냄");
+                        }));
                     }
-                }                    
+                }
             }
             int count = count1 + count2;
-            Program.logCoord.WriteLog("아이폰 " + count1 + " 명");
-            Program.logCoord.WriteLog("안드로이드 " + count2 + " 명");
-            Program.logCoord.WriteLog("총 " + count + " 명에게 푸쉬메세지를 전송했습니다");
-            Program.logCoord.WriteLog("내용:[" + text + "]");
+            this.Invoke(new MethodInvoker(delegate()
+            {
+                Program.logCoord.WriteLog("아이폰 " + count1 + " 명");
+                Program.logCoord.WriteLog("안드로이드 " + count2 + " 명");
+                Program.logCoord.WriteLog("총 " + count + " 명에게 푸쉬메세지를 전송했습니다");
+                Program.logCoord.WriteLog("내용:[" + text + "]");
 
-            textBox1.Text = "";
+                txtTarget.Text = "";    // 지정 대상 ID 삭제
+                if (chkInit.Checked)
+                    textBox1.Text = ""; // 체크되어있으면 보낸 내용을 삭제
+            }));
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Thread t1 = new Thread(new ThreadStart(SendPush));
+            t1.Start();
         }
 
         private void CheckTarget()
@@ -273,6 +329,11 @@ namespace Server
         private void lblTarget_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void chkInit_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
 
 

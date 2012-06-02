@@ -13,7 +13,7 @@ namespace Server
 
         public DatabaseCoordinator()
         {
-            connection = new SqlConnection("Password=sksmsrhksflwkek;Persist Security Info=True;User ID=DBAdmin;Initial Catalog=Meeple;Data Source=RENT-1177\\SQLEXPRESS");
+            connection = new SqlConnection("Password=sksmsrhksflwkek;Persist Security Info=True;User ID=DBAdmin;Initial Catalog=Meeple;Data Source=WINDOWS-2CFD36G\\SQLEXPRESS");
         }
 
         public List<IdAndPush> GetIdAndPush()
