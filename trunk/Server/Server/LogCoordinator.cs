@@ -36,17 +36,23 @@ namespace Server
         {
             logger.Debug(log);
 
-            lock ( logs )
+            try
             {
-                if ( logs.InvokeRequired )
+                lock (logs)
                 {
-                    WriteLogCallback writeLogCallback = new WriteLogCallback( WriteLog );
-                    logs.Invoke( writeLogCallback );
+                    if (logs.InvokeRequired)
+                    {
+                        WriteLogCallback writeLogCallback = new WriteLogCallback(WriteLog);
+                        logs.Invoke(writeLogCallback);
+                    }
+                    else
+                    {
+                        logs.AppendText(log + "\r\n");
+                    }
                 }
-                else
-                {
-                    logs.AppendText( log + "\r\n" );
-                }
+            }
+            catch (Exception ex)
+            {
             }
         }
 

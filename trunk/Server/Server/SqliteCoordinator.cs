@@ -57,13 +57,18 @@ namespace Server
             }
         }
 
-        public void EndChatNew(string localAccount, string oppoAccount)
+        // 끝난 채팅의 sqlite db3 파일을 이동시킴. (return: 이동시킨 파일의 경로)
+        public string EndChatNew(string localAccount, string oppoAccount)
         {
+            string strEndPath = "";
+
             if (File.Exists(DbPath(localAccount + "_" + oppoAccount)))
             {
+                
                 try
                 {
-                    File.Move(DbPath(localAccount + "_" + oppoAccount), DbPath(localAccount + "_" + oppoAccount + DateTime.Today.ToString("yyyyMMddhmm")));
+                    strEndPath = DateTime.Today.ToString("yyyyMMddhmm");
+                    File.Move(DbPath(localAccount + "_" + oppoAccount), DbPath(localAccount + "_" + oppoAccount + strEndPath));
                 }
                 catch
                 {
@@ -82,6 +87,8 @@ namespace Server
 
                 }
             }
+
+            return strEndPath;
         }
 
         public int LastRequestedChat( string account )

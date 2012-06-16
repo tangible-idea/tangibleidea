@@ -5,13 +5,15 @@ using System.Text;
 using System.Net;
 using System.Collections.Specialized;
 using System.IO;
+using System.Threading;
 
 namespace Server
 {
     public class AndroidPushProvider
     {
 
-        public const string AUTH_TOKEN = "DQAAAAMBAAASJFtBQLVy0jmaEnHJ_yLwr6hrchyOG2Fwea7JWMjKQiGX8CC1zU1z9DWkF63agiQ-I7dsYraK9p_Tfr14wWAvTzlYwpXZJmly9BQNUiYFFIMSa5tik0YnpJiweyQxHaymhlLT9VTnZRKExigwFMwNE5aYxU53RIQ_lafRm7_mQYv3je9HCNMmTUw5xE1OjFiQRo29JkQeEUU74rqufMT-GEsUaWRdOpePS-qwgix6cXG2RLdxUC4aL3NwqMPWLrsZ6V-QWncY70Xwnn-pmGKK76VUUUz0E4MRw3gXkdaHyfw9WERQLITTV9f_zyII2BGkVXmK1CBEpk-CNIn8ACGO1Tr13T5cXDUnV08dqyWmtg";
+        //public const string AUTH_TOKEN = "DQAAAAMBAAASJFtBQLVy0jmaEnHJ_yLwr6hrchyOG2Fwea7JWMjKQiGX8CC1zU1z9DWkF63agiQ-I7dsYraK9p_Tfr14wWAvTzlYwpXZJmly9BQNUiYFFIMSa5tik0YnpJiweyQxHaymhlLT9VTnZRKExigwFMwNE5aYxU53RIQ_lafRm7_mQYv3je9HCNMmTUw5xE1OjFiQRo29JkQeEUU74rqufMT-GEsUaWRdOpePS-qwgix6cXG2RLdxUC4aL3NwqMPWLrsZ6V-QWncY70Xwnn-pmGKK76VUUUz0E4MRw3gXkdaHyfw9WERQLITTV9f_zyII2BGkVXmK1CBEpk-CNIn8ACGO1Tr13T5cXDUnV08dqyWmtg";
+        public const string AUTH_TOKEN = "DQAAAAUBAABHJ_XQ4IGHjIjbXyQezrdInkLGxLmUmMw8AyCe7s6FtXqnNJDQttvPvbWuY81KGF500EzxJg9QgEP0ageuOuzVwVuPHU-dteqOjMJDXtCrJvmd7LscNSvBukouGY0C1zjmr_woAe9hl7Y7CMv-0w26zi03PH9sXI8BDfOI5k9ov2crx19IZ51I9lnhlq2rgnqAoHHjhJ0qU_glZOlqWZDlboWlN2NeevrG9fm7lOQXOf82eaBnnaMPFeqmeETp3gQD6M5aHy_ItgcXtdIg4p6ViHsWPLEpkPQr5XMOtwF9AmXvYhMJELBXHhvPphbDOgvffnp1l-LaHE3X4Y2pYs2L9Y6JdZkPswKfsStC1FNR-Q";
 
         public AndroidPushProvider()
         {
