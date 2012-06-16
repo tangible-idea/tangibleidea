@@ -695,7 +695,7 @@ namespace Server
                 }
             }
         }
-
+        
         // 멘티가 몇명의 멘토와 연결되어있는지(추천 중인 것 포함) 리턴, 실패하면 0 리턴
         public int CountMenteeRecommendation( string menteeAccount )
         {
@@ -1065,6 +1065,155 @@ namespace Server
                 {
                     if ( connection != null
                         && connection.State == ConnectionState.Open )
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
+        // 1,0 상태이고 추천한지 2분이 된 리스트를 1,1으로 만들어준다.
+        public List<string> AutoMenteeRecommendation()
+        {
+            lock (connection)
+            {
+                List<string> result = new List<string>();
+                try
+                {
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand command = new SqlCommand("AutoMenteeRecommendation", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        result.Add((reader["MentorAccount"] as string));
+                    }
+                    connection.Close();
+                    return result;
+                }
+                catch (Exception)
+                {
+                    return result;
+                }
+                finally
+                {
+                    if (connection != null
+                        && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
+        // AutoMentorRecommendation 으로부터 MenteeAccount string을 받아서 confrim해준다.
+        public int AutoMenteeRecommendationConfirm(string account)
+        {
+            lock (connection)
+            {
+                try
+                {
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand command = new SqlCommand("AutoMenteeRecommendationConfirm", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@MentorAccount", SqlDbType.NVarChar).Value = account;
+                    SqlDataReader reader = command.ExecuteReader();
+                    
+                    int ret = Convert.ToInt32(command.Parameters["return_value"].Value);
+                    connection.Close();
+                    return ret;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+                finally
+                {
+                    if (connection != null
+                        && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
+        // 0,0 상태이고 추천한지 2분이 된 리스트를 1,0으로 만들어준다.
+        public List<string> AutoMentorRecommendation()
+        {
+            lock (connection)
+            {
+                List<string> result = new List<string>();
+
+                try
+                {
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand command = new SqlCommand("AutoMentorRecommendation", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    SqlDataReader reader = command.ExecuteReader();
+                    
+
+                    while (reader.Read())
+                    {
+                        result.Add((reader["MenteeAccount"] as string));
+                    }
+                    connection.Close();
+                    return result;
+                }
+                catch (Exception)
+                {
+                    return result;
+                }
+                finally
+                {
+                    if (connection != null
+                        && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
+        // AutoMentorRecommendation 으로부터 MenteeAccount string을 받아서 confrim해준다.
+        public int AutoMentorRecommendationConfirm(string account)
+        {
+            lock (connection)
+            {
+                try
+                {
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand command = new SqlCommand("AutoMentorRecommendationConfirm", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@MenteeAccount", SqlDbType.NVarChar).Value = account;
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    int ret = Convert.ToInt32(command.Parameters["return_value"].Value);
+                    connection.Close();
+                    return ret;
+                }
+                catch (Exception e)
+                {
+                    //Console.WriteLine(e.ToString());
+                    return -1;
+                }
+                finally
+                {
+                    if (connection != null
+                        && connection.State == ConnectionState.Open)
                     {
                         connection.Close();
                     }
@@ -1691,32 +1840,6 @@ namespace Server
             return 1;
         }
     }
-
-
-    //public class ThreadGoTo_1
-    //{
-    //    public void Go()
-    //    {
-    //        for (int i = 0; i < 25; i++)
-    //        {
-    //            Console.Write("A_"+i.ToString() + " | ");
-    //        }
-    //    }
-    //}
-    //public class ThreadGoTo_2
-    //{
-    //    public void Go()
-    //    {
-    //        for (int i = 0; i < 25; i++)
-    //        {
-    //            if (i == 10)
-    //            {
-    //                Thread.Sleep(1000);
-    //            }
-    //            Console.Write("B"+i.ToString() + " | ");
-    //        }
-    //    }
-    // }
-
+    
 
 }

@@ -1442,6 +1442,64 @@ namespace Server
             }
         }
 
+        // 채팅 끝내기 (안드로이드용) 끝난 sqlite파일명을 가져오기 위해서 string return 한다.
+        public string CloseChattingAndroid(string localAccount, string oppoAccount, string session)
+        {
+            if (Program.onlineCoord.GetSession(localAccount) != session)
+            {
+                Program.logCoord.WriteLog(localAccount + "\tsession이 틀렸음\t" + DateTime.Now);
+                return "0";
+            }
+
+            if (Program.dbCoord.IsMentor(localAccount))
+            {
+                if (Program.dbCoord.DeleteRecommendation(localAccount, oppoAccount) == 0)
+                {
+                    Program.logCoord.WriteLog(localAccount + "\tCloseChatting\t" + oppoAccount);
+                    string res= Program.sqliteCoord.EndChatNew(localAccount, oppoAccount);
+
+                    // 안드로이드용 푸시
+                    string nick = Program.dbCoord.GetMentorInfo(localAccount).Name;
+                    string pushAndroid = Program.dbCoord.GetAndroidDeviceToken(oppoAccount);
+                    Program.AndroidPushProvider.sendMessage(pushAndroid, nick + " Mentor님과의 대화가 종료되었습니다.", "end");
+
+                    Program.onlineCoord.OnlineMentor.Remove(localAccount);
+                    Program.onlineCoord.OnlineMentor.Add(localAccount);
+                    return res;
+                }
+                else
+                {
+                    Program.logCoord.WriteLog(localAccount + "\tDb에서 CloseChatting 실행이 망함\t" + oppoAccount);
+                    // 이런 경우가 있으면 안되는데...
+                    return "0";
+                }
+            }
+            else
+            {
+                if (Program.dbCoord.DeleteRecommendation(oppoAccount, localAccount) == 0)
+                {
+                    Program.logCoord.WriteLog(oppoAccount + "\tCloseChatting\t" + localAccount);
+                    string res= Program.sqliteCoord.EndChatNew(localAccount, oppoAccount);                    
+
+                    // 안드로이드용 푸시
+                    string nick = Program.dbCoord.GetMenteeInfo(localAccount).Name;
+                    string pushAndroid = Program.dbCoord.GetAndroidDeviceToken(oppoAccount);
+                    Program.AndroidPushProvider.sendMessage(pushAndroid, nick + " Mentee님과의 대화가 종료되었습니다.", "end");
+
+
+                    Program.onlineCoord.OnlineMentee.Remove(localAccount);
+                    Program.onlineCoord.OnlineMentee.Add(localAccount);
+                    return res;
+                }
+                else
+                {
+                    Program.logCoord.WriteLog(localAccount + "\tDb에서 CloseChatting 실행이 망함\t" + oppoAccount);
+                    // 이런 경우가 있으면 안되는데...
+                    return "0";
+                }
+            }
+        }
+
         public bool AddRelation( string localAccount, string oppoAccount, string session )
         {
             if ( Program.onlineCoord.GetSession( localAccount ) != session)

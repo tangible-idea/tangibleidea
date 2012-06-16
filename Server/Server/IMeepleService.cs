@@ -177,9 +177,15 @@ namespace Server
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         int LastRealChatIdNew(string localAccount, string oppoAccount, string session);
 
+        // 채팅 끝내기 (아이폰용)
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         bool CloseChatting( string localAccount, string oppoAccount, string session );
+
+        // 채팅 끝내기 (안드로이드용) 끝난 sqlite파일명을 가져오기 위해서 string return 한다.
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        string CloseChattingAndroid(string localAccount, string oppoAccount, string session);
 
         [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]

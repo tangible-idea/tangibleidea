@@ -11,6 +11,7 @@ using System.ServiceModel.Web;
 using System.ServiceModel.Description;
 using log4net;
 using log4net.Config;
+using System.Threading;
 
 namespace Server
 {
@@ -18,7 +19,9 @@ namespace Server
     {
         ServiceHost serviceHost = null;
         private System.Timers.Timer timer = null;
+        private System.Timers.Timer timer_AutoRecommendations = null;
         private static int nTimerCount = 0;
+        private static int nAutoTimerCount = 0;
 
         public MainForm()
         {
@@ -33,8 +36,12 @@ namespace Server
             
             // 타이머 설정 부분
             timer = new System.Timers.Timer();
-            timer.Interval = 300000;    // 추천 interval
+            timer.Interval = 300100;    // 추천 interval (5분)
             timer.Elapsed += new System.Timers.ElapsedEventHandler( timer_Elapsed );
+
+            timer_AutoRecommendations = new System.Timers.Timer();
+            timer_AutoRecommendations.Interval = 55000;    // 2분마다 자동으로 수락해주는 타이머 (55초 interval)
+            timer_AutoRecommendations.Elapsed += new System.Timers.ElapsedEventHandler(timer_AutoRecommendations_Elapsed);
         }
         private static Random random = new Random();
 
@@ -55,11 +62,59 @@ namespace Server
             return list;
         }
 
-        
-
-        // 타이머 도달마다...
-        private void timer_Elapsed( object sender, System.Timers.ElapsedEventArgs e )
+        private void timer_AutoRecommendations_Elapsed()
         {
+            Program.logCoord.WriteOnlyTextLog("===== 자동 추천 타이머 동작 =====");
+
+            List<string> MentorAccounts = Program.dbCoord.AutoMenteeRecommendation();
+            foreach (string mentorAccount in MentorAccounts)
+            {
+                Program.dbCoord.AutoMenteeRecommendationConfirm(mentorAccount);
+                if (Program.dbCoord.IsApple(mentorAccount))   // 애플이면
+                {
+                    //Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 아이폰을 쓰고있으니까 아이폰 푸시를 날려주자");
+                    int count = GetMenteeBadgeCount(mentorAccount);
+                    string pushToken = Program.dbCoord.GetDeviceToken(mentorAccount);
+                    Program.pushProvider.SendPushMessage(pushToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", count, "default", "3");
+                }
+                else
+                {
+                    //Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 안드로이드를 쓰고있으니까 안드로이드 푸시를 날려주자");
+                    string androidToken = Program.dbCoord.GetAndroidDeviceToken(mentorAccount);
+                    Program.AndroidPushProvider.sendMessage(androidToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", "recommend");
+                }
+            }
+
+            List<string> MenteeAccounts = Program.dbCoord.AutoMentorRecommendation();
+            foreach (string menteeAccount in MenteeAccounts)
+            {
+                Program.dbCoord.AutoMentorRecommendationConfirm(menteeAccount);
+                if (Program.dbCoord.IsApple(menteeAccount))   // 애플이면
+                {
+                    //Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 아이폰을 쓰고있으니까 아이폰 푸시를 날려주자");
+                    int count = GetMenteeBadgeCount(menteeAccount);
+                    string pushToken = Program.dbCoord.GetDeviceToken(menteeAccount);
+                    Program.pushProvider.SendPushMessage(pushToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", count, "default", "3");
+                }
+                else
+                {
+                    //Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 안드로이드를 쓰고있으니까 안드로이드 푸시를 날려주자");
+                    string androidToken = Program.dbCoord.GetAndroidDeviceToken(menteeAccount);
+                    Program.AndroidPushProvider.sendMessage(androidToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", "recommend");
+                }
+            }
+        }
+
+
+        private void timer_AutoRecommendations_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Thread t2 = new Thread(new ThreadStart(timer_AutoRecommendations_Elapsed));
+            t2.Start();
+        }
+
+        private void timer_Elapsed_Thread()
+        {
+
             ++nTimerCount;
             if (nTimerCount == 288) // 하루가 지나면 카운트 초기화
             {
@@ -67,18 +122,18 @@ namespace Server
                 Program.logCoord.ClearLog();    // 로그 클리어
             }
 
-            Program.logCoord.WriteOnlyTextLog("=====하루중 "+ nTimerCount +"번째 타이머 도달했습니다.=====");
+            Program.logCoord.WriteOnlyTextLog("=====하루중 " + nTimerCount + "번째 타이머 도달했습니다.=====");
 
             //Program.logCoord.WriteLog("timer_Elapsed");
             //if ( DateTime.Now.Hour >= 7 && DateTime.Now.Hour < 24 )// && DateTime.Now.Minute % 43 == 0 )
             Program.dbCoord.DeleteRecommendations();
-            Program.onlineCoord.OnlineMentor= ShuffleList(Program.onlineCoord.OnlineMentor);    // 멘토리스트를 셔플해준다.
+            Program.onlineCoord.OnlineMentor = ShuffleList(Program.onlineCoord.OnlineMentor);    // 멘ta토리스트를 셔플해준다.
 
-            foreach ( string mentorAccount in Program.onlineCoord.OnlineMentor )
+            foreach (string mentorAccount in Program.onlineCoord.OnlineMentor)
             {//
                 //Program.logCoord.WriteOnlyTextLog(">멘토 " + mentorAccount + "에게 추천해줄 멘티를 찾아보자");
-                int numberOfMentees = Program.dbCoord.CountMentorRecommendation( mentorAccount );   // 멘토 계정에 추천되어있는 멘티 수
-               // Program.logCoord.WriteOnlyTextLog("->이 멘토에게 할당된 "+numberOfMentees+"명의 멘티가 있군...");
+                int numberOfMentees = Program.dbCoord.CountMentorRecommendation(mentorAccount);   // 멘토 계정에 추천되어있는 멘티 수
+                // Program.logCoord.WriteOnlyTextLog("->이 멘토에게 할당된 "+numberOfMentees+"명의 멘티가 있군...");
                 if (numberOfMentees < 3) // 가 3명 미만이면
                 {
                     //Program.logCoord.WriteOnlyTextLog("-->이 멘토에게 "+ (3-numberOfMentees)+"명의 멘티를 더 붙여주자");
@@ -89,7 +144,7 @@ namespace Server
                             //Program.logCoord.WriteOnlyTextLog("--->멘티 " + menteeAccount+"는 어떨까..?");
                             if (Program.dbCoord.CountMenteeRecommendation(menteeAccount) == 0)  // 멘토의 추천이 없는 멘티만 골라서
                             {
-                               // Program.logCoord.WriteOnlyTextLog("---->이 멘티는 멘토가 없군! 매칭 시켜줘야겟다! ["+mentorAccount+"]<-매칭준비->["+menteeAccount+"]");
+                                // Program.logCoord.WriteOnlyTextLog("---->이 멘티는 멘토가 없군! 매칭 시켜줘야겟다! ["+mentorAccount+"]<-매칭준비->["+menteeAccount+"]");
                                 if (Program.dbCoord.AddRecommendation(mentorAccount, menteeAccount) == 0)   // 추천해줌
                                 {
                                     if (Program.dbCoord.IsApple(mentorAccount))   // 애플이면
@@ -97,13 +152,13 @@ namespace Server
                                         //Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 아이폰을 쓰고있으니까 아이폰 푸시를 날려주자");
                                         int count = GetMenteeBadgeCount(mentorAccount);
                                         string pushToken = Program.dbCoord.GetDeviceToken(mentorAccount);
-                                        //Program.pushProvider.SendPushMessage(pushToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", count, "default", "3");
+                                        Program.pushProvider.SendPushMessage(pushToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", count, "default", "3");
                                     }
                                     else
                                     {
                                         //Program.logCoord.WriteOnlyTextLog("----->매칭이 완료됬당. 멘토가 안드로이드를 쓰고있으니까 안드로이드 푸시를 날려주자");
                                         string androidToken = Program.dbCoord.GetAndroidDeviceToken(mentorAccount);
-                                        //Program.AndroidPushProvider.sendMessage(androidToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", "recommend");
+                                        Program.AndroidPushProvider.sendMessage(androidToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", "recommend");
                                     }
                                     break;
                                 }
@@ -129,12 +184,12 @@ namespace Server
 
             //Program.logCoord.WriteOnlyTextLog(">더 이상 온라인 멘토가 없군... 그러면 상태를 다시 한번 확인해보자");
 
-            for( int i=0; i<Program.onlineCoord.OnlineMentor.Count; ++i)
+            for (int i = 0; i < Program.onlineCoord.OnlineMentor.Count; ++i)
             {
-                int nStat= Program.dbCoord.GetMentorActiveStatus( Program.onlineCoord.OnlineMentor[i] );
-                Program.onlineCoord.MentorStatus[i]= nStat;
-                
-                Program.logCoord.WriteOnlyTextLog("=>멘토 " + Program.onlineCoord.OnlineMentor[i] + "의 상태는 " + nStat + "이군...");
+                int nStat = Program.dbCoord.GetMentorActiveStatus(Program.onlineCoord.OnlineMentor[i]);
+                Program.onlineCoord.MentorStatus[i] = nStat;
+
+                //Program.logCoord.WriteOnlyTextLog("=>멘토 " + Program.onlineCoord.OnlineMentor[i] + "의 상태는 " + nStat + "이군...");
             }
 
 
@@ -143,10 +198,17 @@ namespace Server
                 int nStat = Program.dbCoord.GetMenteeActiveStatus(Program.onlineCoord.OnlineMentee[i]);
                 Program.onlineCoord.MenteeStatus[i] = nStat;
 
-                Program.logCoord.WriteOnlyTextLog("=>멘티 " + Program.onlineCoord.OnlineMentee[i] + "의 상태는 " + nStat + "이군...");
+                //Program.logCoord.WriteOnlyTextLog("=>멘티 " + Program.onlineCoord.OnlineMentee[i] + "의 상태는 " + nStat + "이군...");
             }
 
-            Program.logCoord.WriteOnlyTextLog("=====타이머가 할일이 끝났다. 다음 타이머를 기다리자=====");
+            //Program.logCoord.WriteOnlyTextLog("=====타이머가 할일이 끝났다. 다음 타이머를 기다리자=====");
+        }
+
+        // 타이머 도달마다...
+        private void timer_Elapsed( object sender, System.Timers.ElapsedEventArgs e )
+        {
+            Thread t1 = new Thread(new ThreadStart(timer_Elapsed_Thread));
+            t1.Start();
         }
 
 
@@ -246,6 +308,7 @@ namespace Server
             serviceHost.AddServiceEndpoint( typeof( IMeepleService ), webHttpBinding, "" ).Behaviors.Add( new WebHttpBehavior() );
             serviceHost.Open();
             timer.Enabled = true;
+            timer_AutoRecommendations.Enabled = true;
         }
 
         private void Form1_FormClosed( object sender, FormClosedEventArgs e )
