@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -75,6 +76,7 @@ public class SendMessageActivity extends Activity implements OnClickListener
 	{
 		if(v.getId()==R.id.btn_message_send)
 		{
+try{
 			if(!strMessage.equals(""))	// 내용이 있다면
 			{
 				if(	RM.SendMessage(mContext, getIntent().getStringExtra("id"), strMessage ) )
@@ -83,9 +85,13 @@ public class SendMessageActivity extends Activity implements OnClickListener
 					finish();
 				}
 				else
-					ShowAlertDialog("전송 결과", "쪽지 보내기 실패", "확인");
-					
+					ShowAlertDialog("전송 결과", "쪽지 보내기 실패", "확인");		
 			}
+}catch(Exception ex)
+{
+	Log.e("SendMessageActivity::btn_message_send click", ex.toString());
+	ShowAlertDialog("전송 결과", "쪽지 보내기 오류", "확인");
+}
 		}
 	}
 	

@@ -166,14 +166,19 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		FinishAndSaveChatThread.start();
 	}
 	
-    private Runnable FinishChatThread = new Runnable()	// 채팅목록을 가져오는 스레드
+    private Runnable FinishChatThread = new Runnable()	// 끝난 대화를 저장하는 스레드
     {
     	public void run()
     	{
     		UIHandler.sendEmptyMessage(10);	// 대화를 저장한다.
     		
     		DBManager DBMgr= new DBManager(mContext);    		
-    		DBMgr.InsertEndChatInfo(ChatMgr.getCurrOppoAccount(), ChatMgr.getCurrOppoName(), GetChatsLastOne().getChat(), GetChatsLastOne().getDateTime());
+    		DBMgr.InsertEndChatInfo(
+    				ChatMgr.getCurrOppoAccount(),
+    				ChatMgr.getCurrOppoName(),
+    				ChatMgr.getEndPath(),
+    				GetChatsLastOne(true).getChat(),
+    				GetChatsLastOne(true).getDateTime());
     		DBMgr.DBClose();
     		
     		UIHandler.sendEmptyMessage(11);	// 대화를 저장한다.
@@ -195,8 +200,12 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
     	UIHandler.sendEmptyMessage(99);
     	
 		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
+					
+		String strCurrChatID= ChatMgr.getCurrChatID();
+		if(strCurrChatID==null)
+			return;
 		
-		int nLastChatID= Integer.parseInt( ChatMgr.getCurrChatID() );
+		int nLastChatID= Integer.parseInt( strCurrChatID );
 		
 		if( nLastChatID < range )	// 채팅 개수가 25개(기본값) 미만이면
 		{
@@ -221,17 +230,31 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		UIHandler.sendEmptyMessage(0); // UI 새로고침
     }
     
-    // 채팅 마지막 한개만 가져온다.
-    public Chat GetChatsLastOne()
+    /**
+     * 
+     * @param bEnd : 끝난 채팅인가?
+     * @return : 채팅 마지막 한개만 가져온다.
+     */
+    public Chat GetChatsLastOne(boolean bEnd)
     {
     	Chat res= null;
+    	int nLastChatID=0;
 
-    	ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
-    	int nLastChatID= Integer.parseInt( ChatMgr.getCurrChatID() );
+    	if(bEnd)
+    		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()+ChatMgr.getEndPath()) );
+    	else
+    		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
     	
-    	Log.d("InChatActivity::GetChatsLastOne", "last chat id : "+nLastChatID);
+    	nLastChatID= Integer.parseInt(ChatMgr.getCurrChatID());
     	
-		res= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), Integer.toString(nLastChatID-1) ).get(0);
+try{	// 인채팅에서 마지막꺼 가져올때 못가져오면
+    	Log.d("InChatActivity::GetChatsLastOne", "last chat id : "+ ChatMgr.getCurrChatID());
+    	res= RM.GetEndChats(mContext, ChatMgr.getCurrOppoAccount(), ChatMgr.getEndPath(), Integer.toString(nLastChatID-1) ).get(0);
+		//res= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), Integer.toString(nLastChatID-1) ).get(0);
+}catch(Exception ex)
+{
+	res= new Chat(SPUtil.getString(mContext, "AccountID"), ChatMgr.getCurrOppoName(), "[끝난 대화]", "[시각]", "0");
+}
 		
 		return res;
     }
@@ -442,8 +465,8 @@ try{
 	        {
 	            public void onClick(DialogInterface dialog, int whichButton)
 	            {
-	            	StartFinishThread();	// 끝낸 대화 정보를 저장한다.
-	    			RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount());
+	    			ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
+	    			StartFinishThread();	// 끝낸 대화 정보를 저장한다.
 	    			finish();
 	            }
 	        })

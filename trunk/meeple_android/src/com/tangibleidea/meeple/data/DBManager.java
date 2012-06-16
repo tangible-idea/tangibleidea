@@ -57,13 +57,14 @@ public class DBManager extends DBCore
 	 * @param lastChat : 마지막 채팅
 	 * @param date : 끝낸 날짜
 	 */
-	public void InsertEndChatInfo(String oppoAccount, String oppoName, String lastChat, String date)
+	public void InsertEndChatInfo(String oppoAccount, String oppoName, String endPath, String lastChat, String date)
 	{
 		ContentValues CV= new ContentValues();
 		CV.put("my_account", SPUtil.getString(mContext, "AccountID"));
 		CV.put("oppo_account", oppoAccount);
+		CV.put("end_path", endPath);
 		CV.put("name", oppoName);
-		CV.put("last_chat", lastChat);
+		CV.put("last_chat", lastChat); 
 		CV.put("date", date);
 		
 		Long lRow= DB.insert(Global.DB_TABLE_ENDCHAT, "0", CV);
@@ -82,7 +83,7 @@ public class DBManager extends DBCore
 	{
 		ArrayList<RecentTalkEntry> res= new ArrayList<RecentTalkEntry>();
 		
-		String[] strCol= {"my_account", "oppo_account", "name", "last_chat", "date"};
+		String[] strCol= {"my_account", "oppo_account", "end_path", "name", "last_chat", "date"};
 		
 		Cursor CS= this.GetCursorFromDB(Global.DB_TABLE_ENDCHAT, strCol);
 		
@@ -91,7 +92,15 @@ public class DBManager extends DBCore
 			do
 			{
 				if( CS.getString(0).equals(SPUtil.getString(mContext, "AccountID")) )	// DB에 저장된 정보가 나의 정보가 일치하면
-					res.add(new RecentTalkEntry(EnumRecentTalkStatus.E_FINISHED_TALK, "0", CS.getString(1), CS.getString(2), CS.getString(3), "0", CS.getString(4)));
+					res.add(new RecentTalkEntry(
+							EnumRecentTalkStatus.E_FINISHED_TALK,
+							CS.getString(2),
+							"0",
+							CS.getString(1),
+							CS.getString(3),
+							CS.getString(4),
+							"0",
+							CS.getString(5)));
 			}
 			while(CS.moveToNext());
 		}

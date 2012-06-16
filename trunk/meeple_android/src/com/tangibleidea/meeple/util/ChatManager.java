@@ -3,6 +3,7 @@ package com.tangibleidea.meeple.util;
 
 public class ChatManager
 {
+	private String EndPath="";			// sqlite에서 대화 끝날때 쓰는 DateTime (accountID+oppoID+DateTime 형식 중 DateTime) 
 	private String C2DMoppoAccount="";	// C2DM으로 왔음. pending된 intent로 갈때 채팅할 상대방ID
 	private String CurrOppoAccount="";	// 현재 나와 대화하고 있는 사람 계정
 	private String CurrOppoName="";		// 현재 나와 대화하고 있는 사람 이름
@@ -96,6 +97,22 @@ public class ChatManager
 	public void setCurrChatID(String currChatID)
 	{
 		CurrChatID = currChatID;
+	}
+
+	/**
+	 * @return the endPath
+	 */
+	public String getEndPath()
+	{
+		return EndPath;
+	}
+
+	/**
+	 * @param endPath the endPath to set
+	 */
+	public void setEndPath(String endPath)
+	{
+		EndPath = endPath;
 	}
 	
 }

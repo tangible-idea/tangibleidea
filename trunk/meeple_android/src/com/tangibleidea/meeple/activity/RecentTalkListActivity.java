@@ -93,7 +93,7 @@ public class RecentTalkListActivity extends ListActivity
     	{
     		if( !arraylist.isEmpty() )	// arraylist에 뭔가 들어가 있으면...
     			arraylist.clear();		// 지워주자.
-    		arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_LABEL_INPROGRESS, null, null, null, null, null, null));	// 첫번째는 구분자로 들어가자.
+    		arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_LABEL_INPROGRESS, "", null, null, null, null, null, null));	// 첫번째는 구분자로 들어가자.
     		
     		boolean isMentor= SPUtil.getBoolean(mContext, "isMentor");
     		
@@ -155,7 +155,7 @@ public class RecentTalkListActivity extends ListActivity
 			{
 				for(MenteeInfo tee : InProgress_tees)
 				{
-					arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "0",  tee.getAccountId(), tee.getName(), "대화내용 없음", "0", ""));
+					arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "", "0",  tee.getAccountId(), tee.getName(), "대화내용 없음", "0", ""));
 					//arraylist.add( new RecentTalkEntry(false, "0", tee.getAccountId(), tee.getName(), "대화내용 없음","0", "" ) );
 				}
 				
@@ -166,7 +166,7 @@ public class RecentTalkListActivity extends ListActivity
 			{
 				for(MentorInfo tor : InProgress_tors)
 				{
-					arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "0",  tor.getAccountId(), tor.getName(), "대화내용 없음", "0", ""));
+					arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "", "0",  tor.getAccountId(), tor.getName(), "대화내용 없음", "0", ""));
 					//arraylist.add( new RecentTalkEntry(false, "0", tor.getAccountId(), tor.getName(), "대화내용 없음","0", "" ) );
 				}
 				
@@ -215,13 +215,13 @@ public class RecentTalkListActivity extends ListActivity
 							arraylist.remove(i);
 						}
 					}
-					arraylist.add( new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, RC.getCount(), oppoID, oppoName, RC.getChat(), RC.getChatId(), RC.getDateTime()) );
+					arraylist.add( new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "", RC.getCount(), oppoID, oppoName, RC.getChat(), RC.getChatId(), RC.getDateTime()) );
 				}
 				
-				arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_LABEL_FINISHED, null, null, null, null, null, null));	// 끝나는 구분자 추가.
+				arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_LABEL_FINISHED, null, null, null, null, null, null, null));	// 끝나는 구분자 추가.
 				Endchat_Sperate= arraylist.size();
-				arraylist.addAll(DBMgr.GetEndChatInfo());
-				
+				arraylist.addAll(DBMgr.GetEndChatInfo());	// 끝난 것들 대화 리스트도 아래에 추가.
+				 
 				Adapter = new RecentTalkListAdapter(mContext, R.layout.entry_recent_talk, R.id.eName, arraylist);
 			    setListAdapter(Adapter); 
 			}
@@ -231,24 +231,33 @@ public class RecentTalkListActivity extends ListActivity
 	// 최근대화탭에서 항목을 선택했을 때
 	public void onListItemClick(ListView l, View v, int pos, long id)
 	{
-
-try	// 에러나면 구분자이므로 무시
-{
-		ChatMgr.setCurrOppoAccount( ( arraylist.get(pos).getAccountID() ) );
-		//ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(SPUtil.getString(mContext, "AccountID")+"_"+arraylist.get(pos).getAccountID(), "_id") ) );
-		ChatMgr.setCurrOppoName( arraylist.get(pos).getOppoName() );
-}
-catch(Exception e)
-{
-	return;
-}
-		if(pos < Endchat_Sperate)
+		String strAccountID;
+		
+		try	// 에러나면 구분자이므로 무시
 		{
+			strAccountID= arraylist.get(pos).getAccountID();
+		}
+		catch(Exception e)
+		{
+			return;
+		}
+
+		
+
+		if( pos < Endchat_Sperate )	// 끝난 대화 인가??
+		{
+			ChatMgr.setCurrOppoAccount( strAccountID );
+			ChatMgr.setCurrOppoName( arraylist.get(pos).getOppoName() );
+			//ChatMgr.setCurrChatID( Integer.toString( DBMgr.CountDBRows(SPUtil.getString(mContext, "AccountID")+"_"+arraylist.get(pos).getAccountID(), "_id") ) );
 			Intent intent=new Intent(mContext, InChatActivity.class);
 			startActivityForResult(intent, Global.s_nIntent_InChat);
 		}
 		else
 		{
+			ChatMgr.setCurrOppoAccount( strAccountID );
+			ChatMgr.setCurrOppoName( arraylist.get(pos).getOppoName() );
+			ChatMgr.setEndPath( arraylist.get(pos).getStrEndDate() );
+			
 			Intent intent=new Intent(mContext, EndChatActivity.class);
 			startActivityForResult(intent, Global.s_nIntent_InChat);
 		}
