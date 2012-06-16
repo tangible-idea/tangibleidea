@@ -12,7 +12,7 @@ public class C2DMAuth
 {
 private static String HOST = "https://www.google.com/accounts/ClientLogin";
 private static String EMAIL = Global.DEV_EMAIL;      //사용자 아이디
-private static String PASS = "apsxhfld";                 //비밀번호
+private static String PASS = "meeple@6845";                 //비밀번호
 private static String SOURCE = "android_push_meeple";   //어플리케이션에 대한 간단한 설명
 
 	public static String SetupC2DMAndroid() throws Exception

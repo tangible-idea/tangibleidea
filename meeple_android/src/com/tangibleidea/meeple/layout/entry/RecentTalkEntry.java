@@ -8,6 +8,7 @@ public class RecentTalkEntry
 	private String strCount;
 	private String strID;
 	private String strOppoName;
+	private String strEndDate;
 	private String strContent;
 	private String strChatID;
 	private String strTime;
@@ -15,6 +16,7 @@ public class RecentTalkEntry
 	/**
 	 * 최근대화엔트리 설정
 	 * @param bEndChat : 끝난 채팅인가요
+	 * @param strEndDate : 끝난 시각 (끝난 대화 조회시 사용함)
 	 * @param strCount : 새로운 채팅이 몇개인가?
 	 * @param strOppoID : 상대방 ID
 	 * @param strOppoName : 상대방 이름
@@ -22,10 +24,12 @@ public class RecentTalkEntry
 	 * @param strChatID : 마지막 채팅 ID
 	 * @param strTime : 마지막 채팅 시간
 	 */
-	public RecentTalkEntry(EnumRecentTalkStatus stat, String strCount, String strOppoID, String strOppoName, String strContent, String strChatID, String strTime)
+	
+	public RecentTalkEntry(EnumRecentTalkStatus stat, String strEndDate, String strCount, String strOppoID, String strOppoName,  String strContent, String strChatID, String strTime)
 	{
 		super();
 		this.eSTAT= stat;
+		this.strEndDate= strEndDate;
 		this.strCount= strCount;
 		this.strID= strOppoID;
 		this.strOppoName= strOppoName;
@@ -52,6 +56,22 @@ public class RecentTalkEntry
 		return strCount;
 	}
 	
+	/**
+	 * @return the strEndDate
+	 */
+	public String getStrEndDate()
+	{
+		return strEndDate;
+	}
+
+	/**
+	 * @param strEndDate the strEndDate to set
+	 */
+	public void setStrEndDate(String strEndDate)
+	{
+		this.strEndDate = strEndDate;
+	}
+
 	public String getOppoName()
 	{
 		return strOppoName;

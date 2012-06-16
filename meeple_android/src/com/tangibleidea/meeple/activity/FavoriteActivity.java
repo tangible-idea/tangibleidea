@@ -53,9 +53,7 @@ public class FavoriteActivity extends ListActivity implements OnClickListener
         super.onCreate(savedInstanceState);
         
         RM= new RequestMethods();
-        
-
-     
+             
         setContentView(R.layout.favorite_list);
         mContext= this;
         LoadingDL = new ProgressDialog(mContext);

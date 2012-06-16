@@ -135,12 +135,12 @@ public class SelectUnivActivity extends ListActivity
 		if(searchKeyword.equals(""))	// 필터링목록이 없으면, 본목록을 띄워주고 있으면 필터링목록을 띄워줌	
 		{
 			list1 =  new UnivListAdapter(mContext, R.layout.entry_univ, R.id.eUnivName, arraylist);
-			bFiltered= true;
+			bFiltered= false;
 		}
 		else
 		{
 			list1 =  new UnivListAdapter(mContext, R.layout.entry_univ, R.id.eUnivName, arraylist_filt);
-			bFiltered= false;
+			bFiltered= true;
 		}
 		
 		setListAdapter(list1);

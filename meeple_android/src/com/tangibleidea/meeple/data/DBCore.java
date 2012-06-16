@@ -297,6 +297,7 @@ class DBCore
 				"_id INTEGER PRIMARY KEY AUTOINCREMENT, " + // _id(int,기본키,자동증가값)
 				"my_account TEXT, " +							// 나의 계정 정보(String)
 				"oppo_account TEXT, " +							// 상대방 계정 정보(String)
+				"end_path TEXT, " +							// 끝난 부분에 서버에서 DateTime 접미사로 붙임
 				"name TEXT, " +								// 상대방 이름 (String)
 				"last_chat TEXT, " +						// 마지막으로 받은 채팅 (String)
 				"date TEXT" +								// 시간 (String)
@@ -336,6 +337,9 @@ class DBCore
 		public void onUpgrade(SQLiteDatabase _DB, int oldVer, int newVer) 
 		{
 			Log.w(Global.LOG_TAG, "Upgrading database : " + oldVer + " to "+newVer + ", which will destroy all old data");
+			
+			_DB.execSQL("DROP TABLE IF EXISTS "+ Global.DB_TABLE_CHAT);
+			_DB.execSQL("DROP TABLE IF EXISTS "+ Global.DB_TABLE_ENDCHAT);
 			
 			CreateNewChatTable(_DB, Global.DB_TABLE_CHAT);
 			CreateEndChatInfoTable(_DB, Global.DB_TABLE_ENDCHAT);		

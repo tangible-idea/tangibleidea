@@ -38,7 +38,7 @@ public class Global
 	public static String s_MyUniv="";
 
 	
-	public static final int DB_VERSION= 4;						//
+	public static final int DB_VERSION= 6;						//
 	public static final String DB_NAME= "meeple_chat.db";			// DB 이름
 	public static final String DB_TABLE_CHAT= "chat_info";			// 대화 DB 테이블 이름
 	public static final String DB_TABLE_ENDCHAT= "endchat_info";			// 끝낸 대화 DB 정보 테이블 이름

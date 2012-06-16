@@ -102,7 +102,8 @@ public class EndChatActivity extends ListActivity implements OnScrollListener
 		}
 		else
 		{
-			chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), Integer.toString(nLastChatID-range) );	// 현재채팅부터 25번째까지 가져옴
+			chats= RM.GetEndChats(mContext, ChatMgr.getCurrOppoAccount(), ChatMgr.getEndPath(), Integer.toString(nLastChatID-range));
+			// 현재채팅부터 25번째까지 가져옴
 
 			if(chats==null)	// 가져오는데 실패하면 범위를 줄인다.
 			{
@@ -121,7 +122,7 @@ public class EndChatActivity extends ListActivity implements OnScrollListener
     // 모든 채팅을 다 가져온다.
     public void GetAllChats()
     {
-		chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), "0");	// 채팅 전부 가져옴
+    	chats= RM.GetEndChats(mContext, ChatMgr.getCurrOppoAccount(), ChatMgr.getEndPath(), "0");	// 채팅 전부 가져옴
 		InsertDateRowsInChat();
     }
     

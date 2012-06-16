@@ -32,7 +32,7 @@ import com.tangibleidea.meeple.util.SPUtil;
 
 public class RequestMethods
 {
-	String filter_word[] = {"\\?","\\(","\\)","\\;"}; 
+	String filter_word[] = {"\\?","\\(","\\)","\\;"};
 	
 	/**
 	 * 서버에서 리턴값 가져오기
@@ -58,6 +58,13 @@ public class RequestMethods
 	        InputStreamReader reader = new InputStreamReader(stream);
 	        reader.read(buffer);
 	        stream.close();
+	        
+	        if(buffer[0]=='"')	// 더블쿼테이션으로 시작하면
+	        {
+	        	String str= new String(buffer);	        	
+	        	str = str.replaceAll("\"","");	        	
+	        	buffer= str.toCharArray();
+	        }
 	        
 	         res= new String(buffer);
 	    }
@@ -1049,6 +1056,52 @@ public class RequestMethods
 	}
 	
 	/**
+	 * 인채팅에서 최근 채팅가져옴
+	 * @param oppoAccount
+	 * @param chat
+	 * @param bMentor
+	 * @return
+	 */
+	public List<Chat> GetEndChats(Context _context, String oppoAccount, String _strEndString, String nLastChatID)
+	{
+		List<Chat> res= new ArrayList<Chat>();
+		
+	    String URI = Global.SERVER + "GetChatsNew?"
+	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
+	      		+"&oppoAccount=" + oppoAccount + _strEndString
+	      		+"&session=" +SPUtil.getString(_context, "session")
+	      		+"&chatId=" + nLastChatID;
+	    
+	    try
+	    {
+		    JSONArray jarr= this.RequestJSONArrayToServer(URI);
+		    
+		    if(jarr == null)
+		    	return null;
+		    
+		    for(int i=0; i<jarr.length(); ++i)
+		    {
+		    	JSONObject json= jarr.getJSONObject(i);
+		    	String _chat= json.getString("chat");
+		    	String _chatId= json.getString("chatId");
+		    	String _dateTime= json.getString("dateTime");
+		    	String _receiverAccount= json.getString("receiverAccount");
+		    	String _senderAccount= json.getString("senderAccount");
+		    	res.add( new Chat(_senderAccount, _receiverAccount, _chat, _dateTime, _chatId) );
+		    }
+		}
+	    catch (JSONException e)
+	    {
+	    	Log.e( "JSONException", e.getMessage() );
+	    	res=null;
+		}
+	    
+	    Log.d("GetChatsNew::returned", URI);
+	    
+	    return res;
+	}
+	
+	/**
 	 * 멘티의 정보를 가져온다.
 	 * @param localAccount
 	 * @param oppoAccount
@@ -1158,16 +1211,14 @@ public class RequestMethods
 	 * @param oppoAccount : 끝낼 상대방 계정
 	 * @return : 성공/실패
 	 */
-	public boolean CloseChatting(Context _context, String oppoAccount)
+	public String CloseChatting(Context _context, String oppoAccount)
 	{	
-		String URI = Global.SERVER + "CloseChatting?"
+		String URI = Global.SERVER + "CloseChattingAndroid?"
 	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
 	      		+"&oppoAccount=" + oppoAccount
 	      		+"&session=" + SPUtil.getString(_context, "session");
 		
-		if( this.RequestStringToServer(URI).equals("true") )
-			return true;
-		return false;
+		return (this.RequestStringToServer(URI));
 	}
 	
 	
@@ -1286,7 +1337,7 @@ public class RequestMethods
 		String URI = Global.SERVER + "ChangeComment?"
 	      		+"account=" + SPUtil.getString(_context, "AccountID")
 	      		+"&session=" + SPUtil.getString(_context, "session")
-	      		+"&comment=" + comment; 
+	      		+"&comment=" + Uri.encode(comment); 
 		
 		if( RequestStringToServer(URI).equals("true") )
 			return true;
