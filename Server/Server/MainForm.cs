@@ -21,7 +21,7 @@ namespace Server
         private System.Timers.Timer timer = null;
         private System.Timers.Timer timer_AutoRecommendations = null;
         private static int nTimerCount = 0;
-        private static int nAutoTimerCount = 0;
+        //private static int nAutoTimerCount = 0;
 
         public MainForm()
         {
@@ -36,11 +36,11 @@ namespace Server
             
             // 타이머 설정 부분
             timer = new System.Timers.Timer();
-            timer.Interval = 300100;    // 추천 interval (5분)
+            timer.Interval = 600100;    // 추천 interval (5분->10분)
             timer.Elapsed += new System.Timers.ElapsedEventHandler( timer_Elapsed );
 
             timer_AutoRecommendations = new System.Timers.Timer();
-            timer_AutoRecommendations.Interval = 55000;    // 2분마다 자동으로 수락해주는 타이머 (55초 interval)
+            timer_AutoRecommendations.Interval = 115000;    // 2분마다 자동으로 수락해주는 타이머 (55초->1분55초 interval)
             timer_AutoRecommendations.Elapsed += new System.Timers.ElapsedEventHandler(timer_AutoRecommendations_Elapsed);
         }
         private static Random random = new Random();
@@ -64,7 +64,7 @@ namespace Server
 
         private void timer_AutoRecommendations_Elapsed()
         {
-            Program.logCoord.WriteOnlyTextLog("===== 자동 추천 타이머 동작 =====");
+            Program.logCoord.WriteOnlyTextLog("===== 자동 추천 타이머 동작 ===== ");
 
             List<string> MentorAccounts = Program.dbCoord.AutoMenteeRecommendation();
             foreach (string mentorAccount in MentorAccounts)
@@ -103,6 +103,8 @@ namespace Server
                     Program.AndroidPushProvider.sendMessage(androidToken, "새로운 멘티가 추천되었습니다. 확인해주세요.", "recommend");
                 }
             }
+
+            Program.logCoord.WriteOnlyTextLog("===== 자동 추천 타이머 동작 끝 ===== /// ");
         }
 
 
@@ -122,7 +124,7 @@ namespace Server
                 Program.logCoord.ClearLog();    // 로그 클리어
             }
 
-            Program.logCoord.WriteOnlyTextLog("=====하루중 " + nTimerCount + "번째 타이머 도달했습니다.=====");
+            Program.logCoord.WriteOnlyTextLog("=====하루중 " + nTimerCount + "번째 추천 타이머 도달=====");
 
             //Program.logCoord.WriteLog("timer_Elapsed");
             //if ( DateTime.Now.Hour >= 7 && DateTime.Now.Hour < 24 )// && DateTime.Now.Minute % 43 == 0 )
@@ -202,6 +204,7 @@ namespace Server
             }
 
             //Program.logCoord.WriteOnlyTextLog("=====타이머가 할일이 끝났다. 다음 타이머를 기다리자=====");
+            Program.logCoord.WriteOnlyTextLog("=====하루중 " + nTimerCount + "번째 추천 타이머 끝===== ///");
         }
 
         // 타이머 도달마다...
