@@ -7,6 +7,8 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Threading;
 
+//System.ArgumentNullException <-- 요걸로 뻑낫엇음
+
 namespace Server
 {
     public class AndroidPushProvider
@@ -34,12 +36,21 @@ namespace Server
         private const string POST_WEB_REQUEST = "POST";
 
 
-
-
-        // 푸쉬 메서드
-        public void sendMessage(string registrationId, string message, string type, string oppoaccount="null")
+        private void SendAndroidPushMessage(object objParam)
         {
-           
+            object[] param = (object[])objParam;
+
+            string registrationId = (string)param[0];
+            string message = (string)param[1];
+            string type = (string)param[2];
+            string oppoaccount = (string)param[3];
+
+            if (registrationId == null) // 채팅 end시에는 null로 올 수 있음...
+                registrationId = "";
+            if (oppoaccount == null)
+                oppoaccount = "";
+
+
             //Certeficate was not being accepted for the sercure call 
             //ServicePointManager.ServerCertificateValidationCallback += new RemoteCertificateValidationCallback(ValidateServerCertificate); 
 
@@ -55,7 +66,7 @@ namespace Server
             postFieldNameValue.Add(DATA_PAYLOAD_PARAM2, message);
             postFieldNameValue.Add(DATA_PAYLOAD_PARAM3, oppoaccount);
 
-            string postData = getPostStringFrom(postFieldNameValue);
+            string postData = getPostStringFrom(postFieldNameValue);    // PairValue를 post형태의 String으로 바꿔준다.
             byte[] byteArray = Encoding.UTF8.GetBytes(postData);
 
             request.ContentType = "application/x-www-form-urlencoded;charset=UTF-8";
@@ -84,6 +95,17 @@ namespace Server
             reader.Close();
 
             Program.logCoord.WriteLog("ANDROID_SENDPUSH : " + message);
+        }
+
+        // 푸쉬 메서드
+        public void sendMessage(string registrationId, string message, string type, string oppoaccount="")
+        {
+            ParameterizedThreadStart tc = new ParameterizedThreadStart(SendAndroidPushMessage);
+            Thread th = new Thread(tc);
+
+            object[] arrObject = new object[4] { registrationId, message, type, oppoaccount };  // 오브젝트 배열에 넣고
+            th.Start(arrObject);    // 스레드에 4가지 스트링을 전달한다.
+            
         }
 
         private string getPostStringFrom(NameValueCollection nameValuePair)

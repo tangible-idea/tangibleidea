@@ -55,7 +55,15 @@ namespace Server
         //{"aps":{"sound":"default","alert":"My alert message","badge":45}}
         public bool SendPushMessage( string push_device_id, string alert, int badge, string sound = "default", string custom_key = "")
         {
-            client = new TcpClient(hostname, port);
+            try // exception
+            {
+                client = new TcpClient(hostname, port);
+            }
+            catch (Exception ex)
+            {
+                Program.logCoord.WriteOnlyTextError("PushProvider::SendPushMessage::" + ex.ToString());
+            }
+
             if ( push_device_id.Length != 64 || push_device_id == "0000000000000000000000000000000000000000000000000000000000000000" )
                 return false;
             try
