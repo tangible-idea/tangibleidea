@@ -17,6 +17,7 @@ public class Global
 	//public final static String SERVER= "http://192.168.1.5:9091/MeepleService/";
 	//112.168.48.138
 	
+	public static ArrayList<InfoEntry> s_LIST_Recommendations= new ArrayList<InfoEntry>();
 	public static ArrayList<InfoEntry> s_LIST_Relations= new ArrayList<InfoEntry>();
 	
 	public static final int s_nRequest_Fail= -100;	//

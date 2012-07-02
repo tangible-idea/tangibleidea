@@ -25,7 +25,7 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 	Button BTN_join;
 	EditText EDT_ID, EDT_PW, EDT_email, EDT_name, EDT_school, EDT_grade;
 	Spinner SPN_gender, SPN_category;
-	String strGender="0";
+	String strGender="0", strCategory="0";
 	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -58,7 +58,7 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 	{
 		if(arg0==SPN_category)
 		{
-			
+			strCategory= Integer.toString(position);
 		}
 		
 		if(arg0==SPN_gender)
@@ -105,7 +105,8 @@ public class MenteeJoinActivity extends Activity implements OnClickListener, OnI
 							  EDT_name.getText().toString(),
 							  strGender,
 							  EDT_school.getText().toString(),
-							  EDT_grade.getText().toString());
+							  EDT_grade.getText().toString(),
+							  strCategory);
 			
 			if(res==null)
 			{

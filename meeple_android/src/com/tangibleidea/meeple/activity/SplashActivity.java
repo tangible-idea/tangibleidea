@@ -1,6 +1,7 @@
 package com.tangibleidea.meeple.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +12,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 
 import com.tangibleidea.meeple.R;
+import com.tangibleidea.meeple.util.SPUtil;
 
 public class SplashActivity extends Activity
 {
@@ -19,6 +21,8 @@ public class SplashActivity extends Activity
 	private ImageView IMG_splash;
 	private final int FADE_TIME= 950;
 	private final int SHOW_TIME= 1650;
+	
+	private Context mContext;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -26,6 +30,7 @@ public class SplashActivity extends Activity
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.splash);
+		mContext= this;
 		
 		final Animation ANI_on= new AlphaAnimation( 0.0f, 1.0f );
 		final Animation ANI_off= new AlphaAnimation( 1.0f, 0.0f );
@@ -70,8 +75,17 @@ public class SplashActivity extends Activity
 			{
 				IMG_splash.setVisibility(View.INVISIBLE);
 				
-				Intent intent= new Intent( SplashActivity.this, LoginActivity.class);
-				startActivity(intent);
+				if( SPUtil.getString(mContext, "session")!=null )	// 한번이라도 로그인했으면?	
+				{
+					Intent intent= new Intent( SplashActivity.this, LobbyActivity.class);
+					startActivity(intent);
+				}
+				else
+				{
+					Intent intent= new Intent( SplashActivity.this, LoginActivity.class);
+					startActivity(intent);
+				}
+
 				
 				finish();
 			}
@@ -82,6 +96,9 @@ public class SplashActivity extends Activity
 			public void onAnimationStart(Animation arg0)
 			{ }
 		});
+		
+
+		
 
 	}
 

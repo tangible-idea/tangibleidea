@@ -299,6 +299,8 @@ public class MeepleListActivity extends ListActivity
 		        	arraylist.add( new InfoEntry( "", "", "", "", "", 0, EnumMeepleStatus.E_MENTEE_NULL) );   
 		        }
 						
+		        //Global.s_LIST_Recommendations.clear();
+		        //Global.s_LIST_Recommendations.addAll(arraylist);
 				Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
 				Adapter.SetOnMeepleInteractionListener(callback);
 		        setListAdapter(Adapter);
@@ -331,6 +333,8 @@ public class MeepleListActivity extends ListActivity
 		        	arraylist.add( new InfoEntry( "", "", "", "", "", 0, EnumMeepleStatus.E_MENTOR_NULL) );   
 		        }
 		        
+		        //Global.s_LIST_Recommendations.clear();
+		        //Global.s_LIST_Recommendations.addAll(arraylist);
 		        Adapter = new ProfileListAdapter(mContext, R.layout.entry, R.id.eName, arraylist);
 	        	Adapter.SetOnMeepleInteractionListener(callback);
 		        setListAdapter(Adapter);

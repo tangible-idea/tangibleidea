@@ -285,9 +285,10 @@ public class RequestMethods
 	 * @param _strGender
 	 * @param _strSchool
 	 * @param _strGrade
+	 * @param _strCategory
 	 * @return
 	 */
-	public RegisterResponse RegisterMentee(Context _context, String _strID, String _strPW, String _strEmail, String _strName, String _strGender, String _strSchool, String _strGrade)
+	public RegisterResponse RegisterMentee(Context _context, String _strID, String _strPW, String _strEmail, String _strName, String _strGender, String _strSchool, String _strGrade, String _strCategory)
 	{
 		RegisterResponse res= null;
 		String IsPush= "true";
@@ -306,7 +307,8 @@ public class RequestMethods
 		      		+"&name="+ Uri.encode(_strName)
 		      		+"&gender="+ _strGender
 		      		+"&school="+ Uri.encode(_strSchool)
-		      		+"&grade="+ _strGrade;
+		      		+"&grade="+ _strGrade
+		      		+"&category="+ _strCategory;
 	   
 	    try
 	    {
@@ -1292,7 +1294,7 @@ public class RequestMethods
 	      		+"localAccount=" + SPUtil.getString(_context, "AccountID")
 	      		+"&oppoAccount=" + OppoAccount
 	      		+"&session=" + SPUtil.getString(_context, "session")
-	      		+"&message=" + Message;
+	      		+"&message=" + Uri.encode(Message);
 		
 		if( RequestStringToServer(URI).equals("true") )
 			return true;

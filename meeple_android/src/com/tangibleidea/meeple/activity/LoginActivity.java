@@ -82,13 +82,12 @@ public class LoginActivity extends Activity implements OnClickListener
 			ShowAlertDialog("[셰션 종료]", "세션이 종료되었습니다.\n다시 로그인해주세요~", "확인");
 			return;
 		}
-		
-		
-		if( SPUtil.getString(mContext, "password")!=null )	// 한번이라도 로그인했으면?	
+
+		if( getIntent().getBooleanExtra("reg_mentor", false) )	// 세션아웃으로 로그아웃되었으면
 		{
-			this.Login();
+			this.ShowAlertDialog("[멘토가입]", "멘토가 되셨습니다. 로그인해주세용~", "확인");
+			return;
 		}
-		
 
 	}
 
@@ -130,14 +129,14 @@ public class LoginActivity extends Activity implements OnClickListener
 		{
 			if (nRes==1)	// 성공
 			{
-				this.ShowAlertDialog("멘티가입", "멘티가 되셨습니다. 로그인해주세용~", "확인");
+				this.ShowAlertDialog("[멘티가입]", "멘티가 되셨습니다. 로그인해주세용~", "확인");
 			}
 		}
 		else if(requestCode == Global.s_nRequest_MentorJoin)  // 멘토 가입
 		{
 			if (nRes==1)	// 성공
 			{
-				this.ShowAlertDialog("멘티가입", "멘토가 되셨습니다. 로그인해주세용~", "확인");
+				this.ShowAlertDialog("[멘토가입]", "멘토가 되셨습니다. 로그인해주세용~", "확인");
 			}
 		}
 		
@@ -165,24 +164,24 @@ public class LoginActivity extends Activity implements OnClickListener
     	try 
     	{
     		LoadingHandler.sendEmptyMessage(0);
+    		RequestMethods RM= new RequestMethods();
+    		login= RM.Login( this, TXT_ID.getText().toString() , TXT_PW.getText().toString() );			
    		
-    		if( SPUtil.getString(mContext, "password")!=null )	// 한번이라도 로그인했으면?	
-    		{
-    			RequestMethods RM= new RequestMethods();
-        		login= RM.Login( this, SPUtil.getString(mContext, "AccountID") , SPUtil.getString(mContext, "password") );
-        		Log.d("Auto Login", "ID="+ SPUtil.getString(mContext, "AccountID")+ "PW"+ SPUtil.getString(mContext, "password") );
-    		}
-    		else
-    		{
-	    		RequestMethods RM= new RequestMethods();
-	    		login= RM.Login( this, TXT_ID.getText().toString() , TXT_PW.getText().toString() );			
-    		}
-    		
-    		if( (!TXT_ID.getText().toString().equals("")) && (!TXT_ID.getText().toString().equals("")) )
-    		{
-        		SPUtil.putString(mContext, "AccountID", TXT_ID.getText().toString() );
-        		SPUtil.putString(mContext, "password", TXT_PW.getText().toString() );
-    		}
+//    		if( SPUtil.getString(mContext, "password")!=null )	// 한번이라도 로그인했으면?	
+//    		{
+//    			RequestMethods RM= new RequestMethods();
+//        		login= RM.Login( this, SPUtil.getString(mContext, "AccountID") , SPUtil.getString(mContext, "password") );
+//        		Log.d("Auto Login", "ID="+ SPUtil.getString(mContext, "AccountID")+ "PW"+ SPUtil.getString(mContext, "password") );
+//    		}
+//    		else
+//    		{
+//    		}
+//    		
+//    		if( (!TXT_ID.getText().toString().equals("")) && (!TXT_ID.getText().toString().equals("")) )
+//    		{
+//        		SPUtil.putString(mContext, "AccountID", TXT_ID.getText().toString() );
+//        		SPUtil.putString(mContext, "password", TXT_PW.getText().toString() );
+//    		}
     		
 
     		

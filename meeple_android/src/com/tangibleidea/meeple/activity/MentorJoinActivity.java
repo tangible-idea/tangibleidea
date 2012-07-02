@@ -67,6 +67,8 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 			if( !CheckNull() )
 				return;
 			
+			if( SPUtil.getString(this, "reg_id") == null )	// 초기화된 것이 없으면 초기화해줌
+				SPUtil.putString(this, "reg_id", "0");
 			if( SPUtil.getString(this, "reg_id").equals("0") )
 			{
 				this.ShowAlertDialog("회원가입", "세션 초기화중입니다.\n잠시 후 다시 시도해주세요.", "확인");
@@ -147,6 +149,7 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 //				setResult(RESULT_OK, intent); // 결과값 보냄
 //				finish();
 				Intent intent= new Intent(MentorJoinActivity.this, LoginActivity.class);
+				intent.putExtra("reg_mentor", true);
 				startActivityForResult(intent, Global.s_nRequest_MentorJoin);
 			}
 			if(msg.what==3)
