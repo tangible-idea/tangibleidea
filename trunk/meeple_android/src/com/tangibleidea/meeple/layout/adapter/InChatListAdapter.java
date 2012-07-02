@@ -3,18 +3,24 @@ package com.tangibleidea.meeple.layout.adapter;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
+import com.tangibleidea.meeple.activity.PopupActivity;
+import com.tangibleidea.meeple.data.EnumMeepleStatus;
 import com.tangibleidea.meeple.layout.entry.ChatEntry;
+import com.tangibleidea.meeple.layout.entry.InfoEntry;
 import com.tangibleidea.meeple.server.RequestImageMethods;
 import com.tangibleidea.meeple.util.ChatManager;
+import com.tangibleidea.meeple.util.Global;
 
 //class ViewHolder_InChatList
 //{
@@ -76,6 +82,38 @@ public class InChatListAdapter  extends ArrayAdapter<ChatEntry>
               TXT_OPPOCHAT= (TextView)v.findViewById(R.id.eOppoChat);
               TXT_OPPOTIME= (TextView)v.findViewById(R.id.eOppoTime);
               IMG_OPPO= (ImageView)v.findViewById(R.id.eOppoPhoto);
+              
+              IMG_OPPO.setOnClickListener(new OnClickListener()
+              {
+				@Override
+				public void onClick(View v)
+				{
+					Intent intent= new Intent(mContext, PopupActivity.class);
+					intent.putExtra("position", 0);
+					intent.putExtra("id", chatMgr.getCurrOppoAccount());
+					intent.putExtra("name", chatMgr.getCurrOppoName());
+					intent.putExtra("profile", "");
+					intent.putExtra("comment", "");
+					
+					intent.putExtra("recommandation", "T");	// 인채팅 창에서 클릭하면 쪽지보내기를 띄워준다.
+					
+					if(Global.s_LIST_Relations.isEmpty())	// 친구가 아무도 없으면
+						intent.putExtra("relation", "F");
+					else
+					{
+						intent.putExtra("relation", "F");
+						
+						for(InfoEntry IE : Global.s_LIST_Relations)
+							if( chatMgr.getCurrOppoAccount().equals( IE.getID() ) )
+							{
+								intent.putExtra("relation", "T");		// 나와 친구사이이면 T
+								break;
+							}
+					}
+					
+					mContext.startActivity(intent);
+				}
+              });
         	  
         	  if(e.isMyChat())
         	  {

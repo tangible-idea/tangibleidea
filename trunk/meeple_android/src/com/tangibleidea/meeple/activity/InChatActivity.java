@@ -11,6 +11,7 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -199,7 +200,16 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
     {
     	UIHandler.sendEmptyMessage(99);
     	
-		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
+    	String strLastChatID= RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount());
+		if(strLastChatID==null)	// 정보가 안들어왔으면...
+		{
+			if(!RM.CheckLogin(mContext))
+			{
+    			UIHandler.sendEmptyMessage(-1);
+    			return;
+			}
+		}
+		ChatMgr.setCurrChatID( strLastChatID );
 					
 		String strCurrChatID= ChatMgr.getCurrChatID();
 		if(strCurrChatID==null)
@@ -316,9 +326,19 @@ try{	// 인채팅에서 마지막꺼 가져올때 못가져오면
     {
     	public void run()
     	{	
-    		RM.SendChatNew(mContext, ChatMgr.getCurrOppoAccount(), strChat);    		
+    		chats= RM.SendChatNew(mContext, ChatMgr.getCurrOppoAccount(), strChat);
+    		if(chats==null)	// 정보가 안들어왔으면...
+    		{
+    			if(!RM.CheckLogin(mContext))
+    			{
+        			UIHandler.sendEmptyMessage(-1);
+        			return;
+    			}
+    		}
+    			
     		StartGetChatsThread();	// 서버에서 새로운 채팅을 가져온다.
     		
+    		//UIHandler.sendEmptyMessage(0); // UI 새로고침
     		UIHandler.sendEmptyMessage(2); // 다시 채팅 가능
     	}
     };
@@ -354,6 +374,13 @@ try{	// 인채팅에서 마지막꺼 가져올때 못가져오면
 	{
 		public void handleMessage(Message msg)
 		{
+			if(msg.what==-1)
+			{
+				LoadingDL.hide();
+				Intent intent= new Intent(mContext, LoginActivity.class);
+				intent.putExtra("logout_session", true);
+				startActivity(intent);
+			}
 			if(msg.what==0)	// 받은 정보를 채팅UI로 업데이트 할 때
 			{
 				RefreshChatEntry();

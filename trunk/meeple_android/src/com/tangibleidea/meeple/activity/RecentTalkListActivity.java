@@ -153,6 +153,7 @@ public class RecentTalkListActivity extends ListActivity
 			}
 			else if(msg.what==20)	// 멘토가 대화중인 멘티의 정보를 추가한다.
 			{
+				if(InProgress_tees==null) return;	// 불러올 멘토 없으면 불러오기 취소
 				for(MenteeInfo tee : InProgress_tees)
 				{
 					arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "", "0",  tee.getAccountId(), tee.getName(), "대화내용 없음", "0", ""));
@@ -164,6 +165,7 @@ public class RecentTalkListActivity extends ListActivity
 			}
 			else if(msg.what==21)
 			{
+				if(InProgress_tors==null) return;	// 불러올 멘토 없으면 불러오기 취소
 				for(MentorInfo tor : InProgress_tors)
 				{
 					arraylist.add(new RecentTalkEntry(EnumRecentTalkStatus.E_INPROGRESS_TALK, "", "0",  tor.getAccountId(), tor.getName(), "대화내용 없음", "0", ""));
