@@ -1,5 +1,6 @@
 package com.tangibleidea.meeple.server;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -85,27 +86,35 @@ public class RequestMethods
 	 * @param _strURI : 서버에 보낼 URI
 	 * @return : 서버에서 받은 JSONObject
 	 */
-	private JSONObject RequestJSONObjectToServer(String _strURI)
+	private JSONObject RequestJSONObjectToServer(String _strURI, boolean _bEncode)
 	{
 		JSONObject json = null;
 		HttpClient httpClient = new DefaultHttpClient();
-		
-
-		
+		 		
 		Log.d( Global.LOG_TAG, _strURI );		
 		
 		try
 	    {
 		    HttpGet request = new HttpGet( new URI(_strURI) );
-		      
-		    HttpResponse response = httpClient.execute(request); 
+		    
+		    HttpResponse response = httpClient.execute(request);
 	        HttpEntity responseEntity = response.getEntity();
 	        
 	        char[] buffer = new char[(int)responseEntity.getContentLength()];
 	        InputStream stream = responseEntity.getContent();
-	        InputStreamReader reader = new InputStreamReader(stream);
 	        
-	        reader.read(buffer);
+	        if(_bEncode)
+	        {
+	        	InputStreamReader reader = new InputStreamReader(stream, "EUC-KR");
+	        	reader.read(buffer);
+	        }
+	        
+	        else
+	        {
+	        	InputStreamReader reader = new InputStreamReader(stream);
+	        	reader.read(buffer);
+	        }
+	        
 	        stream.close();
 	        
 	        if(buffer[0]=='?')
@@ -215,7 +224,7 @@ public class RequestMethods
 	    
 		try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI ,false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json==null)
 		    	return null; // 서버 접속 오류 또는 인자 오류
@@ -312,7 +321,7 @@ public class RequestMethods
 	   
 	    try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json==null)
 		    	return null; // 서버 접속 오류 또는 인자 오류
@@ -368,7 +377,7 @@ public class RequestMethods
 	   
 	    try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    boolean bSuccess= json.getBoolean("success");
 		    String session= json.getString("session");
@@ -504,7 +513,7 @@ public class RequestMethods
 	    
 	    try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json == null)
 		    	return null;
@@ -622,7 +631,7 @@ public class RequestMethods
 	    
 	    try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json == null)
 		    	return null;
@@ -716,7 +725,7 @@ public class RequestMethods
 	    
 	    try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json == null)
 		    	return null;
@@ -823,7 +832,7 @@ public class RequestMethods
 	    
 	    try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json == null)
 		    	return null;
@@ -1122,7 +1131,7 @@ public class RequestMethods
 	    
 	    try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json == null)
 		    	return null;
@@ -1165,7 +1174,7 @@ public class RequestMethods
 	    
 	    try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json == null)
 		    	return null;
@@ -1409,7 +1418,7 @@ public class RequestMethods
 		
 		try
 	    {
-		    JSONObject json= this.RequestJSONObjectToServer(URI);	// 만들어진 URI를 WCF서비스에 요청한다.
+		    JSONObject json= this.RequestJSONObjectToServer(URI, false);	// 만들어진 URI를 WCF서비스에 요청한다.
 		    
 		    if(json == null)
 		    	return null;
@@ -1425,6 +1434,42 @@ public class RequestMethods
 		return res; 
 	}
 	
+	/**
+	 * 공지사항을 서버로부터 가져옴
+	 * @return
+	 */
+	public ArrayList<Notice> GetNotices()
+	{
+		ArrayList<Notice> res= new ArrayList<Notice>();
+		
+		try
+	    {
+		    JSONObject json= this.RequestJSONObjectToServer(Global.SERVER_NOTICE, true);	// 만들어진 URI를 JSON으로 가져옴
+		    
+		    if(json == null)
+		    	return null;
+		    
+	    	JSONObject Jroot= json.getJSONObject("root");
+	    	JSONArray  jarr_root=  Jroot.getJSONArray("node");
+	    	
+		    for(int i=0; i<jarr_root.length(); ++i)
+		    {
+		    	JSONObject Jobj= jarr_root.getJSONObject(i);
+		    	int num= Jobj.getInt("num");
+		    	String title= Jobj.getString("title");
+		    	String content= Jobj.getString("content");
+		    	String date= Jobj.getString("date");
+		    	res.add(new Notice(num, title, content, date, false));
+		    }
+
+	    }
+	    catch (JSONException e)
+	    {
+	    	Log.e( "JSONException", e.getMessage() );
+		}
+		
+		return res;
+	}
 	
 
 }
