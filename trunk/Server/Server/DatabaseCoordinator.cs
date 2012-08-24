@@ -142,6 +142,91 @@ namespace Server
             }
         }
 
+        // 성공하면 0을 리턴, 실패하면 -1을 리턴
+        public int AddMentorInfoAndCategory(int accountId, string name, string univ, string major, int promo, string email, string comment, int category, string image)
+        {
+            lock (connection)
+            {
+                try
+                {
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand command = new SqlCommand("AddMentorInfoAndCategory", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@AccountId", SqlDbType.Int).Value = accountId;
+                    command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
+                    command.Parameters.Add("@Univ", SqlDbType.NVarChar).Value = univ;
+                    command.Parameters.Add("@Major", SqlDbType.NVarChar).Value = major;
+                    command.Parameters.Add("@Promo", SqlDbType.Int).Value = promo;
+                    command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
+                    command.Parameters.Add("@Comment", SqlDbType.NVarChar).Value = comment;
+                    command.Parameters.Add("@Category", SqlDbType.Int).Value = category;
+                    command.Parameters.Add("@Image", SqlDbType.NVarChar).Value = image;
+                    command.Parameters.Add("return_value", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+                    command.ExecuteNonQuery();
+                    int ret = Convert.ToInt32(command.Parameters["return_value"].Value);
+                    connection.Close();
+                    return ret;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+                finally
+                {
+                    if (connection != null
+                        && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
+        // 성공하면 0을 리턴, 실패하면 -1을 리턴
+        public int AddMenteeInfoAndCategory(int accountId, string name, string school, int grade, string email, string comment, int category, string image)
+        {
+            lock (connection)
+            {
+                try
+                {
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand command = new SqlCommand("AddMenteeInfoAndCategory", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@AccountId", SqlDbType.Int).Value = accountId;
+                    command.Parameters.Add("@Name", SqlDbType.NVarChar).Value = name;
+                    command.Parameters.Add("@School", SqlDbType.NVarChar).Value = school;
+                    command.Parameters.Add("@Grade", SqlDbType.Int).Value = grade;
+                    command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
+                    command.Parameters.Add("@Comment", SqlDbType.NVarChar).Value = comment;
+                    command.Parameters.Add("@Category", SqlDbType.Int).Value = category;
+                    command.Parameters.Add("@Image", SqlDbType.NVarChar).Value = image;
+                    command.Parameters.Add("return_value", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+                    command.ExecuteNonQuery();
+                    int ret = Convert.ToInt32(command.Parameters["return_value"].Value);
+                    connection.Close();
+                    return ret;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+                finally
+                {
+                    if (connection != null
+                        && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
         // 멘토인 경우 true, 멘티인 경우 false
         public string GetDeviceToken(string account)
         {
