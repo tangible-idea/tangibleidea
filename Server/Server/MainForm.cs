@@ -186,25 +186,25 @@ namespace Server
 
             //Program.logCoord.WriteOnlyTextLog(">더 이상 온라인 멘토가 없군... 그러면 상태를 다시 한번 확인해보자");
 
-            for (int i = 0; i < Program.onlineCoord.OnlineMentor.Count; ++i)
-            {
-                int nStat = Program.dbCoord.GetMentorActiveStatus(Program.onlineCoord.OnlineMentor[i]);
-                Program.onlineCoord.MentorStatus[i] = nStat;
+            //for (int i = 0; i < Program.onlineCoord.OnlineMentor.Count; ++i)
+            //{
+            //    int nStat = Program.dbCoord.GetMentorActiveStatus(Program.onlineCoord.OnlineMentor[i]);
+            //    Program.onlineCoord.MentorStatus[i] = nStat;
 
-                //Program.logCoord.WriteOnlyTextLog("=>멘토 " + Program.onlineCoord.OnlineMentor[i] + "의 상태는 " + nStat + "이군...");
-            }
+            //    //Program.logCoord.WriteOnlyTextLog("=>멘토 " + Program.onlineCoord.OnlineMentor[i] + "의 상태는 " + nStat + "이군...");
+            //}
 
 
-            for (int i = 0; i < Program.onlineCoord.OnlineMentee.Count; ++i)
-            {
-                int nStat = Program.dbCoord.GetMenteeActiveStatus(Program.onlineCoord.OnlineMentee[i]);
-                Program.onlineCoord.MenteeStatus[i] = nStat;
+            //for (int i = 0; i < Program.onlineCoord.OnlineMentee.Count; ++i)
+            //{
+            //    int nStat = Program.dbCoord.GetMenteeActiveStatus(Program.onlineCoord.OnlineMentee[i]);
+            //      Program.onlineCoord.MenteeStatus[i] = nStat;
 
-                //Program.logCoord.WriteOnlyTextLog("=>멘티 " + Program.onlineCoord.OnlineMentee[i] + "의 상태는 " + nStat + "이군...");
-            }
+            //    //Program.logCoord.WriteOnlyTextLog("=>멘티 " + Program.onlineCoord.OnlineMentee[i] + "의 상태는 " + nStat + "이군...");
+            //}
 
             //Program.logCoord.WriteOnlyTextLog("=====타이머가 할일이 끝났다. 다음 타이머를 기다리자=====");
-            Program.logCoord.WriteOnlyTextLog("=====하루중 " + nTimerCount + "번째 추천 타이머 끝===== ///");
+            Program.logCoord.WriteOnlyTextLog("=====하루중 " + nTimerCount + "번째 추천 타이머 도달=====");
         }
 
         // 타이머 도달마다...
@@ -264,24 +264,25 @@ namespace Server
             try
             {
                 // Determine the color of the brush to draw each item based on the index of the item to draw.
-                switch (Program.onlineCoord.MenteeStatus[e.Index])
-                {
-                    case -1:
-                        myBrush = Brushes.DarkGray; // 타이머 대기중
-                        break;
-                    case 0:
-                        myBrush = Brushes.Black;  // 추천없음
-                        break;
-                    case 1:
-                        myBrush = Brushes.DarkRed;  // 추천받음
-                        break;
-                    case 2:
-                        myBrush = Brushes.DarkOrange;   // 멘토만 수락했음
-                        break;
-                    case 3:
-                        myBrush = Brushes.DarkGreen; // 대화중
-                        break;
-                }
+                //switch (Program.onlineCoord.MenteeStatus[e.Index])
+                //{
+                //    case -1:
+                //        myBrush = Brushes.DarkGray; // 타이머 대기중
+                //        break;
+                //    case 0:
+                //        myBrush = Brushes.Black;  // 추천없음
+                //        break;
+                //    case 1:
+                //        myBrush = Brushes.DarkRed;  // 추천받음
+                //        break;
+                //    case 2:
+
+                //        myBrush = Brushes.DarkOrange;   // 멘토만 수락했음
+                //        break;
+                //    case 3:
+                //        myBrush = Brushes.DarkGreen; // 대화중
+                //        break;
+                //}
 
             
 

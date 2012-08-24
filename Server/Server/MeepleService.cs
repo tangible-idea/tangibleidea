@@ -116,7 +116,7 @@ namespace Server
                 {
                     // 이 경우는 없어야 한다. AddMentorInfo의 경우 이미 값이 있는 경우는 update, 없는 경우는 insert를 하기 때문이다.
                     Program.logCoord.WriteLog(account + "\tDb에서 AddAccount는 됬는데 AddMentorInfo가 실행이 잘 안되서 망함\t" + DateTime.Now);
-                    return new RegisterResponse(false, "", "없어야한다");
+                    return new RegisterResponse(false, "", "시스템 오류");
                 }
             }
             else if (accountId == -1)
@@ -140,7 +140,7 @@ namespace Server
 
         
         // 안드로이드용 Mentor가입 메서드
-        public RegisterResponse RegisterMentorAndroid( string account, string password, bool isPush, string androidpush, string name, int gender, string email, string univ, string major, int promo )
+        public RegisterResponse RegisterMentorAndroid( string account, string password, bool isPush, string androidpush, string name, int gender, string email, string univ, string major, int promo, int category )
         {
 
             UTF8Encoding encoding = new UTF8Encoding();
@@ -188,7 +188,7 @@ namespace Server
             int accountId = Program.dbCoord.AddAccount(account, password, gender, isApple, push, true, email, androidpush);
             if ( accountId > 0 )
             {
-                if ( Program.dbCoord.AddMentorInfo( accountId, name, univ, major, promo, email, "", "" ) == 0 )
+                if ( Program.dbCoord.AddMentorInfoAndCategory( accountId, name, univ, major, promo, email, "", category, "" ) == 0 )
                 {
                     Program.dbCoord.UpdateAndroidPush(account, androidpush);    // 안드로이드 푸시 정보 업데이트
 
@@ -200,7 +200,7 @@ namespace Server
                 {
                     // 이 경우는 없어야 한다. AddMentorInfo의 경우 이미 값이 있는 경우는 update, 없는 경우는 insert를 하기 때문이다.
                     Program.logCoord.WriteLog( account + "\tDb에서 AddAccount는 됬는데 AddMentorInfo가 실행이 잘 안되서 망함\t" + DateTime.Now );
-                    return new RegisterResponse( false, "" ,"없어야한다");
+                    return new RegisterResponse( false, "" ,"시스템오류");
                 }
             }
             else if (accountId == -1)
@@ -309,7 +309,7 @@ namespace Server
 
 
         // 안드로이드용 mentee 가입 메서드
-        public RegisterResponse RegisterMenteeAndroid( string account, string password, bool isPush, string androidpush, string name, int gender, string email, string school, int grade )
+        public RegisterResponse RegisterMenteeAndroid( string account, string password, bool isPush, string androidpush, string name, int gender, string email, string school, int grade, int category )
         {
             UTF8Encoding encoding = new UTF8Encoding();
 
@@ -358,7 +358,7 @@ namespace Server
             int accountId = Program.dbCoord.AddAccount(account, password, gender, isApple, push, false, email, androidpush);
             if ( accountId > 0 )
             {
-                if ( Program.dbCoord.AddMenteeInfo( accountId, name, school, grade, email, "", "" ) == 0 )
+                if (Program.dbCoord.AddMenteeInfoAndCategory(accountId, name, school, grade, email, "", category, "") == 0)
                 {
                     Program.dbCoord.UpdateAndroidPush(account, androidpush);    // 안드로이드 푸시 정보 업데이트
 
