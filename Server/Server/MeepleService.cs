@@ -1083,7 +1083,7 @@ namespace Server
             {
                 if (Program.dbCoord.CheckRecommendation(localAccount, oppoAccount) > 0)
                 {
-                    Program.logCoord.WriteLog(localAccount + "\tSendChat\t" + oppoAccount + "\t" + chat + "\t" + DateTime.Now);
+                    //Program.logCoord.WriteLog(localAccount + "\tSendChat\t" + oppoAccount + "\t" + chat + "\t" + DateTime.Now);
                     //int lastChatId = Program.sqliteCoord.WriteChatNew(localAccount, oppoAccount, chat);
 
                     if (Program.sqliteCoord.WriteChatNew(localAccount, oppoAccount, chat))
@@ -1185,7 +1185,7 @@ namespace Server
             else
             {
                 List<string> mentors = Program.dbCoord.InProgressMentorRecommendations(localAccount);
-                Program.logCoord.WriteLog(localAccount + "가 GetRecentChats 수행\t" + DateTime.Now);
+                //Program.logCoord.WriteLog(localAccount + "가 GetRecentChats 수행\t" + DateTime.Now);
                 return Program.sqliteCoord.GetRecentChatsNew(localAccount, mentors);
             }
         }
@@ -1634,7 +1634,7 @@ namespace Server
                 return false;
             }
 
-            Program.logCoord.WriteLog( localAccount + "\tSendChat\t" + oppoAccount + "\t" + message + "\t" + DateTime.Now );
+            //Program.logCoord.WriteLog( localAccount + "\tSendChat\t" + oppoAccount + "\t" + message + "\t" + DateTime.Now );
             
             bool ret = Program.sqliteCoord.WriteMessage( localAccount, oppoAccount, message );
             int count = 0;
