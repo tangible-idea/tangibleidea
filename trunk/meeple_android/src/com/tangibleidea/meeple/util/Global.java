@@ -26,7 +26,8 @@ public class Global
 	public static final int s_nRequest_Fail_Session= -101;	// 세션이 안맞는다.
 	public static final int s_nRequest_MentorJoin= 100;	// 멘티가입
 	public static final int s_nRequest_MenteeJoin= 101;	// 멘토가입
-	public static final int s_nRequest_Login= 200;	// 로그인했음
+	public static final int s_nRequest_Login= 200;		// 로그인했음
+	public static final int s_nRequest_ChatEval= 300;	// 채팅 끝나고 멘티 평가
 	public static final int s_nRequest_500= 500;		// 
 	
 	public static final int s_nIntent_Fail= -1;		// 

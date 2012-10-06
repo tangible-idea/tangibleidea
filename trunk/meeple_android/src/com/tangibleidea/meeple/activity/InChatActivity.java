@@ -478,6 +478,48 @@ try{
 	}
 	
 	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		super.onActivityResult(requestCode, resultCode, data);
+		 
+		int nRes= -1;
+		
+		if(resultCode == RESULT_OK && data != null)
+			nRes= data.getExtras().getInt("result"); // (3:Awesome, 2:Good, 1:Bad, 0:대화끝내기취소, -1:오류)
+		else
+			return;
+		
+		if(requestCode == Global.s_nRequest_ChatEval)  // 멘토 평가
+		{
+			switch(nRes)
+			{
+			case 3:
+				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "2");	//awesome
+				ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
+				StartFinishThread();	// 끝낸 대화 정보를 저장한다.
+				finish();
+				break;
+			case 2:
+				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "1");	//good
+				ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
+				StartFinishThread();	// 끝낸 대화 정보를 저장한다.
+				finish();
+				break;
+			case 1:
+				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "-1");	//bad
+				ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
+				StartFinishThread();	// 끝낸 대화 정보를 저장한다.
+				finish();
+				break;
+			case 0:
+				break;
+			case -1:
+				break;
+			}
+		}
+	}
+	
+	@Override
 	public void onClick(View v)
 	{
 		if(v.getId()==R.id.btn_send)
@@ -485,27 +527,33 @@ try{
 		
 		if(v.getId()==R.id.btn_inchat_end)
 		{
-			new AlertDialog.Builder(this)
-	        .setTitle("[대화 끝내기]")
-	        .setMessage("상대방과 더 이상 대화를 할 수 없게 됩니다.\n종료하시겠습니까?") 
-	        .setPositiveButton("종료", new DialogInterface.OnClickListener()
-	        {
-	            public void onClick(DialogInterface dialog, int whichButton)
-	            {
-	    			ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
-	    			StartFinishThread();	// 끝낸 대화 정보를 저장한다.
-	    			finish();
-	            }
-	        })
-	        .setNegativeButton("계속 대화", new DialogInterface.OnClickListener()
-	        {
-	        	public void onClick(DialogInterface dialog, int whichButton)
-	            {
-	            }
-	        })
-	        .show();
-			
-
+			if(SPUtil.getBoolean(this, "isMentor"))
+			{
+				new AlertDialog.Builder(this)
+		        .setTitle("[대화 끝내기]")
+		        .setMessage("상대방과 더 이상 대화를 할 수 없게 됩니다.\n종료하시겠습니까?") 
+		        .setPositiveButton("종료", new DialogInterface.OnClickListener()
+		        {
+		            public void onClick(DialogInterface dialog, int whichButton)
+		            {
+		    			ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
+		    			StartFinishThread();	// 끝낸 대화 정보를 저장한다.
+		    			finish();
+		            }
+		        })
+		        .setNegativeButton("계속 대화", new DialogInterface.OnClickListener()
+		        {
+		        	public void onClick(DialogInterface dialog, int whichButton)
+		            {
+		            }
+		        })
+		        .show();
+			}
+			else
+			{
+				Intent intent= new Intent(InChatActivity.this, ChatEvalActivity.class);
+				startActivityForResult(intent, Global.s_nRequest_ChatEval);
+			}
 		}
 	}
 
