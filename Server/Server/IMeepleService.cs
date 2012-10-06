@@ -92,6 +92,10 @@ namespace Server
         bool ChangeSchool( string account, string session, string school );
 
         [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
+        bool ChangeScore(string account, string session, string target_account, int score);
+
+        [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare )]
         bool ChangeGrade( string account, string session, int grade );
 

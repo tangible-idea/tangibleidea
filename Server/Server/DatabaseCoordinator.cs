@@ -1766,6 +1766,41 @@ namespace Server
             }
         }
 
+        public int ChangeScore(string account, int score)
+        {
+            lock (connection)
+            {
+                try
+                {
+                    if (connection.State == ConnectionState.Closed)
+                    {
+                        connection.Open();
+                    }
+                    SqlCommand command = new SqlCommand("ChangeScore", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.Add("@Account", SqlDbType.NVarChar).Value = account;
+                    command.Parameters.Add("@Score", SqlDbType.NVarChar).Value = score;
+                    command.Parameters.Add("return_value", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+                    command.ExecuteNonQuery();
+                    int ret = Convert.ToInt32(command.Parameters["return_value"].Value);
+                    connection.Close();
+                    return ret;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+                finally
+                {
+                    if (connection != null
+                        && connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
+                }
+            }
+        }
+
         public bool ReportUser(string localAccount, string oppoAccount, string content)
         {
             lock (connection)
