@@ -1403,6 +1403,19 @@ public class RequestMethods
 		return false;
 	}
 	
+	public boolean ChangeScore(Context _context, String target_account, String score)
+	{
+		String URI = Global.SERVER + "ChangeScore?"
+	      		+"account=" + SPUtil.getString(_context, "AccountID")
+	      		+"&session=" + SPUtil.getString(_context, "session")
+	      		+"&target_account=" + target_account
+	      		+"&score=" + score;	      		
+		
+		if( RequestStringToServer(URI).equals("true") )
+			return true;
+		return false;
+	}
+	
 	/**
 	 * 고려대 인증
 	 * @param ID : 아이디

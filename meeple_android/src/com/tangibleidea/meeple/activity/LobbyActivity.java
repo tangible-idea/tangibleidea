@@ -5,17 +5,22 @@ import android.app.LocalActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.util.Global;
+import com.tangibleidea.meeple.util.SPUtil;
 
 public class LobbyActivity extends ActivityGroup
 {
 	public static TabHost s_TabHost;
+	
 	
 	private void setupTabHost()
 	{
@@ -45,6 +50,15 @@ public class LobbyActivity extends ActivityGroup
 		setupTab(new TextView(this), "tab2", new Intent(this, RecentTalkListActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 		setupTab(new TextView(this), "tab3", new Intent(this, FavoriteActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 		setupTab(new TextView(this), "tab4", new Intent(this, SettingActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+	
+		
+	
+	
+		if( SPUtil.getString(this, "start_help_off") == null )	// 처음 실행이면...
+		{
+			Intent intent= new Intent(LobbyActivity.this, StartHelpActivity.class);
+			startActivity(intent);
+		}
 	}
 
 	/* (non-Javadoc)

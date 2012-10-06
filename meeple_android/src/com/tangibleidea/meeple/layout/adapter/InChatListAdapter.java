@@ -132,7 +132,8 @@ public class InChatListAdapter  extends ArrayAdapter<ChatEntry>
 	    		  TXT_OPPOCHAT.setBackgroundResource(R.drawable.talk_message_balloon);
 	    		  TXT_OPPOTIME.setText( e.getTime().substring(11) );
 	    		  RequestImageMethods RIM= new RequestImageMethods();
-	    		  RIM.DownloadImage2( IMG_OPPO, chatMgr.getCurrOppoAccount() );	// 이미지를 다운로드 받고
+	    		  //RIM.DownloadImage2( IMG_OPPO, chatMgr.getCurrOppoAccount() );	// 이미지를 다운로드 받고
+	    		 // RIM.DownloadImage( IMG_OPPO, chatMgr.getCurrOppoAccount() );	// 이미지를 다운로드 받고
 	    		  IMG_OPPO.setBackgroundColor(Color.BLACK);
         	  }
           }

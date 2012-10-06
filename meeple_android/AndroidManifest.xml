@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tangibleidea.meeple"
-    android:versionCode="8"
-    android:versionName="1.07" >
+    android:versionCode="9"
+    android:versionName="1.10" >
 
     <uses-sdk android:minSdkVersion="7" />
     
@@ -24,6 +24,14 @@
 			<action android:name="android.intent.action.MAIN" />
 			<category android:name="android.intent.category.LAUNCHER" />
 		</intent-filter>
+		</activity>
+		
+		<activity android:name=".activity.StartHelpActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+	    >
 		</activity>
         
         <activity android:name=".activity.LoginActivity"
@@ -147,6 +155,13 @@
 	    android:screenOrientation="portrait"
         android:configChanges="keyboardHidden|orientation"
         android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+	    ></activity>
+	    
+	   	<activity android:name=".activity.ChatEvalActivity"
+	    android:label="@string/app_name"
+	    android:screenOrientation="portrait"
+        android:configChanges="keyboardHidden|orientation"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"
 	    ></activity>
 		    
 		    
