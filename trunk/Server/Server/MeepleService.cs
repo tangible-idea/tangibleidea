@@ -745,6 +745,35 @@ namespace Server
             }
         }
 
+        // CJH 2012.10.6
+        public bool ChangeScore(string account, string session, string target_account, int score)
+        {
+            if (account.Length > 30)
+            {
+                // 인자가 이상합니다.
+                Program.logCoord.WriteLog(account + "라는 놈이 ChangeScore를 하려고 했는데 넘어온 인자가 병맛이라 처리 안됨\t" + DateTime.Now);
+                return false;
+            }
+
+            // 세션 체크
+            if (Program.onlineCoord.GetSession(account) != session)
+            {
+                Program.logCoord.WriteLog(account + "\tsession이 틀렸음\t" + DateTime.Now);
+                return false;
+            }
+
+            if (Program.dbCoord.ChangeScore(target_account, score) == 0)
+            {
+                Program.logCoord.WriteLog(account + "\tChangeScore\t" + DateTime.Now);
+                return true;
+            }
+            else
+            {
+                Program.logCoord.WriteLog(account + "\tDb에서 ChangeScore이 망함\t" + DateTime.Now);
+                return false;
+            }
+        }
+
         public bool ChangeSchool( string account, string session, string school )
         {
             if ( Program.onlineCoord.GetSession( account ) != session)
