@@ -34,8 +34,10 @@ namespace Server
 
         public void WriteLog( string log )
         {
+
             logger.Debug(log);
 
+#if _DEBUG
             try
             {
                 lock (logs)
@@ -54,6 +56,7 @@ namespace Server
             catch (Exception ex)
             {
             }
+#endif
         }
 
         public void WriteLog( Exception e )
