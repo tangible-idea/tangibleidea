@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#88000000">
+    
+    <RelativeLayout
+        android:id="@+id/img_popup_talkeval"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/popup_talkend_bg"
+        >
+        
+        <Button
+        android:id="@+id/btn_chat_eval_close"
+        android:layout_marginTop="25dip"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/btn_popup_close_new"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        
+        <Button
+            android:id="@+id/btn_chat_eval_awesome"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="120dip"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:background="@drawable/btn_popup_left_awesome"/>
+        
+        <Button
+            android:id="@+id/btn_chat_eval_good"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dip"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:background="@drawable/btn_popup_center_good"/>
+        	
+        	<Button
+            android:id="@+id/btn_chat_eval_bad"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="120dip"
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:background="@drawable/btn_popup_right_bad"/>
+        
+    </RelativeLayout>
+    
+
+    
+
+</RelativeLayout>

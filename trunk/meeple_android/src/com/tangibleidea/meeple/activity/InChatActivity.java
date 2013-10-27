@@ -40,37 +40,36 @@ import com.tangibleidea.meeple.util.ChatManager;
 import com.tangibleidea.meeple.util.Global;
 import com.tangibleidea.meeple.util.SPUtil;
 
-public class InChatActivity extends ListActivity implements OnClickListener, OnScrollListener
-{
-	private Thread GetThread, SendThread, PollingThread, FinishAndSaveChatThread;
+public class InChatActivity extends ListActivity implements OnClickListener,
+		OnScrollListener {
+	private Thread GetThread, SendThread, PollingThread,
+			FinishAndSaveChatThread;
 	private RequestMethods RM;
 	private ProgressDialog LoadingDL;
-	
-	private ChatManager ChatMgr= ChatManager.GetInstance();
+
+	private ChatManager ChatMgr = ChatManager.GetInstance();
 	private Context mContext;
 	private Button BTN_send, BTN_close;
 	private EditText EDT_chat;
 	private ProgressBar PGB_loading;
-	
-	private String strChat="";
-	private boolean bPolling= true, bLoading= false;
 
-	int retry= 0;
+	private String strChat = "";
+	private boolean bPolling = true, bLoading = false;
+
+	int retry = 0;
 	List<Chat> chats, chats2;
-	
-	InChatListAdapter Adapter;
-	ArrayList<ChatEntry> arraylist= new ArrayList<ChatEntry>();
-	
-	@Override
-	protected void onResume()
-	{	
-		super.onResume();
-		
-		ChatMgr.AcceptC2DMuser();
-		//getListView().setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
-		
-	}
 
+	InChatListAdapter Adapter;
+	ArrayList<ChatEntry> arraylist = new ArrayList<ChatEntry>();
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		ChatMgr.AcceptC2DMuser();
+		// getListView().setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -141,374 +140,368 @@ public class InChatActivity extends ListActivity implements OnClickListener, OnS
 		Global.s_HasNewChat= true;
 		this.StartGetChatsThread();
 		this.StartPollingThread();
+		
+		ShowAlertDialog("Meeple Tip!", "대화가 시작되었습니다.\n반갑게 인사해보세요~ :)", "확인");
 	}
-	
-	private void StartGetChatsThread()
-	{
-    	GetThread = new Thread(null, GetChatsThread, "GetChatsThread");
-    	GetThread.start();
+
+	private void StartGetChatsThread() {
+		GetThread = new Thread(null, GetChatsThread, "GetChatsThread");
+		GetThread.start();
 	}
-	
-	private void StartSendChatThread()
-	{
-    	SendThread = new Thread(null, SendChatsThread, "SendChatsThread");
-    	SendThread.start();
+
+	private void StartSendChatThread() {
+		SendThread = new Thread(null, SendChatsThread, "SendChatsThread");
+		SendThread.start();
 	}
-	
-	private void StartPollingThread()
-	{
-    	PollingThread = new Thread(null, PollingChatThread, "PollingChatThread");
-    	PollingThread.start();
+
+	private void StartPollingThread() {
+		PollingThread = new Thread(null, PollingChatThread, "PollingChatThread");
+		PollingThread.start();
 	}
-	
-	private void StartFinishThread()
-	{
-		FinishAndSaveChatThread= new Thread(null, FinishChatThread, "FinishChatThread");
+
+	private void StartFinishThread() {
+		FinishAndSaveChatThread = new Thread(null, FinishChatThread,
+				"FinishChatThread");
 		FinishAndSaveChatThread.start();
 	}
-	
-    private Runnable FinishChatThread = new Runnable()	// 끝난 대화를 저장하는 스레드
-    {
-    	public void run()
-    	{
-    		UIHandler.sendEmptyMessage(10);	// 대화를 저장한다.
-    		
-    		DBManager DBMgr= new DBManager(mContext);    		
-    		DBMgr.InsertEndChatInfo(
-    				ChatMgr.getCurrOppoAccount(),
-    				ChatMgr.getCurrOppoName(),
-    				ChatMgr.getEndPath(),
-    				GetChatsLastOne(true).getChat(),
-    				GetChatsLastOne(true).getDateTime());
-    		DBMgr.DBClose();
-    		
-    		UIHandler.sendEmptyMessage(11);	// 대화를 저장한다.
-    	}
-    }; 
-	
-    
-    private Runnable GetChatsThread = new Runnable()	// 채팅목록을 가져오는 스레드
-    {
-    	public void run()
-    	{
-    		GetChatsRange(ChatMgr.nChatRange);	// 지정된 범위만큼 채팅을 가져오자
-    	}
-    };
-    
-    // 범위만큼 채팅을 가져옴
-    public void GetChatsRange(int range)
-    {
-    	UIHandler.sendEmptyMessage(99);
-    	
-    	String strLastChatID= RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount());
-		if(strLastChatID==null)	// 정보가 안들어왔으면...
-		{
-			if(!RM.CheckLogin(mContext))
-			{
-    			UIHandler.sendEmptyMessage(-1);
-    			return;
-			}
-		}
-		ChatMgr.setCurrChatID( strLastChatID );
-					
-		String strCurrChatID= ChatMgr.getCurrChatID();
-		if(strCurrChatID==null)
-			return;
-		
-		int nLastChatID= Integer.parseInt( strCurrChatID );
-		
-		if( nLastChatID < range )	// 채팅 개수가 25개(기본값) 미만이면
-		{
-			this.GetAllChats();
-			ChatMgr.bChatEnd= true;
-		}
-		else
-		{
-			chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), Integer.toString(nLastChatID-range) );	// 현재채팅부터 25번째까지 가져옴
 
-			if(chats==null)	// 가져오는데 실패하면 범위를 줄인다.
-			{
-				++retry;
-				this.GetChatsRange(ChatMgr.nChatRange - retry*5);
+	private Runnable FinishChatThread = new Runnable() // 끝난 대화를 저장하는 스레드
+	{
+		public void run() {
+			UIHandler.sendEmptyMessage(10); // 대화를 저장한다.
+
+			DBManager DBMgr = new DBManager(mContext);
+			DBMgr.InsertEndChatInfo(ChatMgr.getCurrOppoAccount(), ChatMgr
+					.getCurrOppoName(), ChatMgr.getEndPath(),
+					GetChatsLastOne(true).getChat(), GetChatsLastOne(true)
+							.getDateTime());
+			DBMgr.DBClose();
+
+			UIHandler.sendEmptyMessage(11); // 대화를 저장한다.
+		}
+	};
+
+	private Runnable GetChatsThread = new Runnable() // 채팅목록을 가져오는 스레드
+	{
+		public void run() {
+			GetChatsRange(ChatMgr.nChatRange); // 지정된 범위만큼 채팅을 가져오자
+		}
+	};
+
+	// 범위만큼 채팅을 가져옴
+	public void GetChatsRange(int range) {
+		UIHandler.sendEmptyMessage(99);
+
+		String strLastChatID = RM.GetLastChatID(mContext,
+				ChatMgr.getCurrOppoAccount());
+		if (strLastChatID == null) // 정보가 안들어왔으면...
+		{
+			if (!RM.CheckLogin(mContext)) {
+				UIHandler.sendEmptyMessage(-1);
 				return;
 			}
 		}
-		
-		this.InsertDateRowsInChat();	// chats 리스트에 중간중간 날짜를 넣는다.
-		
-		ChatMgr.nChatRange= range;	// 현재 가져온 범위 등록 (성공한 경우만)		
-		UIHandler.sendEmptyMessage(0); // UI 새로고침
-    }
-    
-    /**
-     * 
-     * @param bEnd : 끝난 채팅인가?
-     * @return : 채팅 마지막 한개만 가져온다.
-     */
-    public Chat GetChatsLastOne(boolean bEnd)
-    {
-    	Chat res= null;
-    	int nLastChatID=0;
+		ChatMgr.setCurrChatID(strLastChatID);
 
-    	if(bEnd)
-    		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()+ChatMgr.getEndPath()) );
-    	else
-    		ChatMgr.setCurrChatID( RM.GetLastChatID(mContext, ChatMgr.getCurrOppoAccount()) );
-    	
-    	nLastChatID= Integer.parseInt(ChatMgr.getCurrChatID());
-    	
-try{	// 인채팅에서 마지막꺼 가져올때 못가져오면
-    	Log.d("InChatActivity::GetChatsLastOne", "last chat id : "+ ChatMgr.getCurrChatID());
-    	res= RM.GetEndChats(mContext, ChatMgr.getCurrOppoAccount(), ChatMgr.getEndPath(), Integer.toString(nLastChatID-1) ).get(0);
-		//res= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), Integer.toString(nLastChatID-1) ).get(0);
-}catch(Exception ex)
-{
-	res= new Chat(SPUtil.getString(mContext, "AccountID"), ChatMgr.getCurrOppoName(), "[끝난 대화]", "[시각]", "0");
-}
-		
-		return res;
-    }
-    
-    // 모든 채팅을 다 가져온다.
-    public void GetAllChats()
-    {
-		chats= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), "0");	// 채팅 전부 가져옴
-		InsertDateRowsInChat();
-    }
-    
-    //날짜가 달라질때마다 날짜정보를 넣어준다.
-    private void InsertDateRowsInChat()
-    {
-    	if(!chats2.isEmpty())	// 비어있지 않으면 비운다.
-    		chats2.clear();
-    	
-    	Date talkTime1= null;	// 대화시간1 (1row before)
-    	Date talkTime2= null;	// 대화시간2 (현재 row)
-    	
-    	for(Chat C : chats)
-    	{	
-			try
+		String strCurrChatID = ChatMgr.getCurrChatID();
+		if (strCurrChatID == null)
+			return;
+
+		int nLastChatID = Integer.parseInt(strCurrChatID);
+
+		if (nLastChatID < range) // 채팅 개수가 25개(기본값) 미만이면
+		{
+			this.GetAllChats();
+			ChatMgr.bChatEnd = true;
+		} else {
+			chats = RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(),
+					Integer.toString(nLastChatID - range)); // 현재채팅부터 25번째까지 가져옴
+
+			if (chats == null) // 가져오는데 실패하면 범위를 줄인다.
 			{
-				SimpleDateFormat format= new SimpleDateFormat("yyyy.MM.dd a h:mm");
-				
-				if(talkTime1==null)	// 이전 시간에 대한 정보가 없으면
+				++retry;
+				this.GetChatsRange(ChatMgr.nChatRange - retry * 5);
+				return;
+			}
+		}
+
+		this.InsertDateRowsInChat(); // chats 리스트에 중간중간 날짜를 넣는다.
+
+		ChatMgr.nChatRange = range; // 현재 가져온 범위 등록 (성공한 경우만)
+		UIHandler.sendEmptyMessage(0); // UI 새로고침
+	}
+
+	/**
+	 * 
+	 * @param bEnd
+	 *            : 끝난 채팅인가?
+	 * @return : 채팅 마지막 한개만 가져온다.
+	 */
+	public Chat GetChatsLastOne(boolean bEnd) {
+		Chat res = null;
+		int nLastChatID = 0;
+
+		if (bEnd)
+			ChatMgr.setCurrChatID(RM.GetLastChatID(mContext,
+					ChatMgr.getCurrOppoAccount() + ChatMgr.getEndPath()));
+		else
+			ChatMgr.setCurrChatID(RM.GetLastChatID(mContext,
+					ChatMgr.getCurrOppoAccount()));
+
+		nLastChatID = Integer.parseInt(ChatMgr.getCurrChatID());
+
+		try { // 인채팅에서 마지막꺼 가져올때 못가져오면
+			Log.d("InChatActivity::GetChatsLastOne", "last chat id : "
+					+ ChatMgr.getCurrChatID());
+			res = RM.GetEndChats(mContext, ChatMgr.getCurrOppoAccount(),
+					ChatMgr.getEndPath(), Integer.toString(nLastChatID - 1))
+					.get(0);
+			// res= RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(),
+			// Integer.toString(nLastChatID-1) ).get(0);
+		} catch (Exception ex) {
+			res = new Chat(SPUtil.getString(mContext, "AccountID"),
+					ChatMgr.getCurrOppoName(), "[끝난 대화]", "[시각]", "0");
+		}
+
+		return res;
+	}
+
+	// 모든 채팅을 다 가져온다.
+	public void GetAllChats() {
+		chats = RM.GetChatsNew(mContext, ChatMgr.getCurrOppoAccount(), "0"); // 채팅
+																				// 전부
+																				// 가져옴
+		InsertDateRowsInChat();
+	}
+
+	// 날짜가 달라질때마다 날짜정보를 넣어준다.
+	private void InsertDateRowsInChat() {
+		if (!chats2.isEmpty()) // 비어있지 않으면 비운다.
+			chats2.clear();
+
+		Date talkTime1 = null; // 대화시간1 (1row before)
+		Date talkTime2 = null; // 대화시간2 (현재 row)
+
+		for (Chat C : chats) {
+			try {
+				SimpleDateFormat format = new SimpleDateFormat(
+						"yyyy.MM.dd a h:mm");
+
+				if (talkTime1 == null) // 이전 시간에 대한 정보가 없으면
 				{
-					talkTime1= format.parse(C.getDateTime());	// 이전 시간 정보를 넣고
-					chats2.add(new Chat(null, null, null, (1900+talkTime1.getYear())+"년 "+(1+talkTime1.getMonth())+"월 "+talkTime1.getDate()+"일", null));	// 처음 대화 시작한 날짜 라벨
-					chats2.add(C);								// 처음대화는 그대로 복사한다.
+					talkTime1 = format.parse(C.getDateTime()); // 이전 시간 정보를 넣고
+					chats2.add(new Chat(null, null, null, (1900 + talkTime1
+							.getYear())
+							+ "년 "
+							+ (1 + talkTime1.getMonth())
+							+ "월 " + talkTime1.getDate() + "일", null)); // 처음 대화
+																		// 시작한
+																		// 날짜 라벨
+					chats2.add(C); // 처음대화는 그대로 복사한다.
 					continue;
-				}
-				else
-				{
-					talkTime2= format.parse(C.getDateTime());	// 현재 시간 정보를 2번에 넣고
-					if( talkTime1.getMonth()==talkTime2.getMonth() && talkTime1.getDate()==talkTime2.getDate() ) // 1번과 2번의 대화 날짜가 같으면
+				} else {
+					talkTime2 = format.parse(C.getDateTime()); // 현재 시간 정보를 2번에
+																// 넣고
+					if (talkTime1.getMonth() == talkTime2.getMonth()
+							&& talkTime1.getDate() == talkTime2.getDate()) // 1번과
+																			// 2번의
+																			// 대화
+																			// 날짜가
+																			// 같으면
 					{
-						talkTime1= talkTime2;	// 2번을 1번에 넣고 다음으로 넘김
-						chats2.add(C);			// 그대로 복사한다.
+						talkTime1 = talkTime2; // 2번을 1번에 넣고 다음으로 넘김
+						chats2.add(C); // 그대로 복사한다.
 						continue;
-					}
-					else	// 날짜가 다르면 라벨을 끼워준다.
+					} else // 날짜가 다르면 라벨을 끼워준다.
 					{
-						chats2.add(new Chat(null, null, null, (1900+talkTime2.getYear())+"년 "+(1+talkTime2.getMonth())+"월 "+talkTime2.getDate()+"일", null));
+						chats2.add(new Chat(null, null, null, (1900 + talkTime2
+								.getYear())
+								+ "년 "
+								+ (1 + talkTime2.getMonth())
+								+ "월 " + talkTime2.getDate() + "일", null));
 						chats2.add(C);
 					}
-					talkTime1= talkTime2;	// 2번을 1번에 넣고 다음으로 넘김
+					talkTime1 = talkTime2; // 2번을 1번에 넣고 다음으로 넘김
 				}
-			}
-			catch (ParseException e)
-			{
+			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-    	}
-    }
-    
-    private Runnable SendChatsThread = new Runnable()
-    {
-    	public void run()
-    	{	
-    		chats= RM.SendChatNew(mContext, ChatMgr.getCurrOppoAccount(), strChat);
-    		if(chats==null)	// 정보가 안들어왔으면...
-    		{
-    			if(!RM.CheckLogin(mContext))
-    			{
-        			UIHandler.sendEmptyMessage(-1);
-        			return;
-    			}
-    		}
-    			
-    		StartGetChatsThread();	// 서버에서 새로운 채팅을 가져온다.
-    		
-    		//UIHandler.sendEmptyMessage(0); // UI 새로고침
-    		UIHandler.sendEmptyMessage(2); // 다시 채팅 가능
-    	}
-    };
-    
-    private Runnable PollingChatThread = new Runnable()
-    {
-    	public void run()
-    	{	
-	    	while(bPolling)
-	    	{
-    			try
-    			{
-					Thread.sleep(1000);	 // 1초마다 확인함
-				}
-    			catch (InterruptedException e)
-				{	e.printStackTrace();	}
-    			
-	    		if(!Global.s_HasNewChat)	// 새로운 채팅이 없으면 그냥 넘어감
-	    			continue;
-	    		
-    			StartGetChatsThread(); 
+		}
+	}
 
-    			
-    			Global.s_HasNewChat= false;
-	    	}
-    	}
-    };
-
-////////////////////////////////////////////////////////////////////////////////    
-// UI 업데이트 핸들러
-////////////////////////////////////////////////////////////////////////////////
-	public Handler UIHandler = new Handler()
-	{
-		public void handleMessage(Message msg)
-		{
-			if(msg.what==-1)
+	private Runnable SendChatsThread = new Runnable() {
+		public void run() {
+			chats = RM.SendChatNew(mContext, ChatMgr.getCurrOppoAccount(),
+					strChat);
+			if (chats == null) // 정보가 안들어왔으면...
 			{
+				if (!RM.CheckLogin(mContext)) {
+					UIHandler.sendEmptyMessage(-1);
+					return;
+				}
+			}
+
+			StartGetChatsThread(); // 서버에서 새로운 채팅을 가져온다.
+
+			// UIHandler.sendEmptyMessage(0); // UI 새로고침
+			UIHandler.sendEmptyMessage(2); // 다시 채팅 가능
+		}
+	};
+
+	private Runnable PollingChatThread = new Runnable() {
+		public void run() {
+			while (bPolling) {
+				try {
+					Thread.sleep(1000); // 1초마다 확인함
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+				if (!Global.s_HasNewChat) // 새로운 채팅이 없으면 그냥 넘어감
+					continue;
+
+				StartGetChatsThread();
+
+				Global.s_HasNewChat = false;
+			}
+		}
+	};
+
+	// //////////////////////////////////////////////////////////////////////////////
+	// UI 업데이트 핸들러
+	// //////////////////////////////////////////////////////////////////////////////
+	public Handler UIHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			if (msg.what == -1) {
 				LoadingDL.hide();
-				Intent intent= new Intent(mContext, LoginActivity.class);
+				Intent intent = new Intent(mContext, LoginActivity.class);
 				intent.putExtra("logout_session", true);
 				startActivity(intent);
 			}
-			if(msg.what==0)	// 받은 정보를 채팅UI로 업데이트 할 때
+			if (msg.what == 0) // 받은 정보를 채팅UI로 업데이트 할 때
 			{
 				RefreshChatEntry();
-			}
-			else if(msg.what==1)	// 채팅이 전송 중일 때
+			} else if (msg.what == 1) // 채팅이 전송 중일 때
 			{
 				EDT_chat.setText("");
 				EDT_chat.setHint("전송중...");
 				EDT_chat.setEnabled(false);
 				BTN_send.setEnabled(false);
-			}
-			else if(msg.what==2)	// 채팅 전송을 마쳤을 때
+			} else if (msg.what == 2) // 채팅 전송을 마쳤을 때
 			{
 				EDT_chat.setHint("");
 				EDT_chat.setEnabled(true);
 				BTN_send.setEnabled(false);
-			} 
-			else if(msg.what==10)	// 채팅을 끝내서 DB에 저장할 때
+			} else if (msg.what == 10) // 채팅을 끝내서 DB에 저장할 때
 			{
-try{
-				LoadingDL.setMessage("끝난 대화를 저장하고 있습니다...\n대화탭에서 끝난 대화를 다시 볼 수 있습니다.");
-				LoadingDL.show();
-} catch(Exception e)	{}
-			}
-			else if(msg.what==11)	// 채팅이 DB에 저장 끝낫을 때
+				try {
+					LoadingDL
+							.setMessage("끝난 대화를 저장하고 있습니다...\n대화탭에서 끝난 대화를 다시 볼 수 있습니다.");
+					LoadingDL.show();
+				} catch (Exception e) {
+				}
+			} else if (msg.what == 11) // 채팅이 DB에 저장 끝낫을 때
 			{
 				LoadingDL.hide();
-			}
-			else if(msg.what==99)	// 위로 스크롤 하여 이전 채팅을 로딩할 때
+			} else if (msg.what == 99) // 위로 스크롤 하여 이전 채팅을 로딩할 때
 			{
 				SetLoadingLock(true);
-			}
-			else if(msg.what==100)	// 이전 채팅의 로딩을 마쳣을 때
+			} else if (msg.what == 100) // 이전 채팅의 로딩을 마쳣을 때
 			{
 				SetLoadingLock(false);
 			}
 		}
 	};
-////////////////////////////////////////////////////////////////////////////////
-	
-	private void SendChat()
-	{
-		strChat= EDT_chat.getText().toString();
+
+	// //////////////////////////////////////////////////////////////////////////////
+
+	private void SendChat() {
+		strChat = EDT_chat.getText().toString();
 		UIHandler.sendEmptyMessage(1); // 채팅 새로고침
 		this.StartSendChatThread();
 	}
-	
-	private void RefreshChatEntry()
-	{		
-		Global.s_HasNewChat= false;	// 
-		retry= 0; // 채팅 가져오기 실패횟수 초기화
-		
+
+	private void RefreshChatEntry() {
+		Global.s_HasNewChat = false; //
+		retry = 0; // 채팅 가져오기 실패횟수 초기화
+
 		arraylist.clear();
 		Adapter.clear();
-		
-		this.ChatEntrySet();	// 채팅 엔트리 설정		
+
+		this.ChatEntrySet(); // 채팅 엔트리 설정
 	}
-	
+
 	/**
 	 * 가져온 채팅을 리스트로 세팅한다.
 	 */
-	public void ChatEntrySet()
-	{
-		if(chats2==null)
+	public void ChatEntrySet() {
+		if (chats2 == null)
 			return;
-		
-		try
-		{
-			for(Chat C : chats2)
-			{
-				if( C.getSenderAccount() == null )	// 보낸이 없으면 날짜라벨이므로 패스
+
+		try {
+			for (Chat C : chats2) {
+				if (C.getSenderAccount() == null) // 보낸이 없으면 날짜라벨이므로 패스
 				{
 					arraylist.add(new ChatEntry(false, null, C.getDateTime()));
 					continue;
 				}
-				
+
 				boolean bMyChat;
-				if( C.getSenderAccount().equals( SPUtil.getString(mContext, "AccountID") ))	// 보낸이가 자신이면 내 채팅이다.
+				if (C.getSenderAccount().equals(
+						SPUtil.getString(mContext, "AccountID"))) // 보낸이가 자신이면 내
+																	// 채팅이다.
 				{
-					bMyChat= true;
-				}else{
-					bMyChat= false;
+					bMyChat = true;
+				} else {
+					bMyChat = false;
 				}
-				
-				arraylist.add(new ChatEntry(bMyChat, C.getChat(), C.getDateTime()));
+
+				arraylist.add(new ChatEntry(bMyChat, C.getChat(), C
+						.getDateTime()));
 			}
+		} catch (Exception e) {
+
 		}
-		catch(Exception e)
-		{
-			
-		}
-		
+
 		UIHandler.sendEmptyMessage(100);
-		
+
 	}
-	
+
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		 
-		int nRes= -1;
-		
-		if(resultCode == RESULT_OK && data != null)
-			nRes= data.getExtras().getInt("result"); // (3:Awesome, 2:Good, 1:Bad, 0:대화끝내기취소, -1:오류)
+
+		int nRes = -1;
+
+		if (resultCode == RESULT_OK && data != null)
+			nRes = data.getExtras().getInt("result"); // (3:Awesome, 2:Good,
+														// 1:Bad, 0:대화끝내기취소,
+														// -1:오류)
 		else
 			return;
-		
-		if(requestCode == Global.s_nRequest_ChatEval)  // 멘토 평가
+
+		if (requestCode == Global.s_nRequest_ChatEval) // 멘토 평가
 		{
-			switch(nRes)
-			{
+			switch (nRes) {
 			case 3:
-				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "2");	//awesome
-				ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
-				StartFinishThread();	// 끝낸 대화 정보를 저장한다.
+				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "2"); // awesome
+				ChatMgr.setEndPath(RM.CloseChatting(mContext,
+						ChatMgr.getCurrOppoAccount()));
+				StartFinishThread(); // 끝낸 대화 정보를 저장한다.
 				finish();
 				break;
 			case 2:
-				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "1");	//good
-				ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
-				StartFinishThread();	// 끝낸 대화 정보를 저장한다.
+				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "1"); // good
+				ChatMgr.setEndPath(RM.CloseChatting(mContext,
+						ChatMgr.getCurrOppoAccount()));
+				StartFinishThread(); // 끝낸 대화 정보를 저장한다.
 				finish();
 				break;
 			case 1:
-				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "-1");	//bad
-				ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
-				StartFinishThread();	// 끝낸 대화 정보를 저장한다.
+				RM.ChangeScore(mContext, ChatMgr.getCurrOppoAccount(), "-1"); // bad
+				ChatMgr.setEndPath(RM.CloseChatting(mContext,
+						ChatMgr.getCurrOppoAccount()));
+				StartFinishThread(); // 끝낸 대화 정보를 저장한다.
 				finish();
 				break;
 			case 0:
@@ -518,115 +511,118 @@ try{
 			}
 		}
 	}
-	
+
 	@Override
-	public void onClick(View v)
-	{
-		if(v.getId()==R.id.btn_send)
+	public void onClick(View v) {
+		if (v.getId() == R.id.btn_send)
 			this.SendChat();
-		
-		if(v.getId()==R.id.btn_inchat_end)
-		{
-			if(SPUtil.getBoolean(this, "isMentor"))
-			{
+
+		if (v.getId() == R.id.btn_inchat_end) {
+			if (SPUtil.getBoolean(this, "isMentor")) {
 				new AlertDialog.Builder(this)
-		        .setTitle("[대화 끝내기]")
-		        .setMessage("상대방과 더 이상 대화를 할 수 없게 됩니다.\n종료하시겠습니까?") 
-		        .setPositiveButton("종료", new DialogInterface.OnClickListener()
-		        {
-		            public void onClick(DialogInterface dialog, int whichButton)
-		            {
-		    			ChatMgr.setEndPath( RM.CloseChatting(mContext, ChatMgr.getCurrOppoAccount()) );
-		    			StartFinishThread();	// 끝낸 대화 정보를 저장한다.
-		    			finish();
-		            }
-		        })
-		        .setNegativeButton("계속 대화", new DialogInterface.OnClickListener()
-		        {
-		        	public void onClick(DialogInterface dialog, int whichButton)
-		            {
-		            }
-		        })
-		        .show();
-			}
-			else
-			{
-				Intent intent= new Intent(InChatActivity.this, ChatEvalActivity.class);
+						.setTitle("[대화 끝내기]")
+						.setMessage("상대방과 더 이상 대화를 할 수 없게 됩니다.\n종료하시겠습니까?")
+						.setPositiveButton("종료",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int whichButton) {
+										ChatMgr.setEndPath(RM.CloseChatting(
+												mContext,
+												ChatMgr.getCurrOppoAccount()));
+										StartFinishThread(); // 끝낸 대화 정보를 저장한다.
+										finish();
+									}
+								})
+						.setNegativeButton("계속 대화",
+								new DialogInterface.OnClickListener() {
+									public void onClick(DialogInterface dialog,
+											int whichButton) {
+									}
+								}).show();
+			} else {
+				Intent intent = new Intent(InChatActivity.this,
+						ChatEvalActivity.class);
 				startActivityForResult(intent, Global.s_nRequest_ChatEval);
 			}
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see android.app.Activity#onDestroy()
 	 */
 	@Override
-	protected void onDestroy()
-	{		
+	protected void onDestroy() {
 		boolean retry = true;
-				
-		bPolling= false;	// 루프를 멈추고		
-        while (retry)
-        {
-            try
-            {
-            	PollingThread.join();	// 끝나기를 기다림
-                retry = false;
-            }
-            catch (InterruptedException e)
-            {
-            	Log.e(Global.LOG_TAG, e.toString());
-            }
-        }
-        
-        PollingThread= null;
-        
+
+		bPolling = false; // 루프를 멈추고
+		while (retry) {
+			try {
+				PollingThread.join(); // 끝나기를 기다림
+				retry = false;
+			} catch (InterruptedException e) {
+				Log.e(Global.LOG_TAG, e.toString());
+			}
+		}
+
+		PollingThread = null;
+
 		super.onDestroy();
 	}
 
-
 	@Override
-	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
-	{
-		//Log.d("InChatActivity", Integer.toString(firstVisibleItem) );
-		if(firstVisibleItem==0 && !(totalItemCount <= visibleItemCount) )	// 총리스트수가 화면에 보이는 리스트수보다 적거나 같지 않으면
+	public void onScroll(AbsListView view, int firstVisibleItem,
+			int visibleItemCount, int totalItemCount) {
+		// Log.d("InChatActivity", Integer.toString(firstVisibleItem) );
+		if (firstVisibleItem == 0 && !(totalItemCount <= visibleItemCount)) // 총리스트수가
+																			// 화면에
+																			// 보이는
+																			// 리스트수보다
+																			// 적거나
+																			// 같지
+																			// 않으면
 		{
-			if(!bLoading && !ChatMgr.bChatEnd)
-			{
-				ChatMgr.AddRange(25);	// 범위 늘리고
-				StartGetChatsThread();	// 다시 목록 가져옴.
+			if (!bLoading && !ChatMgr.bChatEnd) {
+				ChatMgr.AddRange(25); // 범위 늘리고
+				StartGetChatsThread(); // 다시 목록 가져옴.
 			}
 		}
-		
-	}
 
+	}
 
 	@Override
-	public void onScrollStateChanged(AbsListView view, int scrollState)
-	{
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+	private void SetLoadingLock(boolean bLock) {
+		// LayoutInflater li =
+		// (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		// View v = li.inflate(R.layout.header_progress, null);
 
-	private void SetLoadingLock(boolean bLock)
-	{
-//		LayoutInflater li = (LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View v = li.inflate(R.layout.header_progress, null);
-        
-		if(bLock)
-		{
-			bLoading= true;	// 목록 가져오는 동안 Lock
+		if (bLock) {
+			bLoading = true; // 목록 가져오는 동안 Lock
 			PGB_loading.setVisibility(View.VISIBLE);
-			//getListView().addHeaderView(v);
-		}
-		else
-		{
-			//getListView().removeHeaderView(v);
-			bLoading= false;	// 목록 다 가져오고 세팅도 했으니 lock해제
+			// getListView().addHeaderView(v);
+		} else {
+			// getListView().removeHeaderView(v);
+			bLoading = false; // 목록 다 가져오고 세팅도 했으니 lock해제
 			PGB_loading.setVisibility(View.INVISIBLE);
-			
+
 		}
+	}
+	
+	private void ShowAlertDialog(String strTitle, String strContent, String strButton)
+	{
+		new AlertDialog.Builder(mContext)
+		.setTitle( strTitle )
+		.setMessage( strContent )
+		.setPositiveButton( strButton , null)
+		.setCancelable(false)
+		.create()
+		.show();
 	}
 
 }

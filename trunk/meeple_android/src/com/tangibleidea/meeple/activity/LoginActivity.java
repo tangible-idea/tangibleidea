@@ -13,11 +13,12 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.kth.baasio.Baasio;
 import com.tangibleidea.meeple.R;
 import com.tangibleidea.meeple.server.MenteeInfo;
 import com.tangibleidea.meeple.server.MentorInfo;
@@ -59,9 +60,13 @@ public class LoginActivity extends Activity implements OnClickListener
 		{
 			setContentView(R.layout.login);
 		}
-		  
+
 		
-		
+        
+//		Baasio.getInstance().init(this,
+//      		"https://api.baas.io",
+//      		"junhyeok@tangibleidea.co.kr",
+//      		"sandbox");
 		
 		
 		LoadingDL = new ProgressDialog(this);
@@ -96,7 +101,14 @@ public class LoginActivity extends Activity implements OnClickListener
 	{
 		if (v.getId() == R.id.btn_login)
 		{
-			this.Login(); 
+			this.Login();
+//			try {
+//				C2DMAuth.SetupC2DMAndroid();
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
 		}
 		else if (v.getId() == R.id.btn_join_mentor)
 		{
