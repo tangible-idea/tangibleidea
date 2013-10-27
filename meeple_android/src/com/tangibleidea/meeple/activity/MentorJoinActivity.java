@@ -77,6 +77,17 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 			
 			this.MentorJoin();
 		}
+//		else if(v.getId()==R.id.spn_gender)
+//		{
+//			try
+//			{
+//				if( SPUtil.getString(this, "reg_id").equals("0") )
+//					Global.C2DM_ID_Register(this);
+//			}catch(Exception e)
+//			{
+//				Global.C2DM_ID_Register(this);
+//			}
+//		}
 		
 	}
 	public void MentorJoin()
@@ -163,7 +174,20 @@ public class MentorJoinActivity extends Activity implements OnClickListener, OnI
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View v, int position, long id)
 	{
-		strGender= Integer.toString(position);		
+		if(arg0==SPN_gender)
+		{
+			try
+			{
+				if( SPUtil.getString(this, "reg_id").equals("0") )
+					Global.C2DM_ID_Register(this);
+			}catch(Exception e)
+			{
+				Global.C2DM_ID_Register(this);
+			}
+				
+			strGender= Integer.toString(position);	
+		}
+		
 	}
 
 	@Override
