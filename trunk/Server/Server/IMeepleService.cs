@@ -18,7 +18,7 @@ namespace Server
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         // password는 MD5 Hash로 인크립트해서 보낼 것. MD5 인크립트의 결과는 256bit(32byte이다)
-        RegisterResponse RegisterMentor(string account, string password, bool isPush, string push, string name, int gender, string email, string univ, string major, int promo);
+        RegisterResponse RegisterMentor(string account, string password, bool isPush, string push, string name, int gender, string email, string univ, string major, int promo, int category);
 
         // 멘토를 등록한다. (안드로이드)tas
         [OperationContract]
@@ -30,7 +30,7 @@ namespace Server
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         // password는 MD5 Hash로 인크립트해서 보낼 것. MD5 인크립트의 결과는 256bit(32byte이다)
-        RegisterResponse RegisterMentee(string account, string password, bool isPush, string push, string name, int gender, string email, string school, int grade);
+        RegisterResponse RegisterMentee(string account, string password, bool isPush, string push, string name, int gender, string email, string school, int grade, int category);
 
         // 멘티를 등록한다. (안드로이드)
         [OperationContract]

@@ -85,7 +85,7 @@ namespace Server
             }
             catch ( Exception error )
             {
-                Program.logCoord.WriteOnlyTextError(error.ToString());
+                Program.logCoord.WriteOnlyTextLog(error.ToString()); //Error
                 return false;
             }
             return true;

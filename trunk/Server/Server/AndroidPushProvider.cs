@@ -15,7 +15,8 @@ namespace Server
     {
 
         //public const string AUTH_TOKEN = "DQAAAAMBAAASJFtBQLVy0jmaEnHJ_yLwr6hrchyOG2Fwea7JWMjKQiGX8CC1zU1z9DWkF63agiQ-I7dsYraK9p_Tfr14wWAvTzlYwpXZJmly9BQNUiYFFIMSa5tik0YnpJiweyQxHaymhlLT9VTnZRKExigwFMwNE5aYxU53RIQ_lafRm7_mQYv3je9HCNMmTUw5xE1OjFiQRo29JkQeEUU74rqufMT-GEsUaWRdOpePS-qwgix6cXG2RLdxUC4aL3NwqMPWLrsZ6V-QWncY70Xwnn-pmGKK76VUUUz0E4MRw3gXkdaHyfw9WERQLITTV9f_zyII2BGkVXmK1CBEpk-CNIn8ACGO1Tr13T5cXDUnV08dqyWmtg";
-        public const string AUTH_TOKEN = "DQAAAAUBAABHJ_XQ4IGHjIjbXyQezrdInkLGxLmUmMw8AyCe7s6FtXqnNJDQttvPvbWuY81KGF500EzxJg9QgEP0ageuOuzVwVuPHU-dteqOjMJDXtCrJvmd7LscNSvBukouGY0C1zjmr_woAe9hl7Y7CMv-0w26zi03PH9sXI8BDfOI5k9ov2crx19IZ51I9lnhlq2rgnqAoHHjhJ0qU_glZOlqWZDlboWlN2NeevrG9fm7lOQXOf82eaBnnaMPFeqmeETp3gQD6M5aHy_ItgcXtdIg4p6ViHsWPLEpkPQr5XMOtwF9AmXvYhMJELBXHhvPphbDOgvffnp1l-LaHE3X4Y2pYs2L9Y6JdZkPswKfsStC1FNR-Q";
+        //public const string AUTH_TOKEN = "DQAAAAUBAABHJ_XQ4IGHjIjbXyQezrdInkLGxLmUmMw8AyCe7s6FtXqnNJDQttvPvbWuY81KGF500EzxJg9QgEP0ageuOuzVwVuPHU-dteqOjMJDXtCrJvmd7LscNSvBukouGY0C1zjmr_woAe9hl7Y7CMv-0w26zi03PH9sXI8BDfOI5k9ov2crx19IZ51I9lnhlq2rgnqAoHHjhJ0qU_glZOlqWZDlboWlN2NeevrG9fm7lOQXOf82eaBnnaMPFeqmeETp3gQD6M5aHy_ItgcXtdIg4p6ViHsWPLEpkPQr5XMOtwF9AmXvYhMJELBXHhvPphbDOgvffnp1l-LaHE3X4Y2pYs2L9Y6JdZkPswKfsStC1FNR-Q";
+        public const string AUTH_TOKEN = "DQAAAAoBAABwKxUxLdKd1Dior-NyPpaJzFSWgyzsbudc-iKBNmwZsJyjVtTMj-f-8NaonYmf5N8khdf915OkwfYA3waAocSxJJeObnSvUp2qmIf4kccZbW7MkvC3PX5QQr17dq_xobAf-LkOO6c0IMAysOB6QhXsFKZsgf8moEIPAV1D4yycj8Nt5-gDXWA5l2Jniln50iH_tj2i-PgGlCS8gdHdZM0UpzdftIGmLFWW7CbCJVpQjXWFZjuoUUQjSLGXWt0g8rJCJzzJ2Ew3UfMGhzkVYuoyKj_xv9gJHFKwx1I4z1jfysOjS7WEALofJlUhbUb2vUbNhFJBx4U6BNabAM2ZUnV3LJwaGPNfYUUaT202fmjwHQ";
 
         public AndroidPushProvider()
         {
@@ -74,27 +75,37 @@ namespace Server
 
             request.Headers.Add(HttpRequestHeader.Authorization, "GoogleLogin auth=" + AUTH_TOKEN);
 
-            Stream dataStream = request.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
-
-            WebResponse response = request.GetResponse();
-            HttpStatusCode responseCode = ((HttpWebResponse)response).StatusCode;
-            if (responseCode.Equals(HttpStatusCode.Unauthorized) || responseCode.Equals(HttpStatusCode.Forbidden))
+            try
             {
-                Console.WriteLine("Unauthorized - need new token");
+
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+
+            
+                WebResponse response = request.GetResponse();
+                HttpStatusCode responseCode = ((HttpWebResponse)response).StatusCode;
+                if (responseCode.Equals(HttpStatusCode.Unauthorized) || responseCode.Equals(HttpStatusCode.Forbidden))
+                {
+                    Console.WriteLine("Unauthorized - need new token");
+                }
+                else if (!responseCode.Equals(HttpStatusCode.OK))
+                {
+                    Console.WriteLine("Response from web service not OK :");
+                    Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+                }
+
+                StreamReader reader = new StreamReader(response.GetResponseStream());
+                string responseLine = reader.ReadLine();
+                reader.Close();
+
+                Program.logCoord.WriteLog("ANDROID_SENDPUSH : " + message);
             }
-            else if (!responseCode.Equals(HttpStatusCode.OK))
+            catch (Exception e)
             {
-                Console.WriteLine("Response from web service not OK :");
-                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
             }
 
-            StreamReader reader = new StreamReader(response.GetResponseStream());
-            string responseLine = reader.ReadLine();
-            reader.Close();
-
-            Program.logCoord.WriteLog("ANDROID_SENDPUSH : " + message);
+            
         }
 
         // 푸쉬 메서드

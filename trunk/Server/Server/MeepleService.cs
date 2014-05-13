@@ -56,8 +56,8 @@ namespace Server
             return true;
         }
 
-        
-        public RegisterResponse RegisterMentor(string account, string password, bool isPush, string push, string name, int gender, string email, string univ, string major, int promo)
+
+        public RegisterResponse RegisterMentor(string account, string password, bool isPush, string push, string name, int gender, string email, string univ, string major, int promo, int category)
         {
             UTF8Encoding encoding = new UTF8Encoding();
             if (account.Length > 30
@@ -104,7 +104,7 @@ namespace Server
             int accountId = Program.dbCoord.AddAccount(account, password, gender, isApple, push, true, email, androidpush);
             if (accountId > 0)
             {
-                if (Program.dbCoord.AddMentorInfo(accountId, name, univ, major, promo, email, "", "") == 0)
+                if (Program.dbCoord.AddMentorInfoAndCategory(accountId, name, univ, major, promo, email, "", category, "") == 0)
                 {
                     Program.dbCoord.UpdatePush(account, push);  // 푸시를 새로 업데이트함
 
@@ -225,7 +225,7 @@ namespace Server
 
 
         // 애플용 mentee 가입 메서드
-        public RegisterResponse RegisterMentee(string account, string password, bool isPush, string push, string name, int gender, string email, string school, int grade)
+        public RegisterResponse RegisterMentee(string account, string password, bool isPush, string push, string name, int gender, string email, string school, int grade, int category)
         {
             UTF8Encoding encoding = new UTF8Encoding();
 
@@ -273,7 +273,7 @@ namespace Server
             int accountId = Program.dbCoord.AddAccount(account, password, gender, isApple, push, false, email, androidpush);
             if (accountId > 0)
             {
-                if (Program.dbCoord.AddMenteeInfo(accountId, name, school, grade, email, "", "") == 0)
+                if (Program.dbCoord.AddMenteeInfoAndCategory(accountId, name, school, grade, email, "", category, "") == 0)
                 {
                     Program.dbCoord.UpdatePush(account, push);  // 푸시 새로고침
 
